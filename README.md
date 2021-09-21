@@ -34,7 +34,7 @@ Visit <a href="http://localhost:3000" target="_blank">localhost:3000</a> in your
 
 ## View the prototype online
 
-Visit <a href="https://civil-registration-prototype.herokuapp.com" target="_blank">https://civil-registration-prototype.herokuapp.com</a> in your browser.
+Visit <a href="https://civil-registration-prototypes.herokuapp.com/" target="_blank">https://civil-registration-prototypes.herokuapp.com/</a> in your browser.
 
 It may take a few seconds to load.
 
@@ -45,13 +45,13 @@ Get yourself a Heroku account and added to the prototype app.
 Add the Heroku remote (that you will push to, to deploy):
 
 ```
-heroku git:remote -a civil-registration-prototype
+heroku git:remote -a civil-registration-prototypes
 ```
 
-To deploy the master branch:
+To deploy the main branch:
 
 ```
-git push heroku master
+git push heroku main
 ```
 
 ## Archiving the prototype
@@ -75,7 +75,7 @@ git tag -a YYMMDD-feature-name -m "First iteration of feature-name for lab 1"
 ### 2. Push tags to origin
 
 ```
-git push --tags origin master
+git push --tags origin main
 ```
 
 You should be able to see that git has pushed your tag to the remote:
@@ -124,10 +124,10 @@ git push origin +archive/feature-branch-name-v1
 Each prototype archive will be hosted on a separate Heroku app.
 
 ```
-heroku apps:create hmpo-YYMMDD-feature-name -r heroku-feature-name-v1 --region eu
+heroku apps:create civil-registration-YYMMDD-feature-name -r heroku-feature-name-v1 --region eu
 ```
 
-`hmpo-YYMMDD-feature-name` becomes the subdomain in the URL of the Heroku app.
+`civil-registration-YYMMDD-feature-name` becomes the subdomain in the URL of the Heroku app.
 
 `heroku-feature-name-v1` is the remote added to your repository.
 
@@ -136,5 +136,5 @@ heroku apps:create hmpo-YYMMDD-feature-name -r heroku-feature-name-v1 --region e
 To deploy from another branch, where `archive/feature-branch-name-v1` is the branch you want to push:
 
 ```
-git push heroku-feature-name-v1 archive/feature-branch-name-v1:master
+git push heroku-feature-name-v1 archive/feature-branch-name-v1:main
 ```
