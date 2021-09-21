@@ -1,0 +1,24 @@
+{
+    "govuk": {
+    "serviceName": "Civil Registration Prototypes",
+    "errorSummaryTitle": "There is a problem",
+    "backLink": "Back"
+  },
+  "buttons": {
+    "next": "Continue"
+  },
+  "fields": {
+    "date-day": {
+      "label": "Day"
+    },
+    "date-month": {
+      "label": "Month"
+    },
+    "date-year": {
+      "label": "Year"
+    }
+  },
+  "validation": {
+    "default": "You need to answer this question"
+  }
+}

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% set disableCookieBanner = true %}
+
+{% block phaseBanner %}{% endblock %}
+
+{% block mainContent %}
+    {% block helpContent %}
+    {% endblock %}
+
+    {{ hmpoClose() }}
+{% endblock %}

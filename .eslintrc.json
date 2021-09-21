@@ -1,0 +1,24 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": ["eslint:recommended"],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        "linebreak-style": [ "error", "unix" ],
+        "eol-last": [ "error", "always" ],
+        "no-trailing-spaces": ["error"],
+        "indent": [ "error", 4 ],
+        "object-property-newline": 0,
+        "object-curly-newline": 0
+    }
+}

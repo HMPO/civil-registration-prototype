@@ -1,0 +1,11 @@
+{
+  "paths": {
+    "public": "public/",
+    "assets" : "app/assets/",
+    "hmpoAssets": "node_modules/hmpo-components/assets/",
+    "hmpoJs": "node_modules/hmpo-components/all.js",
+    "nodeModules": "node_modules/",
+    "sessions": "sessions/",
+    "lib": "lib/"
+  }
+}

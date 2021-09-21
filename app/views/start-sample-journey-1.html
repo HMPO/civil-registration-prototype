@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% set hmpoTitle %}Sample Journey 1{% endset %}
+
+{% block pageTitle %}
+    {{ hmpoTitle | safe }} – GOV.UK
+{% endblock %}
+
+{% block phaseBanner %}
+{% endblock %}
+
+{% block govukHeader %}
+    {{ govukHeader({
+        assetsPath: assetPath + '/images',
+        homepageUrl: govukHomePage or "https://gov.uk",
+        serviceName: "",
+        navigation: govukNavigation,
+        serviceUrl: govukServiceUrl or "/",
+        containerClasses: "govuk-width-container"
+    }) }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ hmpoTitle }}</h1>
+
+    <p>This is a sample journey for the prototype template.</p>
+    {% call hmpoForm(ctx) %}
+        {{ govukButton({
+            text: "Start now",
+            href: "/sample-journey-1",
+            isStartButton: true
+        }) }}
+    {% endcall %}
+{% endblock %}

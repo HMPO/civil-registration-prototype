@@ -1,0 +1,59 @@
+.dcs-cookie-banner {
+    @include govuk-font($size: 19, $line-height: 1.25);
+    @include govuk-text-colour;
+
+    background-color: govuk-colour("light-grey");
+    margin: 0;
+    padding: govuk-spacing(4) 0;
+    box-shadow: 0px 2px 8px govuk-colour("mid-grey");
+    -moz-box-shadow: 0px 2px 8px govuk-colour("mid-grey");
+    -webkit-box-shadow: 0px 2px 8px govuk-colour("mid-grey");
+}
+
+.dcs-cookie-banner-center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dcs-cookie-banner__button-wrapper {
+    padding: 0;
+}
+
+.dcs-cookie-banner__text {
+    margin: 0 0 govuk-spacing(2);
+}
+
+.dcs-cookie-banner__button {
+    width: 100%;
+    margin: 0 0 govuk-spacing(4) 0;
+
+    @include mq($from: desktop) {
+        width: 90%;
+        margin: 0 govuk-spacing(2) govuk-spacing(1) 0;
+    }
+}
+
+.dcs-cookie-banner__message {
+    @include govuk-width-container;
+
+    margin:0 !important;
+    padding: 0 0 govuk-spacing(2) 0;
+
+    @include mq($from: desktop) {
+        padding: 0 govuk-spacing(4) govuk-spacing(2) 0;
+    }
+}
+
+@include mq($media-type: print) {
+    .dcs-cookie-banner {
+        display: none !important;
+    }
+}
+
+
+@media (min-width: 765px) and (max-width: 880px) {
+    .dcs-cookie-banner-center {
+        min-width: 540px;
+    }
+}

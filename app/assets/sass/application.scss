@@ -1,0 +1,18 @@
+// global styles for <a> and <p> tags
+$govuk-global-styles: true;
+
+// We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
+$govuk-assets-path: '/govuk/assets/';
+$hmpo-assets-path: '/public/';
+
+// Import GOV.UK Frontend and any extension styles if extensions have been configured
+@import "lib/extensions/extensions";
+@import "node_modules/hmpo-components/all";
+
+// Patterns that aren't in Frontend
+@import "patterns/step-by-step-navigation";
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+@import "patterns/autofill";
+@import "patterns/cookie-banner";
+

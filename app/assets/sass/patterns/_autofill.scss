@@ -1,0 +1,78 @@
+.hmpoAutoFill {
+    $fontsize: 17px;
+
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    color: white;
+    font-family: sans-serif;
+    font-size: $fontsize;
+
+    button {
+        padding: 5px 10px 5px 10px;
+        font-size: $fontsize;
+    }
+    button.hmpoAutoFill-fill {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+    button.hmpoAutoFill-settings {
+        color: white;
+        background-color: darkslategray;
+    }
+
+    a.hmpoAutoFill-showCookieBannerlink{
+        color: white;
+        background-color: rgb(47, 79, 63);
+        padding: 5px 10px 5px 10px;
+        margin-left: 10px;
+        font-weight: bold;
+        text-decoration: none;
+        border-width: 2px;
+        border-style: outset;
+        border-color: #767676;
+        cursor: default;
+        border-image: initial;
+    }
+
+    div {
+        right: 0px;
+        top: 40px;
+        position: absolute;
+        background: black;
+        border: solid 1px grey;
+        padding: 8px;
+        min-width: 200px;
+
+        span {
+            display: block;
+            margin-right: 4px;
+            margin-bottom: 8px;
+        }
+
+        .cookieSpan {
+            display: block;
+            margin-right: 4px;
+            margin-bottom: 8px;
+            border-top: 2px solid #bbb;
+            padding-top: 10px;
+        }
+
+        input[type=checkbox] {
+            height: $fontsize;
+            width: $fontsize;
+            margin-right: 4px;
+            vertical-align: bottom;
+        }
+
+        input[type=checkbox]:disabled+label {
+            color: #777;
+        }
+
+        select {
+            padding: 3px;
+            font-size: $fontsize;
+        }
+    }
+}
