@@ -15,7 +15,7 @@ router.use(Wizard(
         name: 'prototype',
         journeyName: 'journey1',
         editable: true,
-        editBackStep: '/sample-journey-1/confirm',
+        editBackStep: '/register/confirm',
         controller: require('./controllers/journey1')
     }
 ))

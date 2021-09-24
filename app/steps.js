@@ -15,27 +15,27 @@ const journey1 = {
     //     next: '/filter/begin'
     // },
     // ========================
-    
-    '/sample-journey-1': {
+
+    '/register': {
         entryPoint: true,
         resetJourney: true,
         skip: true,
-        next: '/sample-journey-1/form'
+        next: '/register/form'
     },
-    '/sample-journey-1/form': {
+    '/register/form': {
         fields: [
             'title',
             'firstName',
             'lastName',
             'dateOfBirth'
         ],
-        next: '/sample-journey-1/confirm'
+        next: '/register/confirm'
     },
-    '/sample-journey-1/confirm': {
+    '/register/confirm': {
         editable: true,
-        next: '/sample-journey-1/submitted'
+        next: '/register/submitted'
     },
-    '/sample-journey-1/submitted': {
+    '/register/submitted': {
         noPost: true,
         backLink: false
     }

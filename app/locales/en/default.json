@@ -1,8 +1,9 @@
 {
     "govuk": {
-    "serviceName": "Civil Registration Prototypes",
-    "errorSummaryTitle": "There is a problem",
-    "backLink": "Back"
+      "serviceName": "Civil Registration Prototypes",
+      "serviceNameRegister": "Register a death",
+      "errorSummaryTitle": "There is a problem",
+      "backLink": "Back"
   },
   "buttons": {
     "next": "Continue"

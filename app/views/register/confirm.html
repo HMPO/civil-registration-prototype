@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layout-register.html" %}
 
 {% set hmpoTitle %}Check your details{% endset %}
 
@@ -11,17 +11,17 @@
         {
             key: { text: "Title" },
             value: { text: values.title },
-            actions: { items: [{ text: "Change", href: "/sample-journey-1/form/edit" }]}
+            actions: { items: [{ text: "Change", href: "/register/form/edit" }]}
         },
         {
             key: { text: "Name" },
             value: { text: values.firstName + " " + values.lastName },
-            actions: { items: [{ text: "Change", href: "/sample-journey-1/form/edit" }]}
+            actions: { items: [{ text: "Change", href: "/register/form/edit" }]}
         },
         {
             key: { text: "Date of birth" },
             value: { text: values.dateOfBirth | date },
-            actions: { items: [{ text: "Change", href: "/sample-journey-1/form/edit" }]}
+            actions: { items: [{ text: "Change", href: "/register/form/edit" }]}
         }
     ] | filter }) }}
 
