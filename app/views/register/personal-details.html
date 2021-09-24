@@ -1,6 +1,6 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}Personal details{% endset %}
+{% set hmpoTitle %}Add their personal details{% endset %}
 
 {% set titles = [
     { value: "Mr", text: "Mr" },
@@ -15,23 +15,42 @@
 
     {% call hmpoForm(ctx) %}
 
-        {{ hmpoRadios(ctx, {
-            id: "title",
-            inline: true,
-            legend: {
-                text: "Title",
-                classes: "govuk-label--m"
-            },
-            items: titles
-        }) }}
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
+    {{ govukCheckboxes({
+      idPrefix: "prefixSuffix",
+      name: "prefixSuffix",
+      fieldset: {
+        legend: {
+          text: "Does their name have a prefix or suffix?",
+          isPageHeading: true,
+          classes: "govuk-label--m"
+        }
+      },
+      hint: {
+        text: "For example, the prefix 'Lady' or suffix 'JP'"
+      },
+      items: [
+        {
+          value: "prefix",
+          text: "Yes - there's a prefix",
+          hint: {
+            text: " "
+          }
+        },
+        {
+          value: "suffix",
+          text: "Yes - there's a suffix"
+        }
+        ]
+      }) }}
         {{ hmpoText(ctx, {
             id: "firstName",
             label: {
                 text: "First and middle names",
                 classes: "govuk-label--m"
             },
-            hint: "As appears on birth certificate"
+            hint: "This is also knowns as 'given names'"
         }) }}
 
         {{ hmpoText(ctx, {
@@ -40,7 +59,7 @@
                 text: "Last name",
                 classes: "govuk-label--m"
             },
-            hint: "As appears on birth certificate"
+            hint: "This is also known as 'family name'"
         }) }}
 
         {{ hmpoDate(ctx, {
@@ -49,7 +68,7 @@
                 text: "Date of birth",
                 classes: "govuk-label--m"
             },
-            hint: "For example, 20 01 2004"
+            hint: "For example, 20 01 1960"
         }) }}
 
         {{ hmpoSubmit(ctx) }}
