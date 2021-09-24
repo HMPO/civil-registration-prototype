@@ -7,7 +7,51 @@
 
     {% call hmpoForm(ctx) %}
 
-        <p>Placeholder page.</p>
+        {{ hmpoRadios(ctx, {
+            id: "communalEstablishment",
+            legend: {
+                text: 'Did they die at a communal establishment?',
+                classes: "govuk-label--m"
+            },
+            inline: true
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "addressLine1",
+            label: {
+                text: "Address",
+                classes: "govuk-label--m"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-three-quarters"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "addressLine2",
+            label: { classes: "govuk-visually-hidden" },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-three-quarters"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "addressTown",
+            label: {
+                text: "Town or city",
+                classes: "govuk-label--m"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "addressPostcode",
+            label: {
+                text: "Postcode",
+                classes: "govuk-label--m"
+            },
+            attributes: { autocapitalize: "characters" },
+            classes: "govuk-!-width-one-quarter"
+        }) }}
 
         {{ hmpoSubmit(ctx) }}
 

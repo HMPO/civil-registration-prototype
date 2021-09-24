@@ -2,13 +2,114 @@
 
 {% set hmpoTitle %}Personal and family details{% endset %}
 
+{% set maidenName %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {{ hmpoText(ctx, {
+        id: "maidenName",
+        label: "What was their maiden name?"
+    }) }}
+{% endset %}
+
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 
     {% call hmpoForm(ctx) %}
 
-        <p>Placeholder page.</p>
+        {{ hmpoRadios(ctx, {
+            id: "sex",
+            legend: {
+                text: 'What was their sex?',
+                classes: "govuk-label--m"
+            },
+            items: [
+                { value: "female", text: "Female" },
+                { value: "male", text: "Male" }
+            ],
+            conditionals: {
+                "female": { id: "maidenNameText", html: maidenName }
+            }
+        }) }}
 
+        {{ hmpoText(ctx, {
+            id: "lastOccupation",
+            label: {
+                text: "Their last occupation",
+                classes: "govuk-label--m"
+            },
+            hint: "If they were retired, put last occupation"
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "marriage",
+            legend: {
+                text: 'What was their marital status?',
+                classes: "govuk-label--m"
+            },
+            items: [{
+                value: 'option1',
+                text: "Married"
+            }, {
+                value: 'option2',
+                text: "Widowed or widower"
+            }, {
+                value: 'option3',
+                text: "Single"
+            }],
+            conditionals: {
+                "option1": { id: "maidenNameText", html: maidenName },
+                "option2": { id: "maidenNameText", html: maidenName }
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "spouseName",
+            label: {
+                text: "Name of their spouse",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "spouseOccupation",
+            label: {
+                text: "Occupation of their spouse",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "motherName",
+            label: {
+                text: "Name of their mother",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "motherOccupation",
+            label: {
+                text: "Occupation of their mother",
+                classes: "govuk-label--m"
+            }
+        }) }}
+        
+        {{ hmpoText(ctx, {
+            id: "fatherName",
+            label: {
+                text: "Name of their father",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "fatherOccupation",
+            label: {
+                text: "Occupation of their father",
+                classes: "govuk-label--m"
+            }
+        }) }}
+        
         {{ hmpoSubmit(ctx) }}
 
     {% endcall %}

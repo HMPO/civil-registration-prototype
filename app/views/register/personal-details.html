@@ -30,7 +30,8 @@
             label: {
                 text: "First and middle names",
                 classes: "govuk-label--m"
-            }
+            },
+            hint: "As appears on birth certificate"
         }) }}
 
         {{ hmpoText(ctx, {
@@ -38,7 +39,8 @@
             label: {
                 text: "Last name",
                 classes: "govuk-label--m"
-            }
+            },
+            hint: "As appears on birth certificate"
         }) }}
 
         {{ hmpoDate(ctx, {
@@ -47,8 +49,7 @@
                 text: "Date of birth",
                 classes: "govuk-label--m"
             },
-            hint: "For example, 20 01 2004",
-            isPageHeading: true
+            hint: "For example, 20 01 2004"
         }) }}
 
         {{ hmpoSubmit(ctx) }}

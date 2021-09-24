@@ -17,6 +17,16 @@
     },
     "date-year": {
       "label": "Year"
+    },
+    "default": {
+      "items": {
+        "true": {
+          "label": "Yes"
+        },
+        "false": {
+          "label": "No"
+        }
+      }
     }
   },
   "validation": {

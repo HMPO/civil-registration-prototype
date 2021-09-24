@@ -38,16 +38,36 @@ const journey1 = {
     },
     '/register/dates': {
         fields: [
+            'dateOfBirth',
+            'countryOfBirth',
+            'dateOfDeath',
+            'placeOfDeath',
+            'otherPlaceOfDeath'
         ],
         next: '/register/last-address'
     },
     '/register/last-address': {
         fields: [
+            'communalEstablishment',
+            'addressLine1',
+            'addressLine2',
+            'addressTown',
+            'addressPostcode'
         ],
         next: '/register/personal-and-family-details'
     },
     '/register/personal-and-family-details': {
         fields: [
+            'sex',
+            'lastOccupation',
+            'marriage',
+            'maidenName',
+            'spouseName',
+            'spouseOccupation',
+            'motherName',
+            'motherOccupation',
+            'fatherName',
+            'fatherOccupation',
         ],
         next: '/register/confirm'
     },

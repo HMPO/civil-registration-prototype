@@ -2,12 +2,67 @@
 
 {% set hmpoTitle %}Dates{% endset %}
 
+{% set otherPlaceOfDeath %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {{ hmpoText(ctx, {
+        id: "otherPlaceOfDeath",
+        label: "Where was the place?"
+    }) }}
+{% endset %}
+
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 
     {% call hmpoForm(ctx) %}
 
-        <p>Placeholder page.</p>
+        {{ hmpoDate(ctx, {
+            id: "dateOfBirth",
+            legend: {
+                text: "Date of birth",
+                classes: "govuk-label--m"
+            },
+            hint: "For example, 20 01 2004"
+        }) }}
+
+        {{ hmpoSelect (ctx, {
+            id: "countryOfBirth",
+            label: {
+                text: "Select their country of birth",
+                classes: "govuk-label--m"
+            },
+            placeholder: true
+        }) }}
+
+        {{ hmpoDate(ctx, {
+            id: "dateOfDeath",
+            legend: {
+                text: "Date of death",
+                classes: "govuk-label--m"
+            },
+            hint: "For example, 20 01 2004"
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "placeOfDeath",
+            legend: {
+                text: 'Place of death',
+                classes: "govuk-label--m"
+            },
+            items: [{
+                value: 'option1',
+                text: "At home"
+            }, {
+                value: 'option2',
+                text: "In transit"
+            }, {
+                value: 'option3',
+                text: "Other"
+            }],
+            conditionals: {
+                "option3": { id: "otherPlaceOfDeathText", html: otherPlaceOfDeath }
+            }
+        }) }}
 
         {{ hmpoSubmit(ctx) }}
 
