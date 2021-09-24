@@ -1,0 +1,16 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}Last address{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        <p>Placeholder page.</p>
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

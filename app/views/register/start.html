@@ -1,0 +1,19 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}Register a death{% endset %}
+
+{% block pageTitle %}
+    {{ hmpoTitle | safe }} – GOV.UK
+{% endblock %}
+
+{% block content %}
+    <h1>{{ hmpoTitle }}</h1>
+
+    <p>GRO Register a death start page.</p>
+    {% call hmpoForm(ctx) %}
+        {{ govukButton({
+            text: "Start now",
+            isStartButton: true
+        }) }}
+    {% endcall %}
+{% endblock %}

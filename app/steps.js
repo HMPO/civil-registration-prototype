@@ -16,18 +16,38 @@ const journey1 = {
     // },
     // ========================
 
+    '/register/start': {
+        entryPoint: true,
+        resetJourney: true,
+        next: '/register/personal-details'
+    },
     '/register': {
         entryPoint: true,
         resetJourney: true,
         skip: true,
-        next: '/register/form'
+        next: '/register/personal-details'
     },
-    '/register/form': {
+    '/register/personal-details': {
         fields: [
             'title',
             'firstName',
             'lastName',
             'dateOfBirth'
+        ],
+        next: '/register/dates'
+    },
+    '/register/dates': {
+        fields: [
+        ],
+        next: '/register/last-address'
+    },
+    '/register/last-address': {
+        fields: [
+        ],
+        next: '/register/personal-and-family-details'
+    },
+    '/register/personal-and-family-details': {
+        fields: [
         ],
         next: '/register/confirm'
     },

@@ -11,17 +11,17 @@
         {
             key: { text: "Title" },
             value: { text: values.title },
-            actions: { items: [{ text: "Change", href: "/register/form/edit" }]}
+            actions: { items: [{ text: "Change", href: "/register/personal-details/edit" }]}
         },
         {
             key: { text: "Name" },
             value: { text: values.firstName + " " + values.lastName },
-            actions: { items: [{ text: "Change", href: "/register/form/edit" }]}
+            actions: { items: [{ text: "Change", href: "/register/personal-details/edit" }]}
         },
         {
             key: { text: "Date of birth" },
             value: { text: values.dateOfBirth | date },
-            actions: { items: [{ text: "Change", href: "/register/form/edit" }]}
+            actions: { items: [{ text: "Change", href: "/register/personal-details/edit" }]}
         }
     ] | filter }) }}
 
