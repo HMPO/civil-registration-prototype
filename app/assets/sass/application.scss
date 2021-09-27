@@ -16,3 +16,5 @@ $hmpo-assets-path: '/public/';
 @import "patterns/autofill";
 @import "patterns/cookie-banner";
 
+// Quick fix for confirmation page
+@import "component/confirmation";
