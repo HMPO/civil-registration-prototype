@@ -54,8 +54,6 @@
 {% from "hmpo-warning-text/macro.njk"                 import hmpoWarningText %}
 {% from "hmpo-sidebar/macro.njk"                      import hmpoSidebar %}
 
-{% set govukServiceNameKey = "govuk.serviceName" %}
-
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
@@ -75,7 +73,7 @@
             html: "This is a new service – your <a href=\"/help/feedback-or-help\" target=\"_blank\">feedback</a> will help us to improve it."
         }) }}
     {% endblock %}
-    
+
     {# TODO: update to chosen GOVUK prototype recommendation once cookie policy decided #}
     {% if not values.cookies.cookiesAccepted and not disableCookieBanner %}
         <div class="dcs-cookie-banner govuk-clearfix">

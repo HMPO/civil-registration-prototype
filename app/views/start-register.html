@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% set hmpoTitle %}Sample Journey 1{% endset %}
+{% set hmpoTitle %}Register a death{% endset %}
 
 {% block pageTitle %}
     {{ hmpoTitle | safe }} – GOV.UK
@@ -23,11 +23,11 @@
 {% block content %}
     <h1>{{ hmpoTitle }}</h1>
 
-    <p>This is a sample journey for the prototype template.</p>
+    <p>GOV.UK Register a death start page.</p>
     {% call hmpoForm(ctx) %}
         {{ govukButton({
             text: "Start now",
-            href: "/sample-journey-1",
+            href: "/register",
             isStartButton: true
         }) }}
     {% endcall %}

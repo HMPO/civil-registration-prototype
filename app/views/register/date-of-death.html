@@ -1,0 +1,32 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}Their date of death{% endset %}
+
+{% set otherPlaceOfDeath %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {{ hmpoText(ctx, {
+        id: "otherPlaceOfDeath",
+        label: "Where was the place?"
+    }) }}
+{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoDate(ctx, {
+            id: "dateOfDeath",
+            legend: {
+                text: "When did they die?",
+                classes: "govuk-label--m"
+            },
+            hint: "If you only know the month or year, add those"
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+        {% endcall %}
+
+    {% endblock %}

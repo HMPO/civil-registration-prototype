@@ -1,0 +1,24 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}What was their sex?{% endset %}
+
+{% block mainContent %}
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoRadios(ctx, {
+            id: "sex",
+            legend: hmpoTitle,
+            isPageHeading: true,
+            hint: "This is their sex when they died",
+            items: [
+                { value: "Female", text: "Female" },
+                { value: "Male", text: "Male" }
+            ]
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

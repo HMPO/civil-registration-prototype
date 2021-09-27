@@ -1,0 +1,20 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}What was their occupation?{% endset %}
+
+{% block mainContent %}
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoText(ctx, {
+            id: "lastOccupation",
+            label: hmpoTitle,
+            isPageHeading: true,
+            hint: "If they were retired, put their last occupation"
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

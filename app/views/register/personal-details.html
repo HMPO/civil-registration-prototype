@@ -1,0 +1,62 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}Their personal details{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoText(ctx, {
+            id: "firstName",
+            label: {
+                text: "Their first and middle names",
+                classes: "govuk-label--m"
+            },
+            hint: "This is also knowns as 'given names'"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "lastName",
+            label: {
+                text: "Last name",
+                classes: "govuk-label--m"
+            },
+            hint: "This is also known as 'family name'"
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "prefixOrSuffix",
+            legend: {
+                text: "Does their name have a prefix or suffix?",
+                classes: "govuk-label--m"
+            },
+            hint: "For example, 'Dame' or 'OBE'",
+            inline: true
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "anyPreviousNames",
+            legend: {
+                text: "Did they have any previous legal names?",
+                classes: "govuk-label--m"
+            },
+            hint: "This does not include maiden names – you can add this later",
+            inline: true
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "knownByAnyOtherNames",
+            legend: {
+                text: "Were they known by any other names?",
+                classes: "govuk-label--m"
+            },
+            hint: "For example, a stage name",
+            inline: true
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}
