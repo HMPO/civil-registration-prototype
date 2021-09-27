@@ -1,6 +1,6 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}What was their last occupation?{% endset %}
+{% set hmpoTitle %}What was their occupation?{% endset %}
 
 {% block mainContent %}
 
@@ -10,7 +10,7 @@
             id: "lastOccupation",
             label: hmpoTitle,
             isPageHeading: true,
-            hint: "If they were retired, put last occupation"
+            hint: "If they were retired, put their last occupation"
         }) }}
 
         {{ hmpoSubmit(ctx) }}

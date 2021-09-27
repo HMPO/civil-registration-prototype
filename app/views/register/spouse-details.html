@@ -1,6 +1,6 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}Their spouse's details{% endset %}
+{% set hmpoTitle %}Their partner's details{% endset %}
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
@@ -10,7 +10,7 @@
         {{ hmpoText(ctx, {
             id: "spouseName",
             label: {
-                text: "Name of their spouse",
+                text: "Name of spouse or civil partner",
                 classes: "govuk-label--m"
             }
         }) }}
@@ -18,7 +18,7 @@
         {{ hmpoText(ctx, {
             id: "spouseOccupation",
             label: {
-                text: "Occupation of their spouse",
+                text: "Occupation of spouse or civil partner",
                 classes: "govuk-label--m"
             }
         }) }}
