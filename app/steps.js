@@ -29,10 +29,11 @@ const journey1 = {
     },
     '/register/personal-details': {
         fields: [
-            'title',
             'firstName',
             'lastName',
-            'dateOfBirth'
+            'prefixOrSuffix',
+            'anyPreviousNames',
+            'knownByAnyOtherNames'
         ],
         next: '/register/date-and-place-of-birth'
     },
@@ -40,9 +41,7 @@ const journey1 = {
         fields: [
             'dateOfBirth',
             'countryOfBirth',
-            'dateOfDeath',
-            'placeOfDeath',
-            'otherPlaceOfDeath'
+            'townOrCityOfBirth'
         ],
         next: '/register/sex'
     },
@@ -79,12 +78,7 @@ const journey1 = {
     },
     '/register/last-address': {
         fields: [
-            'whereDidTheyLive',
-            'communalEstablishment',
-            'addressLine1',
-            'addressLine2',
-            'addressTown',
-            'addressPostcode'
+            'whereDidTheyLive'
         ],
         next: [
             { field: 'whereDidTheyLive', value: 'residential', next: '/register/residential-address' },
@@ -94,6 +88,11 @@ const journey1 = {
     },
     '/register/residential-address': {
         fields: [
+            'addressName',
+            'addressLine1',
+            'addressLine2',
+            'addressTown',
+            'addressPostcode',
             'didTheyDieAtThisAddress'
         ],
         next: [
@@ -104,6 +103,11 @@ const journey1 = {
     },
     '/register/care-home-address': {
         fields: [
+            'addressName',
+            'addressLine1',
+            'addressLine2',
+            'addressTown',
+            'addressPostcode',
             'didTheyDieAtThisAddress'
         ],
         next: [
@@ -114,11 +118,13 @@ const journey1 = {
     },
     '/register/place-of-death': {
         fields: [
+            'placeOfDeath'
         ],
         next: '/register/date-of-death'
     },
     '/register/date-of-death': {
         fields: [
+            'dateOfDeath'
         ],
         next: '/register/spouse-details'
     },

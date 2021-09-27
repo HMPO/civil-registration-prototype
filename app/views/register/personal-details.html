@@ -25,85 +25,32 @@
             hint: "This is also known as 'family name'"
         }) }}
 
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+        {{ hmpoRadios(ctx, {
+            id: "prefixOrSuffix",
+            legend: {
+                text: "Does their name have a prefix or suffix?",
+                classes: "govuk-label--m"
+            },
+            hint: "For example, 'Dame' or 'OBE'"
+        }) }}
 
-{{ govukRadios({
-  classes: "govuk-radios--inline",
-  idPrefix: "changed-name",
-  name: "changed-name",
-  fieldset: {
-    legend: {
-      text: "Does their name have a prefix or suffix?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--m"
-    }
-  },
-  hint: {
-    text: "For example, 'Dame' or 'OBE'"
-  },
-  items: [
-    {
-      value: "yes",
-      text: "Yes"
-    },
-    {
-      value: "no",
-      text: "No"
-    }
-  ]
-}) }}
+        {{ hmpoRadios(ctx, {
+            id: "anyPreviousNames",
+            legend: {
+                text: "Did they have any previous legal names?",
+                classes: "govuk-label--m"
+            },
+            hint: "This does not include maiden names – you can add this later"
+        }) }}
 
-{{ govukRadios({
-    classes: "govuk-radios--inline",
-    idPrefix: "changed-name",
-    name: "changed-name",
-    fieldset: {
-      legend: {
-        text: "Did they have any previous legal names?",
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--m"
-      }
-    },
-    hint: {
-      text: "This does not include maiden names - you can add this later"
-    },
-    items: [
-      {
-        value: "yes",
-        text: "Yes"
-      },
-      {
-        value: "no",
-        text: "No"
-      }
-    ]
-  }) }}
-
-{{ govukRadios({
-    classes: "govuk-radios--inline",
-    idPrefix: "changed-name",
-    name: "changed-name",
-    fieldset: {
-      legend: {
-        text: "Where they known by any other names?",
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--m"
-      }
-    },
-    hint: {
-      text: "For example, a stage name"
-    },
-    items: [
-      {
-        value: "yes",
-        text: "Yes"
-      },
-      {
-        value: "no",
-        text: "No"
-      }
-    ]
-  }) }}
+        {{ hmpoRadios(ctx, {
+            id: "knownByAnyOtherNames",
+            legend: {
+                text: "Were they known by any other names?",
+                classes: "govuk-label--m"
+            },
+            hint: "For example, a stage name"
+        }) }}
 
         {{ hmpoSubmit(ctx) }}
 

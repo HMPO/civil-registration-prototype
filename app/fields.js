@@ -23,12 +23,24 @@ module.exports = {
         //     'required'
         // ]
     },
+    prefixOrSuffix: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    anyPreviousNames: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    knownByAnyOtherNames: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
     dateOfBirth: {
-        // validate: ['required', 'date'],
+        validate: ['required', 'date'],
         autocomplete: 'bday'
     },
     countryOfBirth: {
-        items: require('./data/countries'),
+        items: require('./data/birth-countries'),
         // validate: 'required'
     },
     sex: {
@@ -38,7 +50,7 @@ module.exports = {
         // validate: 'required'
     },
     dateOfDeath: {
-        // validate: ['required', 'date'],
+        validate: ['required', 'date'],
         autocomplete: 'bday'
     },
     placeOfDeath: {
@@ -54,10 +66,6 @@ module.exports = {
             field: 'placeOfDeath',
             value: 'Other'
         }
-    },
-    communalEstablishment: {
-        formatter: 'boolean',
-        // validate: 'required'
     },
     addressLine1: {
         // validate: [
