@@ -8,22 +8,22 @@
     {% call hmpoForm(ctx) %}
 
         {{ hmpoRadios(ctx, {
-            id: "marriage",
+            id: "placeOfDeath",
             legend: {
                 text: 'Where did they die?',
                 classes: "govuk-label--m"
             },
             items: [{
-                value: 'option1',
+                value: 'hospital',
                 text: "In hospital"
             }, {
-                value: 'option2',
+                value: 'hospice',
                 text: "In a hospice"
             }, {
-                value: 'option3',
+                value: 'travelling',
                 text: "Travelling"
             }, {
-                value: 'option1',
+                value: 'publicPlace',
                 text: "In a public place"
 
             }]

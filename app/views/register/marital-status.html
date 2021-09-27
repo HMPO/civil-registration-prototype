@@ -1,0 +1,29 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}What was their marital status?{% endset %}
+
+{% block mainContent %}
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoRadios(ctx, {
+            id: "maritalStatus",
+            legend: hmpoTitle,
+            isPageHeading: true,
+            items: [{
+                value: 'married',
+                text: "Married"
+            }, {
+                value: 'widowedOrWidower',
+                text: "Widowed or widower"
+            }, {
+                value: 'single',
+                text: "Single"
+            }]
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

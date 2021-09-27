@@ -34,15 +34,46 @@ const journey1 = {
             'lastName',
             'dateOfBirth'
         ],
-        next: '/register/dates'
+        next: '/register/date-and-place-of-birth'
     },
-    '/register/dates': {
+    '/register/date-and-place-of-birth': {
         fields: [
             'dateOfBirth',
             'countryOfBirth',
             'dateOfDeath',
             'placeOfDeath',
             'otherPlaceOfDeath'
+        ],
+        next: '/register/sex'
+    },
+    '/register/sex': {
+        fields: [
+            'sex'
+        ],
+        next: '/register/marital-status'
+    },
+    '/register/marital-status': {
+        fields: [
+            'maritalStatus'
+        ],
+        next: [
+            { field: 'sex', value: 'female', next: [
+                { field: 'maritalStatus', value: 'married', next: '/register/maiden-name' },
+                { field: 'maritalStatus', value: 'widowedOrWidower', next: '/register/maiden-name' },
+                '/register/occupation'
+            ] },
+            '/register/occupation'
+        ]
+    },
+    '/register/maiden-name': {
+        fields: [
+            'maidenName'
+        ],
+        next: '/register/occupation'
+    },
+    '/register/occupation': {
+        fields: [
+            'lastOccupation'
         ],
         next: '/register/last-address'
     },
@@ -89,20 +120,12 @@ const journey1 = {
     '/register/date-of-death': {
         fields: [
         ],
-        next: '/register/personal-and-family-details'
+        next: '/register/spouse-details'
     },
-    '/register/personal-and-family-details': {
+    '/register/spouse-details': {
         fields: [
-            'sex',
-            'lastOccupation',
-            'marriage',
-            'maidenName',
             'spouseName',
-            'spouseOccupation',
-            'motherName',
-            'motherOccupation',
-            'fatherName',
-            'fatherOccupation',
+            'spouseOccupation'
         ],
         next: '/register/confirm'
     },

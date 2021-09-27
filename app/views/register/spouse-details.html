@@ -1,0 +1,30 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}Their spouse's details{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoText(ctx, {
+            id: "spouseName",
+            label: {
+                text: "Name of their spouse",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "spouseOccupation",
+            label: {
+                text: "Occupation of their spouse",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

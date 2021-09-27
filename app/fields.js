@@ -31,6 +31,12 @@ module.exports = {
         items: require('./data/countries'),
         // validate: 'required'
     },
+    sex: {
+        // validate: 'required'
+    },
+    maritalStatus: {
+        // validate: 'required'
+    },
     dateOfDeath: {
         // validate: ['required', 'date'],
         autocomplete: 'bday'
@@ -88,16 +94,10 @@ module.exports = {
         formatter: 'boolean',
         // validate: 'required'
     },
-    sex: {
-        // validate: 'required'
-    },
     lastOccupation: {
         // validate: [
         //     'required'
         // ]
-    },
-    marriage: {
-        // validate: 'required'
     },
     spouseName: {
         // validate: 'required'

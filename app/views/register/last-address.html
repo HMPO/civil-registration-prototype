@@ -2,15 +2,6 @@
 
 {% set hmpoTitle %}Their address{% endset %}
 
-{% set maidenName %}
-    {% from "hmpo-text/macro.njk" import hmpoText %}
-
-    {{ hmpoText(ctx, {
-        id: "maidenName",
-        label: "What was their maiden name?"
-    }) }}
-{% endset %}
-
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 

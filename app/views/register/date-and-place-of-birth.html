@@ -34,16 +34,14 @@
             placeholder: true
         }) }}
 
-        {% from "govuk/components/input/macro.njk" import govukInput %}
-
-        {{ govukInput({
+        {{ hmpoText(ctx, {
+            id: "townOrCityOfBirth",
             label: {
-                text: "What town or city where they born in?",
-                classes: "govuk-label--m",
-                isPageHeading: true
+                text: "What town or city were they born in?",
+                classes: "govuk-label--m"
             },
-                id: "event-name",
-                name: "event-name"
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
         }) }}
 
         {# {{ hmpoDate(ctx, {

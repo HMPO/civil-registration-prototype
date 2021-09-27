@@ -4,7 +4,9 @@
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
-    <p class="govuk-body">Add details of the place they usally lived.</p>
+
+    <p>Add details of the place they usually lived.</p>
+
     {% call hmpoForm(ctx) %}
 
         {{ hmpoText(ctx, {

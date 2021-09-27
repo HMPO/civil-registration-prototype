@@ -2,30 +2,10 @@
 
 {% set hmpoTitle %}Their personal details{% endset %}
 
-{% set titles = [
-    { value: "Mr", text: "Mr" },
-    { value: "Mrs", text: "Mrs" },
-    { value: "Miss", text: "Miss" },
-    { value: "Ms", text: "Ms" },
-    { value: "Other", text: "Other" }
-] %}
-
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 
     {% call hmpoForm(ctx) %}
-
-
-    {{ hmpoRadios(ctx, {
-        id: "sex",
-        legend: {
-            text: 'What was their sex?',
-            classes: "govuk-label--m"
-        },
-        hint: "This is their sex when they died"
-    }) }}
-        
-
 
         {{ hmpoText(ctx, {
             id: "firstName",
@@ -124,15 +104,6 @@
       }
     ]
   }) }}
-<!---
-        {{ hmpoDate(ctx, {
-            id: "dateOfBirth",
-            legend: {
-                text: "Date of birth",
-                classes: "govuk-label--m"
-            },
-            hint: "For example, 20 01 1960"
-        }) }}--->
 
         {{ hmpoSubmit(ctx) }}
 
