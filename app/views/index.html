@@ -2,9 +2,9 @@
 
 {% set disableCookieBanner = true %}
 
-{% set hmpoTitle %}Latest{% endset %}
+{% set hmpoTitle %}Archive{% endset %}
 
-{% block header %}
+{# {% block header %}
     {{ govukHeader({
         serviceName: govukServiceName,
         navigation: [
@@ -20,7 +20,7 @@
         ],
         serviceUrl: "/"
     }) }}
-{% endblock %}
+{% endblock %} #}
 
 {% block phaseBanner %}
 {% endblock %}
@@ -29,8 +29,8 @@
     <span class="govuk-caption-xl">{{ govukServiceName }}</span>
     <h1>{{ hmpoTitle }}</h1>
 
-    <h2>Register</h2>
-    <p>User journey for registration.</p>
+    <h2>Register journey</h2>
+    <p>Remote test day: 28 September 2021</p>
 
     {# ========================
        Comment hmpoForm call out if index.html does not need to use the form-wizard (normally doesn't).
