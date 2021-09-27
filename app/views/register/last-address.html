@@ -1,58 +1,46 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}Last address{% endset %}
+{% set hmpoTitle %}Their address{% endset %}
+
+{% set maidenName %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {{ hmpoText(ctx, {
+        id: "maidenName",
+        label: "What was their maiden name?"
+    }) }}
+{% endset %}
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 
     {% call hmpoForm(ctx) %}
 
-        {{ hmpoRadios(ctx, {
-            id: "communalEstablishment",
-            legend: {
-                text: 'Did they die at a communal establishment?',
-                classes: "govuk-label--m"
-            },
-            inline: true
-        }) }}
 
-        {{ hmpoText(ctx, {
-            id: "addressLine1",
-            label: {
-                text: "Address",
-                classes: "govuk-label--m"
-                },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-three-quarters"
-        }) }}
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-        {{ hmpoText(ctx, {
-            id: "addressLine2",
-            label: { classes: "govuk-visually-hidden" },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-three-quarters"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "addressTown",
-            label: {
-                text: "Town or city",
-                classes: "govuk-label--m"
-            },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "addressPostcode",
-            label: {
-                text: "Postcode",
-                classes: "govuk-label--m"
-            },
-            attributes: { autocapitalize: "characters" },
-            classes: "govuk-!-width-one-quarter"
-        }) }}
-
+    {{ govukRadios({
+      idPrefix: "where-lived",
+      name: "last-lived",
+      fieldset: {
+        legend: {
+          text: "Where did they usually live?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "residential",
+          text: "At a residential address"
+        },
+        {
+          value: "care",
+          text: "In a care home"
+        }
+      ]
+    }) }}
+        
         {{ hmpoSubmit(ctx) }}
 
     {% endcall %}

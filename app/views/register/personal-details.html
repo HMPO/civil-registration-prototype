@@ -1,6 +1,6 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}Add their personal details{% endset %}
+{% set hmpoTitle %}Their personal details{% endset %}
 
 {% set titles = [
     { value: "Mr", text: "Mr" },
@@ -15,39 +15,22 @@
 
     {% call hmpoForm(ctx) %}
 
-    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
-    {{ govukCheckboxes({
-      idPrefix: "prefixSuffix",
-      name: "prefixSuffix",
-      fieldset: {
+    {{ hmpoRadios(ctx, {
+        id: "sex",
         legend: {
-          text: "Does their name have a prefix or suffix?",
-          isPageHeading: true,
-          classes: "govuk-label--m"
-        }
-      },
-      hint: {
-        text: "For example, the prefix 'Lady' or suffix 'JP'"
-      },
-      items: [
-        {
-          value: "prefix",
-          text: "Yes - there's a prefix",
-          hint: {
-            text: " "
-          }
+            text: 'What was their sex?',
+            classes: "govuk-label--m"
         },
-        {
-          value: "suffix",
-          text: "Yes - there's a suffix"
-        }
-        ]
-      }) }}
+        hint: "This is their sex when they died"
+    }) }}
+        
+
+
         {{ hmpoText(ctx, {
             id: "firstName",
             label: {
-                text: "First and middle names",
+                text: "Their first and middle names",
                 classes: "govuk-label--m"
             },
             hint: "This is also knowns as 'given names'"
@@ -62,6 +45,86 @@
             hint: "This is also known as 'family name'"
         }) }}
 
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "changed-name",
+  name: "changed-name",
+  fieldset: {
+    legend: {
+      text: "Does their name have prefix or suffix?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  hint: {
+    text: "For example, 'Dame' or 'OBE'"
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+{{ govukRadios({
+    classes: "govuk-radios--inline",
+    idPrefix: "changed-name",
+    name: "changed-name",
+    fieldset: {
+      legend: {
+        text: "Did they have any previous legal names?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+      text: "This does not include maiden names - you can add those later"
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+
+{{ govukRadios({
+    classes: "govuk-radios--inline",
+    idPrefix: "changed-name",
+    name: "changed-name",
+    fieldset: {
+      legend: {
+        text: "Where they known by any other names?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    hint: {
+      text: "For example, a stage name"
+    },
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  }) }}
+<!---
         {{ hmpoDate(ctx, {
             id: "dateOfBirth",
             legend: {
@@ -69,7 +132,7 @@
                 classes: "govuk-label--m"
             },
             hint: "For example, 20 01 1960"
-        }) }}
+        }) }}--->
 
         {{ hmpoSubmit(ctx) }}
 
