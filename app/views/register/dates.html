@@ -1,6 +1,6 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}Their date and place of bith{% endset %}
+{% set hmpoTitle %}Their date and place of birth{% endset %}
 
 {% set otherPlaceOfDeath %}
     {% from "hmpo-text/macro.njk" import hmpoText %}
@@ -36,17 +36,17 @@
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
 
-{{ govukInput({
-  label: {
-    text: "What town or city where they born in"?,
-    classes: "govuk-label--m",
-    isPageHeading: true
-  },
-  id: "event-name",
-  name: "event-name"
-}) }}
-<!---
-        {{ hmpoDate(ctx, {
+        {{ govukInput({
+            label: {
+                text: "What town or city where they born in?",
+                classes: "govuk-label--m",
+                isPageHeading: true
+            },
+                id: "event-name",
+                name: "event-name"
+        }) }}
+
+        {# {{ hmpoDate(ctx, {
             id: "dateOfDeath",
             legend: {
                 text: "Date of death",
@@ -74,7 +74,7 @@
             conditionals: {
                 "option3": { id: "otherPlaceOfDeathText", html: otherPlaceOfDeath }
             }
-        }) }}--->
+        }) }} #}
 
         {{ hmpoSubmit(ctx) }}
 
