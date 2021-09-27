@@ -16,31 +16,18 @@
 
     {% call hmpoForm(ctx) %}
 
+        {{ hmpoRadios(ctx, {
+            id: "whereDidTheyLive",
+            legend: {
+                text: 'Where did they usually live?',
+                classes: "govuk-label--m"
+            },
+            items: [
+                { value: "residential", text: "At a residential address" },
+                { value: "care", text: "In a care home" }
+            ]
+        }) }}
 
-    {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-    {{ govukRadios({
-      idPrefix: "where-lived",
-      name: "last-lived",
-      fieldset: {
-        legend: {
-          text: "Where did they usually live?",
-          isPageHeading: true,
-          classes: "govuk-fieldset__legend--m"
-        }
-      },
-      items: [
-        {
-          value: "residential",
-          text: "At a residential address"
-        },
-        {
-          value: "care",
-          text: "In a care home"
-        }
-      ]
-    }) }}
-        
         {{ hmpoSubmit(ctx) }}
 
     {% endcall %}

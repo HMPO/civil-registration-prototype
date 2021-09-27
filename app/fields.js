@@ -81,6 +81,13 @@ module.exports = {
         //     { type: 'maxlength', arguments: 10 }
         // ]
     },
+    whereDidTheyLive: {
+        // validate: 'required'
+    },
+    didTheyDieAtThisAddress: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
     sex: {
         // validate: 'required'
     },

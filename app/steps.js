@@ -48,11 +48,46 @@ const journey1 = {
     },
     '/register/last-address': {
         fields: [
+            'whereDidTheyLive',
             'communalEstablishment',
             'addressLine1',
             'addressLine2',
             'addressTown',
             'addressPostcode'
+        ],
+        next: [
+            { field: 'whereDidTheyLive', value: 'residential', next: '/register/residential-address' },
+            { field: 'whereDidTheyLive', value: 'care', next: '/register/care-home-address' },
+            '/register/residential-address'
+        ]
+    },
+    '/register/residential-address': {
+        fields: [
+            'didTheyDieAtThisAddress'
+        ],
+        next: [
+            { field: 'didTheyDieAtThisAddress', value: true, next: '/register/date-of-death' },
+            { field: 'didTheyDieAtThisAddress', value: false, next: '/register/place-of-death' },
+            '/register/date-of-death'
+        ]
+    },
+    '/register/care-home-address': {
+        fields: [
+            'didTheyDieAtThisAddress'
+        ],
+        next: [
+            { field: 'didTheyDieAtThisAddress', value: true, next: '/register/date-of-death' },
+            { field: 'didTheyDieAtThisAddress', value: false, next: '/register/place-of-death' },
+            '/register/date-of-death'
+        ]
+    },
+    '/register/place-of-death': {
+        fields: [
+        ],
+        next: '/register/date-of-death'
+    },
+    '/register/date-of-death': {
+        fields: [
         ],
         next: '/register/personal-and-family-details'
     },

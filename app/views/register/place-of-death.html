@@ -1,0 +1,36 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}Their place of death{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoRadios(ctx, {
+            id: "marriage",
+            legend: {
+                text: 'Where did they die?',
+                classes: "govuk-label--m"
+            },
+            items: [{
+                value: 'option1',
+                text: "In hospital"
+            }, {
+                value: 'option2',
+                text: "In a hospice"
+            }, {
+                value: 'option3',
+                text: "Travelling"
+            }, {
+                value: 'option1',
+                text: "In a public place"
+
+            }]
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

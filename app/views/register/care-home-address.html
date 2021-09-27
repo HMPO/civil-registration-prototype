@@ -4,22 +4,17 @@
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
-       
-        
-    </p>
     {% call hmpoForm(ctx) %}
 
-       
-    {{ hmpoText(ctx, {
-        id: "addressName",
-        label: {
-            text: "House name or number",
-            classes: "govuk-label--m"
-            },
-        attributes: { autocapitalize: "words" },
-        classes: "govuk-!-width-three-quarters"
-    }) }}
-
+        {{ hmpoText(ctx, {
+            id: "addressName",
+            label: {
+                text: "House name or number",
+                classes: "govuk-label--m"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-three-quarters"
+        }) }}
 
         {{ hmpoText(ctx, {
             id: "addressLine1",
@@ -58,29 +53,14 @@
             classes: "govuk-!-width-one-quarter"
         }) }}
 
-        {{ govukRadios({
-            classes: "govuk-radios--inline",
-            idPrefix: "at-home",
-            name: "at-home",
-            fieldset: {
-              legend: {
-                text: "Did they die at this address?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--m"
-              }
+        {{ hmpoRadios(ctx, {
+            id: "didTheyDieAtThisAddress",
+            legend: {
+                text: 'Did they die at this address?',
+                classes: "govuk-label--m"
             },
-           
-            items: [
-              {
-                value: "yes",
-                text: "Yes"
-              },
-              {
-                value: "no",
-                text: "No"
-              }
-            ]
-          }) }}
+            inline: true
+        }) }}
 
         {{ hmpoSubmit(ctx) }}
 
