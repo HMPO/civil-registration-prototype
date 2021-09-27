@@ -1,0 +1,76 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}Register a death{% endset %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Section",
+        href: "#"
+      },
+      {
+        text: "Subsection"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Register a death</h1>
+
+      <p class="govuk-body">There are 2 steps to registering a death:</P>
+<ol class="govuk-list govuk-list--number">
+        <li>Book an appointment with a registrar at your local council office, to sign the register. You can also buy copies of the death certificate.
+</li>
+      </ul>
+      </p>
+            <p class="govuk-body">
+
+You can check and change your answers at the interview. If you prefer, you can answer the questions at the interview.  </P>
+
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  text: "Your appointment should take place within the next 5 days. Contact the registrar at your local council if you need to hold a burial or cremation earlier than this."
+}) }}
+
+</p>
+
+     <h2 class="govuk-heading-m">What you'll need</h2>
+
+            <p class="govuk-body">
+You cannot save and return to your answers, so it’s a good idea to have all the information before you start.</p>
+            <p class="govuk-body">You’ll need their:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>full name, and any previous names</li>
+  <li>date and place of birth</li>
+    <li>place of death</li>
+    <li>last address</li>
+<li>occupation, or last occupation if they were retired</li>
+<li>spouse or civil partner's full name, date of birth and occupation  
+
+
+</ul>
+
+      {{ govukButton({
+        text: "Start now",
+        href: "#",
+        classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-8",
+        isStartButton: true
+      }) }}
+
+      
+    </div>
+
+    
+  </div>
+{% endblock %}
