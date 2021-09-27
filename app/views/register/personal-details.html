@@ -31,7 +31,8 @@
                 text: "Does their name have a prefix or suffix?",
                 classes: "govuk-label--m"
             },
-            hint: "For example, 'Dame' or 'OBE'"
+            hint: "For example, 'Dame' or 'OBE'",
+            inline: true
         }) }}
 
         {{ hmpoRadios(ctx, {
@@ -40,7 +41,8 @@
                 text: "Did they have any previous legal names?",
                 classes: "govuk-label--m"
             },
-            hint: "This does not include maiden names – you can add this later"
+            hint: "This does not include maiden names – you can add this later",
+            inline: true
         }) }}
 
         {{ hmpoRadios(ctx, {
@@ -49,7 +51,8 @@
                 text: "Were they known by any other names?",
                 classes: "govuk-label--m"
             },
-            hint: "For example, a stage name"
+            hint: "For example, a stage name",
+            inline: true
         }) }}
 
         {{ hmpoSubmit(ctx) }}
