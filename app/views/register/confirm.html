@@ -1,11 +1,11 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}Check your details{% endset %}
+{% set hmpoTitle %}Check your answers{% endset %}
 
 {% block mainContent %}
     <h1>{{ hmpoTitle }}</h1>
 
-    <h2>Personal details</h2>
+    <h2>Their details</h2>
 
     {{ govukSummaryList({ rows: [
         {
@@ -89,14 +89,19 @@
             key: { text: "Date of death" },
             value: { text: values.dateOfDeath | date },
             actions: { items: [{ text: "Change", href: "/register/date-of-death/edit" }]}
-        },
+        }
+    ] | filter }) }}
+
+    <h2>Their partner's details</h2>
+
+    {{ govukSummaryList({ rows: [
         {
-            key: { text: "Name of their spouse" },
+            key: { text: "Name of spouse or civil partner" },
             value: { text: values.spouseName },
             actions: { items: [{ text: "Change", href: "/register/spouse-details/edit" }]}
         },
         {
-            key: { text: "Occupation of their spouse" },
+            key: { text: "Occupation of spouse or civil partner" },
             value: { text: values.spouseOccupation },
             actions: { items: [{ text: "Change", href: "/register/spouse-details/edit" }]}
         }

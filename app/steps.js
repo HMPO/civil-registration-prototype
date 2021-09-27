@@ -21,6 +21,11 @@ const journey1 = {
         resetJourney: true,
         next: '/register/personal-details'
     },
+    '/register/email': {
+        entryPoint: true,
+        resetJourney: true,
+        next: '/register/personal-details'
+    },
     '/register': {
         entryPoint: true,
         resetJourney: true,
@@ -56,9 +61,9 @@ const journey1 = {
             'maritalStatus'
         ],
         next: [
-            { field: 'sex', value: 'female', next: [
-                { field: 'maritalStatus', value: 'married', next: '/register/maiden-name' },
-                { field: 'maritalStatus', value: 'widowedOrWidower', next: '/register/maiden-name' },
+            { field: 'sex', value: 'Female', next: [
+                { field: 'maritalStatus', value: 'Married or in a civil partnership', next: '/register/maiden-name' },
+                { field: 'maritalStatus', value: 'Widow or widower', next: '/register/maiden-name' },
                 '/register/occupation'
             ] },
             '/register/occupation'
@@ -81,8 +86,8 @@ const journey1 = {
             'whereDidTheyLive'
         ],
         next: [
-            { field: 'whereDidTheyLive', value: 'residential', next: '/register/residential-address' },
-            { field: 'whereDidTheyLive', value: 'care', next: '/register/care-home-address' },
+            { field: 'whereDidTheyLive', value: 'At a residential address', next: '/register/residential-address' },
+            { field: 'whereDidTheyLive', value: 'In a care home', next: '/register/care-home-address' },
             '/register/residential-address'
         ]
     },
