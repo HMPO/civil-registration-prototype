@@ -78,7 +78,9 @@
             }
         }) }}
 
-        {{ hmpoText(ctx, {
+        {# Parents' details required for under 16s #}
+
+        {# {{ hmpoText(ctx, {
             id: "motherName",
             label: {
                 text: "Name of their mother",
@@ -93,7 +95,7 @@
                 classes: "govuk-label--m"
             }
         }) }}
-        
+
         {{ hmpoText(ctx, {
             id: "fatherName",
             label: {
@@ -108,8 +110,8 @@
                 text: "Occupation of their father",
                 classes: "govuk-label--m"
             }
-        }) }}
-        
+        }) }} #}
+
         {{ hmpoSubmit(ctx) }}
 
     {% endcall %}
