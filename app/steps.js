@@ -16,6 +16,12 @@ const journey1 = {
     // },
     // ========================
 
+    '/register': {
+        entryPoint: true,
+        resetJourney: true,
+        skip: true,
+        next: '/register/personal-details'
+    },
     '/register/start': {
         entryPoint: true,
         resetJourney: true,
@@ -27,12 +33,6 @@ const journey1 = {
         next: '/register/personal-details'
     },
     '/register/email-entry-point': {
-        entryPoint: true,
-        resetJourney: true,
-        skip: true,
-        next: '/register/personal-details'
-    },
-    '/register': {
         entryPoint: true,
         resetJourney: true,
         skip: true,
