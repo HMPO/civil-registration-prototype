@@ -96,7 +96,8 @@ const journey1 = {
         fields: [
             'dateOfBirth',
             'townOrCityOfBirth',
-            'countryOfBirth'
+            'countryOfBirth',
+            'spanishNational'
         ],
         next: '/register/occupation'
     },

@@ -35,13 +35,39 @@
             classes: "govuk-!-width-one-half"
         }) }}
 
-        {{ hmpoSelect (ctx, {
+        {{ hmpoRadios(ctx, {
             id: "countryOfBirth",
-            label: {
+            legend: {
                 text: "What country were they born in?",
                 classes: "govuk-label--m"
             },
-            placeholder: true
+            items: [{
+                value: 'England',
+                text: "England"
+            }, {
+                value: 'Scotland',
+                text: "Scotland"
+            }, {
+                value: 'Wales',
+                text: "Wales"
+            }, {
+                value: 'Northern Ireland',
+                text: "Northern Ireland"
+            }, {
+                divider: "or"
+            }, {
+                value: 'Outside UK',
+                text: "Outside UK"
+            }]
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "spanishNational",
+            legend: {
+                text: "Were they a Spanish national?",
+                classes: "govuk-label--m"
+            },
+            inline: true
         }) }}
 
         {{ hmpoSubmit(ctx) }}

@@ -131,7 +131,10 @@ module.exports = {
         // ]
     },
     countryOfBirth: {
-        items: require('./data/birth-countries'),
+        // validate: 'required'
+    },
+    spanishNational: {
+        formatter: 'boolean',
         // validate: 'required'
     },
     lastOccupation: {
