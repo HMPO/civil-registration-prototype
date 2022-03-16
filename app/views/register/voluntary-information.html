@@ -1,6 +1,6 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}Their partner's details{% endset %}
+{% set hmpoTitle %}Voluntary information{% endset %}
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
@@ -8,17 +8,25 @@
     {% call hmpoForm(ctx) %}
 
         {{ hmpoText(ctx, {
-            id: "spouseName",
+            id: "NHSNumber",
             label: {
-                text: "Name of spouse or civil partner",
+                text: "NHS number",
                 classes: "govuk-label--m"
             }
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "spouseOccupation",
+            id: "placeholder",
             label: {
-                text: "Occupation of spouse or civil partner",
+                text: "Further work questions of deceased",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "placeholder",
+            label: {
+                text: "Further work questions of partner",
                 classes: "govuk-label--m"
             }
         }) }}

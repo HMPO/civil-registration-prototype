@@ -1,0 +1,15 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}You cannot register this death{% endset %}
+
+{% block mainContent %}
+    <h1>{{ hmpoTitle }}</h1>
+
+    <p>You cannot register this death because...</p>
+
+    {# {% call hmpoForm(ctx) %}
+        {{ hmpoSubmit(ctx, {
+            text: translate("buttons.close")
+        }) }}
+    {% endcall %} #}
+{% endblock %}

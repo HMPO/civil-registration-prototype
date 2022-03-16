@@ -1,26 +1,25 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}What was their occupation?{% endset %}
+{% set hmpoTitle %}Their date and place of death{% endset %}
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 
     {% call hmpoForm(ctx) %}
 
-        {{ hmpoText(ctx, {
-            id: "lastOccupation",
-            label: {
-                text: "What did they do?",
+        {{ hmpoDate(ctx, {
+            id: "dateOfDeath",
+            legend: {
+                text: "When did they die?",
                 classes: "govuk-label--m"
             },
-            isPageHeading: true,
-            hint: "If they were retired, put their last occupation"
+            hint: "If you only know the month or year, add those"
         }) }}
 
         {{ hmpoRadios(ctx, {
-            id: "retired",
+            id: "didTheyDieAtHome",
             legend: {
-                text: "Were they retired?",
+                text: 'Did they die at home?',
                 classes: "govuk-label--m"
             },
             inline: true

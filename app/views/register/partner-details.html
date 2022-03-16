@@ -1,6 +1,6 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}What was their occupation?{% endset %}
+{% set hmpoTitle %}Their partner’s details{% endset %}
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
@@ -8,17 +8,24 @@
     {% call hmpoForm(ctx) %}
 
         {{ hmpoText(ctx, {
-            id: "lastOccupation",
+            id: "partnerName",
             label: {
-                text: "What did they do?",
+                text: "Name of spouse or civil partner",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "partnerLastOccupation",
+            label: {
+                text: "Occupation of spouse or civil partner",
                 classes: "govuk-label--m"
             },
-            isPageHeading: true,
             hint: "If they were retired, put their last occupation"
         }) }}
 
         {{ hmpoRadios(ctx, {
-            id: "retired",
+            id: "partnerRetired",
             legend: {
                 text: "Were they retired?",
                 classes: "govuk-label--m"

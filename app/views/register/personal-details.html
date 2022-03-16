@@ -10,10 +10,18 @@
         {{ hmpoText(ctx, {
             id: "firstName",
             label: {
-                text: "Their first and middle names",
+                text: "Their first name",
                 classes: "govuk-label--m"
             },
             hint: "This is also knowns as 'given names'"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "middleName",
+            label: {
+                text: "Middle name",
+                classes: "govuk-label--m"
+            }
         }) }}
 
         {{ hmpoText(ctx, {
@@ -25,34 +33,62 @@
             hint: "This is also known as 'family name'"
         }) }}
 
-        {{ hmpoRadios(ctx, {
-            id: "prefixOrSuffix",
-            legend: {
-                text: "Does their name have a prefix or suffix?",
+        {{ hmpoText(ctx, {
+            id: "prefix",
+            label: {
+                text: "Does their name have a prefix? (If relevant)",
                 classes: "govuk-label--m"
             },
-            hint: "For example, 'Dame' or 'OBE'",
-            inline: true
+            hint: "For example, 'Dame' or 'OBE'"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "suffix",
+            label: {
+                text: "Does their name have a suffix? (If relevant)",
+                classes: "govuk-label--m"
+            },
+            hint: "For example, 'Dame' or 'OBE'"
         }) }}
 
         {{ hmpoRadios(ctx, {
-            id: "anyPreviousNames",
+            id: "sex",
             legend: {
-                text: "Did they have any previous legal names?",
+                text: "What was their sex?",
                 classes: "govuk-label--m"
             },
-            hint: "This does not include maiden names – you can add this later",
-            inline: true
+            hint: "This is their sex when they died",
+            items: [
+                { value: "Female", text: "Female" },
+                { value: "Male", text: "Male" }
+            ]
         }) }}
 
         {{ hmpoRadios(ctx, {
-            id: "knownByAnyOtherNames",
+            id: "maritalStatus",
             legend: {
-                text: "Were they known by any other names?",
+                text: "What was their relationship status?",
                 classes: "govuk-label--m"
             },
-            hint: "For example, a stage name",
-            inline: true
+            items: [{
+                value: 'Married or in a civil partnership',
+                text: "Married or in a civil partnership"
+            }, {
+                value: 'Widow or widower',
+                text: "Widow or widower"
+            }, {
+                value: 'Single',
+                text: "Single"
+            }, {
+                value: 'Single',
+                text: "Single"
+            }, {
+                value: 'Single',
+                text: "Single"
+            }, {
+                value: 'Single',
+                text: "Single"
+            }]
         }) }}
 
         {{ hmpoSubmit(ctx) }}

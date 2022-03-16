@@ -1,0 +1,63 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}What is the address they died at?{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    <p>Add details of the place they died at.</p>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoText(ctx, {
+            id: "diedAtAddressName",
+            label: {
+                text: "House name or number",
+                classes: "govuk-label--m"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-three-quarters"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "diedAtAddressLine1",
+            label: {
+                text: "Address",
+                classes: "govuk-label--m"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-three-quarters"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "diedAtAddressLine2",
+            label: { classes: "govuk-visually-hidden" },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-three-quarters"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "diedAtAddressTown",
+            label: {
+                text: "Town or city",
+                classes: "govuk-label--m"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "diedAtAddressPostcode",
+            label: {
+                text: "Postcode",
+                classes: "govuk-label--m"
+            },
+            attributes: { autocapitalize: "characters" },
+            classes: "govuk-!-width-one-quarter"
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

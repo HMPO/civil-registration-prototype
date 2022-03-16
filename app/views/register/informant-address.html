@@ -1,16 +1,14 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}Their address{% endset %}
+{% set hmpoTitle %}Your address{% endset %}
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 
-    <p>Add details of the place they usually lived.</p>
-
     {% call hmpoForm(ctx) %}
 
         {{ hmpoText(ctx, {
-            id: "addressName",
+            id: "informantAddressName",
             label: {
                 text: "House name or number",
                 classes: "govuk-label--m"
@@ -20,7 +18,7 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "addressLine1",
+            id: "informantAddressLine1",
             label: {
                 text: "Address",
                 classes: "govuk-label--m"
@@ -30,14 +28,14 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "addressLine2",
+            id: "informantAddressLine2",
             label: { classes: "govuk-visually-hidden" },
             attributes: { autocapitalize: "words" },
             classes: "govuk-!-width-three-quarters"
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "addressTown",
+            id: "informantAddressTown",
             label: {
                 text: "Town or city",
                 classes: "govuk-label--m"
@@ -47,22 +45,13 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "addressPostcode",
+            id: "informantAddressPostcode",
             label: {
                 text: "Postcode",
                 classes: "govuk-label--m"
             },
             attributes: { autocapitalize: "characters" },
             classes: "govuk-!-width-one-quarter"
-        }) }}
-
-        {{ hmpoRadios(ctx, {
-            id: "didTheyDieAtThisAddress",
-            legend: {
-                text: 'Did they die at this address?',
-                classes: "govuk-label--m"
-            },
-            inline: true
         }) }}
 
         {{ hmpoSubmit(ctx) }}

@@ -20,29 +20,73 @@ const journey1 = {
         entryPoint: true,
         resetJourney: true,
         skip: true,
-        next: '/register/personal-details'
+        next: '/register/informant-qualification'
     },
     '/register/start': {
         entryPoint: true,
-        resetJourney: true,
-        next: '/register/personal-details'
+        // resetJourney: true,
+        next: '/register/informant-qualification'
     },
     '/register/email': {
         entryPoint: true,
-        resetJourney: true,
-        next: '/register/personal-details'
+        // resetJourney: true,
+        next: '/register/informant-qualification'
     },
     '/register/email-entry-point': {
         entryPoint: true,
         resetJourney: true,
         skip: true,
+        next: '/register/informant-qualification'
+    },
+    '/register/informant-qualification': {
+        fields: [
+            'informantRelativeOrNot',
+            'informantPresentAtTheDeathOrNot'
+        ],
+        next:[
+            { field: 'informantRelativeOrNot', value: false, next: [
+                { field: 'informantPresentAtTheDeathOrNot', value: false, next: '/register/you-cannot-register-this-death' },
+                '/register/informant-personal-details'
+            ]},
+            '/register/informant-personal-details'
+        ]
+    },
+    '/register/you-cannot-register-this-death': {
+    },
+    '/register/informant-personal-details': {
+        fields: [
+            'informantFirstName',
+            'informantMiddleNames',
+            'informantLastName',
+            'informantRelationshipToDeceased'
+        ],
+        next: '/register/informant-address'
+    },
+    '/register/informant-address': {
+        fields: [
+            'informantAddressName',
+            'informantAddressLine1',
+            'informantAddressLine2',
+            'informantAddressTown',
+            'informantAddressPostcode'
+        ],
         next: '/register/personal-details'
     },
     '/register/personal-details': {
         fields: [
             'firstName',
+            'middleName',
             'lastName',
-            'prefixOrSuffix',
+            'prefix',
+            'suffix',
+            'sex',
+            'maritalStatus'
+        ],
+        next: '/register/other-names'
+    },
+    '/register/other-names': {
+        fields: [
+            'maidenName',
             'anyPreviousNames',
             'knownByAnyOtherNames'
         ],
@@ -51,98 +95,95 @@ const journey1 = {
     '/register/date-and-place-of-birth': {
         fields: [
             'dateOfBirth',
-            'countryOfBirth',
-            'townOrCityOfBirth'
-        ],
-        next: '/register/sex'
-    },
-    '/register/sex': {
-        fields: [
-            'sex'
-        ],
-        next: '/register/marital-status'
-    },
-    '/register/marital-status': {
-        fields: [
-            'maritalStatus'
-        ],
-        next: [
-            { field: 'sex', value: 'Female', next: [
-                { field: 'maritalStatus', value: 'Married or in a civil partnership', next: '/register/maiden-name' },
-                { field: 'maritalStatus', value: 'Widow or widower', next: '/register/maiden-name' },
-                '/register/occupation'
-            ] },
-            '/register/occupation'
-        ]
-    },
-    '/register/maiden-name': {
-        fields: [
-            'maidenName'
+            'townOrCityOfBirth',
+            'countryOfBirth'
         ],
         next: '/register/occupation'
     },
+    // '/register/sex': {
+    //     fields: [
+    //         'sex'
+    //     ],
+    //     next: '/register/marital-status'
+    // },
+    // '/register/marital-status': {
+    //     fields: [
+    //         'maritalStatus'
+    //     ],
+    //     next: [
+    //         { field: 'sex', value: 'Female', next: [
+    //             { field: 'maritalStatus', value: 'Married or in a civil partnership', next: '/register/maiden-name' },
+    //             { field: 'maritalStatus', value: 'Widow or widower', next: '/register/maiden-name' },
+    //             '/register/occupation'
+    //         ] },
+    //         '/register/occupation'
+    //     ]
+    // },
+    // '/register/maiden-name': {
+    //     fields: [
+    //         'maidenName'
+    //     ],
+    //     next: '/register/occupation'
+    // },
     '/register/occupation': {
         fields: [
-            'lastOccupation'
+            'lastOccupation',
+            'retired'
         ],
-        next: '/register/last-address'
+        next: '/register/where-did-they-live'
     },
-    '/register/last-address': {
+    '/register/where-did-they-live': {
         fields: [
-            'whereDidTheyLive'
+            'didTheyLiveWithYou'
         ],
-        next: [
-            { field: 'whereDidTheyLive', value: 'At a residential address', next: '/register/residential-address' },
-            { field: 'whereDidTheyLive', value: 'In a care home', next: '/register/care-home-address' },
-            '/register/residential-address'
+        next:[
+            { field: 'didTheyLiveWithYou', value: false, next: '/register/address' },
+            '/register/date-and-place-of-death'
         ]
     },
-    '/register/residential-address': {
+    '/register/address': {
         fields: [
             'addressName',
             'addressLine1',
             'addressLine2',
             'addressTown',
-            'addressPostcode',
-            'didTheyDieAtThisAddress'
+            'addressPostcode'
         ],
-        next: [
-            { field: 'didTheyDieAtThisAddress', value: true, next: '/register/date-of-death' },
-            { field: 'didTheyDieAtThisAddress', value: false, next: '/register/place-of-death' },
-            '/register/date-of-death'
+        next: '/register/date-and-place-of-death'
+    },
+    '/register/date-and-place-of-death': {
+        fields: [
+            'dateOfDeath',
+            'didTheyDieAtHome'
+        ],
+        next:[
+            { field: 'didTheyDieAtHome', value: false, next: '/register/address-they-died-at' },
+            '/register/partner-details'
         ]
     },
-    '/register/care-home-address': {
+    '/register/address-they-died-at': {
         fields: [
-            'addressName',
-            'addressLine1',
-            'addressLine2',
-            'addressTown',
-            'addressPostcode',
-            'didTheyDieAtThisAddress'
+            'diedAtAddressName',
+            'diedAtAddressLine1',
+            'diedAtAddressLine2',
+            'diedAtAddressTown',
+            'diedAtAddressPostcode'
         ],
-        next: [
-            { field: 'didTheyDieAtThisAddress', value: true, next: '/register/date-of-death' },
-            { field: 'didTheyDieAtThisAddress', value: false, next: '/register/place-of-death' },
-            '/register/date-of-death'
-        ]
+        next: '/register/partner-details'
     },
-    '/register/place-of-death': {
+    '/register/partner-details': {
         fields: [
-            'placeOfDeath'
+            'partnerName',
+            'partnerOccupation',
+            'partnerRetired'
         ],
-        next: '/register/date-of-death'
+        next: '/register/voluntary-information'
     },
-    '/register/date-of-death': {
+    '/register/voluntary-information': {
         fields: [
-            'dateOfDeath'
-        ],
-        next: '/register/spouse-details'
-    },
-    '/register/spouse-details': {
-        fields: [
-            'spouseName',
-            'spouseOccupation'
+            'NHSNumber',
+            'placeholder',
+            'placeholder'
         ],
         next: '/register/confirm'
     },

@@ -25,15 +25,6 @@
             hint: "For example, 20 01 1952"
         }) }}
 
-        {{ hmpoSelect (ctx, {
-            id: "countryOfBirth",
-            label: {
-                text: "What country were they born in?",
-                classes: "govuk-label--m"
-            },
-            placeholder: true
-        }) }}
-
         {{ hmpoText(ctx, {
             id: "townOrCityOfBirth",
             label: {
@@ -44,35 +35,14 @@
             classes: "govuk-!-width-one-half"
         }) }}
 
-        {# {{ hmpoDate(ctx, {
-            id: "dateOfDeath",
-            legend: {
-                text: "Date of death",
+        {{ hmpoSelect (ctx, {
+            id: "countryOfBirth",
+            label: {
+                text: "What country were they born in?",
                 classes: "govuk-label--m"
             },
-            hint: "For example, 20 01 2004"
+            placeholder: true
         }) }}
-
-        {{ hmpoRadios(ctx, {
-            id: "placeOfDeath",
-            legend: {
-                text: 'Place of death',
-                classes: "govuk-label--m"
-            },
-            items: [{
-                value: 'option1',
-                text: "At home"
-            }, {
-                value: 'option2',
-                text: "In transit"
-            }, {
-                value: 'option3',
-                text: "Other"
-            }],
-            conditionals: {
-                "option3": { id: "otherPlaceOfDeathText", html: otherPlaceOfDeath }
-            }
-        }) }} #}
 
         {{ hmpoSubmit(ctx) }}
 

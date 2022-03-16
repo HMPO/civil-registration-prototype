@@ -10,10 +10,79 @@ module.exports = {
     // },
     // ========================
 
+    informantRelativeOrNot: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    informantPresentAtTheDeathOrNot: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    informantFirstName: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantMiddleNames: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantLastName: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantRelationshipToDeceased: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantAddressName: {
+        // validate: [
+        //     'required',
+        //     // 'placename',
+        //     { type: 'maxlength', arguments: 30 }
+        // ]
+    },
+    informantAddressLine1: {
+        // validate: [
+        //     'required',
+        //     // 'placename',
+        //     { type: 'minlength', arguments: 3 },
+        //     { type: 'maxlength', arguments: 40 }
+        // ]
+    },
+    informantAddressLine2: {
+        // validate: [
+        //     // 'placename',
+        //     { type: 'maxlength', arguments: 40 }
+        // ]
+    },
+    informantAddressTown: {
+        // validate: [
+        //     'required',
+        //     // 'placename',
+        //     { type: 'maxlength', arguments: 30 }
+        // ]
+    },
+    informantAddressPostcode: {
+        formatter: 'uppercase',
+        // validate: [
+        //     'required',
+        //     { type: 'maxlength', arguments: 10 }
+        // ]
+    },
+
     title: {
         // validate: 'required'
     },
     firstName: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    middleName: {
         // validate: [
         //     'required'
         // ]
@@ -23,9 +92,26 @@ module.exports = {
         //     'required'
         // ]
     },
-    prefixOrSuffix: {
-        formatter: 'boolean',
+    prefix: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    suffix: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    sex: {
         // validate: 'required'
+    },
+    maritalStatus: {
+        // validate: 'required'
+    },
+    maidenName: {
+        // validate: [
+        //     'required'
+        // ]
     },
     anyPreviousNames: {
         formatter: 'boolean',
@@ -39,33 +125,34 @@ module.exports = {
         validate: ['required', 'date'],
         autocomplete: 'bday'
     },
+    townOrCityOfBirth: {
+        // validate: [
+        //     'required'
+        // ]
+    },
     countryOfBirth: {
         items: require('./data/birth-countries'),
         // validate: 'required'
     },
-    sex: {
+    lastOccupation: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    retired: {
+        formatter: 'boolean',
         // validate: 'required'
     },
-    maritalStatus: {
+    didTheyLiveWithYou: {
+        formatter: 'boolean',
         // validate: 'required'
     },
-    dateOfDeath: {
-        validate: ['required', 'date'],
-        autocomplete: 'bday'
-    },
-    placeOfDeath: {
-        // validate: 'required'
-    },
-    otherPlaceOfDeath: {
+    addressName: {
         // validate: [
         //     'required',
-        //     { type: 'minlength', arguments: 2 },
-        //     { type: 'maxlength', arguments: 20 }
-        // ],
-        dependent: {
-            field: 'placeOfDeath',
-            value: 'Other'
-        }
+        //     // 'placename',
+        //     { type: 'maxlength', arguments: 30 }
+        // ]
     },
     addressLine1: {
         // validate: [
@@ -95,34 +182,101 @@ module.exports = {
         //     { type: 'maxlength', arguments: 10 }
         // ]
     },
-    whereDidTheyLive: {
-        // validate: 'required'
+    dateOfDeath: {
+        validate: ['required', 'date'],
+        autocomplete: 'bday'
     },
-    didTheyDieAtThisAddress: {
+    didTheyDieAtHome: {
         formatter: 'boolean',
         // validate: 'required'
     },
-    lastOccupation: {
+    diedAtAddressName: {
         // validate: [
-        //     'required'
+        //     'required',
+        //     // 'placename',
+        //     { type: 'maxlength', arguments: 30 }
         // ]
     },
-    spouseName: {
+    diedAtAddressLine1: {
+        // validate: [
+        //     'required',
+        //     // 'placename',
+        //     { type: 'minlength', arguments: 3 },
+        //     { type: 'maxlength', arguments: 40 }
+        // ]
+    },
+    diedAtAddressLine2: {
+        // validate: [
+        //     // 'placename',
+        //     { type: 'maxlength', arguments: 40 }
+        // ]
+    },
+    diedAtAddressTown: {
+        // validate: [
+        //     'required',
+        //     // 'placename',
+        //     { type: 'maxlength', arguments: 30 }
+        // ]
+    },
+    diedAtAddressPostcode: {
+        formatter: 'uppercase',
+        // validate: [
+        //     'required',
+        //     { type: 'maxlength', arguments: 10 }
+        // ]
+    },
+    // placeOfDeath: {
+    //     // validate: 'required'
+    // },
+    // otherPlaceOfDeath: {
+    //     // validate: [
+    //     //     'required',
+    //     //     { type: 'minlength', arguments: 2 },
+    //     //     { type: 'maxlength', arguments: 20 }
+    //     // ],
+    //     dependent: {
+    //         field: 'placeOfDeath',
+    //         value: 'Other'
+    //     }
+    // },
+    // whereDidTheyLive: {
+    //     // validate: 'required'
+    // },
+    // didTheyDieAtThisAddress: {
+    //     formatter: 'boolean',
+    //     // validate: 'required'
+    // },
+
+    partnerName: {
         // validate: 'required'
     },
-    spouseOccupation: {
+    partnerLastOccupation: {
         // validate: 'required'
     },
-    motherName: {
+    partnerRetired: {
+        formatter: 'boolean',
         // validate: 'required'
     },
-    motherOccupation: {
+
+    NHSNumber: {
         // validate: 'required'
     },
-    fatherName: {
+    placeholder: {
         // validate: 'required'
     },
-    fatherOccupation: {
+    placeholder: {
         // validate: 'required'
     },
+    // motherName: {
+    //     // validate: 'required'
+    // },
+    // motherOccupation: {
+    //     // validate: 'required'
+    // },
+    // fatherName: {
+    //     // validate: 'required'
+    // },
+    // fatherOccupation: {
+    //     // validate: 'required'
+    // },
 }

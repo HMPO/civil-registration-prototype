@@ -1,26 +1,25 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}What was their occupation?{% endset %}
+{% set hmpoTitle %}Are you a qualified informant?{% endset %}
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 
     {% call hmpoForm(ctx) %}
 
-        {{ hmpoText(ctx, {
-            id: "lastOccupation",
-            label: {
-                text: "What did they do?",
+        {{ hmpoRadios(ctx, {
+            id: "informantRelativeOrNot",
+            legend: {
+                text: "Are you a relative?",
                 classes: "govuk-label--m"
             },
-            isPageHeading: true,
-            hint: "If they were retired, put their last occupation"
+            inline: true
         }) }}
 
         {{ hmpoRadios(ctx, {
-            id: "retired",
+            id: "informantPresentAtTheDeathOrNot",
             legend: {
-                text: "Were they retired?",
+                text: "Were you present at the death?",
                 classes: "govuk-label--m"
             },
             inline: true

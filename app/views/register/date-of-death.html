@@ -16,6 +16,15 @@
 
     {% call hmpoForm(ctx) %}
 
+        {{ hmpoRadios(ctx, {
+            id: "didTheyDieAtThisAddress",
+            legend: {
+                text: 'Did they die at this address?',
+                classes: "govuk-label--m"
+            },
+            inline: true
+        }) }}
+
         {{ hmpoDate(ctx, {
             id: "dateOfDeath",
             legend: {
