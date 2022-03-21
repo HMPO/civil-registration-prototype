@@ -1,16 +1,16 @@
 {% extends "layout-register.html" %}
 
-{% set hmpoTitle %}Are you a qualified informant?{% endset %}
+{% set hmpoTitle %}Check you can register this death{% endset %}
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
-
+    <p class="govuk-body-l">Only certain people can register a death. Use these questions to check if you're qualified.</p>
     {% call hmpoForm(ctx) %}
 
         {{ hmpoRadios(ctx, {
             id: "informantRelativeOrNot",
             legend: {
-                text: "Are you a relative?",
+                text: "Are you a relative of the person who's died?",
                 classes: "govuk-label--m"
             },
             inline: true

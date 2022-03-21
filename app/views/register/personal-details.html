@@ -36,28 +36,28 @@
         {{ hmpoText(ctx, {
             id: "prefix",
             label: {
-                text: "Does their name have a prefix? (If relevant)",
+                text: "Name prefix, if relvant",
                 classes: "govuk-label--m"
             },
-            hint: "For example, 'Dame' or 'OBE'"
+            hint: "For example, 'xxx'"
         }) }}
 
         {{ hmpoText(ctx, {
             id: "suffix",
             label: {
-                text: "Does their name have a suffix? (If relevant)",
+                text: "Name suffix, if relevant",
                 classes: "govuk-label--m"
             },
-            hint: "For example, 'Dame' or 'OBE'"
+            hint: "For example, 'xxx'"
         }) }}
 
         {{ hmpoRadios(ctx, {
             id: "sex",
             legend: {
-                text: "What was their sex?",
+                text: "Were they female or male?",
                 classes: "govuk-label--m"
             },
-            hint: "This is their sex when they died",
+            hint: "This is their sex at birth",
             items: [
                 { value: "Female", text: "Female" },
                 { value: "Male", text: "Male" }
@@ -71,23 +71,23 @@
                 classes: "govuk-label--m"
             },
             items: [{
-                value: 'Married or in a civil partnership',
-                text: "Married or in a civil partnership"
+                value: 'Married',
+                text: "Married"
+            }, {
+                value: 'Civil partner',
+                text: "In a civil partnership"
             }, {
                 value: 'Widow or widower',
                 text: "Widow or widower"
             }, {
-                value: 'Single',
-                text: "Single"
+                value: 'Surviving civil parnter',
+                text: "Surviving civil partner"
             }, {
                 value: 'Single',
-                text: "Single"
+                text: "Single, divorced or civil partnership dissolved"
             }, {
-                value: 'Single',
-                text: "Single"
-            }, {
-                value: 'Single',
-                text: "Single"
+                value: 'Uknown',
+                text: "Not sure"
             }]
         }) }}
 
