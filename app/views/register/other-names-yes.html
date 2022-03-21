@@ -1,0 +1,41 @@
+{% extends "layout-register.html" %}
+
+{% set hmpoTitle %}Add their other names{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+    {{ hmpoText(ctx, {
+        id: "firstName",
+        label: {
+            text: "First name or names",
+            classes: "govuk-label--m"
+        },
+        hint: "This is also known as 'given names'"
+    }) }}
+       
+    {{ hmpoText(ctx, {
+        id: "firstName",
+        label: {
+            text: "Last name",
+            classes: "govuk-label--m"
+        },
+        hint: "This is also known as 'family name'"
+    }) }}
+    {{ hmpoRadios(ctx, {
+        id: "otherNameType",
+        legend: {
+            text: "Where they called this when they died?",
+            classes: "govuk-label--m"
+        },
+        hint: "",
+        inline: true
+    }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}
