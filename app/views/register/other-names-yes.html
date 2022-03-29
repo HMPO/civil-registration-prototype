@@ -31,9 +31,12 @@
             classes: "govuk-label--m"
         },
         hint: "",
+        items: [
+        { value: true, text: "Yes - this is the name they were known by" },
+        { value: false, text: "No - this a former name" }
+        ],
         inline: true
     }) }}
-
         {{ hmpoSubmit(ctx) }}
 
     {% endcall %}
