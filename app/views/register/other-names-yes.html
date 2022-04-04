@@ -5,6 +5,9 @@
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 
+    {% from "hmpo-error-group/macro.njk" import hmpoErrorGroup %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
     {% call hmpoForm(ctx) %}
 
     {{ hmpoText(ctx, {
@@ -37,8 +40,220 @@
         ],
         inline: true
     }) }}
-        {{ hmpoSubmit(ctx) }}
+
+
+
+    
+        <!-- An entire input for new name with scripts  -->
+
+    <div> 
+        {% call hmpoErrorGroup(ctx, { 
+            id: "anotherName1",
+            legend: {
+                text: "Another name",
+                classes: "govuk-visually-hidden"
+            }
+        }) %}
+
+            <div class="govuk-width-container"> 
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-three-quarters">
+
+                        {{ hmpoText(ctx, {
+                            id: "anotherName1",
+                            label: {
+                                text: "Another name 1",
+                                classes: "govuk-label--m"
+                            },
+                            hint: "Add any other name you have",
+                            classes: "govuk-grid-column-three-quarters"
+                            }) 
+                        }}
+                        <style type="text/css" scoped>
+                            input#anotherName2 { max-width: 34ex; } 
+                        </style>
+                    </div>
+                    <div class="govuk-grid-column-one-quarter">
+
+                        {{ govukButton({
+                            text: "Remove",
+                            classes: "govuk-button--secondary",
+                            href: "javascript:removeName(1)"
+                        }) }}
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        {% endcall %} 
+
+    </div>
+
+        <!-- -->
+
+
+                <!-- An entire input for new name with scripts  -->
+
+    <div> 
+        {% call hmpoErrorGroup(ctx, { 
+            id: "anotherName2",
+            legend: {
+                text: "Another name",
+                classes: "govuk-visually-hidden"
+            }
+        }) %}
+
+            <div class="govuk-width-container"> 
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-three-quarters">
+
+                        {{ hmpoText(ctx, {
+                            id: "anotherName2",
+                            label: {
+                                text: "Another name 2",
+                                classes: "govuk-label--m"
+                            },
+                            hint: "Add any other name you have",
+                            classes: "govuk-grid-column-three-quarters"
+                            }) 
+                        }}
+                        <style type="text/css" scoped>
+                            input#anotherName3 { max-width: 34ex; } 
+                        </style>
+                    </div>
+                    <div class="govuk-grid-column-one-quarter">
+
+                        {{ govukButton({
+                            text: "Remove",
+                            classes: "govuk-button--secondary",
+                            href: "javascript:removeName(2)"
+                        }) }}
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        {% endcall %} 
+
+    </div>
+
+        <!-- -->
+
+    <!-- An entire input for new name with scripts  -->
+
+    <div> 
+        {% call hmpoErrorGroup(ctx, { 
+            id: "anotherName3",
+            legend: {
+                text: "Another name",
+                classes: "govuk-visually-hidden"
+            }
+        }) %}
+
+            <div class="govuk-width-container"> 
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-three-quarters">
+
+                        {{ hmpoText(ctx, {
+                            id: "anotherName3",
+                            label: {
+                                text: "Another name 3",
+                                classes: "govuk-label--m"
+                            },
+                            hint: "Add any other name you have",
+                            classes: "govuk-grid-column-three-quarters"
+                            }) 
+                        }}
+                        <style type="text/css" scoped>
+                            input#anotherName1 { max-width: 34ex; } 
+                        </style>
+                    </div>
+                    <div class="govuk-grid-column-one-quarter">
+
+                        {{ govukButton({
+                            text: "Remove",
+                            classes: "govuk-button--secondary",
+                            href: "javascript:removeName(3)"
+                        }) }}
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        {% endcall %} 
+
+    </div>
+
+        <!-- -->
+
+
+        <div class="govuk-width-container"> 
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-third">
+                        {{ govukButton({
+                            id: "anotherNameButton",
+                            text: "Add another name",
+                            classes: "govuk-button--secondary",
+                            href: "javascript:addName()"
+                        }) }}
+                    </div>
+                 </div>
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-third">
+                        {{ hmpoSubmit(ctx) }}
+                    </div>
+                </div>
+
+        </div>
+
+
+
+       
 
     {% endcall %}
 
+
+{% endblock %}
+
+
+{% block pageScripts %}
+    <script>
+        $(function() {
+            window.removeName = function(i) {
+                $('#anotherName' + i).hide();
+            };
+            window.addName = function() {
+                if (!$('#anotherName1').is(":visible"))
+                    $('#anotherName1').show();
+                else if (!$('#anotherName2').is(":visible"))
+                    $('#anotherName2').show();
+                else if (!$('#anotherName3').is(":visible"))
+                        { 
+                            $('#anotherName3').show();
+                            
+                        }
+                        
+            };
+            // $('#anotherNameButton').show()
+            $('#anotherName1').hide();
+            if (!$('#anotherName2').val() && !$('#anotherName').val())
+                $('#anotherName2').hide();
+            if (!$('#anotherName3').val() && !$('#anotherName').val())
+                $('#anotherName3').hide();
+
+                    
+             
+        });
+    </script>
 {% endblock %}
