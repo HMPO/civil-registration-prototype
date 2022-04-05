@@ -82,15 +82,37 @@ const journey1 = {
             'sex',
             'maritalStatus'
         ],
-        next: '/register/other-names'
+        next:
+        [
+            { field: 'sex', value: 'Female', next: [
+                { field: 'maritalStatus', value: 'Married', next: '/register/other-names-maiden' },
+                '/register/other-names'
+            ] },
+            '/register/other-names']
+    },
+    '/register/other-names-maiden': {
+        fields: [
+            'firstName',
+            'knownByAnyOtherNames'
+        ],
+        next:
+        [
+            { field: 'knownByAnyOtherNames', value: false, next: '/register/date-and-place-of-birth' },
+            '/register/other-names-yes'
+        ]
     },
     '/register/other-names': {
         fields: [
             'maidenName',
             'anyPreviousNames',
             'knownByAnyOtherNames'
+            
         ],
-        next: '/register/date-and-place-of-birth'
+        next:
+        [
+            { field: 'knownByAnyOtherNames', value: false, next: '/register/date-and-place-of-birth' },
+            '/register/other-names-yes'
+        ]
     },
     '/register/date-and-place-of-birth': {
         fields: [
@@ -101,6 +123,8 @@ const journey1 = {
         ],
         next: '/register/occupation'
     },
+
+    
     // '/register/sex': {
     //     fields: [
     //         'sex'
@@ -126,6 +150,7 @@ const journey1 = {
     //     ],
     //     next: '/register/occupation'
     // },
+
     '/register/occupation': {
         fields: [
             'lastOccupation',

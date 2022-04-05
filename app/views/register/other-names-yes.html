@@ -5,6 +5,9 @@
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 
+    {% from "hmpo-error-group/macro.njk" import hmpoErrorGroup %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
     {% call hmpoForm(ctx) %}
 
     {{ hmpoText(ctx, {
@@ -31,11 +34,342 @@
             classes: "govuk-label--m"
         },
         hint: "",
+        items: [
+        { value: true, text: "Yes - this is the name they were known by" },
+        { value: false, text: "No - this a former name" }
+        ],
         inline: true
     }) }}
 
-        {{ hmpoSubmit(ctx) }}
 
-    {% endcall %}
+    
+    
+        <!-- An entire input for new name  -->
+    <div> 
+        {% call hmpoErrorGroup(ctx, { 
+            id: "anotherName1",
+            legend: {
+                text: "Another name",
+                classes: "govuk-visually-hidden"
+            }
+        }) %}
 
+            <div class="govuk-width-container"> 
+
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-three-quarters">
+                            {{ hmpoText(ctx, {
+                                id: "anotherFirstName1", 
+                                label: {
+                                    text: "First name or names",
+                                    classes: "govuk-label--m"
+                                },
+                                hint: "This is also known as 'given names'",
+                                classes: "govuk-grid-column-three-quarters"
+                            }) }}
+                            <style type="text/css" scoped>
+                                input#anotherFirstName1 { max-width: 34ex; } 
+                            </style>
+                        </div>
+                        <div class="govuk-grid-column-one-quarter">
+
+                            {{ govukButton({
+                                text: "Remove",
+                                classes: "govuk-button--secondary",
+                                href: "javascript:removeName(1)"
+                            }) }}
+
+                        </div>
+                    </div>
+
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-full">
+                            {{ hmpoText(ctx, {
+                                id: "anotherLastName1", 
+                                label: {
+                                    text: "Last name",
+                                    classes: "govuk-label--m govuk-!-padding-top-3"
+                                },
+                                hint: "This is also known as 'family name'",
+                                classes: "govuk-grid-column-three-quarters"
+                            }) }}
+                            <style type="text/css" scoped>
+                                input#anotherLastName1 { max-width: 34ex; } 
+                            </style>
+                        </div>
+
+                    </div>
+
+                    <div class="govuk-grid-row">
+
+                        <div class="govuk-grid-column-full"> 
+                        {{ hmpoRadios(ctx, {
+                            id: "otherNameType1",
+                            legend: {
+                                text: "Where they called this when they died?",
+                                classes: "govuk-label--m govuk-!-padding-top-3"
+                            },
+                            hint: "",
+                            items: [
+                            { value: true, text: "Yes - this is the name they were known by" },
+                            { value: false, text: "No - this a former name" }
+                            ],
+                            inline: true
+                        }) }}
+
+                        </div>
+                    </div>
+
+            </div>
+
+
+        {% endcall %} 
+
+    </div>
+
+        <!-- -->
+    
+        <!-- An entire input for new name  -->
+
+    <div> 
+        {% call hmpoErrorGroup(ctx, { 
+            id: "anotherName2",
+            legend: {
+                text: "Another name",
+                classes: "govuk-visually-hidden"
+            }
+        }) %}
+
+            <div class="govuk-width-container"> 
+
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-three-quarters">
+                            {{ hmpoText(ctx, {
+                                id: "anotherFirstName2", 
+                                label: {
+                                    text: "First name or names",
+                                    classes: "govuk-label--m"
+                                },
+                                hint: "This is also known as 'given names'",
+                                classes: "govuk-grid-column-three-quarters"
+                            }) }}
+                            <style type="text/css" scoped>
+                                input#anotherFirstName2 { max-width: 34ex; } 
+                            </style>
+                        </div>
+                        <div class="govuk-grid-column-one-quarter">
+
+                            {{ govukButton({
+                                text: "Remove",
+                                classes: "govuk-button--secondary",
+                                href: "javascript:removeName(2)"
+                            }) }}
+
+                        </div>
+                    </div>
+
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-full">
+                            {{ hmpoText(ctx, {
+                                id: "anotherLastName2", 
+                                label: {
+                                    text: "Last name",
+                                    classes: "govuk-label--m govuk-!-padding-top-3"
+                                },
+                                hint: "This is also known as 'family name'",
+                                classes: "govuk-grid-column-three-quarters"
+                            }) }}
+                            <style type="text/css" scoped>
+                                input#anotherLastName2 { max-width: 34ex; } 
+                            </style>
+                        </div>
+
+                    </div>
+
+                    <div class="govuk-grid-row">
+
+                        <div class="govuk-grid-column-full"> 
+                        {{ hmpoRadios(ctx, {
+                            id: "otherNameType2",
+                            legend: {
+                                text: "Where they called this when they died?",
+                                classes: "govuk-label--m govuk-!-padding-top-3"
+                            },
+                            hint: "",
+                            items: [
+                            { value: true, text: "Yes - this is the name they were known by" },
+                            { value: false, text: "No - this a former name" }
+                            ],
+                            inline: true
+                        }) }}
+
+                        </div>
+                    </div>
+
+            </div>
+
+
+        {% endcall %} 
+
+    </div>
+
+        <!-- -->
+
+                <!-- An entire input for new name  -->
+
+    <div> 
+        {% call hmpoErrorGroup(ctx, { 
+            id: "anotherName3",
+            legend: {
+                text: "Another name",
+                classes: "govuk-visually-hidden"
+            }
+        }) %}
+
+            <div class="govuk-width-container"> 
+
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-three-quarters">
+                            {{ hmpoText(ctx, {
+                                id: "anotherFirstName3", 
+                                label: {
+                                    text: "First name or names",
+                                    classes: "govuk-label--m"
+                                },
+                                hint: "This is also known as 'given names'",
+                                classes: "govuk-grid-column-three-quarters"
+                            }) }}
+                            <style type="text/css" scoped>
+                                input#anotherFirstName3 { max-width: 34ex; } 
+                            </style>
+                        </div>
+                        <div class="govuk-grid-column-one-quarter">
+
+                            {{ govukButton({
+                                text: "Remove",
+                                classes: "govuk-button--secondary",
+                                href: "javascript:removeName(3)"
+                            }) }}
+
+                        </div>
+                    </div>
+
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-full">
+                            {{ hmpoText(ctx, {
+                                id: "anotherLastName3", 
+                                label: {
+                                    text: "Last name",
+                                    classes: "govuk-label--m govuk-!-padding-top-3"
+                                },
+                                hint: "This is also known as 'family name'",
+                                classes: "govuk-grid-column-three-quarters"
+                            }) }}
+                            <style type="text/css" scoped>
+                                input#anotherLastName3 { max-width: 34ex; } 
+                            </style>
+                        </div>
+
+                    </div>
+
+                    <div class="govuk-grid-row">
+
+                        <div class="govuk-grid-column-full"> 
+                        {{ hmpoRadios(ctx, {
+                            id: "otherNameType3",
+                            legend: {
+                                text: "Where they called this when they died?",
+                                classes: "govuk-label--m govuk-!-padding-top-3"
+                            },
+                            hint: "",
+                            items: [
+                            { value: true, text: "Yes - this is the name they were known by" },
+                            { value: false, text: "No - this a former name" }
+                            ],
+                            inline: true
+                        }) }}
+
+                        </div>
+                    </div>
+
+            </div>
+
+
+        {% endcall %} 
+
+    </div>
+
+        <!-- -->
+
+
+
+
+        <div class="govuk-width-container"> 
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-third">
+                        <div id="addOtherNameButton"> 
+                        {{ govukButton({
+                            text: "Add another name",
+                            classes: "govuk-button--secondary",
+                            href: "javascript:addName()"
+                        }) }}
+                        </div>
+                    </div>
+                 </div>
+
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-one-third">
+                        {{ hmpoSubmit(ctx) }}
+                    </div>
+                </div>
+
+        </div>
+        
+        {% endcall %}
+
+{% endblock %}
+
+
+{% block pageScripts %}
+    <script>
+        $(function() {
+            var numberOtherNames = 0
+
+            window.removeName = function(i) {
+                $('#anotherName' + i).hide();
+
+
+                numberOtherNames -= 1;
+                if (!$('#addOtherNameButton').is(":visible"))
+                            $('#addOtherNameButton').show();
+
+
+            };
+            window.addName = function() {
+                if (numberOtherNames < 2) {
+                    numberOtherNames += 1;
+                    } 
+                else {
+                    $('#addOtherNameButton').hide();}
+
+
+                if (!$('#anotherName1').is(":visible"))
+                    $('#anotherName1').show();
+                else if (!$('#anotherName2').is(":visible"))
+                    $('#anotherName2').show();
+                else if (!$('#anotherName3').is(":visible"))
+                            $('#anotherName3').show();
+            };
+            
+            $('#anotherName1').hide();
+            if (!$('#anotherName2').val() && !$('#anotherName1').val())
+                $('#anotherName2').hide();
+            if (!$('#anotherName3').val() && !$('#anotherName1').val())
+                $('#anotherName3').hide();
+
+                    
+             
+        });
+    </script>
 {% endblock %}
