@@ -1,4 +1,4 @@
-{% extends "layout-register.html" %}
+{% extends "layout-informant.html" %}
 
 {% set hmpoTitle %}Check your answers{% endset %}
 
@@ -11,52 +11,52 @@
         {
             key: { text: "Name" },
             value: { text: values.firstName + " " + values.lastName },
-            actions: { items: [{ text: "Change", href: "/register/personal-details/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/personal-details/edit" }]}
         },
         {
             key: { text: "Previous names" },
             value: { html: previousNames | join("<br/>") if values.previousNames else "You have never been known by any other names" },
-            actions: { items: [{ text: "Change", href: "/register/personal-details/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/personal-details/edit" }]}
         },
         {
             key: { text: "Date of birth" },
             value: { text: values.dateOfBirth | date },
-            actions: { items: [{ text: "Change", href: "/register/date-and-place-of-birth/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/date-and-place-of-birth/edit" }]}
         },
         {
             key: { text: "Country of birth" },
             value: { text: values.countryOfBirth | countryName | default("United Kingdom")},
-            actions: { items: [{ text: "Change", href: "/register/date-and-place-of-birth/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/date-and-place-of-birth/edit" }]}
         },
         {
             key: { text: "Town of birth" },
             value: { text: values.townOrCityOfBirth },
-            actions: { items: [{ text: "Change", href: "/register/date-and-place-of-birth/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/date-and-place-of-birth/edit" }]}
         },
         {
             key: { text: "Sex" },
             value: { text: values.sex },
-            actions: { items: [{ text: "Change", href: "/register/sex/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/sex/edit" }]}
         },
         {
             key: { text: "Marital status" },
             value: { text: values.maritalStatus },
-            actions: { items: [{ text: "Change", href: "/register/marital-status/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/marital-status/edit" }]}
         },
         {
             key: { text: "Maiden name" },
             value: { text: values.maidenName },
-            actions: { items: [{ text: "Change", href: "/register/maiden-name/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/maiden-name/edit" }]}
         },
         {
             key: { text: "Occupation" },
             value: { text: values.lastOccupation },
-            actions: { items: [{ text: "Change", href: "/register/occupation/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/occupation/edit" }]}
         },
         {
             key: { text: "Usual place of residence" },
             value: { text: values.whereDidTheyLive },
-            actions: { items: [{ text: "Change", href: "/register/last-address/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/last-address/edit" }]}
         },
         {
             key: { text: "Residential address" },
@@ -67,7 +67,7 @@
                 values.addressTown,
                 values.addressPostcode
             ] | filter | join("<br/>") },
-            actions: { items: [{ text: "Change", href: "/register/residential-address/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/residential-address/edit" }]}
         },
         {
             key: { text: "Care home address" },
@@ -78,17 +78,17 @@
                 values.addressTown,
                 values.addressPostcode
             ] | filter | join("<br/>") },
-            actions: { items: [{ text: "Change", href: "/register/care-home-address/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/care-home-address/edit" }]}
         },
         {
             key: { text: "Place of death" },
             value: { text: values.placeOfDeath },
-            actions: { items: [{ text: "Change", href: "/register/place-of-death/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/place-of-death/edit" }]}
         },
         {
             key: { text: "Date of death" },
             value: { text: values.dateOfDeath | date },
-            actions: { items: [{ text: "Change", href: "/register/date-of-death/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/date-of-death/edit" }]}
         }
     ] | filter }) }}
 
@@ -98,12 +98,12 @@
         {
             key: { text: "Name of spouse or civil partner" },
             value: { text: values.spouseName },
-            actions: { items: [{ text: "Change", href: "/register/partner-details/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/partner-details/edit" }]}
         },
         {
             key: { text: "Occupation of spouse or civil partner" },
             value: { text: values.spouseOccupation },
-            actions: { items: [{ text: "Change", href: "/register/partner-details/edit" }]}
+            actions: { items: [{ text: "Change", href: "/informant/partner-details/edit" }]}
         }
     ] | filter }) }}
 

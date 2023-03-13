@@ -1,15 +1,14 @@
-{% extends "layout-register.html" %}
+{% extends "layout-informant.html" %}
 
-{% set hmpoTitle %}Their place of death{% endset %}
+{% set hmpoTitle %}Your address{% endset %}
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
 
-
     {% call hmpoForm(ctx) %}
 
         {{ hmpoText(ctx, {
-            id: "diedAtAddressName",
+            id: "informantAddressName",
             label: {
                 text: "House name or number",
                 classes: "govuk-label--m"
@@ -19,9 +18,9 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "diedAtAddressLine1",
+            id: "informantAddressLine1",
             label: {
-                text: "Address",
+                text: "Street",
                 classes: "govuk-label--m"
                 },
             attributes: { autocapitalize: "words" },
@@ -29,14 +28,14 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "diedAtAddressLine2",
+            id: "informantAddressLine2",
             label: { classes: "govuk-visually-hidden" },
             attributes: { autocapitalize: "words" },
             classes: "govuk-!-width-three-quarters"
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "diedAtAddressTown",
+            id: "informantAddressTown",
             label: {
                 text: "Town or city",
                 classes: "govuk-label--m"
@@ -46,7 +45,7 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "diedAtAddressPostcode",
+            id: "informantAddressPostcode",
             label: {
                 text: "Postcode",
                 classes: "govuk-label--m"

@@ -1,4 +1,4 @@
-{% extends "layout-register.html" %}
+{% extends "layout-informant.html" %}
 
 {% set hmpoTitle %}Add their other names{% endset %}
 
@@ -18,7 +18,7 @@
         },
         hint: "This is also known as 'given names'"
     }) }}
-       
+
     {{ hmpoText(ctx, {
         id: "firstName",
         label: {
@@ -42,11 +42,11 @@
     }) }}
 
 
-    
-    
+
+
         <!-- An entire input for new name  -->
-    <div> 
-        {% call hmpoErrorGroup(ctx, { 
+    <div>
+        {% call hmpoErrorGroup(ctx, {
             id: "anotherName1",
             legend: {
                 text: "Another name",
@@ -54,12 +54,12 @@
             }
         }) %}
 
-            <div class="govuk-width-container"> 
+            <div class="govuk-width-container">
 
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-three-quarters">
                             {{ hmpoText(ctx, {
-                                id: "anotherFirstName1", 
+                                id: "anotherFirstName1",
                                 label: {
                                     text: "First name or names",
                                     classes: "govuk-label--m"
@@ -68,7 +68,7 @@
                                 classes: "govuk-grid-column-three-quarters"
                             }) }}
                             <style type="text/css" scoped>
-                                input#anotherFirstName1 { max-width: 34ex; } 
+                                input#anotherFirstName1 { max-width: 34ex; }
                             </style>
                         </div>
                         <div class="govuk-grid-column-one-quarter">
@@ -85,7 +85,7 @@
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-full">
                             {{ hmpoText(ctx, {
-                                id: "anotherLastName1", 
+                                id: "anotherLastName1",
                                 label: {
                                     text: "Last name",
                                     classes: "govuk-label--m govuk-!-padding-top-3"
@@ -94,7 +94,7 @@
                                 classes: "govuk-grid-column-three-quarters"
                             }) }}
                             <style type="text/css" scoped>
-                                input#anotherLastName1 { max-width: 34ex; } 
+                                input#anotherLastName1 { max-width: 34ex; }
                             </style>
                         </div>
 
@@ -102,7 +102,7 @@
 
                     <div class="govuk-grid-row">
 
-                        <div class="govuk-grid-column-full"> 
+                        <div class="govuk-grid-column-full">
                         {{ hmpoRadios(ctx, {
                             id: "otherNameType1",
                             legend: {
@@ -123,16 +123,16 @@
             </div>
 
 
-        {% endcall %} 
+        {% endcall %}
 
     </div>
 
         <!-- -->
-    
+
         <!-- An entire input for new name  -->
 
-    <div> 
-        {% call hmpoErrorGroup(ctx, { 
+    <div>
+        {% call hmpoErrorGroup(ctx, {
             id: "anotherName2",
             legend: {
                 text: "Another name",
@@ -140,12 +140,12 @@
             }
         }) %}
 
-            <div class="govuk-width-container"> 
+            <div class="govuk-width-container">
 
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-three-quarters">
                             {{ hmpoText(ctx, {
-                                id: "anotherFirstName2", 
+                                id: "anotherFirstName2",
                                 label: {
                                     text: "First name or names",
                                     classes: "govuk-label--m"
@@ -154,7 +154,7 @@
                                 classes: "govuk-grid-column-three-quarters"
                             }) }}
                             <style type="text/css" scoped>
-                                input#anotherFirstName2 { max-width: 34ex; } 
+                                input#anotherFirstName2 { max-width: 34ex; }
                             </style>
                         </div>
                         <div class="govuk-grid-column-one-quarter">
@@ -171,7 +171,7 @@
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-full">
                             {{ hmpoText(ctx, {
-                                id: "anotherLastName2", 
+                                id: "anotherLastName2",
                                 label: {
                                     text: "Last name",
                                     classes: "govuk-label--m govuk-!-padding-top-3"
@@ -180,7 +180,7 @@
                                 classes: "govuk-grid-column-three-quarters"
                             }) }}
                             <style type="text/css" scoped>
-                                input#anotherLastName2 { max-width: 34ex; } 
+                                input#anotherLastName2 { max-width: 34ex; }
                             </style>
                         </div>
 
@@ -188,7 +188,7 @@
 
                     <div class="govuk-grid-row">
 
-                        <div class="govuk-grid-column-full"> 
+                        <div class="govuk-grid-column-full">
                         {{ hmpoRadios(ctx, {
                             id: "otherNameType2",
                             legend: {
@@ -209,7 +209,7 @@
             </div>
 
 
-        {% endcall %} 
+        {% endcall %}
 
     </div>
 
@@ -217,8 +217,8 @@
 
                 <!-- An entire input for new name  -->
 
-    <div> 
-        {% call hmpoErrorGroup(ctx, { 
+    <div>
+        {% call hmpoErrorGroup(ctx, {
             id: "anotherName3",
             legend: {
                 text: "Another name",
@@ -226,12 +226,12 @@
             }
         }) %}
 
-            <div class="govuk-width-container"> 
+            <div class="govuk-width-container">
 
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-three-quarters">
                             {{ hmpoText(ctx, {
-                                id: "anotherFirstName3", 
+                                id: "anotherFirstName3",
                                 label: {
                                     text: "First name or names",
                                     classes: "govuk-label--m"
@@ -240,7 +240,7 @@
                                 classes: "govuk-grid-column-three-quarters"
                             }) }}
                             <style type="text/css" scoped>
-                                input#anotherFirstName3 { max-width: 34ex; } 
+                                input#anotherFirstName3 { max-width: 34ex; }
                             </style>
                         </div>
                         <div class="govuk-grid-column-one-quarter">
@@ -257,7 +257,7 @@
                     <div class="govuk-grid-row">
                         <div class="govuk-grid-column-full">
                             {{ hmpoText(ctx, {
-                                id: "anotherLastName3", 
+                                id: "anotherLastName3",
                                 label: {
                                     text: "Last name",
                                     classes: "govuk-label--m govuk-!-padding-top-3"
@@ -266,7 +266,7 @@
                                 classes: "govuk-grid-column-three-quarters"
                             }) }}
                             <style type="text/css" scoped>
-                                input#anotherLastName3 { max-width: 34ex; } 
+                                input#anotherLastName3 { max-width: 34ex; }
                             </style>
                         </div>
 
@@ -274,7 +274,7 @@
 
                     <div class="govuk-grid-row">
 
-                        <div class="govuk-grid-column-full"> 
+                        <div class="govuk-grid-column-full">
                         {{ hmpoRadios(ctx, {
                             id: "otherNameType3",
                             legend: {
@@ -295,7 +295,7 @@
             </div>
 
 
-        {% endcall %} 
+        {% endcall %}
 
     </div>
 
@@ -304,11 +304,11 @@
 
 
 
-        <div class="govuk-width-container"> 
+        <div class="govuk-width-container">
 
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third">
-                        <div id="addOtherNameButton"> 
+                        <div id="addOtherNameButton">
                         {{ govukButton({
                             text: "Add another name",
                             classes: "govuk-button--secondary",
@@ -325,7 +325,7 @@
                 </div>
 
         </div>
-        
+
         {% endcall %}
 
 {% endblock %}
@@ -349,7 +349,7 @@
             window.addName = function() {
                 if (numberOtherNames < 2) {
                     numberOtherNames += 1;
-                    } 
+                    }
                 else {
                     $('#addOtherNameButton').hide();}
 
@@ -361,15 +361,15 @@
                 else if (!$('#anotherName3').is(":visible"))
                             $('#anotherName3').show();
             };
-            
+
             $('#anotherName1').hide();
             if (!$('#anotherName2').val() && !$('#anotherName1').val())
                 $('#anotherName2').hide();
             if (!$('#anotherName3').val() && !$('#anotherName1').val())
                 $('#anotherName3').hide();
 
-                    
-             
+
+
         });
     </script>
 {% endblock %}
