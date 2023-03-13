@@ -1,0 +1,53 @@
+{% extends "layout-registrar.html" %}
+
+{% set hmpoTitle %}Create new record{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedFirstNameCoverSheet",
+            label: {
+                text: "Deceased’s first name",
+                classes: "govuk-label--s"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedMiddleNamesCoverSheet",
+            label: {
+                text: "Middle names",
+                classes: "govuk-label--s"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedLastNameCoverSheet",
+            label: {
+                text: "Last name",
+                classes: "govuk-label--s"
+            }
+        }) }}
+
+        {{ hmpoDate(ctx, {
+            id: "deceasedDateOfDeathCoverSheet",
+            legend: {
+                text: "Date of death",
+                classes: "govuk-label--s"
+            },
+            hint: "For example, 27 03 2001"
+        }) }}
+
+        {{ hmpoSubmit(ctx, { text: translate("buttons.createNewRecord") }) }}
+
+        {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "/registrar/pending-registrations"
+        }) }}
+
+    {% endcall %}
+
+{% endblock %}

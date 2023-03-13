@@ -1,0 +1,37 @@
+{% extends "layout-registrar.html" %}
+
+{% set hmpoTitle %}Sign in{% endset %}
+
+{% block backLink %}{% endblock %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoText(ctx, {
+            id: "emailAddress",
+            label: {
+                text: "Email address",
+                classes: "govuk-label--s"
+            },
+            hint: "This is your LRS email address"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "password",
+            label: {
+                text: "Password",
+                classes: "govuk-label--s"
+            }
+        }) }}
+
+        {% call hmpoDetails({ summaryText: "I’ve forgotten my password" }) %}
+            <p>Email <a href="mailto:email@emailaddress.com">{% raw %}{{ helpdeskEmailAddress }}{% endraw %}</a> to reset your password.</p>
+        {% endcall %}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

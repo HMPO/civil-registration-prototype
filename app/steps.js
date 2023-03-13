@@ -1,3 +1,93 @@
+const registrar = {
+
+    // ========================
+    // Comment '/' out if index.html does not need to use the form-wizard (normally doesn't).
+    // TODO: Improve this: Viewing the first page (index.html) will reset the journey, so shouldn't be used normally.
+    // Uncomment to use for purposes such as lab testing variations, and you need radio options in index.html.
+    // ========================
+    // '/': {
+    //     template: 'index.html',
+    //     entryPoint: true,
+    //     resetJourney: true,
+    //     fields: [
+    //         'labTestOptions'
+    //     ],
+    //     next: '/registrar/begin'
+    // },
+    // ========================
+
+    '/registrar': {
+        entryPoint: true,
+        resetJourney: true,
+        skip: true,
+        next: '/registrar/sign-in'
+    },
+    // '/registrar/begin': {
+    //     backLink: '/start.html',
+    //     next: '/registrar/sign-in'
+    // },
+    '/registrar/sign-in': {
+        entryPoint: true,
+        // resetJourney: true,
+        fields: [
+            'emailAddress',
+            'password'
+        ],
+        next: '/registrar/check-your-email'
+    },
+    '/registrar/check-your-email': {
+        fields: [
+            'oneTimePassword'
+        ],
+        next:[
+            '/registrar/pending-registrations'
+        ]
+    },
+    '/registrar/pending-registrations': {
+        // fields: [
+        // ],
+        next:[
+            '/registrar/create-new-record'
+        ]
+    },
+    '/registrar/create-new-record': {
+        fields: [
+            'deceasedFirstNameCoverSheet',
+            'deceasedMiddleNamesCoverSheet',
+            'deceasedLastNameCoverSheet',
+            'deceasedDateOfDeathCoverSheet'
+        ],
+        next:[
+            '/registrar/record'
+        ]
+    },
+    '/registrar/record': {
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-edit'
+        ]
+    },
+    '/registrar/record-edit': {
+        fields: [
+            'deceasedFirstNameCoverSheet',
+            'deceasedMiddleNamesCoverSheet',
+            'deceasedLastNameCoverSheet',
+            'deceasedDateOfDeathCoverSheet',
+            'dateMCCDReceivedCoverSheet',
+            'MCCDStatus',
+            'priority',
+            'informantFullNameCoverSheet',
+            'informantPhoneNumberCoverSheet',
+            'informantEmailAddressCoverSheet',
+            'notes'
+        ],
+        next:[
+            '/registrar/record'
+        ]
+    }
+}
+
 const journey1 = {
 
     // ========================
@@ -12,7 +102,7 @@ const journey1 = {
     //     fields: [
     //         'labTestOptions'
     //     ],
-    //     next: '/filter/begin'
+    //     next: '/register/begin'
     // },
     // ========================
 
@@ -22,6 +112,10 @@ const journey1 = {
         skip: true,
         next: '/register/informant-qualification'
     },
+    // '/register/begin': {
+    //     backLink: '/start.html',
+    //     next: '/register/start'
+    // },
     '/register/start': {
         entryPoint: true,
         // resetJourney: true,
@@ -106,7 +200,7 @@ const journey1 = {
             'maidenName',
             'anyPreviousNames',
             'knownByAnyOtherNames'
-            
+
         ],
         next:
         [
@@ -124,7 +218,7 @@ const journey1 = {
         next: '/register/occupation'
     },
 
-    
+
     // '/register/sex': {
     //     fields: [
     //         'sex'
@@ -224,5 +318,6 @@ const journey1 = {
 }
 
 module.exports = {
+    registrar,
     journey1
 }

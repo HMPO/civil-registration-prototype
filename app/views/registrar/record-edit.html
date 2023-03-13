@@ -1,0 +1,147 @@
+{% extends "layout-registrar-record.html" %}
+
+{% set hmpoTitle %}{{values.deceasedLastNameCoverSheet}}, {{values.deceasedFirstNameCoverSheet}}{% endset %}
+
+{% block sideContent %}
+    <style>
+        .hmpo-sidebar {
+            width: 100%;
+            float: none;
+            position: relative;
+            padding: 0;
+        }
+    </style>
+
+    {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
+        <!-- TODO: Import side navigation component from DAP frontend -->
+        <h3 class="govuk-heading-m">One-third column placeholder</h3>
+        <p>Import side navigation</p>
+        <ul>
+            <!-- TODO: Persist session data for a href links -->
+            <li><a href="record">Cover sheet</a></li>
+            <br>
+            <li>Pre-registration</li>
+            <li><a href="record-cause-of-death">Cause of death</a></li>
+            <li><a href="#">Uploads</a></li>
+            <br>
+            <li>Registration</li>
+            <li><a href="#">Deceased’s details</a></li>
+            <li><a href="#">Informant’s details</a></li>
+            <li><a href="#">Check all information</a></li>
+            <li><a href="#">Register page</a></li>
+        </ul>
+    {% endcall %}
+{% endblock %}
+
+{% block mainContent %}
+    {% call hmpoForm(ctx) %}
+    <h2 class="govuk-heading-l">Cover sheet</h2>
+
+    <h3 class="govuk-heading-m">File information</h3>
+    {{ hmpoText(ctx, {
+        id: "deceasedFirstNameCoverSheet",
+        label: {
+            text: "Deceased’s first name",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+    {{ hmpoText(ctx, {
+        id: "deceasedMiddleNamesCoverSheet",
+        label: {
+            text: "Middle names",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+    {{ hmpoText(ctx, {
+        id: "deceasedLastNameCoverSheet",
+        label: {
+            text: "Last name",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+    {{ hmpoDate(ctx, {
+        id: "deceasedDateOfDeathCoverSheet",
+        legend: {
+            text: "Date of death",
+            classes: "govuk-label--s"
+        },
+        hint: "For example, 27 03 2001"
+    }) }}
+
+    <h3 class="govuk-heading-m">Registrar information</h3>
+    {{ hmpoDate(ctx, {
+        id: "dateMCCDReceivedCoverSheet",
+        legend: {
+            text: "Date MCCD received",
+            classes: "govuk-label--s"
+        },
+        hint: "For example, 12 11 2007"
+    }) }}
+
+    {{ hmpoRadios(ctx, {
+        id: "MCCDStatus",
+        legend: {
+            text: "MCCD status",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small",
+        items: [
+            { value: "OK", text: "OK" },
+            { value: "Not OK", text: "Not OK" }
+        ]
+    }) }}
+
+    {{ hmpoRadios(ctx, {
+        id: "priority",
+        legend: {
+            text: "Priority",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small",
+        hint: "For example, for faith deaths"
+    }) }}
+
+    <!-- TODO: Refactor into fieldset -->
+    <h4 class="govuk-heading-s">Informant contact details</h4>
+    {{ hmpoText(ctx, {
+        id: "informantFullNameCoverSheet",
+        label: {
+            text: "Full name",
+            classes: "govuk-label--xs"
+        }
+    }) }}
+    {{ hmpoText(ctx, {
+        id: "informantPhoneNumberCoverSheet",
+        label: {
+            text: "Phone number",
+            classes: "govuk-label--xs"
+        }
+    }) }}
+    {{ hmpoText(ctx, {
+        id: "informantEmailAddressCoverSheet",
+        label: {
+            text: "Email address",
+            classes: "govuk-label--xs"
+        }
+    }) }}
+
+    {{ hmpoTextarea(ctx, {
+        id: "notes",
+        label: {
+            text: "Notes",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+    {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
+    {{ govukButton({
+        text: "Cancel",
+        classes: "govuk-button--secondary",
+        href: "./record"
+    }) }}
+
+    {% endcall %}
+{% endblock %}

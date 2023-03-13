@@ -29,8 +29,8 @@
     <span class="govuk-caption-xl">{{ govukServiceName }}</span>
     <h1>{{ hmpoTitle }}</h1>
 
-    <h2>Register</h2>
-    <p>User journey for registration.</p>
+    <h2>Registration journey</h2>
+    <p>User journey for registrars.</p>
 
     {# ========================
        Comment hmpoForm call out if index.html does not need to use the form-wizard (normally doesn't).
@@ -60,6 +60,20 @@
 
     {% endcall %} #}
     {#  ======================== #}
+
+    {{ govukButton({
+        text: "View prototype",
+        href: "/registrar/sign-in",
+        classes: "govuk-!-margin-bottom-2"
+    }) }}
+
+    <br>
+    <br>
+    <hr>
+    <br>
+
+    <h2>Pre-registration journey</h2>
+    <p>User journey for informants.</p>
 
     {{ govukButton({
         text: "View prototype",

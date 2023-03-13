@@ -9,6 +9,18 @@ require('./formatters')
 require('./validators')
 
 router.use(Wizard(
+    steps.registrar,
+    fields,
+    {
+        name: 'registrar',
+        journeyName: 'registrar',
+        editable: true,
+        editBackStep: '/register/confirm',
+        controller: require('./controllers/registrar')
+    }
+))
+
+router.use(Wizard(
     steps.journey1,
     fields,
     {

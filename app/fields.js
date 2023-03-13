@@ -10,6 +10,76 @@ module.exports = {
     // },
     // ========================
 
+    emailAddress: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    password: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    oneTimePassword: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedFirstNameCoverSheet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedMiddleNamesCoverSheet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedLastNameCoverSheet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedDateOfDeathCoverSheet: {
+        validate: ['required', 'date'],
+        autocomplete: 'bday'
+    },
+    dateMCCDReceivedCoverSheet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    MCCDStatus: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    priority: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantFullNameCoverSheet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantPhoneNumberCoverSheet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantEmailAddressCoverSheet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    notes: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+
     informantRelativeOrNot: {
         formatter: 'boolean',
         // validate: 'required'

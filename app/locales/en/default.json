@@ -3,10 +3,15 @@
       "serviceName": "Civil Registration Prototypes",
       "serviceNameRegister": "Register a death",
       "errorSummaryTitle": "There is a problem",
-      "backLink": "Back"
+      "backLink": "Back",
+      "backToHomepageLink": "Back to homepage"
   },
   "buttons": {
-    "next": "Continue"
+    "next": "Continue",
+    "signIn":"Sign in",
+    "createNewRecord":"Create new record",
+    "editDetails":"Edit details",
+    "save":"Save"
   },
   "fields": {
     "date-day": {
