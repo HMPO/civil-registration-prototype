@@ -62,6 +62,7 @@ const registrar = {
         ]
     },
     '/registrar/record': {
+        checkJourney: false,
         // fields: [
         // ],
         next:[
@@ -69,6 +70,7 @@ const registrar = {
         ]
     },
     '/registrar/record-edit': {
+        checkJourney: false,
         fields: [
             'deceasedFirstNameCoverSheet',
             'deceasedMiddleNamesCoverSheet',
@@ -85,7 +87,110 @@ const registrar = {
         next:[
             '/registrar/record'
         ]
-    }
+    },
+    '/registrar/record-cause-of-death': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-cause-of-death-edit'
+        ]
+    },
+    '/registrar/record-cause-of-death-edit': {
+        checkJourney: false,
+        fields: [
+            'MCCDAddressLine1',
+            'MCCDAddressLine2',
+            'MCCDAddressStreet',
+            'MCCDAddressTown',
+            'MCCDAddressCounty',
+            'MCCDAddressPostcode',
+            'dateCertifyingPractitionerLastSawDeceasedAlive',
+            'letterCircledOnMCCD',
+            'MCCDCauseOfDeathReason1',
+            'MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath',
+            'MCCDCauseOfDeathReason1TimeUnit',
+            'certifyingPractitionerFullName',
+            'certifyingPractitionerQualifications',
+            'certifyingPractitionerGMCNumber',
+            'MCCDDateSigned',
+            'diedInHospital',
+            'consultantFullName',
+            'attendingPractitionerProvideFutherInformation'
+        ],
+        next:[
+            '/registrar/record-cause-of-death'
+        ]
+    },
+    // '/registrar/record-uploads': {
+    //     // fields: [
+    //     // ],
+    //     next:[
+    //         '/registrar/record-uploads-edit'
+    //     ]
+    // },
+    // '/registrar/record-uploads-edit': {
+    //     fields: [
+    //     ],
+    //     next:[
+    //         '/registrar/record-uploads'
+    //     ]
+    // },
+    // '/registrar/record-deceaseds-details': {
+    //     // fields: [
+    //     // ],
+    //     next:[
+    //         '/registrar/record-deceaseds-details-edit'
+    //     ]
+    // },
+    // '/registrar/record-deceaseds-details-edit': {
+    //     fields: [
+    //     ],
+    //     next:[
+    //         '/registrar/record-deceaseds-details'
+    //     ]
+    // },
+    '/registrar/record-informants-details': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-informants-details-edit'
+        ]
+    },
+    '/registrar/record-informants-details-edit': {
+        checkJourney: false,
+        fields: [
+            'informantFirstName',
+            'informantMiddleNames',
+            'informantLastName',
+            'informantCapitaliseLastNames',
+            'informantQualification',
+            'informantRelationshipToDeceased',
+            'informantLiveWithDeceased',
+            'informantAddressLine1',
+            'informantAddressLine2',
+            'informantAddressStreet',
+            'informantAddressTown',
+            'informantAddressCounty',
+            'informantAddressPostcode'
+        ],
+        next:[
+            '/registrar/record-informants-details'
+        ]
+    },
+    // '/registrar/record-check-all-information': {
+    //     // fields: [
+    //     // ],
+    //     next:[
+    //     ]
+    // },
+    // '/registrar/record-register-page': {
+    //     // fields: [
+    //     // ],
+    //     next:[
+    //     ]
+    // }
 }
 
 const informant = {

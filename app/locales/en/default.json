@@ -8,10 +8,10 @@
   },
   "buttons": {
     "next": "Continue",
-    "signIn":"Sign in",
-    "createNewRecord":"Create new record",
-    "editDetails":"Edit details",
-    "save":"Save"
+    "signIn": "Sign in",
+    "createNewRecord": "Create new record",
+    "editDetails": "Edit details",
+    "save": "Save"
   },
   "fields": {
     "date-day": {

@@ -21,14 +21,14 @@
             <li><a href="record">Cover sheet</a></li>
             <br>
             <li>Pre-registration</li>
-            <li><a href="record-cause-of-death">Cause of death</a></li>
-            <li><a href="#">Uploads</a></li>
+            <li><a href="#">Cause of death</a></li>
+            <li><a href="record-uploads">Uploads</a></li>
             <br>
             <li>Registration</li>
-            <li><a href="#">Deceased’s details</a></li>
-            <li><a href="#">Informant’s details</a></li>
-            <li><a href="#">Check all information</a></li>
-            <li><a href="#">Register page</a></li>
+            <li><a href="record-deceaseds-details">Deceased’s details</a></li>
+            <li><a href="record-informants-details">Informant’s details</a></li>
+            <li><a href="record-check-all-information">Check all information</a></li>
+            <li><a href="record-register-page">Register page</a></li>
         </ul>
     {% endcall %}
 {% endblock %}
@@ -36,55 +36,89 @@
 {% block mainContent %}
     {% call hmpoForm(ctx) %}
 
-    <h2>Cause of death</h2>
+    <h2 class="govuk-heading-l">Cause of death</h2>
     {{ hmpoSubmit(ctx, {
             text: translate("buttons.editDetails"),
             classes: "govuk-button--secondary"
         })
     }}
 
-    <h2>Heading</h2>
+    <h3 class="govuk-heading-m">Side 1</h3>
+    {% set MCCDPlaceOfDeath = [
+        values.MCCDAddressLine1,
+        values.MCCDAddressLine2,
+        values.MCCDAddressStreet,
+        values.MCCDAddressTown,
+        values.MCCDAddressCounty,
+        values.MCCDAddressPostcode
+    ] | filter | join("<br>") %}
+
     {{ govukSummaryList({ rows: [
         {
-            key: { text: "Deceased’s first name" },
-            value: { text: values.deceasedFirstNameCoverSheet }
+            key: { text: "Place of death" },
+            value: { html:
+                MCCDPlaceOfDeath if MCCDPlaceOfDeath else "<br><br><br><br><br><br>"
+            }
         },
         {
-            key: { text: "Middle names" },
-            value: { text: values.deceasedMiddleNamesCoverSheet }
+            key: { text: "Date certifying practitioner last saw them alive" },
+            value: { text: values.dateCertifyingPractitionerLastSawDeceasedAlive | date("DD/MM/YYYY") }
         },
         {
-            key: { text: "Last name" },
-            value: { text: values.deceasedLastNameCoverSheet }
+            key: { text: "Which letter is circled on the MCCD?" },
+            value: {
+                text: "a – Seen after death by me" if values.letterCircledOnMCCD == "a"
+                    else ("b – Seen after death by another medical practitioner but not by me" if values.letterCircledOnMCCD == "b"
+                        else ("c – Not seen after death by a medical practitioner" if values.letterCircledOnMCCD == "c")
+                    )
+            }
         },
         {
-            key: { text: "Date of death" },
-            value: { text: values.deceasedDateOfDeathCoverSheet | date }
-        }
+            key: { text: "1(a) Disease or condition directly leading to death" },
+            value: { text: values.MCCDCauseOfDeathReason1 }
+        },
+        {
+            key: { text: "Time between onset and death" },
+            value: { text: values.MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath + " " + values.MCCDCauseOfDeathReason1TimeUnit }
+        },
+        {
+            key: { text: "Certifying practitioner’s full name" },
+            value: { text: values.certifyingPractitionerFullName }
+        },
+        {
+            key: { text: "Qualifications" },
+            value: { text: values.certifyingPractitionerQualifications }
+        },
+        {
+            key: { text: "GMC number" },
+            value: { text: values.certifyingPractitionerGMCNumber }
+        },
+        {
+            key: { text: "Date signed" },
+            value: { text: values.MCCDDateSigned | date("DD/MM/YYYY") }
+        },
+        {
+            key: { text: "Died in a hospital?" },
+            value: {
+                text: "Yes" if values.diedInHospital
+                else ("No" if values.diedInHospital === false)
+            }
+        },
+        {
+            key: { text: "Consultant’s full name" },
+            value: { text: values.consultantFullName }
+        } if values.consultantFullName
     ] | filter }) }}
 
 
-    <h2>Registrar information</h2>
+    <h3 class="govuk-heading-m">Side 2</h3>
     {{ govukSummaryList({ rows: [
         {
-            key: { text: "Date MCCD received" },
-            value: { text: values.placeholder }
-        },
-        {
-            key: { text: "MCCD status" },
-            value: { text: values.placeholder }
-        },
-        {
-            key: { text: "Priority" },
-            value: { text: values.placeholder }
-        },
-        {
-            key: { text: "Informant contact details" },
-            value: { html: values.placeholder + "<br><br><br>" }
-        },
-        {
-            key: { text: "Notes" },
-            value: { html: values.placeholder + "<br><br><br><br><br>" }
+            key: { text: "Might the attending practitioner apply to give further information later (box B)?" },
+            value: {
+                text: "Yes" if values.attendingPractitionerProvideFutherInformation
+                    else ("No" if values.attendingPractitionerProvideFutherInformation === false)
+            }
         }
     ] }) }}
 

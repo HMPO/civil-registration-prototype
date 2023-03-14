@@ -1,0 +1,112 @@
+{% extends "layout-registrar-record.html" %}
+
+{% set hmpoTitle %}{{values.deceasedLastNameCoverSheet}}, {{values.deceasedFirstNameCoverSheet}}{% endset %}
+
+{% block sideContent %}
+    <style>
+        .hmpo-sidebar {
+            width: 100%;
+            float: none;
+            position: relative;
+            padding: 0;
+        }
+    </style>
+
+    {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
+        <!-- TODO: Import side navigation component from DAP frontend -->
+        <h3 class="govuk-heading-m">One-third column placeholder</h3>
+        <p>Import side navigation</p>
+        <ul>
+            <!-- TODO: Persist session data for a href links -->
+            <li><a href="record">Cover sheet</a></li>
+            <br>
+            <li>Pre-registration</li>
+            <li><a href="record-cause-of-death">Cause of death</a></li>
+            <li><a href="record-uploads">Uploads</a></li>
+            <br>
+            <li>Registration</li>
+            <li><a href="record-deceaseds-details">Deceased’s details</a></li>
+            <li><a href="#">Informant’s details</a></li>
+            <li><a href="record-check-all-information">Check all information</a></li>
+            <li><a href="record-register-page">Register page</a></li>
+        </ul>
+    {% endcall %}
+{% endblock %}
+
+{% block mainContent %}
+    {% call hmpoForm(ctx) %}
+
+    <h2 class="govuk-heading-l">Informant’s details</h2>
+    {{ hmpoSubmit(ctx, {
+            text: translate("buttons.editDetails"),
+            classes: "govuk-button--secondary"
+        })
+    }}
+
+    {% set informantAddress = [
+        values.informantAddressLine1,
+        values.informantAddressLine2,
+        values.informantAddressStreet,
+        values.informantAddressTown,
+        values.informantAddressCounty,
+        values.informantAddressPostcode
+    ] | filter | join("<br>") %}
+
+    {{ govukSummaryList({ rows: [
+        {
+            key: { text: "First name" },
+            value: { text: values.informantFirstName }
+        },
+        {
+            key: { text: "Middle names" },
+            value: { text: values.informantMiddleNames }
+        },
+        {
+            key: { text: "Last name" },
+            value: { text: values.informantLastName }
+        },
+        {
+            key: { text: "Capitalise last names" },
+            value: {
+                text: "Yes" if values.informantCapitaliseLastNames
+                else ("No – print as typed" if values.informantCapitaliseLastNames === false)
+            }
+        },
+        {
+            key: { text: "Qualification" },
+            value: {
+                text: "Relative – present at death" if values.informantQualification == "relative present at death"
+                    else ("Relative – not present at death" if values.informantQualification == "relative not present at death"
+                        else ("Relative – in attendance" if values.informantQualification == "relative in attendance"
+                            else ("Non-relative – present at death" if values.informantQualification == "non-relative present at death"
+                                else ("Non-relative – occupier" if values.informantQualification == "non-relative occupier"
+                                    else ("Non-relative – causing the body to be buried" if values.informantQualification == "non-relative causing the body to be buried"
+                                        else ("Non-relative – causing the body to be cremated" if values.informantQualification == "non-relative causing the body to be cremated"
+                                            else ("Non-relative – in charge of the body" if values.informantQualification == "non-relative in charge of the body"
+                                                else ("Non-relative – causing the disposal of the body" if values.informantQualification == "non-relative causing the disposal of the body"
+                                                    else ("Non-relative – inmate" if values.informantQualification == "non-relative inmate")
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+            }
+        },
+        {
+            key: { text: "Relationship to deceased" },
+            value: { text: values.informantRelationshipToDeceased }
+        },
+        {
+            key: { text: "Did the informant live with the deceased?" },
+            value: { html:
+                "Yes:<br>TODO: add deceasedAddress here" if values.informantLiveWithDeceased
+                else ("No:<br>" + informantAddress if values.informantLiveWithDeceased === false)
+            }
+        }
+    ] | filter }) }}
+
+    {% endcall %}
+{% endblock %}

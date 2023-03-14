@@ -55,9 +55,8 @@ module.exports = {
         // ]
     },
     priority: {
-        // validate: [
-        //     'required'
-        // ]
+        formatter: 'boolean',
+        // validate: 'required'
     },
     informantFullNameCoverSheet: {
         // validate: [
@@ -79,6 +78,134 @@ module.exports = {
         //     'required'
         // ]
     },
+    MCCDAddressLine1: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    MCCDAddressLine2: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    MCCDAddressStreet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    MCCDAddressTown: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    MCCDAddressCounty: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    MCCDAddressPostcode: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    dateCertifyingPractitionerLastSawDeceasedAlive: {
+        validate: ['date'],
+        autocomplete: 'bday'
+    },
+    letterCircledOnMCCD: {
+        // validate: 'required'
+    },
+    MCCDCauseOfDeathReason1: {
+        // validate: 'required'
+    },
+    MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath: {
+        // validate: 'required'
+    },
+    MCCDCauseOfDeathReason1TimeUnit: {
+        // validate: 'required'
+    },
+    certifyingPractitionerFullName: {
+        // validate: 'required'
+    },
+    certifyingPractitionerQualifications: {
+        // validate: 'required'
+    },
+    certifyingPractitionerGMCNumber: {
+        // validate: 'required'
+    },
+    MCCDDateSigned: {
+        validate: ['date'],
+        autocomplete: 'bday'
+    },
+    diedInHospital: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    consultantFullName: {
+        // validate: 'required'
+    },
+    attendingPractitionerProvideFutherInformation: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+
+    informantFirstName: {
+        // validate: 'required'
+    },
+    informantMiddleNames: {
+        // validate: 'required'
+    },
+    informantLastName: {
+        // validate: 'required'
+    },
+    informantCapitaliseLastNames: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    informantQualification: {
+        // validate: 'required'
+    },
+    informantRelationshipToDeceased: {
+        // validate: 'required'
+    },
+    informantLiveWithDeceased: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    informantAddressLine1: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantAddressLine2: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantAddressStreet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantAddressTown: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantAddressCounty: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    informantAddressPostcode: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+
+
+
+
 
     informantRelativeOrNot: {
         formatter: 'boolean',
