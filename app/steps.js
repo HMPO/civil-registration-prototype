@@ -136,20 +136,64 @@ const registrar = {
     //         '/registrar/record-uploads'
     //     ]
     // },
-    // '/registrar/record-deceaseds-details': {
-    //     // fields: [
-    //     // ],
-    //     next:[
-    //         '/registrar/record-deceaseds-details-edit'
-    //     ]
-    // },
-    // '/registrar/record-deceaseds-details-edit': {
-    //     fields: [
-    //     ],
-    //     next:[
-    //         '/registrar/record-deceaseds-details'
-    //     ]
-    // },
+    '/registrar/record-deceaseds-details': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-deceaseds-details-edit'
+        ]
+    },
+    '/registrar/record-deceaseds-details-edit': {
+        checkJourney: false,
+        fields: [
+            'deceasedFirstName',
+            'deceasedMiddleNames',
+            'deceasedLastName',
+            'deceasedCapitaliseLastNames',
+            'deceasedPrefix',
+            'deceasedSuffix',
+            'deceasedPrintOrderOfNames',
+            'deceasedOrderOfNames',
+            'deceasedDateOfDeath',
+            'deceasedSex',
+            'deceasedMaidenName',
+            'deceasedOtherKnownNames',
+            'deceasedPlaceOfDeathAddressLine1',
+            'deceasedPlaceOfDeathAddressLine2',
+            'deceasedPlaceOfDeathAddressStreet',
+            'deceasedPlaceOfDeathAddressTown',
+            'deceasedPlaceOfDeathAddressCounty',
+            'deceasedPlaceOfDeathAddressPostcode',
+            'deceasedUsualAddressLine1',
+            'deceasedUsualAddressLine2',
+            'deceasedUsualAddressStreet',
+            'deceasedUsualAddressTown',
+            'deceasedUsualAddressCounty',
+            'deceasedUsualAddressPostcode',
+            'deceasedDateOfBirth',
+            'deceasedFullDateOfBirth',
+            'deceasedPartialDateOfBirth',
+            'deceasedAge',
+            'deceasedApproximateYearOfBirth',
+            'deceasedApproximateAge',
+            'deceasedPlaceOfBirth',
+            'deceasedCountryOfBirth',
+            'deceasedSpanishNational',
+            'deceasedOccupation',
+            'deceasedOccupationStatus',
+            'deceasedRelationshipStatus',
+            'spouseOrCivilPartnerFullName',
+            'spouseOrCivilPartnerOccupation',
+            'spouseOrCivilPartnerOccupationStatus',
+            'deceasedWillInformantGiveDateOfBirthOfSpouseOrCivilPartner',
+            'spouseOrCivilPartnerDateOfBirth',
+            'deceasedWillInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics'
+        ],
+        next:[
+            '/registrar/record-deceaseds-details'
+        ]
+    },
     '/registrar/record-informants-details': {
         checkJourney: false,
         // fields: [

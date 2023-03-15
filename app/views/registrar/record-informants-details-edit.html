@@ -187,16 +187,16 @@
         },
         classes: "govuk-radios--small",
         items: [
-        {
-            value: true
-        },
-        {
-            value: false,
-            conditional: {
-                html: informantAddress
+            {
+                value: true
+            },
+            {
+                value: false,
+                conditional: {
+                    html: informantAddress
+                }
             }
-        }
-    ]
+        ]
     }) }}
 
     {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}

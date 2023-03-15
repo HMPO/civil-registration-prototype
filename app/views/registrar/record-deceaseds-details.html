@@ -1,0 +1,259 @@
+{% extends "layout-registrar-record.html" %}
+
+{% set hmpoTitle %}{{values.deceasedLastNameCoverSheet}}, {{values.deceasedFirstNameCoverSheet}}{% endset %}
+
+{% block sideContent %}
+    <style>
+        .hmpo-sidebar {
+            width: 100%;
+            float: none;
+            position: relative;
+            padding: 0;
+        }
+    </style>
+
+    {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
+        <!-- TODO: Import side navigation component from DAP frontend -->
+        <h3 class="govuk-heading-m">One-third column placeholder</h3>
+        <p>Import side navigation</p>
+        <ul>
+            <!-- TODO: Persist session data for a href links -->
+            <li><a href="record">Cover sheet</a></li>
+            <br>
+            <li>Pre-registration</li>
+            <li><a href="record-cause-of-death">Cause of death</a></li>
+            <li><a href="record-uploads">Uploads</a></li>
+            <br>
+            <li>Registration</li>
+            <li><a href="#">Deceased’s details</a></li>
+            <li><a href="record-informants-details">Informant’s details</a></li>
+            <li><a href="record-check-all-information">Check all information</a></li>
+            <li><a href="record-register-page">Register page</a></li>
+        </ul>
+    {% endcall %}
+{% endblock %}
+
+{% block mainContent %}
+    {% call hmpoForm(ctx) %}
+
+        <h2 class="govuk-heading-l">Deceased’s details</h2>
+
+        {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+        {% from "govuk/components/table/macro.njk" import govukTable %}
+
+        {% set nameAndDateOfDeathHtml %}
+            <h2 class="govuk-heading-l">Name and date of death</h2>
+
+            {{ hmpoSubmit(ctx, {
+                    text: translate("buttons.editDetails"),
+                    classes: "govuk-button--secondary"
+                })
+            }}
+
+            {% if values.deceasedPrintOrderOfNames == "First name at the front" %}
+                {% set deceasedOrderOfNames = [
+                    values.deceasedFirstName + " " + values.deceasedMiddleNames + " " + values.deceasedLastName
+                ] | filter %}
+            {% elif values.deceasedPrintOrderOfNames == "Last name at the front" %}
+                {% set deceasedOrderOfNames = [
+                    values.deceasedLastName + " " + values.deceasedFirstName + " " + values.deceasedMiddleNames
+                ] | filter %}
+            {% elif values.deceasedPrintOrderOfNames == "Only print last name" %}
+                {% set deceasedOrderOfNames = [
+                    values.deceasedLastName
+                ] | filter %}
+            {% elif values.deceasedPrintOrderOfNames == "Print no name" %}
+                {% set deceasedOrderOfNames = "" | filter %}
+            {% elif values.deceasedPrintOrderOfNames == "Print names in other order" %}
+                {% set deceasedOrderOfNames = [
+                    values.deceasedOrderOfNames
+                ] | filter %}
+            {% endif %}
+
+            {{ govukSummaryList({ rows: [
+                {
+                    key: { text: "First name" },
+                    value: { text: values.deceasedFirstName }
+                },
+                {
+                    key: { text: "Middle names" },
+                    value: { text: values.deceasedMiddleNames }
+                },
+                {
+                    key: { text: "Last name" },
+                    value: { text: values.deceasedLastName }
+                },
+                {
+                    key: { text: "Capitalise last names" },
+                    value: {
+                        text: "Yes" if values.deceasedCapitaliseLastNames
+                        else ("No – print as typed" if values.deceasedCapitaliseLastNames === false)
+                    }
+                },
+                {
+                    key: { text: "Prefix" },
+                    value: { text: values.deceasedPrefix }
+                },
+                {
+                    key: { text: "Suffix" },
+                    value: { text: values.deceasedSuffix }
+                },
+                {
+                    key: { text: "Print order of names" },
+                    value: { html:
+                        values.deceasedPrintOrderOfNames if values.deceasedPrintOrderOfNames == "Print no name"
+                        else (values.deceasedPrintOrderOfNames + ": <br>" + deceasedOrderOfNames if values.deceasedPrintOrderOfNames)
+                    }
+                },
+                {
+                    key: { text: "Date of death" },
+                    value: { text: values.deceasedDateOfDeath | date("DD/MM/YYYY") }
+                }
+            ] | filter }) }}
+        {% endset -%}
+
+        {% set personalDetailsHtml %}
+            <h2 class="govuk-heading-l">Personal details</h2>
+
+            {{ hmpoSubmit(ctx, {
+                    text: translate("buttons.editDetails"),
+                    classes: "govuk-button--secondary"
+                })
+            }}
+
+            {% set deceasedPlaceOfDeathAddress = [
+                values.deceasedPlaceOfDeathAddressLine1,
+                values.deceasedPlaceOfDeathAddressLine2,
+                values.deceasedPlaceOfDeathAddressStreet,
+                values.deceasedPlaceOfDeathAddressTown,
+                values.deceasedPlaceOfDeathAddressCounty,
+                values.deceasedPlaceOfDeathAddressPostcode
+            ] | filter | join("<br>") %}
+
+            {% set deceasedUsualAddress = [
+                values.deceasedUsualAddressLine1,
+                values.deceasedUsualAddressLine2,
+                values.deceasedUsualAddressStreet,
+                values.deceasedUsualAddressTown,
+                values.deceasedUsualAddressCounty,
+                values.deceasedUsualAddressPostcode
+            ] | filter | join("<br>") %}
+
+            {{ govukSummaryList({ rows: [
+                {
+                    key: { text: "Sex" },
+                    value: { text: values.deceasedSex }
+                },
+                {
+                    key: { text: "Maiden name" },
+                    value: { text: values.deceasedMaidenName }
+                } if values.deceasedMaidenName,
+                {
+                    key: { text: "Other known name 1" },
+                    value: { text: values.deceasedOtherKnownNames }
+                },
+                {
+                    key: { text: "Place of death" },
+                    value: { html:
+                        deceasedPlaceOfDeathAddress if deceasedPlaceOfDeathAddress else "<br><br><br><br><br><br>"
+                    }
+                },
+                {
+                    key: { text: "Usual address" },
+                    value: { html:
+                        deceasedUsualAddress if deceasedUsualAddress else "<br><br><br><br><br><br>"
+                    }
+                },
+                {
+                    key: { text: "Date of birth" },
+                    value: { html:
+                        "Full date of birth known:<br>" + values.deceasedFullDateOfBirth | date("Do MMMM YYYY") + "<br>" + "TODO: Age: {{ageCalculation}} years old" if values.deceasedDateOfBirth == "Full date of birth known"
+                        else ("Partial date of birth known:<br>" + values.deceasedPartialDateOfBirth | date("MMMM YYYY") + "<br>" + "Age: " + values.deceasedAge + " years old" if values.deceasedDateOfBirth == "Partial date of birth known"
+                            else ("Approximate year of birth only:<br>" + values.deceasedApproximateYearOfBirth + "<br>" + "Approximate age: About " + values.deceasedApproximateAge + " years old" if values.deceasedDateOfBirth == "Approximate year of birth only")
+                        )
+                    }
+                },
+                {
+                    key: { text: "Place of birth" },
+                    value: { text: values.deceasedPlaceOfBirth }
+                },
+                {
+                    key: { text: "Country of birth" },
+                    value: { text: values.deceasedCountryOfBirth }
+                },
+                {
+                    key: { text: "Spanish national" },
+                    value: {
+                        text: "Yes" if values.deceasedSpanishNational
+                        else ("No" if values.deceasedSpanishNational === false)
+                    }
+                },
+                {
+                    key: { text: "Occupation" },
+                    value: { text: values.deceasedOccupation }
+                },
+                {
+                    key: { text: "Occupation status" },
+                    value: { text: values.deceasedOccupationStatus }
+                },
+                {
+                    key: { text: "Relationship status" },
+                    value: { text: values.deceasedRelationshipStatus }
+                },
+                {
+                    key: { text: "Spouse or civil partner’s full name" },
+                    value: { text: values.spouseOrCivilPartnerFullName }
+                },
+                {
+                    key: { text: "Spouse or civil partner’s occupation" },
+                    value: { text: values.spouseOrCivilPartnerOccupation }
+                },
+                {
+                    key: { text: "Spouse or civil partner’s occupation status" },
+                    value: { text: values.spouseOrCivilPartnerOccupationStatus }
+                },
+                {
+                    key: { text: "Will the informant give the date of birth of the spouse or civil partner?" },
+                    value: { text: values.deceasedWillInformantGiveDateOfBirthOfSpouseOrCivilPartner }
+                }
+            ] | filter }) }}
+        {% endset -%}
+
+        {% set voluntaryDetailsHtml %}
+            <h2 class="govuk-heading-l">Voluntary details</h2>
+
+            {{ hmpoSubmit(ctx, {
+                    text: translate("buttons.editDetails"),
+                    classes: "govuk-button--secondary"
+                })
+            }}
+        {% endset -%}
+
+        {{ govukTabs({
+            items: [
+                {
+                    label: "Name and date of death",
+                    id: "name-and-date-of-death",
+                    panel: {
+                        html: nameAndDateOfDeathHtml
+                    }
+                },
+                {
+                    label: "Personal details",
+                    id: "personal-details",
+                    panel: {
+                        html: personalDetailsHtml
+                    }
+                },
+                {
+                    label: "Voluntary details",
+                    id: "voluntary-details",
+                    panel: {
+                        html: voluntaryDetailsHtml
+                    }
+                }
+            ]
+        }) }}
+
+    {% endcall %}
+{% endblock %}

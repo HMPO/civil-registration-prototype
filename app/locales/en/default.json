@@ -11,7 +11,8 @@
     "signIn": "Sign in",
     "createNewRecord": "Create new record",
     "editDetails": "Edit details",
-    "save": "Save"
+    "save": "Save",
+    "saveAndCheckForDuplicate": "Save and check for duplicate"
   },
   "fields": {
     "date-day": {

@@ -148,6 +148,161 @@ module.exports = {
         formatter: 'boolean',
         // validate: 'required'
     },
+    deceasedFirstName: {
+        // validate: 'required'
+    },
+    deceasedMiddleNames: {
+        // validate: 'required'
+    },
+    deceasedLastName: {
+        // validate: 'required'
+    },
+    deceasedCapitaliseLastNames: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    deceasedPrefix: {
+        // validate: 'required'
+    },
+    deceasedSuffix: {
+        // validate: 'required'
+    },
+    deceasedPrintOrderOfNames: {
+        // validate: 'required'
+    },
+    deceasedOrderOfNames: {
+        // validate: 'required'
+    },
+    deceasedDateOfDeath: {
+        // validate: 'required'
+    },
+    deceasedSex: {
+        // validate: 'required'
+    },
+    deceasedMaidenName: {
+        // validate: 'required'
+    },
+    deceasedOtherKnownNames: {
+        // validate: 'required'
+    },
+    deceasedPlaceOfDeathAddressLine1: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedPlaceOfDeathAddressLine2: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedPlaceOfDeathAddressStreet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedPlaceOfDeathAddressTown: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedPlaceOfDeathAddressCounty: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedPlaceOfDeathAddressPostcode: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressLine1: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressLine2: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressStreet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressTown: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressCounty: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressPostcode: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedDateOfBirth: {
+        // validate: 'required'
+    },
+    deceasedFullDateOfBirth: {
+        validate: ['date'],
+        autocomplete: 'bday'
+    },
+    deceasedPartialDateOfBirth: {
+        validate: ['date'],
+        autocomplete: 'bday'
+    },
+    deceasedAge: {
+        // validate: 'required'
+    },
+    deceasedApproximateYearOfBirth: {
+        // validate: 'required'
+    },
+    deceasedApproximateAge: {
+        // validate: 'required'
+    },
+    deceasedPlaceOfBirth: {
+        // validate: 'required'
+    },
+    deceasedCountryOfBirth: {
+        // validate: 'required'
+    },
+    deceasedSpanishNational: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    deceasedOccupation: {
+        // validate: 'required'
+    },
+    deceasedOccupationStatus: {
+        // validate: 'required'
+    },
+    deceasedRelationshipStatus: {
+        // validate: 'required'
+    },
+    spouseOrCivilPartnerFullName: {
+        // validate: 'required'
+    },
+    spouseOrCivilPartnerOccupation: {
+        // validate: 'required'
+    },
+    spouseOrCivilPartnerOccupationStatus: {
+        // validate: 'required'
+    },
+    deceasedWillInformantGiveDateOfBirthOfSpouseOrCivilPartner: {
+        // validate: 'required'
+    },
+    spouseOrCivilPartnerDateOfBirth: {
+        validate: ['date'],
+        autocomplete: 'bday'
+    },
+    deceasedWillInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics: {
+        // validate: 'required'
+    },
 
     informantFirstName: {
         // validate: 'required'
@@ -202,9 +357,6 @@ module.exports = {
         //     'required'
         // ]
     },
-
-
-
 
 
     informantRelativeOrNot: {
