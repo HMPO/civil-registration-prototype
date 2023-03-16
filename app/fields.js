@@ -380,7 +380,18 @@ module.exports = {
         //     'required'
         // ]
     },
-
+    registrarDesignation: {
+        // validate: 'required'
+    },
+    informantSignature: {
+        // validate: 'required'
+    },
+    informantSignatureAnnotation: {
+        // validate: 'required'
+    },
+    registrarSignature: {
+        // validate: 'required'
+    },
 
     informantRelativeOrNot: {
         formatter: 'boolean',

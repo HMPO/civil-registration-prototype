@@ -237,12 +237,25 @@ const registrar = {
     //     next:[
     //     ]
     // },
-    // '/registrar/record-register-page': {
-    //     // fields: [
-    //     // ],
-    //     next:[
-    //     ]
-    // }
+    '/registrar/record-register-page': {
+        checkJourney: false,
+        fields: [
+            'registrarDesignation',
+            'informantSignature',
+            'informantSignatureAnnotation',
+            'registrarSignature'
+        ],
+        next:[
+            '/registrar/record-register-confirmation'
+        ]
+    },
+    '/registrar/record-register-confirmation': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        // next:[
+        // ]
+    }
 }
 
 const informant = {
