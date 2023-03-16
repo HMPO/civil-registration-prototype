@@ -301,6 +301,7 @@ module.exports = {
         autocomplete: 'bday'
     },
     willInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics: {
+        formatter: 'boolean',
         // validate: 'required'
     },
     deceasedHowLongSpendInCommunalEstablishment: {

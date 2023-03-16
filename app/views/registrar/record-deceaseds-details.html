@@ -206,19 +206,48 @@
                 {
                     key: { text: "Spouse or civil partner’s full name" },
                     value: { text: values.spouseOrCivilPartnerFullName }
-                },
+                } if values.deceasedRelationshipStatus == "Wife of"
+                    or values.deceasedRelationshipStatus == "Husband of"
+                    or values.deceasedRelationshipStatus == "Civil partner of"
+                    or values.deceasedRelationshipStatus == "Widow of"
+                    or values.deceasedRelationshipStatus == "Widower of"
+                    or values.deceasedRelationshipStatus == "Surviving civil partner of",
                 {
                     key: { text: "Spouse or civil partner’s occupation" },
                     value: { text: values.spouseOrCivilPartnerOccupation }
-                },
+                } if values.deceasedRelationshipStatus == "Wife of"
+                    or values.deceasedRelationshipStatus == "Husband of"
+                    or values.deceasedRelationshipStatus == "Civil partner of"
+                    or values.deceasedRelationshipStatus == "Widow of"
+                    or values.deceasedRelationshipStatus == "Widower of"
+                    or values.deceasedRelationshipStatus == "Surviving civil partner of",
                 {
                     key: { text: "Spouse or civil partner’s occupation status" },
                     value: { text: values.spouseOrCivilPartnerOccupationStatus }
-                },
+                } if values.deceasedRelationshipStatus == "Wife of"
+                or values.deceasedRelationshipStatus == "Husband of"
+                or values.deceasedRelationshipStatus == "Civil partner of"
+                or values.deceasedRelationshipStatus == "Widow of"
+                or values.deceasedRelationshipStatus == "Widower of"
+                or values.deceasedRelationshipStatus == "Surviving civil partner of",
                 {
                     key: { text: "Will the informant give the date of birth of the spouse or civil partner?" },
                     value: { text: values.willInformantGiveDateOfBirthOfSpouseOrCivilPartner }
-                }
+                } if values.deceasedRelationshipStatus == "Wife of"
+                or values.deceasedRelationshipStatus == "Husband of"
+                or values.deceasedRelationshipStatus == "Civil partner of"
+                or values.deceasedRelationshipStatus == "Widow of"
+                or values.deceasedRelationshipStatus == "Widower of"
+                or values.deceasedRelationshipStatus == "Surviving civil partner of",
+                {
+                    key: { text: "Will the informant allow the answer given in ‘Relationship status’ to be used in statistics?" },
+                    value: {
+                        text: "Yes" if values.willInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics
+                        else ("No" if values.willInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics === false)
+                    }
+                } if values.deceasedRelationshipStatus == "Never married or in a civil partnership"
+                or values.deceasedRelationshipStatus == "Divorced"
+                or values.deceasedRelationshipStatus == "Partnership dissolved"
             ] | filter }) }}
         {% endset -%}
 
