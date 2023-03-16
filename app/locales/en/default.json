@@ -12,7 +12,9 @@
     "createNewRecord": "Create new record",
     "editDetails": "Edit details",
     "save": "Save",
-    "saveAndCheckForDuplicate": "Save and check for duplicate"
+    "saveAndCheckForDuplicate": "Save and check for duplicate",
+    "viewAndPrintRegisterPage": "View and print register page",
+    "sendToRON": "Send to RON"
   },
   "fields": {
     "date-day": {
