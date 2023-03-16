@@ -1,6 +1,6 @@
 {% extends "layout-registrar-record.html" %}
 
-{% set hmpoTitle %}{{values.deceasedLastNameCoverSheet}}, {{values.deceasedFirstNameCoverSheet}}{% endset %}
+{% set hmpoTitle %}{{values.coverSheetDeceasedLastName}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
 {% block sideContent %}
     <style>
@@ -40,7 +40,7 @@
 
     <h3 class="govuk-heading-m">File information</h3>
     {{ hmpoText(ctx, {
-        id: "deceasedFirstNameCoverSheet",
+        id: "coverSheetDeceasedFirstName",
         label: {
             text: "Deceased’s first name",
             classes: "govuk-label--s"
@@ -48,7 +48,7 @@
     }) }}
 
     {{ hmpoText(ctx, {
-        id: "deceasedMiddleNamesCoverSheet",
+        id: "coverSheetDeceasedMiddleNames",
         label: {
             text: "Middle names",
             classes: "govuk-label--s"
@@ -56,7 +56,7 @@
     }) }}
 
     {{ hmpoText(ctx, {
-        id: "deceasedLastNameCoverSheet",
+        id: "coverSheetDeceasedLastName",
         label: {
             text: "Last name",
             classes: "govuk-label--s"
@@ -64,7 +64,7 @@
     }) }}
 
     {{ hmpoDate(ctx, {
-        id: "deceasedDateOfDeathCoverSheet",
+        id: "coverSheetDeceasedDateOfDeath",
         legend: {
             text: "Date of death",
             classes: "govuk-label--s"
@@ -74,7 +74,7 @@
 
     <h3 class="govuk-heading-m">Registrar information</h3>
     {{ hmpoDate(ctx, {
-        id: "dateMCCDReceivedCoverSheet",
+        id: "coverSheetDateMCCDReceived",
         legend: {
             text: "Date MCCD received",
             classes: "govuk-label--s"
@@ -83,7 +83,7 @@
     }) }}
 
     {{ hmpoRadios(ctx, {
-        id: "MCCDStatus",
+        id: "coverSheetMCCDStatus",
         legend: {
             text: "MCCD status",
             classes: "govuk-label--s"
@@ -96,7 +96,7 @@
     }) }}
 
     {{ hmpoRadios(ctx, {
-        id: "priority",
+        id: "coverSheetPriority",
         legend: {
             text: "Priority",
             classes: "govuk-label--s"
@@ -108,21 +108,21 @@
     <!-- TODO: Refactor into fieldset -->
     <h4 class="govuk-heading-s">Informant contact details</h4>
     {{ hmpoText(ctx, {
-        id: "informantFullNameCoverSheet",
+        id: "coverSheetInformantFullName",
         label: {
             text: "Full name",
             classes: "govuk-label--xs"
         }
     }) }}
     {{ hmpoText(ctx, {
-        id: "informantPhoneNumberCoverSheet",
+        id: "coverSheetInformantPhoneNumber",
         label: {
             text: "Phone number",
             classes: "govuk-label--xs"
         }
     }) }}
     {{ hmpoText(ctx, {
-        id: "informantEmailAddressCoverSheet",
+        id: "coverSheetInformantEmailAddress",
         label: {
             text: "Email address",
             classes: "govuk-label--xs"
@@ -130,7 +130,7 @@
     }) }}
 
     {{ hmpoTextarea(ctx, {
-        id: "notes",
+        id: "coverSheetNotes",
         label: {
             text: "Notes",
             classes: "govuk-label--s"

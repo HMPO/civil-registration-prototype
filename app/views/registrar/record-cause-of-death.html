@@ -1,6 +1,6 @@
 {% extends "layout-registrar-record.html" %}
 
-{% set hmpoTitle %}{{values.deceasedLastNameCoverSheet}}, {{values.deceasedFirstNameCoverSheet}}{% endset %}
+{% set hmpoTitle %}{{values.coverSheetDeceasedLastName}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
 {% block sideContent %}
     <style>
@@ -62,14 +62,14 @@
         },
         {
             key: { text: "Date certifying practitioner last saw them alive" },
-            value: { text: values.dateCertifyingPractitionerLastSawDeceasedAlive | date("DD/MM/YYYY") }
+            value: { text: values.MCCDDateCertifyingPractitionerLastSawDeceasedAlive | date("DD/MM/YYYY") }
         },
         {
             key: { text: "Which letter is circled on the MCCD?" },
             value: {
-                text: "a – Seen after death by me" if values.letterCircledOnMCCD == "a"
-                    else ("b – Seen after death by another medical practitioner but not by me" if values.letterCircledOnMCCD == "b"
-                        else ("c – Not seen after death by a medical practitioner" if values.letterCircledOnMCCD == "c")
+                text: "a – Seen after death by me" if values.MCCDLetterCircledOnMCCD == "a"
+                    else ("b – Seen after death by another medical practitioner but not by me" if values.MCCDLetterCircledOnMCCD == "b"
+                        else ("c – Not seen after death by a medical practitioner" if values.MCCDLetterCircledOnMCCD == "c")
                     )
             }
         },
@@ -83,15 +83,15 @@
         },
         {
             key: { text: "Certifying practitioner’s full name" },
-            value: { text: values.certifyingPractitionerFullName }
+            value: { text: values.MCCDCertifyingPractitionerFullName }
         },
         {
             key: { text: "Qualifications" },
-            value: { text: values.certifyingPractitionerQualifications }
+            value: { text: values.MCCDCertifyingPractitionerQualifications }
         },
         {
             key: { text: "GMC number" },
-            value: { text: values.certifyingPractitionerGMCNumber }
+            value: { text: values.MCCDCertifyingPractitionerGMCNumber }
         },
         {
             key: { text: "Date signed" },
@@ -100,14 +100,14 @@
         {
             key: { text: "Died in a hospital?" },
             value: {
-                text: "Yes" if values.diedInHospital
-                else ("No" if values.diedInHospital === false)
+                text: "Yes" if values.MCCDDiedInHospital
+                else ("No" if values.MCCDDiedInHospital === false)
             }
         },
         {
             key: { text: "Consultant’s full name" },
-            value: { text: values.consultantFullName }
-        } if values.consultantFullName
+            value: { text: values.MCCDConsultantFullName }
+        } if values.MCCDConsultantFullName
     ] | filter }) }}
 
 
@@ -116,8 +116,8 @@
         {
             key: { text: "Might the attending practitioner apply to give further information later (box B)?" },
             value: {
-                text: "Yes" if values.attendingPractitionerProvideFutherInformation
-                    else ("No" if values.attendingPractitionerProvideFutherInformation === false)
+                text: "Yes" if values.MCCDWillAttendingPractitionerProvideFurtherInformation
+                    else ("No" if values.MCCDWillAttendingPractitionerProvideFurtherInformation === false)
             }
         }
     ] }) }}

@@ -1,6 +1,6 @@
 {% extends "layout-registrar-record.html" %}
 
-{% set hmpoTitle %}{{values.deceasedLastNameCoverSheet}}, {{values.deceasedFirstNameCoverSheet}}{% endset %}
+{% set hmpoTitle %}{{values.coverSheetDeceasedLastName}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
 {% block sideContent %}
     <style>
@@ -110,7 +110,7 @@
     {% endcall %}
 
     {{ hmpoDate(ctx, {
-        id: "dateCertifyingPractitionerLastSawDeceasedAlive",
+        id: "MCCDDateCertifyingPractitionerLastSawDeceasedAlive",
         legend: {
             text: "Date certifying practitioner last saw them alive",
             classes: "govuk-label--s"
@@ -119,7 +119,7 @@
     }) }}
 
     {{ hmpoRadios(ctx, {
-        id: "letterCircledOnMCCD",
+        id: "MCCDLetterCircledOnMCCD",
         legend: {
             text: "Which letter is circled on the MCCD?",
             classes: "govuk-label--s"
@@ -174,7 +174,7 @@
     <p><a href="#">2. Add other significant contributory conditions</a></p>
 
     {{ hmpoText(ctx, {
-        id: "certifyingPractitionerFullName",
+        id: "MCCDCertifyingPractitionerFullName",
         label: {
             text: "Certifying practitioner’s full name",
             classes: "govuk-label--s"
@@ -182,7 +182,7 @@
     }) }}
 
     {{ hmpoText(ctx, {
-        id: "certifyingPractitionerQualifications",
+        id: "MCCDCertifyingPractitionerQualifications",
         label: {
             text: "Qualifications",
             classes: "govuk-label--s"
@@ -191,7 +191,7 @@
 
     <!-- Create new class for govuk-input--width-7 -->
     {{ hmpoText(ctx, {
-        id: "certifyingPractitionerGMCNumber",
+        id: "MCCDCertifyingPractitionerGMCNumber",
         label: {
             text: "GMC number",
             classes: "govuk-label--s"
@@ -209,7 +209,7 @@
     }) }}
 
     {{ hmpoRadios(ctx, {
-        id: "diedInHospital",
+        id: "MCCDDiedInHospital",
         legend: {
             text: "Died in a hospital?",
             classes: "govuk-label--s"
@@ -221,7 +221,7 @@
             conditional: {
                 html:
                     hmpoText(ctx, {
-                        id: "consultantFullName",
+                        id: "MCCDConsultantFullName",
                         label: {
                             text: "Consultant’s full name",
                             classes: "govuk-label--s"
@@ -237,7 +237,7 @@
 
     <h3 class="govuk-heading-m">Side 2</h3>
     {{ hmpoRadios(ctx, {
-        id: "attendingPractitionerProvideFutherInformation",
+        id: "MCCDWillAttendingPractitionerProvideFurtherInformation",
         legend: {
             text: "Might the attending practitioner apply to give further information later (box B)?",
             classes: "govuk-label--s"

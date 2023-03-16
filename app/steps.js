@@ -30,14 +30,14 @@ const registrar = {
         entryPoint: true,
         // resetJourney: true,
         fields: [
-            'emailAddress',
-            'password'
+            'registrarEmailAddress',
+            'registrarPassword'
         ],
         next: '/registrar/check-your-email'
     },
     '/registrar/check-your-email': {
         fields: [
-            'oneTimePassword'
+            'registrarOneTimePassword'
         ],
         next:[
             '/registrar/pending-registrations'
@@ -52,10 +52,10 @@ const registrar = {
     },
     '/registrar/create-new-record': {
         fields: [
-            'deceasedFirstNameCoverSheet',
-            'deceasedMiddleNamesCoverSheet',
-            'deceasedLastNameCoverSheet',
-            'deceasedDateOfDeathCoverSheet'
+            'coverSheetDeceasedFirstName',
+            'coverSheetDeceasedMiddleNames',
+            'coverSheetDeceasedLastName',
+            'coverSheetDeceasedDateOfDeath'
         ],
         next:[
             '/registrar/record'
@@ -72,17 +72,17 @@ const registrar = {
     '/registrar/record-edit': {
         checkJourney: false,
         fields: [
-            'deceasedFirstNameCoverSheet',
-            'deceasedMiddleNamesCoverSheet',
-            'deceasedLastNameCoverSheet',
-            'deceasedDateOfDeathCoverSheet',
-            'dateMCCDReceivedCoverSheet',
-            'MCCDStatus',
-            'priority',
-            'informantFullNameCoverSheet',
-            'informantPhoneNumberCoverSheet',
-            'informantEmailAddressCoverSheet',
-            'notes'
+            'coverSheetDeceasedFirstName',
+            'coverSheetDeceasedMiddleNames',
+            'coverSheetDeceasedLastName',
+            'coverSheetDeceasedDateOfDeath',
+            'coverSheetDateMCCDReceived',
+            'coverSheetMCCDStatus',
+            'coverSheetPriority',
+            'coverSheetInformantFullName',
+            'coverSheetInformantPhoneNumber',
+            'coverSheetInformantEmailAddress',
+            'coverSheetNotes'
         ],
         next:[
             '/registrar/record'
@@ -105,18 +105,18 @@ const registrar = {
             'MCCDAddressTown',
             'MCCDAddressCounty',
             'MCCDAddressPostcode',
-            'dateCertifyingPractitionerLastSawDeceasedAlive',
-            'letterCircledOnMCCD',
+            'MCCDDateCertifyingPractitionerLastSawDeceasedAlive',
+            'MCCDLetterCircledOnMCCD',
             'MCCDCauseOfDeathReason1',
             'MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath',
             'MCCDCauseOfDeathReason1TimeUnit',
-            'certifyingPractitionerFullName',
-            'certifyingPractitionerQualifications',
-            'certifyingPractitionerGMCNumber',
+            'MCCDCertifyingPractitionerFullName',
+            'MCCDCertifyingPractitionerQualifications',
+            'MCCDCertifyingPractitionerGMCNumber',
             'MCCDDateSigned',
-            'diedInHospital',
-            'consultantFullName',
-            'attendingPractitionerProvideFutherInformation'
+            'MCCDDiedInHospital',
+            'MCCDConsultantFullName',
+            'MCCDWillAttendingPractitionerProvideFurtherInformation'
         ],
         next:[
             '/registrar/record-cause-of-death'

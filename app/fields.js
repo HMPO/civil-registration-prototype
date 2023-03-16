@@ -10,70 +10,70 @@ module.exports = {
     // },
     // ========================
 
-    emailAddress: {
+    registrarEmailAddress: {
         // validate: [
         //     'required'
         // ]
     },
-    password: {
+    registrarPassword: {
         // validate: [
         //     'required'
         // ]
     },
-    oneTimePassword: {
+    registrarOneTimePassword: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedFirstNameCoverSheet: {
+    coverSheetDeceasedFirstName: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedMiddleNamesCoverSheet: {
+    coverSheetDeceasedMiddleNames: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedLastNameCoverSheet: {
+    coverSheetDeceasedLastName: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedDateOfDeathCoverSheet: {
+    coverSheetDeceasedDateOfDeath: {
         validate: ['required', 'date'],
         autocomplete: 'bday'
     },
-    dateMCCDReceivedCoverSheet: {
+    coverSheetDateMCCDReceived: {
         // validate: [
         //     'required'
         // ]
     },
-    MCCDStatus: {
+    coverSheetMCCDStatus: {
         // validate: [
         //     'required'
         // ]
     },
-    priority: {
+    coverSheetPriority: {
         formatter: 'boolean',
         // validate: 'required'
     },
-    informantFullNameCoverSheet: {
+    coverSheetInformantFullName: {
         // validate: [
         //     'required'
         // ]
     },
-    informantPhoneNumberCoverSheet: {
+    coverSheetInformantPhoneNumber: {
         // validate: [
         //     'required'
         // ]
     },
-    informantEmailAddressCoverSheet: {
+    coverSheetInformantEmailAddress: {
         // validate: [
         //     'required'
         // ]
     },
-    notes: {
+    coverSheetNotes: {
         // validate: [
         //     'required'
         // ]
@@ -108,11 +108,11 @@ module.exports = {
         //     'required'
         // ]
     },
-    dateCertifyingPractitionerLastSawDeceasedAlive: {
+    MCCDDateCertifyingPractitionerLastSawDeceasedAlive: {
         validate: ['date'],
         autocomplete: 'bday'
     },
-    letterCircledOnMCCD: {
+    MCCDLetterCircledOnMCCD: {
         // validate: 'required'
     },
     MCCDCauseOfDeathReason1: {
@@ -124,27 +124,27 @@ module.exports = {
     MCCDCauseOfDeathReason1TimeUnit: {
         // validate: 'required'
     },
-    certifyingPractitionerFullName: {
+    MCCDCertifyingPractitionerFullName: {
         // validate: 'required'
     },
-    certifyingPractitionerQualifications: {
+    MCCDCertifyingPractitionerQualifications: {
         // validate: 'required'
     },
-    certifyingPractitionerGMCNumber: {
+    MCCDCertifyingPractitionerGMCNumber: {
         // validate: 'required'
     },
     MCCDDateSigned: {
         validate: ['date'],
         autocomplete: 'bday'
     },
-    diedInHospital: {
+    MCCDDiedInHospital: {
         formatter: 'boolean',
         // validate: 'required'
     },
-    consultantFullName: {
+    MCCDConsultantFullName: {
         // validate: 'required'
     },
-    attendingPractitionerProvideFutherInformation: {
+    MCCDWillAttendingPractitionerProvideFurtherInformation: {
         formatter: 'boolean',
         // validate: 'required'
     },
