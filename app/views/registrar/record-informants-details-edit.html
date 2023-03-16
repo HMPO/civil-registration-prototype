@@ -157,9 +157,48 @@
         },
         classes: "govuk-radios--small",
         items: [
-            { value: "relative present at death", text: "Relative – present at death" },
-            { value: "relative not present at death", text: "Relative – not present at death" },
-            { value: "relative in attendance", text: "Relative – in attendance" },
+            {
+                value: "relative present at death",
+                text: "Relative – present at death",
+                conditional: {
+                    html:
+                        hmpoText(ctx, {
+                            id: "informantRelationshipToDeceased",
+                            label: {
+                                text: "Relationship to deceased",
+                                classes: "govuk-label--s"
+                            }
+                        })
+                }
+            },
+            {
+                value: "relative not present at death",
+                text: "Relative – not present at death",
+                conditional: {
+                    html:
+                        hmpoText(ctx, {
+                            id: "informantRelationshipToDeceased",
+                            label: {
+                                text: "Relationship to deceased",
+                                classes: "govuk-label--s"
+                            }
+                        })
+                }
+            },
+            {
+                value: "relative in attendance",
+                text: "Relative – in attendance",
+                conditional: {
+                    html:
+                        hmpoText(ctx, {
+                            id: "informantRelationshipToDeceased",
+                            label: {
+                                text: "Relationship to deceased",
+                                classes: "govuk-label--s"
+                            }
+                        })
+                }
+            },
             { value: "non-relative present at death", text: "Non-relative – present at death" },
             { value: "non-relative occupier", text: "Non-relative – occupier" },
             { value: "non-relative causing the body to be buried", text: "Non-relative – causing the body to be buried" },
@@ -168,15 +207,6 @@
             { value: "non-relative causing the disposal of the body", text: "Non-relative – causing the disposal of the body" },
             { value: "non-relative inmate", text: "Non-relative – inmate" }
         ]
-    }) }}
-
-    {{ hmpoText(ctx, {
-        id: "informantRelationshipToDeceased",
-        label: {
-            text: "Relationship to deceased",
-            classes: "govuk-label--s"
-        },
-        hint: "Not required if informant is a non-relative"
     }) }}
 
     {{ hmpoRadios(ctx, {
