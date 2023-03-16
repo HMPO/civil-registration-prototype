@@ -10,6 +10,7 @@
     "next": "Continue",
     "signIn": "Sign in",
     "createNewRecord": "Create new record",
+    "cancel": "Cancel",
     "editDetails": "Edit details",
     "save": "Save",
     "saveAndCheckForDuplicate": "Save and check for duplicate",

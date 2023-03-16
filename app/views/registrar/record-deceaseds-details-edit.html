@@ -831,12 +831,14 @@
         {# TODO: Add logic for first active tab showing different CTA
         {{ hmpoSubmit(ctx, { text: translate("buttons.saveAndCheckForDuplicate") }) }}
         #}
-        {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
-        {{ govukButton({
-            text: "Cancel",
-            classes: "govuk-button--secondary",
-            href: "./record-deceaseds-details"
-        }) }}
+        <div class="govuk-button-group">
+            {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
+            {{ hmpoSubmit(ctx, {
+                text: translate("buttons.cancel"),
+                classes: "govuk-button--secondary",
+                href: "./record-deceaseds-details"
+            }) }}
+        </div>
 
     {% endcall %}
 {% endblock %}

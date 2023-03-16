@@ -245,12 +245,14 @@
         classes: "govuk-radios--small"
     }) }}
 
-    {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
-    {{ govukButton({
-        text: "Cancel",
-        classes: "govuk-button--secondary",
-        href: "./record-cause-of-death"
-    }) }}
+    <div class="govuk-button-group">
+        {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
+        {{ hmpoSubmit(ctx, {
+            text: translate("buttons.cancel"),
+            classes: "govuk-button--secondary",
+            href: "./record-cause-of-death"
+        }) }}
+    </div>
 
     {% endcall %}
 {% endblock %}

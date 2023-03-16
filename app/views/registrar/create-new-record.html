@@ -40,13 +40,14 @@
             hint: "For example, 27 03 2001"
         }) }}
 
-        {{ hmpoSubmit(ctx, { text: translate("buttons.createNewRecord") }) }}
-
-        {{ govukButton({
-            text: "Cancel",
-            classes: "govuk-button--secondary",
-            href: "/registrar/pending-registrations"
-        }) }}
+        <div class="govuk-button-group">
+            {{ hmpoSubmit(ctx, { text: translate("buttons.createNewRecord") }) }}
+            {{ hmpoSubmit(ctx, {
+                text: translate("buttons.cancel"),
+                classes: "govuk-button--secondary",
+                href: "/registrar/pending-registrations"
+            }) }}
+        </div>
 
     {% endcall %}
 
