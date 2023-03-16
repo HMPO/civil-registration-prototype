@@ -453,6 +453,13 @@
                 ]
             }) }}
 
+
+            <h3 class="govuk-heading-s">Other known names</h3>
+            {{ hmpoSubmit(ctx, {
+                text: translate("buttons.addAnotherKnownName"),
+                classes: "govuk-button--secondary",
+                href: "#"
+            }) }}
             {# TODO: Add other known names fieldset in
             {{ hmpoText(ctx, {
                 id: "deceasedOtherKnownNames",
