@@ -122,13 +122,14 @@ const registrar = {
             '/registrar/record-cause-of-death'
         ]
     },
-    // '/registrar/record-uploads': {
-    //     // fields: [
-    //     // ],
-    //     next:[
-    //         '/registrar/record-uploads-edit'
-    //     ]
-    // },
+    '/registrar/record-uploads': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-uploads-edit'
+        ]
+    },
     // '/registrar/record-uploads-edit': {
     //     fields: [
     //     ],
@@ -231,12 +232,13 @@ const registrar = {
             '/registrar/record-informants-details'
         ]
     },
-    // '/registrar/record-check-all-information': {
-    //     // fields: [
-    //     // ],
-    //     next:[
-    //     ]
-    // },
+    '/registrar/record-check-all-information': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        // next:[
+        // ]
+    },
     '/registrar/record-register-page': {
         checkJourney: false,
         fields: [
