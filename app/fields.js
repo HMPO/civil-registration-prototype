@@ -293,17 +293,40 @@ module.exports = {
     spouseOrCivilPartnerOccupationStatus: {
         // validate: 'required'
     },
-    deceasedWillInformantGiveDateOfBirthOfSpouseOrCivilPartner: {
+    willInformantGiveDateOfBirthOfSpouseOrCivilPartner: {
         // validate: 'required'
     },
     spouseOrCivilPartnerDateOfBirth: {
         validate: ['date'],
         autocomplete: 'bday'
     },
-    deceasedWillInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics: {
+    willInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics: {
         // validate: 'required'
     },
-
+    deceasedHowLongSpendInCommunalEstablishment: {
+        // validate: 'required'
+    },
+    deceasedNHSNumber: {
+        // validate: 'required'
+    },
+    willInformantGiveAdditionalIndustryAndEmploymentInformationForDeceased: {
+        // validate: 'required'
+    },
+    deceasedAdditionalEmploymentOrIndustryInformation: {
+        // validate: 'required'
+    },
+    deceasedEmploymentStatus: {
+        // validate: 'required'
+    },
+    willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner: {
+        // validate: 'required'
+    },
+    spouseOrCivilAdditionalEmploymentOrIndustryInformation: {
+        // validate: 'required'
+    },
+    spouseOrCivilEmploymentStatus: {
+        // validate: 'required'
+    },
     informantFirstName: {
         // validate: 'required'
     },

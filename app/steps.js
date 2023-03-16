@@ -186,9 +186,17 @@ const registrar = {
             'spouseOrCivilPartnerFullName',
             'spouseOrCivilPartnerOccupation',
             'spouseOrCivilPartnerOccupationStatus',
-            'deceasedWillInformantGiveDateOfBirthOfSpouseOrCivilPartner',
+            'willInformantGiveDateOfBirthOfSpouseOrCivilPartner',
             'spouseOrCivilPartnerDateOfBirth',
-            'deceasedWillInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics'
+            'willInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics',
+            'deceasedHowLongSpendInCommunalEstablishment',
+            'deceasedNHSNumber',
+            'willInformantGiveAdditionalIndustryAndEmploymentInformationForDeceased',
+            'deceasedAdditionalEmploymentOrIndustryInformation',
+            'deceasedEmploymentStatus',
+            'willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner',
+            'spouseOrCivilAdditionalEmploymentOrIndustryInformation',
+            'spouseOrCivilEmploymentStatus'
         ],
         next:[
             '/registrar/record-deceaseds-details'

@@ -253,7 +253,7 @@
 
     <!-- TODO: Fix `spouseOrCivilPartnerDateOfBirth` not revealing -->
     {{ hmpoRadios(ctx, {
-        id: "deceasedWillInformantGiveDateOfBirthOfSpouseOrCivilPartner",
+        id: "willInformantGiveDateOfBirthOfSpouseOrCivilPartner",
         legend: {
             text: "Will the informant give the date of birth of the spouse or civil partner?",
             classes: "govuk-label--s"
@@ -290,7 +290,7 @@
     }) }}
 
     {{ hmpoRadios(ctx, {
-        id: "deceasedWillInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics",
+        id: "willInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics",
         legend: {
             text: "Will the informant allow the answer given in ‘Relationship status’ to be used in statistics?",
             classes: "govuk-label--s"
@@ -683,6 +683,122 @@
 
         {% set voluntaryDetailsHtml %}
             <h2 class="govuk-heading-l">Voluntary details</h2>
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedHowLongSpendInCommunalEstablishment",
+                legend: {
+                    text: "How long did the deceased spend in a communal establishment?",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: "Under 6 months", text: "Under 6 months" },
+                    { value: "6 months or over", text: "6 months or over" },
+                    { value: "Not known", text: "Not known" },
+                    { value: "Not applicable", text: "Not applicable" }
+                ]
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "deceasedNHSNumber",
+                label: {
+                    text: "Deceased’s NHS number",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-input--width-10"
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "willInformantGiveAdditionalIndustryAndEmploymentInformationForDeceased",
+                legend: {
+                    text: "Will the informant give additional industry and employment information for the deceased?",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    {
+                        value: "Yes",
+                        text: "Yes",
+                        conditional: {
+                            html:
+                                hmpoTextarea(ctx, {
+                                    id: "deceasedAdditionalEmploymentOrIndustryInformation",
+                                    label: {
+                                        text: "Add additional employment or industry information",
+                                        classes: "govuk-label--s"
+                                    }
+                                })
+                        }
+                    },
+                    { value: "Not employed", text: "Not employed" },
+                    { value: "Not known", text: "Not known" },
+                    { value: "Refused to answer", text: "Refused to answer" }
+                ]
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedEmploymentStatus",
+                legend: {
+                    text: "Select employment status – deceased",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: "Employee, not supervising", text: "Employee, not supervising" },
+                    { value: "Employee, supervising", text: "Employee, supervising" },
+                    { value: "Self-employed, no employees", text: "Self-employed, no employees" },
+                    { value: "Self-employed, with employees", text: "Self-employed, with employees" },
+                    { value: "Not employed", text: "Not employed" },
+                    { value: "Not known", text: "Not known" },
+                    { value: "Refused to answer", text: "Refused to answer" }
+                ]
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner",
+                legend: {
+                    text: "Will the informant give additional industry and employment information for the deceased’s partner?",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    {
+                        value: "Yes",
+                        text: "Yes",
+                        conditional: {
+                            html:
+                                hmpoTextarea(ctx, {
+                                    id: "spouseOrCivilAdditionalEmploymentOrIndustryInformation",
+                                    label: {
+                                        text: "Add additional employment or industry information",
+                                        classes: "govuk-label--s"
+                                    }
+                                })
+                        }
+                    },
+                    { value: "Not employed", text: "Not employed" },
+                    { value: "Not known", text: "Not known" },
+                    { value: "Refused to answer", text: "Refused to answer" }
+                ]
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "spouseOrCivilEmploymentStatus",
+                legend: {
+                    text: "Select employment status – deceased’s partner",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: "Employee, not supervising", text: "Employee, not supervising" },
+                    { value: "Employee, supervising", text: "Employee, supervising" },
+                    { value: "Self-employed, no employees", text: "Self-employed, no employees" },
+                    { value: "Self-employed, with employees", text: "Self-employed, with employees" },
+                    { value: "Not employed", text: "Not employed" },
+                    { value: "Not known", text: "Not known" },
+                    { value: "Refused to answer", text: "Refused to answer" }
+                ]
+            }) }}
 
         {% endset -%}
 

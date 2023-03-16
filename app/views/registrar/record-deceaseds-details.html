@@ -214,7 +214,7 @@
                 },
                 {
                     key: { text: "Will the informant give the date of birth of the spouse or civil partner?" },
-                    value: { text: values.deceasedWillInformantGiveDateOfBirthOfSpouseOrCivilPartner }
+                    value: { text: values.willInformantGiveDateOfBirthOfSpouseOrCivilPartner }
                 }
             ] | filter }) }}
         {% endset -%}
@@ -227,6 +227,39 @@
                     classes: "govuk-button--secondary"
                 })
             }}
+
+            {{ govukSummaryList({ rows: [
+                {
+                    key: { text: "How long did the deceased spend in a communal establishment?" },
+                    value: { text: values.deceasedHowLongSpendInCommunalEstablishment }
+                },
+                {
+                    key: { text: "Deceased’s NHS number" },
+                    value: { text: values.deceasedNHSNumber }
+                },
+                {
+                    key: { text: "Will the informant give additional industry and employment information for the deceased?" },
+                    value: { html:
+                        values.willInformantGiveAdditionalIndustryAndEmploymentInformationForDeceased + ":<br>" + values.deceasedAdditionalEmploymentOrIndustryInformation if values.willInformantGiveAdditionalIndustryAndEmploymentInformationForDeceased == "Yes"
+                        else values.willInformantGiveAdditionalIndustryAndEmploymentInformationForDeceased
+                    }
+                },
+                {
+                    key: { text: "Select employment status – deceased" },
+                    value: { text: values.deceasedEmploymentStatus }
+                },
+                {
+                    key: { text: "Will the informant give additional industry and employment information for the deceased’s partner?" },
+                    value: { html:
+                        values.willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner + ":<br>" + values.deceasedAdditionalEmploymentOrIndustryInformation if values.willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner == "Yes"
+                        else values.willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner
+                    }
+                },
+                {
+                    key: { text: "Select employment status – deceased’s partner" },
+                    value: { text: values.spouseOrCivilEmploymentStatus }
+                }
+            ] | filter }) }}
         {% endset -%}
 
         {{ govukTabs({
