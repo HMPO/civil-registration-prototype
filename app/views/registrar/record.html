@@ -1,6 +1,6 @@
 {% extends "layout-registrar-record.html" %}
 
-{% set hmpoTitle %}{{values.coverSheetDeceasedLastName}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
+{% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
 {% block sideContent %}
     <style>

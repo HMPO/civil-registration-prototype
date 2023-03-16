@@ -1,6 +1,6 @@
 {% extends "layout-registrar-record.html" %}
 
-{% set hmpoTitle %}{{values.coverSheetDeceasedLastName}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
+{% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
 {% block sideContent %}
     <style>
@@ -81,7 +81,10 @@
                 },
                 {
                     key: { text: "Last name" },
-                    value: { text: values.deceasedLastName }
+                    value: {
+                        text: (values.deceasedLastName | upper) if values.deceasedCapitaliseLastNames === true
+                        else values.deceasedLastName
+                    }
                 },
                 {
                     key: { text: "Capitalise last names" },
