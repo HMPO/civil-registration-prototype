@@ -422,6 +422,14 @@
                     }
                 ]
             }) }}
+
+            {{ hmpoDate(ctx, {
+                id: "deceasedDateOfDeath",
+                legend: {
+                    text: "Date of death",
+                    classes: "govuk-label--s"
+                }
+            }) }}
         {% endset -%}
 
         {% set personalDetailsHtml %}

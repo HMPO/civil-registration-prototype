@@ -174,7 +174,8 @@ module.exports = {
         // validate: 'required'
     },
     deceasedDateOfDeath: {
-        // validate: 'required'
+        validate: ['date'],
+        autocomplete: 'bday'
     },
     deceasedSex: {
         // validate: 'required'
