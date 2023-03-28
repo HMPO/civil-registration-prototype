@@ -2,6 +2,86 @@
 
 {% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
+{% set deceasedPlaceOfDeathAddressCommunalEstablishment %}
+    {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {% call govukFieldset({
+        id: "deceasedPlaceOfDeathAddressCommunalEstablishment",
+        legend: {
+            text: "Address",
+            classes: "govuk-fieldset__legend--s"
+        }
+    }) %}
+
+        <div class="govuk-form-group">
+            <label id="my-autocomplete" class="govuk-label govuk-label--s">Communal establishment address</label>
+            <div id="my-autocomplete-container" class="govuk-!-width-one-half"></div>
+        </div>
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressLine1",
+            label: {
+                text: "House or flat number",
+                classes: "govuk-label--xs"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressLine2",
+            label: {
+                text: "Building name",
+                classes: "govuk-label--xs"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressStreet",
+            label: {
+                text: "Street",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressTown",
+            label: {
+                text: "Town or city",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressCounty",
+            label: {
+                text: "County",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressPostcode",
+            label: {
+                text: "Postcode",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "characters" },
+            classes: "govuk-!-width-one-quarter"
+        }) }}
+
+    {% endcall %}
+{% endset %}
+
 {% set deceasedPlaceOfDeathAddress %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
     {% from "hmpo-text/macro.njk" import hmpoText %}
@@ -13,9 +93,6 @@
             classes: "govuk-fieldset__legend--s"
         }
     }) %}
-
-        <label id="my-autocomplete">Select your country</label>
-        <div id="my-autocomplete-container"></div>
 
         {{ hmpoText(ctx, {
             id: "deceasedPlaceOfDeathAddressLine1",
@@ -91,6 +168,87 @@
             classes: "govuk-fieldset__legend--s"
         }
     }) %}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressLine1",
+            label: {
+                text: "House or flat number",
+                classes: "govuk-label--xs"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressLine2",
+            label: {
+                text: "Building name",
+                classes: "govuk-label--xs"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressStreet",
+            label: {
+                text: "Street",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressTown",
+            label: {
+                text: "Town or city",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressCounty",
+            label: {
+                text: "County",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressPostcode",
+            label: {
+                text: "Postcode",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "characters" },
+            classes: "govuk-!-width-one-quarter"
+        }) }}
+
+    {% endcall %}
+{% endset %}
+
+{% set deceasedUsualAddressCommunalEstablishment %}
+    {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {% call govukFieldset({
+        id: "deceasedUsualAddress",
+        legend: {
+            text: "Address",
+            classes: "govuk-fieldset__legend--s"
+        }
+    }) %}
+
+        <!-- TODO: Separate out CE functionality from the typeahead.js and bundle.js into separate ones with the full CE list -->
+        <div class="govuk-form-group">
+            <label id="my-autocomplete" class="govuk-label govuk-label--s">Communal establishment address</label>
+            <div id="my-autocomplete-container" class="govuk-!-width-one-half"></div>
+        </div>
 
         {{ hmpoText(ctx, {
             id: "deceasedUsualAddressLine1",
@@ -492,7 +650,7 @@
                         value: "Communal establishment",
                         text: "Communal establishment",
                         conditional: {
-                            html: deceasedPlaceOfDeathAddress
+                            html: deceasedPlaceOfDeathAddressCommunalEstablishment
                         }
                     },
                     {
@@ -525,7 +683,7 @@
                         value: "Different to place of death (communal establishment)",
                         text: "Different to place of death (communal establishment)",
                         conditional: {
-                            html: deceasedUsualAddress
+                            html: deceasedUsualAddressCommunalEstablishment
                         }
                     }
                 ]
