@@ -150,12 +150,12 @@ https://github.com/alphagov/accessible-autocomplete
 
 2 - `npm install --save browserify`
 
-3 - create an empty javascript file **typeahead.js** in public/javascript for now.
+3 - create an empty javascript file **typeahead.js** in app/assets/javascripts for now.
 
 (a). browserify bundle your javascript code, and later you can reference it.
 
 4 - in the above created file add this code.
-`
+```
     const accessibleAutocomplete = require('accessible-autocomplete');
 
     const countries = [
@@ -169,7 +169,7 @@ https://github.com/alphagov/accessible-autocomplete
     id: 'my-autocomplete', // To match it to the existing <label>.
     source: countries
     })
-`
+```
 
 5 - run browserify command as follow:
     `browserify typeahead.js -o bundle.js
@@ -177,7 +177,7 @@ https://github.com/alphagov/accessible-autocomplete
 (a). make sure that you are on the root level of file **step-3**. and you
 can run `ls` so that your javascript file is listed.
 
-(b). run `<code>`ls` and you should see bundle.js
+(b). run `ls` and you should see bundle.js
 
 6 - add script reference: in this project we add scripts on location.
     `/app/views/includes/scripts.html`
