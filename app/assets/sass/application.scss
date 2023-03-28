@@ -10,6 +10,7 @@ $hmpo-assets-path: '/public/';
 @import "node_modules/hmpo-components/all";
 
 // Patterns that aren't in Frontend
+@import "patterns/accessible-autocomplete";
 @import "patterns/alert";
 @import "patterns/step-by-step-navigation";
 
