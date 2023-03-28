@@ -1,0 +1,40 @@
+{% extends "layout-informant.html" %}
+
+{% set hmpoTitle %}Their partner’s details{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoText(ctx, {
+            id: "partnerName",
+            label: {
+                text: "Name of spouse or civil partner",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "partnerLastOccupation",
+            label: {
+                text: "Occupation of spouse or civil partner",
+                classes: "govuk-label--m"
+            },
+            hint: "If they were retired, put their last occupation"
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "partnerRetired",
+            legend: {
+                text: "Are they retired?",
+                classes: "govuk-label--m"
+            },
+            inline: true
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

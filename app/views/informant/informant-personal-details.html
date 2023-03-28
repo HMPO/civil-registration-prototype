@@ -1,0 +1,48 @@
+{% extends "layout-informant.html" %}
+
+{% set hmpoTitle %}Your personal details{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoText(ctx, {
+            id: "informantFirstName",
+            label: {
+                text: "Your first name",
+                classes: "govuk-label--m"
+            },
+            hint: "This is also knowns as 'given names'"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "informantMiddleNames",
+            label: {
+                text: "Middle names",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "informantLastName",
+            label: {
+                text: "Last name",
+                classes: "govuk-label--m"
+            },
+            hint: "This is also known as 'family name'"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "informantRelationshipToDeceased",
+            label: {
+                text: "Relationship to the person who's died",
+                classes: "govuk-label--m"
+            }
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

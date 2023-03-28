@@ -1,0 +1,859 @@
+{% extends "layout-registrar-record.html" %}
+
+{% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
+
+{% set deceasedPlaceOfDeathAddress %}
+    {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {% call govukFieldset({
+        id: "deceasedPlaceOfDeathAddress",
+        legend: {
+            text: "Address",
+            classes: "govuk-fieldset__legend--s"
+        }
+    }) %}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressLine1",
+            label: {
+                text: "House or flat number",
+                classes: "govuk-label--xs"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressLine2",
+            label: {
+                text: "Building name",
+                classes: "govuk-label--xs"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressStreet",
+            label: {
+                text: "Street",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressTown",
+            label: {
+                text: "Town or city",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressCounty",
+            label: {
+                text: "County",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedPlaceOfDeathAddressPostcode",
+            label: {
+                text: "Postcode",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "characters" },
+            classes: "govuk-!-width-one-quarter"
+        }) }}
+
+    {% endcall %}
+{% endset %}
+
+{% set deceasedUsualAddress %}
+    {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {% call govukFieldset({
+        id: "deceasedUsualAddress",
+        legend: {
+            text: "Address",
+            classes: "govuk-fieldset__legend--s"
+        }
+    }) %}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressLine1",
+            label: {
+                text: "House or flat number",
+                classes: "govuk-label--xs"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressLine2",
+            label: {
+                text: "Building name",
+                classes: "govuk-label--xs"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressStreet",
+            label: {
+                text: "Street",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressTown",
+            label: {
+                text: "Town or city",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressCounty",
+            label: {
+                text: "County",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "deceasedUsualAddressPostcode",
+            label: {
+                text: "Postcode",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "characters" },
+            classes: "govuk-!-width-one-quarter"
+        }) }}
+
+    {% endcall %}
+{% endset %}
+
+{% set deceasedFullDateOfBirthReveal %}
+    {% from "hmpo-date/macro.njk" import hmpoDate %}
+
+    {{ hmpoDate(ctx, {
+        id: "deceasedFullDateOfBirth",
+        legend: {
+            text: "Full date of birth",
+            classes: "govuk-label--xs"
+        }
+    }) }}
+    <!-- TODO: Add age calculation text -->
+{% endset %}
+
+{% set deceasedPartialDateOfBirthReveal %}
+    {% from "hmpo-date/macro.njk" import hmpoDate %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    <!-- TODO: Change date to month + year text input -->
+    {{ hmpoDate(ctx, {
+        id: "deceasedPartialDateOfBirth",
+        legend: {
+            text: "Partial date of birth",
+            classes: "govuk-label--xs"
+        },
+        hint: "Enter as much as is known"
+    }) }}
+
+    {{ hmpoText(ctx, {
+        id: "deceasedAge",
+        label: {
+            text: "Age",
+            classes: "govuk-label--xs"
+        },
+        classes: "govuk-input--width-3"
+    }) }}
+{% endset %}
+
+{% set deceasedApproximateYearOfBirthReveal %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {{ hmpoText(ctx, {
+        id: "deceasedApproximateYearOfBirth",
+        label: {
+            text: "Approximate year of birth",
+            classes: "govuk-label--xs"
+        },
+        classes: "govuk-input--width-4"
+    }) }}
+
+    {{ hmpoText(ctx, {
+        id: "deceasedApproximateAge",
+        label: {
+            text: "Approximate age",
+            classes: "govuk-label--xs"
+        },
+        classes: "govuk-input--width-3"
+    }) }}
+{% endset %}
+
+{% set relationshipPartnerReveal %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+    {% from "hmpo-radios/macro.njk" import hmpoRadios %}
+    {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+    {% from "hmpo-date/macro.njk" import hmpoDate %}
+
+    {{ hmpoText(ctx, {
+        id: "spouseOrCivilPartnerFullName",
+        label: {
+            text: "Spouse or civil partner’s full name",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+    {{ hmpoText(ctx, {
+        id: "spouseOrCivilPartnerOccupation",
+        label: {
+            text: "Spouse or civil partner’s occupation",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+    {{ hmpoRadios(ctx, {
+        id: "spouseOrCivilPartnerOccupationStatus",
+        legend: {
+            text: "Spouse or civil partner’s occupation status",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small",
+        items: [
+            { value: "Retired", text: "Retired" },
+            { value: "Not retired", text: "Not retired" }
+        ]
+    }) }}
+
+    {{ govukWarningText({
+        text: "Question required by the Population (Statistics) Act 1938.",
+        iconFallbackText: "Warning"
+    }) }}
+
+    <!-- TODO: Fix `spouseOrCivilPartnerDateOfBirth` not revealing -->
+    {{ hmpoRadios(ctx, {
+        id: "willInformantGiveDateOfBirthOfSpouseOrCivilPartner",
+        legend: {
+            text: "Will the informant give the date of birth of the spouse or civil partner?",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small",
+        items: [
+            {
+                value: "Yes",
+                text: "Yes",
+                conditional: {
+                    html:
+                        hmpoDate(ctx, {
+                            id: "spouseOrCivilPartnerDateOfBirth",
+                            label: {
+                                text: "Spouse or civil partner’s date of birth",
+                                classes: "govuk-label--s"
+                            }
+                        })
+                }
+            },
+            { value: "Not known", text: "Not known" },
+            { value: "Refused to answer", text: "Refused to answer" }
+        ]
+    }) }}
+{% endset %}
+
+{% set relationshipNoPartnerReveal %}
+    {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+    {% from "hmpo-radios/macro.njk" import hmpoRadios %}
+
+    {{ govukWarningText({
+        text: "Question required by the Population (Statistics) Act 1938.",
+        iconFallbackText: "Warning"
+    }) }}
+
+    {{ hmpoRadios(ctx, {
+        id: "willInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics",
+        legend: {
+            text: "Will the informant allow the answer given in ‘Relationship status’ to be used in statistics?",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small"
+    }) }}
+{% endset %}
+
+{% block sideContent %}
+    <style>
+        .hmpo-sidebar {
+            width: 100%;
+            float: none;
+            position: relative;
+            padding: 0;
+        }
+    </style>
+
+    {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
+        <!-- TODO: Import side navigation component from DAP frontend -->
+        <h3 class="govuk-heading-m">One-third column placeholder</h3>
+        <p>Import side navigation</p>
+        <ul>
+            <!-- TODO: Persist session data for a href links -->
+            <li><a href="record">Cover sheet</a></li>
+            <br>
+            <li>Pre-registration</li>
+            <li><a href="record-cause-of-death">Cause of death</a></li>
+            <li><a href="record-uploads">Uploads</a></li>
+            <br>
+            <li>Registration</li>
+            <li><a href="record-deceaseds-details">Deceased’s details</a></li>
+            <li><a href="record-informants-details">Informant’s details</a></li>
+            <li><a href="record-check-all-information">Check all information</a></li>
+            <li><a href="record-register-page">Register page</a></li>
+        </ul>
+    {% endcall %}
+{% endblock %}
+
+{% block mainContent %}
+    {% call hmpoForm(ctx) %}
+
+        <h2 class="govuk-heading-l">Deceased’s details</h2>
+
+        {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+        {% from "govuk/components/table/macro.njk" import govukTable %}
+
+        {% set nameAndDateOfDeathHtml %}
+            <h2 class="govuk-heading-l">Name and date of death</h2>
+
+            {{ hmpoText(ctx, {
+                id: "deceasedFirstName",
+                label: {
+                    text: "First name",
+                    classes: "govuk-label--s"
+                }
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "deceasedMiddleNames",
+                label: {
+                    text: "Middle names",
+                    classes: "govuk-label--s"
+                }
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "deceasedLastName",
+                label: {
+                    text: "Last name",
+                    classes: "govuk-label--s"
+                }
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedCapitaliseLastNames",
+                legend: {
+                    text: "Capitalise last names",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: true, text: "Yes" },
+                    { value: false, text: "No – print as typed" }
+                ]
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "deceasedLastPrefix",
+                label: {
+                    text: "Prefix",
+                    classes: "govuk-label--s"
+                }
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "deceasedSuffix",
+                label: {
+                    text: "Suffix",
+                    classes: "govuk-label--s"
+                }
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedPrintOrderOfNames",
+                legend: {
+                    text: "Print order of namess",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: "First name at the front ", text: "First name at the front " },
+                    { value: "Last name at the front", text: "Last name at the front" },
+                    { value: "Only print last name", text: "Only print last name" },
+                    { value: "Print no name", text: "Print no name" },
+                    {
+                        value: "Print names in other order",
+                        text: "Print names in other order",
+                        conditional: {
+                            html:
+                                hmpoText(ctx, {
+                                    id: "deceasedOrderOfNames",
+                                    label: {
+                                        text: "Order of names",
+                                        classes: "govuk-label--s"
+                                    }
+                                })
+                        }
+                    }
+                ]
+            }) }}
+
+            {{ hmpoDate(ctx, {
+                id: "deceasedDateOfDeath",
+                legend: {
+                    text: "Date of death",
+                    classes: "govuk-label--s"
+                }
+            }) }}
+        {% endset -%}
+
+        {% set personalDetailsHtml %}
+            <h2 class="govuk-heading-l">Personal details</h2>
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedSex",
+                legend: {
+                    text: "Sex",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    {
+                        value: "Female",
+                        text: "Female",
+                        conditional: {
+                            html:
+                                hmpoText(ctx, {
+                                    id: "deceasedMaidenName",
+                                    label: {
+                                        text: "Maiden name",
+                                        classes: "govuk-label--xs"
+                                    }
+                                })
+                        }
+                    },
+                    { value: "Male", text: "Male" }
+                ]
+            }) }}
+
+
+            <h3 class="govuk-heading-s">Other known names</h3>
+            {{ hmpoSubmit(ctx, {
+                text: translate("buttons.addAnotherKnownName"),
+                classes: "govuk-button--secondary",
+                href: "#"
+            }) }}
+            {# TODO: Add other known names fieldset in
+            {{ hmpoText(ctx, {
+                id: "deceasedOtherKnownNames",
+                label: {
+                    text: "Other known name 1",
+                    classes: "govuk-label--s"
+                }
+            }) }} #}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedPlaceOfDeath",
+                legend: {
+                    text: "Place of death",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    {
+                        value: "Communal establishment",
+                        text: "Communal establishment",
+                        conditional: {
+                            html: deceasedPlaceOfDeathAddress
+                        }
+                    },
+                    {
+                        value: "Home",
+                        text: "Home",
+                        conditional: {
+                            html: deceasedPlaceOfDeathAddress
+                        }
+                    }
+                ]
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedUsualAddress",
+                legend: {
+                    text: "Usual address",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: "Same as place of death", text: "Same as place of death" },
+                    {
+                        value: "Different to place of death (non-communal establishment)",
+                        text: "Different to place of death (non-communal establishment)",
+                        conditional: {
+                            html: deceasedUsualAddress
+                        }
+                    },
+                    {
+                        value: "Different to place of death (communal establishment)",
+                        text: "Different to place of death (communal establishment)",
+                        conditional: {
+                            html: deceasedUsualAddress
+                        }
+                    }
+                ]
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedDateOfBirth",
+                legend: {
+                    text: "Date of birth",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    {
+                        value: "Full date of birth known",
+                        text: "Full date of birth known",
+                        conditional: {
+                            html: deceasedFullDateOfBirthReveal
+                        }
+                    },
+                    {
+                        value: "Partial date of birth known",
+                        text: "Partial date of birth known",
+                        conditional: {
+                            html: deceasedPartialDateOfBirthReveal
+                        }
+                    },
+                    {
+                        value: "Approximate year of birth only",
+                        text: "Approximate year of birth only",
+                        conditional: {
+                            html: deceasedApproximateYearOfBirthReveal
+                        }
+                    }
+                ]
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "deceasedPlaceOfBirth",
+                label: {
+                    text: "Place of birth",
+                    classes: "govuk-label--s"
+                },
+                hint: "Town and county if in UK, country if outside the UK"
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedCountryOfBirth",
+                legend: {
+                    text: "Country of birth",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: "England", text: "England" },
+                    { value: "Northern Ireland", text: "Northern Ireland" },
+                    { value: "Scotland", text: "Scotland" },
+                    { value: "Wales", text: "Wales" },
+                    { value: "Outside the UK", text: "Outside the UK" },
+                    { value: "Not known", text: "Not known" }
+                ]
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedSpanishNational",
+                legend: {
+                    text: "Spanish national",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "deceasedOccupation",
+                label: {
+                    text: "Occupation",
+                    classes: "govuk-label--s"
+                }
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedOccupationStatus",
+                legend: {
+                    text: "Occupation status",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: "Retired", text: "Retired" },
+                    { value: "Not retired", text: "Not retired" }
+                ]
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedRelationshipStatus",
+                legend: {
+                    text: "Relationship status",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    {
+                        value: "Wife of",
+                        text: "Wife of",
+                        conditional: {
+                            html: relationshipPartnerReveal
+                        }
+                    },
+                    {
+                        value: "Husband of",
+                        text: "Husband of",
+                        conditional: {
+                            html: relationshipPartnerReveal
+                        }
+                    },
+                    {
+                        value: "Civil partner of",
+                        text: "Civil partner of",
+                        conditional: {
+                            html: relationshipPartnerReveal
+                        }
+                    },
+                    {
+                        value: "Widow of",
+                        text: "Widow of",
+                        conditional: {
+                            html: relationshipPartnerReveal
+                        }
+                    },
+                    {
+                        value: "Widower of",
+                        text: "Widower of",
+                        conditional: {
+                            html: relationshipPartnerReveal
+                        }
+                    },
+                    {
+                        value: "Surviving civil partner of",
+                        text: "Surviving civil partner of",
+                        conditional: {
+                            html: relationshipPartnerReveal
+                        }
+                    },
+                    {
+                        value: "Never married or in a civil partnership",
+                        text: "Never married or in a civil partnership",
+                        conditional: {
+                            html: relationshipNoPartnerReveal
+                        }
+                    },
+                    {
+                        value: "Divorced",
+                        text: "Divorced",
+                        conditional: {
+                            html: relationshipNoPartnerReveal
+                        }
+                    },
+                    {
+                        value: "Partnership dissolved",
+                        text: "Partnership dissolved",
+                        conditional: {
+                            html: relationshipNoPartnerReveal
+                        }
+                    },
+                    {
+                        value: "Not known",
+                        text: "Not known"
+                    }
+                ]
+            }) }}
+
+        {% endset -%}
+
+        {% set voluntaryDetailsHtml %}
+            <h2 class="govuk-heading-l">Voluntary details</h2>
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedHowLongSpendInCommunalEstablishment",
+                legend: {
+                    text: "How long did the deceased spend in a communal establishment?",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: "Under 6 months", text: "Under 6 months" },
+                    { value: "6 months or over", text: "6 months or over" },
+                    { value: "Not known", text: "Not known" },
+                    { value: "Not applicable", text: "Not applicable" }
+                ]
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "deceasedNHSNumber",
+                label: {
+                    text: "Deceased’s NHS number",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-input--width-10"
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "willInformantGiveAdditionalIndustryAndEmploymentInformationForDeceased",
+                legend: {
+                    text: "Will the informant give additional industry and employment information for the deceased?",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    {
+                        value: "Yes",
+                        text: "Yes",
+                        conditional: {
+                            html:
+                                hmpoTextarea(ctx, {
+                                    id: "deceasedAdditionalEmploymentOrIndustryInformation",
+                                    label: {
+                                        text: "Add additional employment or industry information",
+                                        classes: "govuk-label--s"
+                                    }
+                                })
+                        }
+                    },
+                    { value: "Not employed", text: "Not employed" },
+                    { value: "Not known", text: "Not known" },
+                    { value: "Refused to answer", text: "Refused to answer" }
+                ]
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "deceasedEmploymentStatus",
+                legend: {
+                    text: "Select employment status – deceased",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: "Employee, not supervising", text: "Employee, not supervising" },
+                    { value: "Employee, supervising", text: "Employee, supervising" },
+                    { value: "Self-employed, no employees", text: "Self-employed, no employees" },
+                    { value: "Self-employed, with employees", text: "Self-employed, with employees" },
+                    { value: "Not employed", text: "Not employed" },
+                    { value: "Not known", text: "Not known" },
+                    { value: "Refused to answer", text: "Refused to answer" }
+                ]
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner",
+                legend: {
+                    text: "Will the informant give additional industry and employment information for the deceased’s partner?",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    {
+                        value: "Yes",
+                        text: "Yes",
+                        conditional: {
+                            html:
+                                hmpoTextarea(ctx, {
+                                    id: "spouseOrCivilAdditionalEmploymentOrIndustryInformation",
+                                    label: {
+                                        text: "Add additional employment or industry information",
+                                        classes: "govuk-label--s"
+                                    }
+                                })
+                        }
+                    },
+                    { value: "Not employed", text: "Not employed" },
+                    { value: "Not known", text: "Not known" },
+                    { value: "Refused to answer", text: "Refused to answer" }
+                ]
+            }) }}
+
+            {{ hmpoRadios(ctx, {
+                id: "spouseOrCivilEmploymentStatus",
+                legend: {
+                    text: "Select employment status – deceased’s partner",
+                    classes: "govuk-label--s"
+                },
+                classes: "govuk-radios--small",
+                items: [
+                    { value: "Employee, not supervising", text: "Employee, not supervising" },
+                    { value: "Employee, supervising", text: "Employee, supervising" },
+                    { value: "Self-employed, no employees", text: "Self-employed, no employees" },
+                    { value: "Self-employed, with employees", text: "Self-employed, with employees" },
+                    { value: "Not employed", text: "Not employed" },
+                    { value: "Not known", text: "Not known" },
+                    { value: "Refused to answer", text: "Refused to answer" }
+                ]
+            }) }}
+
+        {% endset -%}
+
+        {{ govukTabs({
+            items: [
+                {
+                    label: "Name and date of death",
+                    id: "name-and-date-of-death",
+                    panel: {
+                        html: nameAndDateOfDeathHtml
+                    }
+                },
+                {
+                    label: "Personal details",
+                    id: "personal-details",
+                    panel: {
+                        html: personalDetailsHtml
+                    }
+                },
+                {
+                    label: "Voluntary details",
+                    id: "voluntary-details",
+                    panel: {
+                        html: voluntaryDetailsHtml
+                    }
+                }
+            ]
+        }) }}
+
+        {# TODO: Add logic for first active tab showing different CTA
+        {{ hmpoSubmit(ctx, { text: translate("buttons.saveAndCheckForDuplicate") }) }}
+        #}
+        <div class="govuk-button-group">
+            {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
+            {{ hmpoSubmit(ctx, {
+                text: translate("buttons.cancel"),
+                classes: "govuk-button--secondary",
+                href: "./record-deceaseds-details"
+            }) }}
+        </div>
+
+    {% endcall %}
+{% endblock %}

@@ -29,13 +29,8 @@
     <span class="govuk-caption-xl">{{ govukServiceName }}</span>
     <h1>{{ hmpoTitle }}</h1>
 
-<h3>Typeahead</h3>
-
-<label id="my-autocomplete">Select your country</label>
-<div id="my-autocomplete-container"></div>
-
-    <h2>Register</h2>
-    <p>User journey for registration.</p>
+    <h2>Registration journey</h2>
+    <p>User journey for registrars.</p>
 
     {# ========================
        Comment hmpoForm call out if index.html does not need to use the form-wizard (normally doesn't).
@@ -68,12 +63,26 @@
 
     {{ govukButton({
         text: "View prototype",
-        href: "/register/email",
+        href: "/registrar/sign-in",
+        classes: "govuk-!-margin-bottom-2"
+    }) }}
+
+    <br>
+    <br>
+    <hr>
+    <br>
+
+    <h2>Pre-registration journey</h2>
+    <p>User journey for informants.</p>
+
+    {{ govukButton({
+        text: "View prototype",
+        href: "/informant/email",
         classes: "govuk-!-margin-bottom-2"
     }) }}
 
     {# <br />
     <br />
-    <p><a href="/register/start">View start page</a></p> #}
+    <p><a href="/informant/start">View start page</a></p> #}
 
 {% endblock %}

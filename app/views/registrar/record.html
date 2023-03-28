@@ -1,0 +1,103 @@
+{% extends "layout-registrar-record.html" %}
+
+{% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
+
+{% block sideContent %}
+    <style>
+        .hmpo-sidebar {
+            width: 100%;
+            float: none;
+            position: relative;
+            padding: 0;
+        }
+    </style>
+
+    {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
+        <!-- TODO: Import side navigation component from DAP frontend -->
+        <h3 class="govuk-heading-m">One-third column placeholder</h3>
+        <p>Import side navigation</p>
+        <ul>
+            <!-- TODO: Persist session data for a href links -->
+            <li><a href="#">Cover sheet</a></li>
+            <br>
+            <li>Pre-registration</li>
+            <li><a href="record-cause-of-death">Cause of death</a></li>
+            <li><a href="record-uploads">Uploads</a></li>
+            <br>
+            <li>Registration</li>
+            <li><a href="record-deceaseds-details">Deceased’s details</a></li>
+            <li><a href="record-informants-details">Informant’s details</a></li>
+            <li><a href="record-check-all-information">Check all information</a></li>
+            <li><a href="record-register-page">Register page</a></li>
+        </ul>
+    {% endcall %}
+{% endblock %}
+
+{% block mainContent %}
+    {% call hmpoForm(ctx) %}
+
+    <h2 class="govuk-heading-l">Cover sheet</h2>
+    {{ hmpoSubmit(ctx, {
+            text: translate("buttons.editDetails"),
+            classes: "govuk-button--secondary"
+        })
+    }}
+
+    <h3 class="govuk-heading-m">File information</h3>
+    {{ govukSummaryList({ rows: [
+        {
+            key: { text: "Deceased’s first name" },
+            value: { text: values.coverSheetDeceasedFirstName }
+        },
+        {
+            key: { text: "Middle names" },
+            value: { text: values.coverSheetDeceasedMiddleNames }
+        },
+        {
+            key: { text: "Last name" },
+            value: { text: values.coverSheetDeceasedLastName }
+        },
+        {
+            key: { text: "Date of death" },
+            value: { text: values.coverSheetDeceasedDateOfDeath | date("DD/MM/YYYY") }
+        }
+    ] | filter }) }}
+
+
+    <h3 class="govuk-heading-m">Registrar information</h3>
+    {% set coverSheetInformantContactDetails = [
+        values.coverSheetInformantFullName,
+        values.coverSheetInformantPhoneNumber,
+        values.coverSheetInformantEmailAddress
+    ] | filter | join("<br>") %}
+
+    {{ govukSummaryList({ rows: [
+        {
+            key: { text: "Date MCCD received" },
+            value: { text: values.coverSheetDateMCCDReceived }
+        },
+        {
+            key: { text: "MCCD status" },
+            value: { text: values.coverSheetMCCDStatus }
+        },
+        {
+            key: { text: "Priority" },
+            value: {
+                text: "Yes" if values.coverSheetPriority
+                    else ("No" if values.coverSheetPriority === false)
+            }
+        },
+        {
+            key: { text: "Informant contact details" },
+            value: { html:
+                coverSheetInformantContactDetails if coverSheetInformantContactDetails else "<br><br><br>"
+            }
+        },
+        {
+            key: { text: "Notes" },
+            value: { html: values.coverSheetNotes }
+        }
+    ] }) }}
+
+    {% endcall %}
+{% endblock %}

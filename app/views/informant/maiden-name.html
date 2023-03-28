@@ -1,0 +1,19 @@
+{% extends "layout-informant.html" %}
+
+{% set hmpoTitle %}Their maiden name, if relevant{% endset %}
+
+{% block mainContent %}
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoText(ctx, {
+            id: "maidenName",
+            label: hmpoTitle,
+            isPageHeading: true
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

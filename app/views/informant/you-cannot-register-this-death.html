@@ -1,0 +1,18 @@
+{% extends "layout-informant.html" %}
+
+{% set hmpoTitle %}You cannot register this death{% endset %}
+
+{% block mainContent %}
+    <h1>{{ hmpoTitle }}</h1>
+
+    <p>Only relatives or someone who was present at the death are legally qualified to answer these questions.</p>
+    <p>If possible, find out if there any relatives or if anyone was there when the person died.</p>
+    <p>They can then use this link to answer all the registration questions.</p>
+
+
+     {% call hmpoForm(ctx) %}
+        {{ hmpoSubmit(ctx, {
+            text: translate("Exit this service")
+        }) }}
+    {% endcall %}
+{% endblock %}

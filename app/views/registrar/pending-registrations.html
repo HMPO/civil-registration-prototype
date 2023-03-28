@@ -1,0 +1,176 @@
+{% extends "layout-registrar.html" %}
+
+{% set hmpoTitle %}Pending registrations{% endset %}
+
+{% block backLink %}{% endblock %}
+
+{% block mainContent %}
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoSubmit(ctx, { text: translate("buttons.createNewRecord") }) }}
+
+        <h1 id="header">{{ hmpoTitle }}</h1>
+
+        <!-- TODO: Add sortable table in from MOJ Frontend -->
+
+        {{ govukTable({
+            attributes: {
+                'data-module': 'moj-sortable-table'
+            },
+            head: [
+                {
+                    text: "Name",
+                    attributes: {
+                        "aria-sort": "none"
+                    }
+                },
+                {
+                    text: "Date of death",
+                    attributes: {
+                        "aria-sort": "none"
+                    }
+                },
+                {
+                    text: "MCCD received",
+                    attributes: {
+                        "aria-sort": "ascending"
+                    }
+                },
+                {
+                    text: "Certifying practitioner",
+                    attributes: {
+                        "aria-sort": "none"
+                    }
+                },
+                {
+                    text: "Place of death",
+                    attributes: {
+                        "aria-sort": "none"
+                    }
+                },
+                {
+                    text: "Priority",
+                    attributes: {
+                        "aria-sort": "none"
+                    }
+                },
+                {
+                    text: "MCCD status",
+                    attributes: {
+                        "aria-sort": "none"
+                    }
+                },
+                {
+                    text: "Notes",
+                    attributes: {
+                        "aria-sort": "none"
+                    }
+                }
+            ],
+            rows: [
+                [
+                    {
+                        text: "Short, Charles",
+                        attributes: {
+                            "data-sort-value": "Short, Charles"
+                        }
+                    },
+                    {
+                        text: "08/10/21",
+                        attributes: {
+                            "data-sort-value": "08/10/21"
+                        }
+                    },
+                    {
+                        text: "10/10/21",
+                        attributes: {
+                            "data-sort-value": "10/10/21"
+                        }
+                    },
+                    {
+                        text: "Dr Julie Bowden"
+                    },
+                    {
+                        text: "Queen Mary’s Hospital, Fulham"
+                    },
+                    {
+                        text: "Yes",
+                        attributes: {
+                            "data-sort-value": "Yes"
+                        }
+                    },
+                    {
+                        text: "OK"
+                    },
+                    {
+                        text: ""
+                    }
+                ],
+                [
+                {
+                    text: "Hyde, Nick",
+                    attributes: {
+                        "data-sort-value": "Hyde, Nick"
+                    }
+                },
+                {
+                    text: "08/10/21",
+                    attributes: {
+                        "data-sort-value": "08/10/21"
+                    }
+                },
+                {
+                    text: "11/10/21",
+                    attributes: {
+                        "data-sort-value": "11/10/21"
+                    }
+                },
+                {
+                    text: "Dr Daniel Rehman"
+                },
+                {
+                    text: "Meadow View Care Home, Chelsea"
+                },
+                {
+                    text: "",
+                    attributes: {
+                        "data-sort-value": ""
+                    }
+                },
+                {
+                    text: "NOT OK"
+                },
+                {
+                    text: ""
+                }
+                ]
+            ]
+        }) }}
+
+        <!-- Bump govuk-frontend for this component -->
+        {# {{ govukPagination({
+            next: {
+              href: "#"
+            },
+            items: [
+              {
+                number: 1,
+                current: true,
+                href: "#"
+              },
+              {
+                number: 2,
+                href: "#"
+              },
+              {
+                number: 3,
+                href: "#"
+              }
+            ]
+        }) }} #}
+
+
+    {% endcall %}
+
+{% endblock %}
