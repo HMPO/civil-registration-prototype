@@ -19,6 +19,7 @@
             <div id="my-autocomplete-container" class="govuk-!-width-one-half"></div>
         </div>
 
+        <div id="placeOfDeath">
         {{ hmpoText(ctx, {
             id: "deceasedPlaceOfDeathAddressLine1",
             label: {
@@ -78,7 +79,7 @@
             attributes: { autocapitalize: "characters" },
             classes: "govuk-!-width-one-quarter"
         }) }}
-
+</div>
     {% endcall %}
 {% endset %}
 
@@ -237,21 +238,20 @@
     {% from "hmpo-text/macro.njk" import hmpoText %}
 
     {% call govukFieldset({
-        id: "deceasedUsualAddress",
+        id: "deceasedUsualCEAddress",
         legend: {
             text: "Address",
             classes: "govuk-fieldset__legend--s"
         }
     }) %}
-
-        <!-- TODO: Separate out CE functionality from the typeahead.js and bundle.js into separate ones with the full CE list -->
         <div class="govuk-form-group">
-            <label id="my-autocomplete" class="govuk-label govuk-label--s">Communal establishment address</label>
-            <div id="my-autocomplete-container" class="govuk-!-width-one-half"></div>
+            <label id="my-autocomplete2" class="govuk-label govuk-label--s">Communal establishment address</label>
+            <div id="my-autocomplete-container2" class="govuk-!-width-one-half"></div>
         </div>
 
+        <div id="usualAddress">
         {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressLine1",
+            id: "deceasedUsualCEAddressLine1",
             label: {
                 text: "House or flat number",
                 classes: "govuk-label--xs"
@@ -261,7 +261,7 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressLine2",
+            id: "deceasedUsualCEAddressLine2",
             label: {
                 text: "Building name",
                 classes: "govuk-label--xs"
@@ -271,7 +271,7 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressStreet",
+            id: "deceasedUsualCEAddressStreet",
             label: {
                 text: "Street",
                 classes: "govuk-label--xs"
@@ -281,7 +281,7 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressTown",
+            id: "deceasedUsualCEAddressTown",
             label: {
                 text: "Town or city",
                 classes: "govuk-label--xs"
@@ -291,7 +291,7 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressCounty",
+            id: "deceasedUsualCEAddressCounty",
             label: {
                 text: "County",
                 classes: "govuk-label--xs"
@@ -301,7 +301,7 @@
         }) }}
 
         {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressPostcode",
+            id: "deceasedUsualCEAddressPostcode",
             label: {
                 text: "Postcode",
                 classes: "govuk-label--xs"
@@ -309,7 +309,7 @@
             attributes: { autocapitalize: "characters" },
             classes: "govuk-!-width-one-quarter"
         }) }}
-
+        </div>
     {% endcall %}
 {% endset %}
 
@@ -1017,4 +1017,16 @@
         </div>
 
     {% endcall %}
+<script>
+    (function() {
+        if(document.getElementById("deceasedUsualCEAddressPostcode").value.length <= 0) {
+            document.getElementById("usualAddress").classList.add("govuk-visually-hidden");
+        }
+        if(document.getElementById("deceasedPlaceOfDeathAddressPostcode").value.length <= 0) {
+            document.getElementById("placeOfDeath").classList.add("govuk-visually-hidden");
+        }
+    })();
+</script>
 {% endblock %}
+
+

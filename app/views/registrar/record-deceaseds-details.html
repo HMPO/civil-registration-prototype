@@ -134,12 +134,12 @@
             ] | filter | join("<br>") %}
 
             {% set deceasedUsualAddress = [
-                values.deceasedUsualAddressLine1,
-                values.deceasedUsualAddressLine2,
-                values.deceasedUsualAddressStreet,
-                values.deceasedUsualAddressTown,
-                values.deceasedUsualAddressCounty,
-                values.deceasedUsualAddressPostcode
+                values.deceasedUsualAddressLine1 if values.deceasedUsualAddressLine1.length > 0 else values.deceasedUsualCEAddressLine1,
+                values.deceasedUsualAddressLine2 if values.deceasedUsualAddressLine2.length > 0 else values.deceasedUsualCEAddressLine2,
+                values.deceasedUsualAddressStreet if values.deceasedUsualAddressStreet.length > 0 else values.deceasedUsualCEAddressStreet,
+                values.deceasedUsualAddressTown if values.deceasedUsualAddressTown.length > 0 else values.deceasedUsualCEAddressTown,
+                values.deceasedUsualAddressCounty if values.deceasedUsualAddressCounty.length > 0 else values.deceasedUsualCEAddressCounty,
+                values.deceasedUsualAddressPostcode if values.deceasedUsualAddressPostcode.length > 0 else values.deceasedUsualCEAddressPostcode
             ] | filter | join("<br>") %}
 
             {{ govukSummaryList({ rows: [
@@ -164,7 +164,11 @@
                 {
                     key: { text: "Usual address" },
                     value: { html:
-                        deceasedUsualAddress if deceasedUsualAddress else "<br><br><br><br><br><br>"
+                        deceasedUsualAddress
+                        if
+                          deceasedUsualAddress
+                        else
+                          "<br><br><br><br><br><br>"
                     }
                 },
                 {

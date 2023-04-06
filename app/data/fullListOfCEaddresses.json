@@ -1,0 +1,192 @@
+[
+  {
+    "ceCode": "43648",
+    "name": "Highgate Lodge Care Home",
+    "address": "66 Highgate Road",
+    "town": "Walsall West Midlands",
+    "postCode": "WS1 3JE",
+    "districtCode": "075",
+    "combinedAddress": "Highgate Lodge Care Home, 66 Highgate Road, Walsall West Midlands, WS1 3JE",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "42983",
+    "name": "Castlehill Specialist Care Home",
+    "address": "390 Chester Road",
+    "town": "Walsall",
+    "postCode": "WS9 9DE",
+    "districtCode": "075",
+    "combinedAddress": "Castlehill Specialist Care Home, 390 Chester Road, Walsall, WS9 9DE",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "42863",
+    "name": "Willow Rose Care Home",
+    "address": "10 Stroud Avenue",
+    "town": "Willenhall",
+    "postCode": "WV124ET",
+    "districtCode": "075",
+    "combinedAddress": "Willow Rose Care Home, 10 Stroud Avenue, Willenhall, WV124ET",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "42847",
+    "name": "Kingsway Care Home",
+    "address": "69 Bilston Lane",
+    "town": "Willenhall, West Midlands",
+    "postCode": "WV132LJ",
+    "districtCode": "075",
+    "combinedAddress": "Kingsway Care Home, 69 Bilston Lane, Willenhall, West Midlands, WV132LJ",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "41791",
+    "name": "Cedar Falls Care Home",
+    "address": "83-89 Bescot Road",
+    "town": "Walsall, West Midlands",
+    "postCode": "WS2 9DG",
+    "districtCode": "075",
+    "combinedAddress": "Cedar Falls Care Home, 83-89 Bescot Road, Walsall, West Midlands, WS2 9DG",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "41546",
+    "name": "The Watermill Care Home",
+    "address": "Goscote Lane",
+    "town": "Goscote, Walsall",
+    "postCode": "WS3 1SJ",
+    "districtCode": "075",
+    "combinedAddress": "The Watermill Care Home, Goscote Lane, Goscote, Walsall, WS3 1SJ",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "41371",
+    "name": "Walsall Healthcare NHS Trust Midwifery Led Unit",
+    "address": "4-10 Charles Street",
+    "town": "Walsall",
+    "postCode": "WS2 9LZ",
+    "districtCode": "075",
+    "combinedAddress": "Walsall Healthcare NHS Trust Midwifery Led Unit, 4-10 Charles Street, Walsall, WS2 9LZ",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "40526",
+    "name": "Harpers Villas Care Centre",
+    "address": "1-3 Bilston Lane",
+    "town": "Willenhall",
+    "postCode": "WV132QF",
+    "districtCode": "075",
+    "combinedAddress": "Harpers Villas Care Centre, 1-3 Bilston Lane, Willenhall, WV132QF",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "39830",
+    "name": "Fernwood Court Care Centre",
+    "address": "300-310 Wolverhampton Road West",
+    "town": "Bentley, Walsall",
+    "postCode": "WS2 0DS",
+    "districtCode": "075",
+    "combinedAddress": "Fernwood Court Care Centre, 300-310 Wolverhampton Road West, Bentley, Walsall, WS2 0DS",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "39462",
+    "name": "Delves Court Care Home",
+    "address": "2 Walstead Road",
+    "town": "Walsall",
+    "postCode": "WS5 4NZ",
+    "districtCode": "075",
+    "combinedAddress": "Delves Court Care Home, 2 Walstead Road, Walsall, WS5 4NZ",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "39058",
+    "name": "Swan House Care Home",
+    "address": "Pooles Lane",
+    "town": "Willenhall",
+    "postCode": "WV125HJ",
+    "districtCode": "075",
+    "combinedAddress": "Swan House Care Home, Pooles Lane, Willenhall, WV125HJ",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "37626",
+    "name": "The Hamptons Care Home",
+    "address": "Beacon Way",
+    "town": "Walsall Wood",
+    "postCode": "WS9 9HZ",
+    "districtCode": "075",
+    "combinedAddress": "The Hamptons Care Home, Beacon Way, Walsall Wood, WS9 9HZ",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "36712",
+    "name": "Stanbrook Care Home",
+    "address": "Manor Road Precinct",
+    "town": "Walsall",
+    "postCode": "WS2 8RF",
+    "districtCode": "075",
+    "combinedAddress": "Stanbrook Care Home, Manor Road Precinct, Walsall, WS2 8RF",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "31411",
+    "name": "Chase Nursing Home",
+    "address": "70 Vicarage Road",
+    "town": "Brownhills, Walsall",
+    "postCode": "WS8 6AR",
+    "districtCode": "075",
+    "combinedAddress": "Chase Nursing Home, 70 Vicarage Road, Brownhills, Walsall, WS8 6AR",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "27855",
+    "name": "Calderfield Lodge",
+    "address": "12 Aldridge Road",
+    "town": "Walsall",
+    "postCode": "WS4 2JH",
+    "districtCode": "075",
+    "combinedAddress": "Calderfield Lodge, 12 Aldridge Road, Walsall, WS4 2JH",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "24517",
+    "name": "Castlefort Grange",
+    "address": "Castlefort Road",
+    "town": "Walsall Wood, Walsall",
+    "postCode": "WS9 9JL",
+    "districtCode": "075",
+    "combinedAddress": "Castlefort Grange, Castlefort Road, Walsall Wood, Walsall, WS9 9JL",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "21673",
+    "name": "Castle View House",
+    "address": "Castle View Close",
+    "town": "Moxley, West Midlands",
+    "postCode": "WS108SE",
+    "districtCode": "075",
+    "combinedAddress": "Castle View House, Castle View Close, Moxley, West Midlands, WS108SE",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "11774",
+    "name": "Sycamore House",
+    "address": "111 Birmingham Road",
+    "town": "Walsall",
+    "postCode": "WS1 2NL",
+    "districtCode": "075",
+    "combinedAddress": "Sycamore House, 111 Birmingham Road, Walsall, WS1 2NL",
+    "retiredByOns": false
+  },
+  {
+    "ceCode": "11767",
+    "name": "Walsall Palliative Care Centre",
+    "address": "Goscote Lane",
+    "town": "Walsall",
+    "postCode": "WS3 1SJ",
+    "districtCode": "075",
+    "combinedAddress": "Walsall Palliative Care Centre, Goscote Lane, Walsall, WS3 1SJ",
+    "retiredByOns": false
+  }
+]
