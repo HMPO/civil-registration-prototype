@@ -13,7 +13,8 @@ accessibleAutocomplete({
     source: combinedAddressPlaceOfDeathArray,
     onConfirm: async (val) => {
         await autoFillPlaceOfDeathWhenCESelected(addresses, val)
-    }
+    },
+    minLength: 3
 })
 
 accessibleAutocomplete({
@@ -22,7 +23,8 @@ accessibleAutocomplete({
     source: combinedUsualAddressArray,
     onConfirm: async (val) => {
         await autoFillUsualWhenCESelected(fullListOfCEaddresses, val)
-    }
+    },
+    minLength: 3
 })
 
 async function autoFillPlaceOfDeathWhenCESelected (addresses, val) {
