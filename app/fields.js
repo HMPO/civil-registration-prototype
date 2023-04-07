@@ -186,6 +186,9 @@ module.exports = {
     deceasedOtherKnownNames: {
         // validate: 'required'
     },
+    deceasedPlaceOfDeathAddress: {
+        // validate: 'required'
+    },
     deceasedPlaceOfDeathAddressLine1: {
         // validate: [
         //     'required'
@@ -215,6 +218,9 @@ module.exports = {
         // validate: [
         //     'required'
         // ]
+    },
+    deceasedUsualAddress: {
+        // validate: 'required'
     },
     deceasedUsualAddressLine1: {
         // validate: [
