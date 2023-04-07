@@ -252,6 +252,36 @@ module.exports = {
         //     'required'
         // ]
     },
+    deceasedUsualAddressCELine1: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressCELine2: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressCEStreet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressCETown: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressCECounty: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedUsualAddressCEPostcode: {
+        // validate: [
+        //     'required'
+        // ]
+    },
     deceasedDateOfBirth: {
         // validate: 'required'
     },

@@ -43,6 +43,24 @@
         })
     }}
 
+    {% set deceasedPlaceOfDeathAddressCombined = [
+        values.deceasedPlaceOfDeathAddressLine1 if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCELine1,
+        values.deceasedPlaceOfDeathAddressLine2 if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCELine2,
+        values.deceasedPlaceOfDeathAddressStreet if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCEStreet,
+        values.deceasedPlaceOfDeathAddressTown if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCETown,
+        values.deceasedPlaceOfDeathAddressCounty if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCECounty,
+        values.deceasedPlaceOfDeathAddressPostcode if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCEPostcode
+    ] | filter | join("<br>") %}
+
+    {% set deceasedUsualAddressCombined = [
+        values.deceasedUsualAddressLine1 if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCELine1,
+        values.deceasedUsualAddressLine2 if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCELine2,
+        values.deceasedUsualAddressStreet if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCEStreet,
+        values.deceasedUsualAddressTown if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCETown,
+        values.deceasedUsualAddressCounty if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCECounty,
+        values.deceasedUsualAddressPostcode if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCEPostcode
+    ] | filter | join("<br>") %}
+
     {% set informantAddress = [
         values.informantAddressLine1,
         values.informantAddressLine2,
@@ -105,8 +123,10 @@
         {
             key: { text: "Did the informant live with the deceased?" },
             value: { html:
-                "Yes:<br>TODO: add deceasedAddress here" if values.informantLiveWithDeceased
-                else ("No:<br>" + informantAddress if values.informantLiveWithDeceased === false)
+                "Yes:<br>" + deceasedPlaceOfDeathAddressCombined if (values.informantLiveWithDeceased and values.deceasedUsualAddress == "Same as place of death")
+                else ("Yes:<br>" + deceasedUsualAddressCombined if values.informantLiveWithDeceased
+                    else ("No:<br>" + informantAddress if values.informantLiveWithDeceased === false)
+                )
             }
         }
     ] | filter }) }}

@@ -124,22 +124,22 @@
                 })
             }}
 
-            {% set deceasedPlaceOfDeathAddress = [
-                values.deceasedPlaceOfDeathAddressLine1,
-                values.deceasedPlaceOfDeathAddressLine2,
-                values.deceasedPlaceOfDeathAddressStreet,
-                values.deceasedPlaceOfDeathAddressTown,
-                values.deceasedPlaceOfDeathAddressCounty,
-                values.deceasedPlaceOfDeathAddressPostcode
+            {% set deceasedPlaceOfDeathAddressCombined = [
+                values.deceasedPlaceOfDeathAddressLine1 if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCELine1,
+                values.deceasedPlaceOfDeathAddressLine2 if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCELine2,
+                values.deceasedPlaceOfDeathAddressStreet if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCEStreet,
+                values.deceasedPlaceOfDeathAddressTown if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCETown,
+                values.deceasedPlaceOfDeathAddressCounty if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCECounty,
+                values.deceasedPlaceOfDeathAddressPostcode if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCEPostcode
             ] | filter | join("<br>") %}
 
-            {% set deceasedUsualAddress = [
-                values.deceasedUsualAddressLine1 if values.deceasedUsualAddressLine1.length > 0 else values.deceasedUsualCEAddressLine1,
-                values.deceasedUsualAddressLine2 if values.deceasedUsualAddressLine2.length > 0 else values.deceasedUsualCEAddressLine2,
-                values.deceasedUsualAddressStreet if values.deceasedUsualAddressStreet.length > 0 else values.deceasedUsualCEAddressStreet,
-                values.deceasedUsualAddressTown if values.deceasedUsualAddressTown.length > 0 else values.deceasedUsualCEAddressTown,
-                values.deceasedUsualAddressCounty if values.deceasedUsualAddressCounty.length > 0 else values.deceasedUsualCEAddressCounty,
-                values.deceasedUsualAddressPostcode if values.deceasedUsualAddressPostcode.length > 0 else values.deceasedUsualCEAddressPostcode
+            {% set deceasedUsualAddressCombined = [
+                values.deceasedUsualAddressLine1 if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCELine1,
+                values.deceasedUsualAddressLine2 if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCELine2,
+                values.deceasedUsualAddressStreet if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCEStreet,
+                values.deceasedUsualAddressTown if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCETown,
+                values.deceasedUsualAddressCounty if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCECounty,
+                values.deceasedUsualAddressPostcode if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCEPostcode
             ] | filter | join("<br>") %}
 
             {{ govukSummaryList({ rows: [
@@ -158,17 +158,16 @@
                 {
                     key: { text: "Place of death" },
                     value: { html:
-                        deceasedPlaceOfDeathAddress if deceasedPlaceOfDeathAddress else "<br><br><br><br><br><br>"
+                        deceasedPlaceOfDeathAddressCombined if deceasedPlaceOfDeathAddressCombined else "<br><br><br><br><br><br>"
                     }
                 },
                 {
                     key: { text: "Usual address" },
                     value: { html:
-                        deceasedUsualAddress
-                        if
-                          deceasedUsualAddress
-                        else
-                          "<br><br><br><br><br><br>"
+                        deceasedPlaceOfDeathAddressCombined if values.deceasedUsualAddress == "Same as place of death"
+                        else (deceasedUsualAddressCombined if deceasedUsualAddressCombined
+                            else ("<br><br><br><br><br><br>")
+                        )
                     }
                 },
                 {

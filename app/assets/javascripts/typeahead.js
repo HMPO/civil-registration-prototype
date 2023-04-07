@@ -29,34 +29,34 @@ accessibleAutocomplete({
 
 async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList, val) {
     // get the field id where value is populated
-    const deceasedPlaceOfDeathAddressLine1 = document.querySelector('#deceasedPlaceOfDeathAddressLine1')
-    const deceasedPlaceOfDeathAddressLine2 = document.querySelector('#deceasedPlaceOfDeathAddressLine2')
-    const deceasedPlaceOfDeathAddressStreet = document.querySelector('#deceasedPlaceOfDeathAddressStreet')
-    const deceasedPlaceOfDeathAddressTown = document.querySelector('#deceasedPlaceOfDeathAddressTown')
-    const deceasedPlaceOfDeathAddressCounty = document.querySelector('#deceasedPlaceOfDeathAddressCounty')
-    const deceasedPlaceOfDeathAddressPostcode = document.querySelector('#deceasedPlaceOfDeathAddressPostcode')
+    const deceasedPlaceOfDeathAddressCELine1 = document.querySelector('#deceasedPlaceOfDeathAddressCELine1')
+    const deceasedPlaceOfDeathAddressCELine2 = document.querySelector('#deceasedPlaceOfDeathAddressCELine2')
+    const deceasedPlaceOfDeathAddressCEStreet = document.querySelector('#deceasedPlaceOfDeathAddressCEStreet')
+    const deceasedPlaceOfDeathAddressCETown = document.querySelector('#deceasedPlaceOfDeathAddressCETown')
+    const deceasedPlaceOfDeathAddressCECounty = document.querySelector('#deceasedPlaceOfDeathAddressCECounty')
+    const deceasedPlaceOfDeathAddressCEPostcode = document.querySelector('#deceasedPlaceOfDeathAddressCEPostcode')
     const divPlaceOfDeath = document.querySelector('#placeOfDeath')
 
     // get the exact match from the CE data
     const result = await searchByCombinedAddress(addressesCESingleDistrictList, val)
     if (result) {
         if (result.address) {
-            deceasedPlaceOfDeathAddressLine1.value = await extractNumber(result.address)
+            deceasedPlaceOfDeathAddressCELine1.value = await extractNumber(result.address)
         }
         if (result.name) {
-            deceasedPlaceOfDeathAddressLine2.value = result.name
+            deceasedPlaceOfDeathAddressCELine2.value = result.name
         }
         if (result.address) {
-            deceasedPlaceOfDeathAddressStreet.value = result.address
+            deceasedPlaceOfDeathAddressCEStreet.value = result.address
         }
         if (result.town) {
-            deceasedPlaceOfDeathAddressTown.value = result.town
+            deceasedPlaceOfDeathAddressCETown.value = result.town
         }
         if (result.town) {
-            deceasedPlaceOfDeathAddressCounty.value = result.town
+            deceasedPlaceOfDeathAddressCECounty.value = result.town
         }
         if (result.postcode) {
-            deceasedPlaceOfDeathAddressPostcode.value = result.postcode
+            deceasedPlaceOfDeathAddressCEPostcode.value = result.postcode
         }
         divPlaceOfDeath.classList.remove('govuk-visually-hidden')
     }
@@ -64,34 +64,34 @@ async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList
 
 async function autoFillUsualWhenCESelected (addressesCEFullDistrictList, val) {
     // get the field id where value is populated
-    const deceasedUsualCEAddressLine1 = document.querySelector('#deceasedUsualCEAddressLine1')
-    const deceasedUsualCEAddressLine2 = document.querySelector('#deceasedUsualCEAddressLine2')
-    const deceasedUsualCEAddressStreet = document.querySelector('#deceasedUsualCEAddressStreet')
-    const deceasedUsualCEAddressTown = document.querySelector('#deceasedUsualCEAddressTown')
-    const deceasedUsualCEAddressCounty = document.querySelector('#deceasedUsualCEAddressCounty')
-    const deceasedUsualCEAddressPostcode = document.querySelector('#deceasedUsualCEAddressPostcode')
+    const deceasedUsualAddressCELine1 = document.querySelector('#deceasedUsualAddressCELine1')
+    const deceasedUsualAddressCELine2 = document.querySelector('#deceasedUsualAddressCELine2')
+    const deceasedUsualAddressCEStreet = document.querySelector('#deceasedUsualAddressCEStreet')
+    const deceasedUsualAddressCETown = document.querySelector('#deceasedUsualAddressCETown')
+    const deceasedUsualAddressCECounty = document.querySelector('#deceasedUsualAddressCECounty')
+    const deceasedUsualAddressCEPostcode = document.querySelector('#deceasedUsualAddressCEPostcode')
     const divUsualAddress = document.querySelector('#usualAddress')
 
     // get the exact match from the CE data
     const result = await searchByCombinedAddress(addressesCEFullDistrictList, val)
     if (result) {
         if (result.address) {
-            deceasedUsualCEAddressLine1.value = await extractNumber(result.address)
+            deceasedUsualAddressCELine1.value = await extractNumber(result.address)
         }
         if (result.name) {
-            deceasedUsualCEAddressLine2.value = result.name
+            deceasedUsualAddressCELine2.value = result.name
         }
         if (result.address) {
-            deceasedUsualCEAddressStreet.value = result.address
+            deceasedUsualAddressCEStreet.value = result.address
         }
         if (result.town) {
-            deceasedUsualCEAddressTown.value = result.town
+            deceasedUsualAddressCETown.value = result.town
         }
         if (result.town) {
-            deceasedUsualCEAddressCounty.value = result.town
+            deceasedUsualAddressCECounty.value = result.town
         }
         if (result.postcode) {
-            deceasedUsualCEAddressPostcode.value = result.postcode
+            deceasedUsualAddressCEPostcode.value = result.postcode
         }
         divUsualAddress.classList.remove('govuk-visually-hidden')
     }

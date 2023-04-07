@@ -2,12 +2,12 @@
 
 {% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
-{% set deceasedPlaceOfDeathAddressCommunalEstablishment %}
+{% set deceasedPlaceOfDeathAddressCE %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
     {% from "hmpo-text/macro.njk" import hmpoText %}
 
     {% call govukFieldset({
-        id: "deceasedPlaceOfDeathAddressCommunalEstablishment",
+        id: "deceasedPlaceOfDeathAddressCE",
         legend: {
             text: "Communal establishment address",
             classes: "govuk-visually-hidden"
@@ -21,7 +21,7 @@
 
         <div id="placeOfDeath">
             {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressLine1",
+                id: "deceasedPlaceOfDeathAddressCELine1",
                 label: {
                     text: "House or flat number",
                     classes: "govuk-label--xs"
@@ -31,7 +31,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressLine2",
+                id: "deceasedPlaceOfDeathAddressCELine2",
                 label: {
                     text: "Building name",
                     classes: "govuk-label--xs"
@@ -41,7 +41,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressStreet",
+                id: "deceasedPlaceOfDeathAddressCEStreet",
                 label: {
                     text: "Street",
                     classes: "govuk-label--xs"
@@ -51,7 +51,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressTown",
+                id: "deceasedPlaceOfDeathAddressCETown",
                 label: {
                     text: "Town or city",
                     classes: "govuk-label--xs"
@@ -61,7 +61,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressCounty",
+                id: "deceasedPlaceOfDeathAddressCECounty",
                 label: {
                     text: "County",
                     classes: "govuk-label--xs"
@@ -71,7 +71,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressPostcode",
+                id: "deceasedPlaceOfDeathAddressCEPostcode",
                 label: {
                     text: "Postcode",
                     classes: "govuk-label--xs"
@@ -233,12 +233,12 @@
     {% endcall %}
 {% endset %}
 
-{% set deceasedUsualAddressCommunalEstablishment %}
+{% set deceasedUsualAddressCE %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
     {% from "hmpo-text/macro.njk" import hmpoText %}
 
     {% call govukFieldset({
-        id: "deceasedUsualCEAddress",
+        id: "deceasedUsualAddressCE",
         legend: {
             text: "Communal establishment address",
             classes: "govuk-visually-hidden"
@@ -252,7 +252,7 @@
 
         <div id="usualAddress">
             {{ hmpoText(ctx, {
-                id: "deceasedUsualCEAddressLine1",
+                id: "deceasedUsualAddressCELine1",
                 label: {
                     text: "House or flat number",
                     classes: "govuk-label--xs"
@@ -262,7 +262,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedUsualCEAddressLine2",
+                id: "deceasedUsualAddressCELine2",
                 label: {
                     text: "Building name",
                     classes: "govuk-label--xs"
@@ -272,7 +272,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedUsualCEAddressStreet",
+                id: "deceasedUsualAddressCEStreet",
                 label: {
                     text: "Street",
                     classes: "govuk-label--xs"
@@ -282,7 +282,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedUsualCEAddressTown",
+                id: "deceasedUsualAddressCETown",
                 label: {
                     text: "Town or city",
                     classes: "govuk-label--xs"
@@ -292,7 +292,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedUsualCEAddressCounty",
+                id: "deceasedUsualAddressCECounty",
                 label: {
                     text: "County",
                     classes: "govuk-label--xs"
@@ -302,7 +302,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedUsualCEAddressPostcode",
+                id: "deceasedUsualAddressCEPostcode",
                 label: {
                     text: "Postcode",
                     classes: "govuk-label--xs"
@@ -651,7 +651,7 @@
                         value: "Communal establishment",
                         text: "Communal establishment",
                         conditional: {
-                            html: deceasedPlaceOfDeathAddressCommunalEstablishment
+                            html: deceasedPlaceOfDeathAddressCE
                         }
                     },
                     {
@@ -684,7 +684,7 @@
                         value: "Different to place of death (communal establishment)",
                         text: "Different to place of death (communal establishment)",
                         conditional: {
-                            html: deceasedUsualAddressCommunalEstablishment
+                            html: deceasedUsualAddressCE
                         }
                     }
                 ]
@@ -1020,7 +1020,7 @@
     {% endcall %}
 <script>
     (function() {
-        if(document.getElementById("deceasedUsualCEAddressPostcode").value.length <= 0) {
+        if(document.getElementById("deceasedUsualAddressCEPostcode").value.length <= 0) {
             document.getElementById("usualAddress").classList.add("govuk-visually-hidden");
         }
         if(document.getElementById("deceasedPlaceOfDeathAddressPostcode").value.length <= 0) {
