@@ -592,6 +592,16 @@
                     classes: "govuk-label--s"
                 }
             }) }}
+
+        <div class="govuk-button-group">
+            {{ hmpoSubmit(ctx, { text: translate("buttons.saveAndCheckForDuplicate") }) }}
+            {{ hmpoSubmit(ctx, {
+                text: translate("buttons.cancel"),
+                classes: "govuk-button--secondary",
+                href: "./record-deceaseds-details"
+            }) }}
+        </div>
+
         {% endset -%}
 
         {% set personalDetailsHtml %}
@@ -856,6 +866,16 @@
                 ]
             }) }}
 
+            <!-- TODO: Fix routing with form wizard by adding functionality so that on save it takes user to active tab -->
+            <div class="govuk-button-group">
+                {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
+                {{ hmpoSubmit(ctx, {
+                    text: translate("buttons.cancel"),
+                    classes: "govuk-button--secondary",
+                    href: "./record-deceaseds-details#personal-details"
+                }) }}
+            </div>
+
         {% endset -%}
 
         {% set voluntaryDetailsHtml %}
@@ -977,6 +997,16 @@
                 ]
             }) }}
 
+            <!-- TODO: Fix routing with form wizard by adding functionality so that on save it takes user to active tab -->
+            <div class="govuk-button-group">
+                {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
+                {{ hmpoSubmit(ctx, {
+                    text: translate("buttons.cancel"),
+                    classes: "govuk-button--secondary",
+                    href: "./record-deceaseds-details#voluntary-details"
+                }) }}
+            </div>
+
         {% endset -%}
 
         {{ govukTabs({
@@ -1005,29 +1035,17 @@
             ]
         }) }}
 
-        {# TODO: Add logic for first active tab showing different CTA
-        {{ hmpoSubmit(ctx, { text: translate("buttons.saveAndCheckForDuplicate") }) }}
-        #}
-        <div class="govuk-button-group">
-            {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
-            {{ hmpoSubmit(ctx, {
-                text: translate("buttons.cancel"),
-                classes: "govuk-button--secondary",
-                href: "./record-deceaseds-details"
-            }) }}
-        </div>
-
     {% endcall %}
-<script>
-    (function() {
-        if(document.getElementById("deceasedUsualAddressCEPostcode").value.length <= 0) {
-            document.getElementById("usualAddress").classList.add("govuk-visually-hidden");
-        }
-        if(document.getElementById("deceasedPlaceOfDeathAddressCEPostcode").value.length <= 0) {
-            document.getElementById("placeOfDeath").classList.add("govuk-visually-hidden");
-        }
-    })();
-</script>
+
+    <script>
+        (function() {
+            if(document.getElementById("deceasedUsualAddressCEPostcode").value.length <= 0) {
+                document.getElementById("usualAddress").classList.add("govuk-visually-hidden");
+            }
+            if(document.getElementById("deceasedPlaceOfDeathAddressCEPostcode").value.length <= 0) {
+                document.getElementById("placeOfDeath").classList.add("govuk-visually-hidden");
+            }
+        })();
+    </script>
+
 {% endblock %}
-
-
