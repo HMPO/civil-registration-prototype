@@ -1,18 +1,18 @@
 const accessibleAutocomplete = require('accessible-autocomplete')
-const addresses = require('../../data/addresses.json')
-const fullListOfCEaddresses = require('../../data/fullListOfCEaddresses.json')
+const addressesCESingleDistrictList = require('../../data/addresses-CE-single-district-list.json')
+const addressesCEFullDistrictList = require('../../data/addresses-CE-full-district-list.json')
 
-const combinedAddressPlaceOfDeathArray = []
+const combinedPlaceOfDeathAddressArray = []
 const combinedUsualAddressArray = []
-addresses.forEach(e => combinedAddressPlaceOfDeathArray.push(e.combinedAddress))
-fullListOfCEaddresses.forEach(e => combinedUsualAddressArray.push(e.combinedAddress))
+addressesCESingleDistrictList.forEach(e => combinedPlaceOfDeathAddressArray.push(e.combinedAddress))
+addressesCEFullDistrictList.forEach(e => combinedUsualAddressArray.push(e.combinedAddress))
 
 accessibleAutocomplete({
     element: document.querySelector('#my-autocomplete-container'),
     id: 'my-autocomplete', // To match it to the existing <label>.
-    source: combinedAddressPlaceOfDeathArray,
+    source: combinedPlaceOfDeathAddressArray,
     onConfirm: async (val) => {
-        await autoFillPlaceOfDeathWhenCESelected(addresses, val)
+        await autoFillPlaceOfDeathWhenCESelected(addressesCESingleDistrictList, val)
     },
     minLength: 3
 })
@@ -22,12 +22,12 @@ accessibleAutocomplete({
     id: 'my-autocomplete2', // To match it to the existing <label>.
     source: combinedUsualAddressArray,
     onConfirm: async (val) => {
-        await autoFillUsualWhenCESelected(fullListOfCEaddresses, val)
+        await autoFillUsualWhenCESelected(addressesCEFullDistrictList, val)
     },
     minLength: 3
 })
 
-async function autoFillPlaceOfDeathWhenCESelected (addresses, val) {
+async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList, val) {
     // get the field id where value is populated
     const deceasedPlaceOfDeathAddressLine1 = document.querySelector('#deceasedPlaceOfDeathAddressLine1')
     const deceasedPlaceOfDeathAddressLine2 = document.querySelector('#deceasedPlaceOfDeathAddressLine2')
@@ -38,7 +38,7 @@ async function autoFillPlaceOfDeathWhenCESelected (addresses, val) {
     const divPlaceOfDeath = document.querySelector('#placeOfDeath')
 
     // get the exact match from the CE data
-    const result = await searchByCombinedAddress(addresses, val)
+    const result = await searchByCombinedAddress(addressesCESingleDistrictList, val)
     if (result) {
         if (result.address) {
             deceasedPlaceOfDeathAddressLine1.value = await extractNumber(result.address)
@@ -55,14 +55,14 @@ async function autoFillPlaceOfDeathWhenCESelected (addresses, val) {
         if (result.town) {
             deceasedPlaceOfDeathAddressCounty.value = result.town
         }
-        if (result.postCode) {
-            deceasedPlaceOfDeathAddressPostcode.value = result.postCode
+        if (result.postcode) {
+            deceasedPlaceOfDeathAddressPostcode.value = result.postcode
         }
         divPlaceOfDeath.classList.remove('govuk-visually-hidden')
     }
 }
 
-async function autoFillUsualWhenCESelected (addresses, val) {
+async function autoFillUsualWhenCESelected (addressesCEFullDistrictList, val) {
     // get the field id where value is populated
     const deceasedUsualCEAddressLine1 = document.querySelector('#deceasedUsualCEAddressLine1')
     const deceasedUsualCEAddressLine2 = document.querySelector('#deceasedUsualCEAddressLine2')
@@ -73,7 +73,7 @@ async function autoFillUsualWhenCESelected (addresses, val) {
     const divUsualAddress = document.querySelector('#usualAddress')
 
     // get the exact match from the CE data
-    const result = await searchByCombinedAddress(addresses, val)
+    const result = await searchByCombinedAddress(addressesCEFullDistrictList, val)
     if (result) {
         if (result.address) {
             deceasedUsualCEAddressLine1.value = await extractNumber(result.address)
@@ -90,8 +90,8 @@ async function autoFillUsualWhenCESelected (addresses, val) {
         if (result.town) {
             deceasedUsualCEAddressCounty.value = result.town
         }
-        if (result.postCode) {
-            deceasedUsualCEAddressPostcode.value = result.postCode
+        if (result.postcode) {
+            deceasedUsualCEAddressPostcode.value = result.postcode
         }
         divUsualAddress.classList.remove('govuk-visually-hidden')
     }
