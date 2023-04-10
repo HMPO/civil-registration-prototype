@@ -1,0 +1,34 @@
+{% extends "layout-informant.html" %}
+
+{% set hmpoTitle %}Their other names{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+    {{ hmpoText(ctx, {
+        id: "firstName",
+        label: {
+            text: "Their maiden name, if relevant",
+            classes: "govuk-label--m"
+        },
+        hint: ""
+    }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "knownByAnyOtherNames",
+            legend: {
+                text: "Were they known by any other names?",
+                classes: "govuk-label--m"
+            },
+            hint: "For example, a previous married name, a name they were given at birth and changed later, or just the name people called them by
+            ",
+            inline: true
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}

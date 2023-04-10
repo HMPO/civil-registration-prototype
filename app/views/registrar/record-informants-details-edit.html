@@ -1,0 +1,242 @@
+{% extends "layout-registrar-record.html" %}
+
+{% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
+
+{% set informantAddress %}
+    {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {% call govukFieldset({
+        id: "informantAddress",
+        legend: {
+            text: "Address",
+            classes: "govuk-fieldset__legend--s"
+        }
+    }) %}
+
+        {{ hmpoText(ctx, {
+            id: "informantAddressLine1",
+            label: {
+                text: "House or flat number",
+                classes: "govuk-label--xs"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "informantAddressLine2",
+            label: {
+                text: "Building name",
+                classes: "govuk-label--xs"
+                },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "informantAddressStreet",
+            label: {
+                text: "Street",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "informantAddressTown",
+            label: {
+                text: "Town or city",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "informantAddressCounty",
+            label: {
+                text: "County",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "words" },
+            classes: "govuk-!-width-one-half"
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "informantAddressPostcode",
+            label: {
+                text: "Postcode",
+                classes: "govuk-label--xs"
+            },
+            attributes: { autocapitalize: "characters" },
+            classes: "govuk-!-width-one-quarter"
+        }) }}
+
+    {% endcall %}
+{% endset %}
+
+{% block sideContent %}
+    <style>
+        .hmpo-sidebar {
+            width: 100%;
+            float: none;
+            position: relative;
+            padding: 0;
+        }
+    </style>
+
+    {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
+        <!-- TODO: Import side navigation component from DAP frontend -->
+        <h3 class="govuk-heading-m">One-third column placeholder</h3>
+        <p>Import side navigation</p>
+        <ul>
+            <!-- TODO: Persist session data for a href links -->
+            <li><a href="record">Cover sheet</a></li>
+            <br>
+            <li>Pre-registration</li>
+            <li><a href="record-cause-of-death">Cause of death</a></li>
+            <li><a href="record-uploads">Uploads</a></li>
+            <br>
+            <li>Registration</li>
+            <li><a href="record-deceaseds-details">Deceased’s details</a></li>
+            <li><a href="record-informants-details">Informant’s details</a></li>
+            <li><a href="record-check-all-information">Check all information</a></li>
+            <li><a href="record-register-page">Register page</a></li>
+        </ul>
+    {% endcall %}
+{% endblock %}
+
+{% block mainContent %}
+    {% call hmpoForm(ctx) %}
+
+    <h2 class="govuk-heading-l">Informant’s details</h2>
+    {{ hmpoText(ctx, {
+        id: "informantFirstName",
+        label: {
+            text: "First name",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+    {{ hmpoText(ctx, {
+        id: "informantMiddleNames",
+        label: {
+            text: "Middle names",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+    {{ hmpoText(ctx, {
+        id: "informantLastName",
+        label: {
+            text: "Last name",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+    {{ hmpoRadios(ctx, {
+        id: "informantCapitaliseLastNames",
+        legend: {
+            text: "Capitalise last names",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small",
+        items: [
+            { value: true, text: "Yes" },
+            { value: false, text: "No – print as typed" }
+        ]
+    }) }}
+
+    {{ hmpoRadios(ctx, {
+        id: "informantQualification",
+        legend: {
+            text: "Qualification",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small",
+        items: [
+            {
+                value: "relative present at death",
+                text: "Relative – present at death",
+                conditional: {
+                    html:
+                        hmpoText(ctx, {
+                            id: "informantRelationshipToDeceased",
+                            label: {
+                                text: "Relationship to deceased",
+                                classes: "govuk-label--s"
+                            }
+                        })
+                }
+            },
+            {
+                value: "relative not present at death",
+                text: "Relative – not present at death",
+                conditional: {
+                    html:
+                        hmpoText(ctx, {
+                            id: "informantRelationshipToDeceased",
+                            label: {
+                                text: "Relationship to deceased",
+                                classes: "govuk-label--s"
+                            }
+                        })
+                }
+            },
+            {
+                value: "relative in attendance",
+                text: "Relative – in attendance",
+                conditional: {
+                    html:
+                        hmpoText(ctx, {
+                            id: "informantRelationshipToDeceased",
+                            label: {
+                                text: "Relationship to deceased",
+                                classes: "govuk-label--s"
+                            }
+                        })
+                }
+            },
+            { value: "non-relative present at death", text: "Non-relative – present at death" },
+            { value: "non-relative occupier", text: "Non-relative – occupier" },
+            { value: "non-relative causing the body to be buried", text: "Non-relative – causing the body to be buried" },
+            { value: "non-relative causing the body to be cremated", text: "Non-relative – causing the body to be cremated" },
+            { value: "non-relative in charge of the body", text: "Non-relative – in charge of the body" },
+            { value: "non-relative causing the disposal of the body", text: "Non-relative – causing the disposal of the body" },
+            { value: "non-relative inmate", text: "Non-relative – inmate" }
+        ]
+    }) }}
+
+    {{ hmpoRadios(ctx, {
+        id: "informantLiveWithDeceased",
+        legend: {
+            text: "Did the informant live with the deceased?",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small",
+        items: [
+            {
+                value: true
+            },
+            {
+                value: false,
+                conditional: {
+                    html: informantAddress
+                }
+            }
+        ]
+    }) }}
+
+    <div class="govuk-button-group">
+        {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
+        {{ hmpoSubmit(ctx, {
+            text: translate("buttons.cancel"),
+            classes: "govuk-button--secondary",
+            href: "./record-informants-details"
+        }) }}
+    </div>
+
+    {% endcall %}
+{% endblock %}

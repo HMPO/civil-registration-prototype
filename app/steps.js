@@ -1,4 +1,4 @@
-const journey1 = {
+const registrar = {
 
     // ========================
     // Comment '/' out if index.html does not need to use the form-wizard (normally doesn't).
@@ -12,57 +12,337 @@ const journey1 = {
     //     fields: [
     //         'labTestOptions'
     //     ],
-    //     next: '/filter/begin'
+    //     next: '/registrar/begin'
     // },
     // ========================
 
-    '/register': {
+    '/registrar': {
         entryPoint: true,
         resetJourney: true,
         skip: true,
-        next: '/register/informant-qualification'
+        next: '/registrar/sign-in'
     },
-    '/register/start': {
+    // '/registrar/begin': {
+    //     backLink: '/start.html',
+    //     next: '/registrar/sign-in'
+    // },
+    '/registrar/sign-in': {
         entryPoint: true,
         // resetJourney: true,
-        next: '/register/informant-qualification'
+        fields: [
+            'registrarEmailAddress',
+            'registrarPassword'
+        ],
+        next: '/registrar/check-your-email'
     },
-    '/register/email': {
-        entryPoint: true,
-        // resetJourney: true,
-        next: '/register/informant-qualification'
+    '/registrar/check-your-email': {
+        fields: [
+            'registrarOneTimePassword'
+        ],
+        next:[
+            '/registrar/pending-registrations'
+        ]
     },
-    '/register/email-entry-point': {
+    '/registrar/pending-registrations': {
+        // fields: [
+        // ],
+        next:[
+            '/registrar/create-new-record'
+        ]
+    },
+    '/registrar/create-new-record': {
+        fields: [
+            'coverSheetDeceasedFirstName',
+            'coverSheetDeceasedMiddleNames',
+            'coverSheetDeceasedLastName',
+            'coverSheetDeceasedDateOfDeath'
+        ],
+        next:[
+            '/registrar/record'
+        ]
+    },
+    '/registrar/record': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-edit'
+        ]
+    },
+    '/registrar/record-edit': {
+        checkJourney: false,
+        fields: [
+            'coverSheetDeceasedFirstName',
+            'coverSheetDeceasedMiddleNames',
+            'coverSheetDeceasedLastName',
+            'coverSheetDeceasedDateOfDeath',
+            'coverSheetDateMCCDReceived',
+            'coverSheetMCCDStatus',
+            'coverSheetPriority',
+            'coverSheetInformantFullName',
+            'coverSheetInformantPhoneNumber',
+            'coverSheetInformantEmailAddress',
+            'coverSheetNotes'
+        ],
+        next:[
+            '/registrar/record'
+        ]
+    },
+    '/registrar/record-cause-of-death': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-cause-of-death-edit'
+        ]
+    },
+    '/registrar/record-cause-of-death-edit': {
+        checkJourney: false,
+        fields: [
+            'MCCDAddressLine1',
+            'MCCDAddressLine2',
+            'MCCDAddressStreet',
+            'MCCDAddressTown',
+            'MCCDAddressCounty',
+            'MCCDAddressPostcode',
+            'MCCDDateCertifyingPractitionerLastSawDeceasedAlive',
+            'MCCDLetterCircledOnMCCD',
+            'MCCDCauseOfDeathReason1',
+            'MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath',
+            'MCCDCauseOfDeathReason1TimeUnit',
+            'MCCDCertifyingPractitionerFullName',
+            'MCCDCertifyingPractitionerQualifications',
+            'MCCDCertifyingPractitionerGMCNumber',
+            'MCCDDateSigned',
+            'MCCDDiedInHospital',
+            'MCCDConsultantFullName',
+            'MCCDWillAttendingPractitionerProvideFurtherInformation'
+        ],
+        next:[
+            '/registrar/record-cause-of-death'
+        ]
+    },
+    '/registrar/record-uploads': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-uploads-edit'
+        ]
+    },
+    // '/registrar/record-uploads-edit': {
+    //     fields: [
+    //     ],
+    //     next:[
+    //         '/registrar/record-uploads'
+    //     ]
+    // },
+    '/registrar/record-deceaseds-details': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-deceaseds-details-edit'
+        ]
+    },
+    '/registrar/record-deceaseds-details-edit': {
+        checkJourney: false,
+        fields: [
+            'deceasedFirstName',
+            'deceasedMiddleNames',
+            'deceasedLastName',
+            'deceasedCapitaliseLastNames',
+            'deceasedPrefix',
+            'deceasedSuffix',
+            'deceasedPrintOrderOfNames',
+            'deceasedOrderOfNames',
+            'deceasedDateOfDeath',
+            'deceasedSex',
+            'deceasedMaidenName',
+            'deceasedOtherKnownNames',
+            'deceasedPlaceOfDeath',
+            'deceasedPlaceOfDeathAddressCELine1',
+            'deceasedPlaceOfDeathAddressCELine2',
+            'deceasedPlaceOfDeathAddressCEStreet',
+            'deceasedPlaceOfDeathAddressCETown',
+            'deceasedPlaceOfDeathAddressCECounty',
+            'deceasedPlaceOfDeathAddressCEPostcode',
+            'deceasedPlaceOfDeathAddressLine1',
+            'deceasedPlaceOfDeathAddressLine2',
+            'deceasedPlaceOfDeathAddressStreet',
+            'deceasedPlaceOfDeathAddressTown',
+            'deceasedPlaceOfDeathAddressCounty',
+            'deceasedPlaceOfDeathAddressPostcode',
+            'deceasedUsualAddress',
+            'deceasedUsualAddressLine1',
+            'deceasedUsualAddressLine2',
+            'deceasedUsualAddressStreet',
+            'deceasedUsualAddressTown',
+            'deceasedUsualAddressCounty',
+            'deceasedUsualAddressPostcode',
+            'deceasedUsualAddressCELine1',
+            'deceasedUsualAddressCELine2',
+            'deceasedUsualAddressCEStreet',
+            'deceasedUsualAddressCETown',
+            'deceasedUsualAddressCECounty',
+            'deceasedUsualAddressCEPostcode',
+            'deceasedDateOfBirth',
+            'deceasedFullDateOfBirth',
+            'deceasedPartialDateOfBirth',
+            'deceasedAge',
+            'deceasedApproximateYearOfBirth',
+            'deceasedApproximateAge',
+            'deceasedPlaceOfBirth',
+            'deceasedCountryOfBirth',
+            'deceasedSpanishNational',
+            'deceasedOccupation',
+            'deceasedOccupationStatus',
+            'deceasedRelationshipStatus',
+            'spouseOrCivilPartnerFullName',
+            'spouseOrCivilPartnerOccupation',
+            'spouseOrCivilPartnerOccupationStatus',
+            'willInformantGiveDateOfBirthOfSpouseOrCivilPartner',
+            'spouseOrCivilPartnerDateOfBirth',
+            'willInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics',
+            'deceasedHowLongSpendInCommunalEstablishment',
+            'deceasedNHSNumber',
+            'willInformantGiveAdditionalIndustryAndEmploymentInformationForDeceased',
+            'deceasedAdditionalEmploymentOrIndustryInformation',
+            'deceasedEmploymentStatus',
+            'willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner',
+            'spouseOrCivilAdditionalEmploymentOrIndustryInformation',
+            'spouseOrCivilEmploymentStatus'
+        ],
+        next:[
+            '/registrar/record-deceaseds-details'
+        ]
+    },
+    '/registrar/record-informants-details': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-informants-details-edit'
+        ]
+    },
+    '/registrar/record-informants-details-edit': {
+        checkJourney: false,
+        fields: [
+            'informantFirstName',
+            'informantMiddleNames',
+            'informantLastName',
+            'informantCapitaliseLastNames',
+            'informantQualification',
+            'informantRelationshipToDeceased',
+            'informantLiveWithDeceased',
+            'informantAddressLine1',
+            'informantAddressLine2',
+            'informantAddressStreet',
+            'informantAddressTown',
+            'informantAddressCounty',
+            'informantAddressPostcode'
+        ],
+        next:[
+            '/registrar/record-informants-details'
+        ]
+    },
+    '/registrar/record-check-all-information': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        // next:[
+        // ]
+    },
+    '/registrar/record-register-page': {
+        checkJourney: false,
+        fields: [
+            'registrarDesignation',
+            'informantSignature',
+            'informantSignatureAnnotation',
+            'registrarSignature'
+        ],
+        next:[
+            '/registrar/record-register-confirmation'
+        ]
+    },
+    '/registrar/record-register-confirmation': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        // next:[
+        // ]
+    }
+}
+
+const informant = {
+
+    // ========================
+    // Comment '/' out if index.html does not need to use the form-wizard (normally doesn't).
+    // TODO: Improve this: Viewing the first page (index.html) will reset the journey, so shouldn't be used normally.
+    // Uncomment to use for purposes such as lab testing variations, and you need radio options in index.html.
+    // ========================
+    // '/': {
+    //     template: 'index.html',
+    //     entryPoint: true,
+    //     resetJourney: true,
+    //     fields: [
+    //         'labTestOptions'
+    //     ],
+    //     next: '/informant/begin'
+    // },
+    // ========================
+
+    '/informant': {
         entryPoint: true,
         resetJourney: true,
         skip: true,
-        next: '/register/informant-qualification'
+        next: '/informant/informant-qualification'
     },
-    '/register/informant-qualification': {
+    // '/informant/begin': {
+    //     backLink: '/start.html',
+    //     next: '/informant/start'
+    // },
+    '/informant/start': {
+        entryPoint: true,
+        // resetJourney: true,
+        next: '/informant/informant-qualification'
+    },
+    '/informant/email': {
+        entryPoint: true,
+        // resetJourney: true,
+        next: '/informant/informant-qualification'
+    },
+    '/informant/email-entry-point': {
+        entryPoint: true,
+        resetJourney: true,
+        skip: true,
+        next: '/informant/informant-qualification'
+    },
+    '/informant/informant-qualification': {
         fields: [
             'informantRelativeOrNot',
             'informantPresentAtTheDeathOrNot'
         ],
         next:[
             { field: 'informantRelativeOrNot', value: false, next: [
-                { field: 'informantPresentAtTheDeathOrNot', value: false, next: '/register/you-cannot-register-this-death' },
-                '/register/informant-personal-details'
+                { field: 'informantPresentAtTheDeathOrNot', value: false, next: '/informant/you-cannot-register-this-death' },
+                '/informant/informant-personal-details'
             ]},
-            '/register/informant-personal-details'
+            '/informant/informant-personal-details'
         ]
     },
-    '/register/you-cannot-register-this-death': {
+    '/informant/you-cannot-register-this-death': {
     },
-    '/register/informant-personal-details': {
+    '/informant/informant-personal-details': {
         fields: [
             'informantFirstName',
             'informantMiddleNames',
             'informantLastName',
             'informantRelationshipToDeceased'
         ],
-        next: '/register/informant-address'
+        next: '/informant/informant-address'
     },
-    '/register/informant-address': {
+    '/informant/informant-address': {
         fields: [
             'informantAddressName',
             'informantAddressLine1',
@@ -70,9 +350,9 @@ const journey1 = {
             'informantAddressTown',
             'informantAddressPostcode'
         ],
-        next: '/register/personal-details'
+        next: '/informant/personal-details'
     },
-    '/register/personal-details': {
+    '/informant/personal-details': {
         fields: [
             'firstName',
             'middleName',
@@ -85,89 +365,89 @@ const journey1 = {
         next:
         [
             { field: 'sex', value: 'Female', next: [
-                { field: 'maritalStatus', value: 'Married', next: '/register/other-names-maiden' },
-                '/register/other-names'
+                { field: 'maritalStatus', value: 'Married', next: '/informant/other-names-maiden' },
+                '/informant/other-names'
             ] },
-            '/register/other-names']
+            '/informant/other-names']
     },
-    '/register/other-names-maiden': {
+    '/informant/other-names-maiden': {
         fields: [
             'firstName',
             'knownByAnyOtherNames'
         ],
         next:
         [
-            { field: 'knownByAnyOtherNames', value: false, next: '/register/date-and-place-of-birth' },
-            '/register/other-names-yes'
+            { field: 'knownByAnyOtherNames', value: false, next: '/informant/date-and-place-of-birth' },
+            '/informant/other-names-yes'
         ]
     },
-    '/register/other-names': {
+    '/informant/other-names': {
         fields: [
             'maidenName',
             'anyPreviousNames',
             'knownByAnyOtherNames'
-            
+
         ],
         next:
         [
-            { field: 'knownByAnyOtherNames', value: false, next: '/register/date-and-place-of-birth' },
-            '/register/other-names-yes'
+            { field: 'knownByAnyOtherNames', value: false, next: '/informant/date-and-place-of-birth' },
+            '/informant/other-names-yes'
         ]
     },
-    '/register/date-and-place-of-birth': {
+    '/informant/date-and-place-of-birth': {
         fields: [
             'dateOfBirth',
             'townOrCityOfBirth',
             'countryOfBirth',
             'spanishNational'
         ],
-        next: '/register/occupation'
+        next: '/informant/occupation'
     },
 
-    
-    // '/register/sex': {
+
+    // '/informant/sex': {
     //     fields: [
     //         'sex'
     //     ],
-    //     next: '/register/marital-status'
+    //     next: '/informant/marital-status'
     // },
-    // '/register/marital-status': {
+    // '/informant/marital-status': {
     //     fields: [
     //         'maritalStatus'
     //     ],
     //     next: [
     //         { field: 'sex', value: 'Female', next: [
-    //             { field: 'maritalStatus', value: 'Married or in a civil partnership', next: '/register/maiden-name' },
-    //             { field: 'maritalStatus', value: 'Widow or widower', next: '/register/maiden-name' },
-    //             '/register/occupation'
+    //             { field: 'maritalStatus', value: 'Married or in a civil partnership', next: '/informant/maiden-name' },
+    //             { field: 'maritalStatus', value: 'Widow or widower', next: '/informant/maiden-name' },
+    //             '/informant/occupation'
     //         ] },
-    //         '/register/occupation'
+    //         '/informant/occupation'
     //     ]
     // },
-    // '/register/maiden-name': {
+    // '/informant/maiden-name': {
     //     fields: [
     //         'maidenName'
     //     ],
-    //     next: '/register/occupation'
+    //     next: '/informant/occupation'
     // },
 
-    '/register/occupation': {
+    '/informant/occupation': {
         fields: [
             'lastOccupation',
             'retired'
         ],
-        next: '/register/where-did-they-live'
+        next: '/informant/where-did-they-live'
     },
-    '/register/where-did-they-live': {
+    '/informant/where-did-they-live': {
         fields: [
             'didTheyLiveWithYou'
         ],
         next:[
-            { field: 'didTheyLiveWithYou', value: false, next: '/register/address' },
-            '/register/date-and-place-of-death'
+            { field: 'didTheyLiveWithYou', value: false, next: '/informant/address' },
+            '/informant/date-and-place-of-death'
         ]
     },
-    '/register/address': {
+    '/informant/address': {
         fields: [
             'addressName',
             'addressLine1',
@@ -175,19 +455,19 @@ const journey1 = {
             'addressTown',
             'addressPostcode'
         ],
-        next: '/register/date-and-place-of-death'
+        next: '/informant/date-and-place-of-death'
     },
-    '/register/date-and-place-of-death': {
+    '/informant/date-and-place-of-death': {
         fields: [
             'dateOfDeath',
             'didTheyDieAtHome'
         ],
         next:[
-            { field: 'didTheyDieAtHome', value: false, next: '/register/address-they-died-at' },
-            '/register/partner-details'
+            { field: 'didTheyDieAtHome', value: false, next: '/informant/address-they-died-at' },
+            '/informant/partner-details'
         ]
     },
-    '/register/address-they-died-at': {
+    '/informant/address-they-died-at': {
         fields: [
             'diedAtAddressName',
             'diedAtAddressLine1',
@@ -195,34 +475,35 @@ const journey1 = {
             'diedAtAddressTown',
             'diedAtAddressPostcode'
         ],
-        next: '/register/partner-details'
+        next: '/informant/partner-details'
     },
-    '/register/partner-details': {
+    '/informant/partner-details': {
         fields: [
             'partnerName',
             'partnerOccupation',
             'partnerRetired'
         ],
-        next: '/register/voluntary-information'
+        next: '/informant/voluntary-information'
     },
-    '/register/voluntary-information': {
+    '/informant/voluntary-information': {
         fields: [
             'NHSNumber',
             'placeholder',
             'placeholder'
         ],
-        next: '/register/confirm'
+        next: '/informant/confirm'
     },
-    '/register/confirm': {
+    '/informant/confirm': {
         editable: true,
-        next: '/register/submitted'
+        next: '/informant/submitted'
     },
-    '/register/submitted': {
+    '/informant/submitted': {
         noPost: true,
         backLink: false
     }
 }
 
 module.exports = {
-    journey1
+    registrar,
+    informant
 }

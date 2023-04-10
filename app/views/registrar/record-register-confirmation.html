@@ -1,0 +1,32 @@
+{% extends "layout-registrar.html" %}
+
+{% set hmpoTitle %}Next steps{% endset %}
+
+{% block backLink %}
+    {% if backLink %}
+        {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+        <span id="back">{{ govukBackLink({
+            text: translate("govuk.backToHomepageLink"),
+            href: "/registrar/pending-registrations"
+        }) }}</span>
+    {% endif %}
+{% endblock %}
+
+{% block mainContent %}
+
+    {% call hmpoForm(ctx) %}
+
+        {% call hmpoInsetText({ classes: "hods-alert--success"}) %}
+            <h2>Sent to RON</h2>
+            <p>
+                RON number:<br>
+                5649637345
+            </p>
+        {% endcall %}
+
+        <h1 id="header">{{ hmpoTitle }}</h1>
+        <p>Complete the registration on RON.</p>
+
+    {% endcall %}
+
+{% endblock %}

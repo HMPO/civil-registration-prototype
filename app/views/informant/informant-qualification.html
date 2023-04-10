@@ -1,0 +1,32 @@
+{% extends "layout-informant.html" %}
+
+{% set hmpoTitle %}Check you can register this death{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+    <p class="govuk-body-l">Only certain people can register a death. Use these questions to check if you're qualified.</p>
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoRadios(ctx, {
+            id: "informantRelativeOrNot",
+            legend: {
+                text: "Are you a relative of the person who's died?",
+                classes: "govuk-label--m"
+            },
+            inline: true
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "informantPresentAtTheDeathOrNot",
+            legend: {
+                text: "Were you present at the death?",
+                classes: "govuk-label--m"
+            },
+            inline: true
+        }) }}
+
+        {{ hmpoSubmit(ctx) }}
+
+    {% endcall %}
+
+{% endblock %}
