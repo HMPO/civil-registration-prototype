@@ -74,7 +74,7 @@
     {{ govukSummaryList({ rows: [
         {
             key: { text: "Date MCCD received" },
-            value: { text: values.coverSheetDateMCCDReceived }
+            value: { text: values.coverSheetDateMCCDReceived | date("DD/MM/YYYY") }
         },
         {
             key: { text: "MCCD status" },

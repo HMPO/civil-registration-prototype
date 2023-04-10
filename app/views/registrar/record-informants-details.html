@@ -119,7 +119,7 @@
         {
             key: { text: "Relationship to deceased" },
             value: { text: values.informantRelationshipToDeceased }
-        } if values.informantRelationshipToDeceased,
+        } if values.informantQualification == "relative present at death" or values.informantQualification == "relative not present at death" or values.informantQualification == "relative in attendance",
         {
             key: { text: "Did the informant live with the deceased?" },
             value: { html:

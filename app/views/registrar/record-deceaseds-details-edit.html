@@ -429,7 +429,7 @@
                     html:
                         hmpoDate(ctx, {
                             id: "spouseOrCivilPartnerDateOfBirth",
-                            label: {
+                            legend: {
                                 text: "Spouse or civil partner’s date of birth",
                                 classes: "govuk-label--s"
                             }
@@ -541,7 +541,7 @@
             }) }}
 
             {{ hmpoText(ctx, {
-                id: "deceasedLastPrefix",
+                id: "deceasedPrefix",
                 label: {
                     text: "Prefix",
                     classes: "govuk-label--s"
@@ -564,7 +564,7 @@
                 },
                 classes: "govuk-radios--small",
                 items: [
-                    { value: "First name at the front ", text: "First name at the front " },
+                    { value: "First name at the front", text: "First name at the front" },
                     { value: "Last name at the front", text: "Last name at the front" },
                     { value: "Only print last name", text: "Only print last name" },
                     { value: "Print no name", text: "Print no name" },

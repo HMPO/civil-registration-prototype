@@ -45,9 +45,8 @@ module.exports = {
         autocomplete: 'bday'
     },
     coverSheetDateMCCDReceived: {
-        // validate: [
-        //     'required'
-        // ]
+        validate: ['date'],
+        autocomplete: 'bday'
     },
     coverSheetMCCDStatus: {
         // validate: [

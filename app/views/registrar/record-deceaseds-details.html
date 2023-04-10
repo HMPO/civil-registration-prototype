@@ -53,15 +53,15 @@
 
             {% if values.deceasedPrintOrderOfNames == "First name at the front" %}
                 {% set deceasedOrderOfNames = [
-                    values.deceasedFirstName + " " + values.deceasedMiddleNames + " " + values.deceasedLastName
+                    values.deceasedFirstName + " " + values.deceasedMiddleNames + " " + (values.deceasedLastName | upper) if values.deceasedCapitaliseLastNames === true else values.deceasedLastName
                 ] | filter %}
             {% elif values.deceasedPrintOrderOfNames == "Last name at the front" %}
                 {% set deceasedOrderOfNames = [
-                    values.deceasedLastName + " " + values.deceasedFirstName + " " + values.deceasedMiddleNames
+                    (values.deceasedLastName | upper) if values.deceasedCapitaliseLastNames === true else values.deceasedLastName + " " + values.deceasedFirstName + " " + values.deceasedMiddleNames
                 ] | filter %}
             {% elif values.deceasedPrintOrderOfNames == "Only print last name" %}
                 {% set deceasedOrderOfNames = [
-                    values.deceasedLastName
+                    (values.deceasedLastName | upper) if values.deceasedCapitaliseLastNames === true else values.deceasedLastName
                 ] | filter %}
             {% elif values.deceasedPrintOrderOfNames == "Print no name" %}
                 {% set deceasedOrderOfNames = "" | filter %}
@@ -151,8 +151,8 @@
                 },
                 {
                     key: { text: "Maiden name" },
-                    value: { text: values.deceasedMaidenName }
-                } if values.deceasedMaidenName,
+                    value: { text: values.deceasedMaidenName if values.deceasedMaidenName }
+                } if values.deceasedSex == "Female",
                 {
                     key: { text: "Other known name 1" },
                     value: { text: values.deceasedOtherKnownNames }
@@ -289,7 +289,7 @@
                 {
                     key: { text: "Will the informant give additional industry and employment information for the deceased’s partner?" },
                     value: { html:
-                        values.willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner + ":<br>" + values.deceasedAdditionalEmploymentOrIndustryInformation if values.willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner == "Yes"
+                        values.willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner + ":<br>" + values.spouseOrCivilAdditionalEmploymentOrIndustryInformation if values.willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner == "Yes"
                         else values.willInformantGiveAdditionalIndustryAndEmploymentInformationForSpouseOrCivilPartner
                     }
                 },

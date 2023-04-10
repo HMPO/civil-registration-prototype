@@ -79,7 +79,7 @@
         },
         {
             key: { text: "Time between onset and death" },
-            value: { text: values.MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath + " " + values.MCCDCauseOfDeathReason1TimeUnit }
+            value: { text: (values.MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath + " " if values.MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath) + (values.MCCDCauseOfDeathReason1TimeUnit if values.MCCDCauseOfDeathReason1TimeUnit)}
         },
         {
             key: { text: "Certifying practitioner’s full name" },
@@ -106,8 +106,8 @@
         },
         {
             key: { text: "Consultant’s full name" },
-            value: { text: values.MCCDConsultantFullName }
-        } if values.MCCDConsultantFullName
+            value: { text: values.MCCDConsultantFullName if values.MCCDConsultantFullName }
+        } if values.MCCDDiedInHospital
     ] | filter }) }}
 
 
