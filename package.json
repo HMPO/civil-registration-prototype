@@ -44,6 +44,7 @@
     "portscanner": "^2.1.1",
     "prompt": "^1.0.0",
     "require-dir": "^1.0.0",
+    "sass": "^1.61.0",
     "session-file-store": "^1.4.0",
     "sync-request": "^6.0.0",
     "universal-analytics": "^0.4.16",
@@ -58,7 +59,6 @@
     "eslint": "^7.32.0",
     "glob": "^7.1.4",
     "jest": "^25.1.0",
-    "sass": "^1.58.3",
     "standardx": "^5.0.0",
     "supertest": "^4.0.2"
   }
