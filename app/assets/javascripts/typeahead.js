@@ -52,9 +52,6 @@ async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList
         if (result.town) {
             deceasedPlaceOfDeathAddressCETown.value = result.town
         }
-        if (result.town) {
-            deceasedPlaceOfDeathAddressCECounty.value = result.town
-        }
         if (result.post_code) {
             deceasedPlaceOfDeathAddressCEPostcode.value = result.post_code
         }
@@ -86,9 +83,6 @@ async function autoFillUsualWhenCESelected (addressesCEFullDistrictList, val) {
         }
         if (result.town) {
             deceasedUsualAddressCETown.value = result.town
-        }
-        if (result.town) {
-            deceasedUsualAddressCECounty.value = result.town
         }
         if (result.post_code) {
             deceasedUsualAddressCEPostcode.value = result.post_code
