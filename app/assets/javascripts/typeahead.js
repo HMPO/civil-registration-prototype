@@ -28,7 +28,7 @@ accessibleAutocomplete({
 })
 
 async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList, val) {
-    // get the field id where value is populated
+    // Get the field id where value is populated
     const deceasedPlaceOfDeathAddressCELine1 = document.querySelector('#deceasedPlaceOfDeathAddressCELine1')
     const deceasedPlaceOfDeathAddressCELine2 = document.querySelector('#deceasedPlaceOfDeathAddressCELine2')
     const deceasedPlaceOfDeathAddressCEStreet = document.querySelector('#deceasedPlaceOfDeathAddressCEStreet')
@@ -37,9 +37,16 @@ async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList
     const deceasedPlaceOfDeathAddressCEPostcode = document.querySelector('#deceasedPlaceOfDeathAddressCEPostcode')
     const divPlaceOfDeath = document.querySelector('#placeOfDeath')
 
-    // get the exact match from the CE data
+    // Get the exact match from the CE data
     const result = await searchByCombinedAddress(addressesCESingleDistrictList, val)
     if (result) {
+        // Reset variables to clear address fields
+        deceasedUsualAddressCELine1.value = null
+        deceasedUsualAddressCELine2.value = null
+        deceasedUsualAddressCEStreet.value = null
+        deceasedUsualAddressCETown.value = null
+        deceasedUsualAddressCECounty.value = null
+        deceasedUsualAddressCEPostcode.value = null
         if (result.address) {
             deceasedPlaceOfDeathAddressCELine1.value = await extractNumber(result.address)
         }
@@ -60,7 +67,7 @@ async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList
 }
 
 async function autoFillUsualWhenCESelected (addressesCEFullDistrictList, val) {
-    // get the field id where value is populated
+    // Get the field id where value is populated
     const deceasedUsualAddressCELine1 = document.querySelector('#deceasedUsualAddressCELine1')
     const deceasedUsualAddressCELine2 = document.querySelector('#deceasedUsualAddressCELine2')
     const deceasedUsualAddressCEStreet = document.querySelector('#deceasedUsualAddressCEStreet')
@@ -69,9 +76,16 @@ async function autoFillUsualWhenCESelected (addressesCEFullDistrictList, val) {
     const deceasedUsualAddressCEPostcode = document.querySelector('#deceasedUsualAddressCEPostcode')
     const divUsualAddress = document.querySelector('#usualAddress')
 
-    // get the exact match from the CE data
+    // Get the exact match from the CE data
     const result = await searchByCombinedAddress(addressesCEFullDistrictList, val)
     if (result) {
+        // Reset variables to clear address fields
+        deceasedUsualAddressCELine1.value = null
+        deceasedUsualAddressCELine2.value = null
+        deceasedUsualAddressCEStreet.value = null
+        deceasedUsualAddressCETown.value = null
+        deceasedUsualAddressCECounty.value = null
+        deceasedUsualAddressCEPostcode.value = null
         if (result.address) {
             deceasedUsualAddressCELine1.value = await extractNumber(result.address)
         }
