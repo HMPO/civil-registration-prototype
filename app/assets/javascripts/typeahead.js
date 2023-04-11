@@ -102,7 +102,7 @@ async function searchByCombinedAddress (data, query) {
 }
 
 async function extractNumber (data) {
-    const regex = /^\d+/
+    const regex = /^(((Flats? )?\d+[-\/]?\d*[a-zA-Z]?)|^Flat [a-zA-Z] )/
     const match = data.match(regex)
     return await match ? match[0] : null
 }
