@@ -4,8 +4,8 @@ const addressesCEFullDistrictList = require('../../data/addresses-CE-full-distri
 
 const combinedPlaceOfDeathAddressArray = []
 const combinedUsualAddressArray = []
-addressesCESingleDistrictList.forEach(e => combinedPlaceOfDeathAddressArray.push(e.combinedAddress))
-addressesCEFullDistrictList.forEach(e => combinedUsualAddressArray.push(e.combinedAddress))
+addressesCESingleDistrictList.forEach(e => combinedPlaceOfDeathAddressArray.push(e.combined_address))
+addressesCEFullDistrictList.forEach(e => combinedUsualAddressArray.push(e.combined_address))
 
 accessibleAutocomplete({
     element: document.querySelector('#my-autocomplete-container'),
@@ -43,8 +43,8 @@ async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList
         if (result.address) {
             deceasedPlaceOfDeathAddressCELine1.value = await extractNumber(result.address)
         }
-        if (result.name) {
-            deceasedPlaceOfDeathAddressCELine2.value = result.name
+        if (result.ce_name) {
+            deceasedPlaceOfDeathAddressCELine2.value = result.ce_name
         }
         if (result.address) {
             deceasedPlaceOfDeathAddressCEStreet.value = result.address
@@ -55,8 +55,8 @@ async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList
         if (result.town) {
             deceasedPlaceOfDeathAddressCECounty.value = result.town
         }
-        if (result.postcode) {
-            deceasedPlaceOfDeathAddressCEPostcode.value = result.postcode
+        if (result.post_code) {
+            deceasedPlaceOfDeathAddressCEPostcode.value = result.post_code
         }
         divPlaceOfDeath.classList.remove('govuk-visually-hidden')
     }
@@ -78,8 +78,8 @@ async function autoFillUsualWhenCESelected (addressesCEFullDistrictList, val) {
         if (result.address) {
             deceasedUsualAddressCELine1.value = await extractNumber(result.address)
         }
-        if (result.name) {
-            deceasedUsualAddressCELine2.value = result.name
+        if (result.ce_name) {
+            deceasedUsualAddressCELine2.value = result.ce_name
         }
         if (result.address) {
             deceasedUsualAddressCEStreet.value = result.address
@@ -90,8 +90,8 @@ async function autoFillUsualWhenCESelected (addressesCEFullDistrictList, val) {
         if (result.town) {
             deceasedUsualAddressCECounty.value = result.town
         }
-        if (result.postcode) {
-            deceasedUsualAddressCEPostcode.value = result.postcode
+        if (result.post_code) {
+            deceasedUsualAddressCEPostcode.value = result.post_code
         }
         divUsualAddress.classList.remove('govuk-visually-hidden')
     }
@@ -100,7 +100,7 @@ async function autoFillUsualWhenCESelected (addressesCEFullDistrictList, val) {
 async function searchByCombinedAddress (data, query) {
     console.table([query, data])
     for (const item of data) {
-        if (item.combinedAddress.toLowerCase() === query.toLowerCase()) {
+        if (item.combined_address.toLowerCase() === query.toLowerCase()) {
             return await item
         }
     }
