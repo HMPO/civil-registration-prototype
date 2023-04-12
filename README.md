@@ -124,10 +124,10 @@ git push origin +archive/feature-branch-name-v1
 Each prototype archive will be hosted on a separate Heroku app.
 
 ```
-heroku apps:create civil-registration-YYMMDD-feature-name -r heroku-feature-name-v1 --region eu
+heroku apps:create gro-YYMMDD-feature-name -r heroku-feature-name-v1 --region eu
 ```
 
-`civil-registration-YYMMDD-feature-name` becomes the subdomain in the URL of the Heroku app.
+`gro-YYMMDD-feature-name` becomes the subdomain in the URL of the Heroku app.
 
 `heroku-feature-name-v1` is the remote added to your repository.
 
