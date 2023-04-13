@@ -57,7 +57,7 @@
                 ] | filter %}
             {% elif values.deceasedPrintOrderOfNames == "Last name at the front" %}
                 {% set deceasedOrderOfNames = [
-                    (values.deceasedLastName | upper) if values.deceasedCapitaliseLastNames === true else values.deceasedLastName + " " + values.deceasedFirstName + " " + values.deceasedMiddleNames
+                    (values.deceasedLastName | upper) + " " + values.deceasedFirstName + " " + values.deceasedMiddleNames if values.deceasedCapitaliseLastNames === true else values.deceasedLastName + " " + values.deceasedFirstName + " " + values.deceasedMiddleNames
                 ] | filter %}
             {% elif values.deceasedPrintOrderOfNames == "Only print last name" %}
                 {% set deceasedOrderOfNames = [
