@@ -29,6 +29,7 @@
     "express-session": "^1.17.2",
     "express-writer": "0.0.4",
     "fancy-log": "^2.0.0",
+    "fuse.js": "^6.6.2",
     "govuk_template_jinja": "^0.26.0",
     "govuk-frontend": "^3.6.0",
     "gulp": "^4.0.2",

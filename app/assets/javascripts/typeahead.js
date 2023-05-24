@@ -1,6 +1,7 @@
 const accessibleAutocomplete = require('accessible-autocomplete')
 const addressesCESingleDistrictList = require('../../data/addresses-CE-single-district-list.json')
 const addressesCEFullDistrictList = require('../../data/addresses-CE-full-district-list.json')
+const Fuse = require("fuse.js");
 
 const combinedPlaceOfDeathAddressArray = []
 const combinedUsualAddressArray = []
@@ -10,7 +11,10 @@ addressesCEFullDistrictList.forEach(e => combinedUsualAddressArray.push(e.combin
 accessibleAutocomplete({
     element: document.querySelector('#my-autocomplete-container'),
     id: 'my-autocomplete', // To match it to the existing <label>.
-    source: combinedPlaceOfDeathAddressArray,
+    source: async (query, populateResults) => {
+        const results = await fussJsSearch(combinedPlaceOfDeathAddressArray, query);
+        populateResults(results);
+    },
     onConfirm: async (val) => {
         await autoFillPlaceOfDeathWhenCESelected(addressesCESingleDistrictList, val)
     },
@@ -20,7 +24,10 @@ accessibleAutocomplete({
 accessibleAutocomplete({
     element: document.querySelector('#my-autocomplete-container2'),
     id: 'my-autocomplete2', // To match it to the existing <label>.
-    source: combinedUsualAddressArray,
+    source: async (query, populateResults) => {
+        const results = await fussJsSearch(combinedUsualAddressArray, query);
+        populateResults();
+    },
     onConfirm: async (val) => {
         await autoFillUsualWhenCESelected(addressesCEFullDistrictList, val)
     },
@@ -38,7 +45,8 @@ async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList
     const divPlaceOfDeath = document.querySelector('#placeOfDeath')
 
     // Get the exact match from the CE data
-    const result = await searchByCombinedAddress(addressesCESingleDistrictList, val)
+    const result = await searchByCombinedAddress(addressesCESingleDistrictList, val);
+    console.table(["res", result]);
     if (result) {
         // Reset variables to clear address fields
         deceasedUsualAddressCELine1.value = null
@@ -106,17 +114,32 @@ async function autoFillUsualWhenCESelected (addressesCEFullDistrictList, val) {
 }
 
 async function searchByCombinedAddress (data, query) {
-    console.table([query, data])
     for (const item of data) {
         if (item.combined_address.toLowerCase() === query.toLowerCase()) {
             return await item
         }
     }
-    return null
+    return null;
 }
 
 async function extractNumber (data) {
     const regex = /^(((Flats? )?\d+[-\/]?\d*[a-zA-Z]?)|^Flat [a-zA-Z] )/
     const match = data.match(regex)
     return await match ? match[0] : null
+}
+
+async function fussJsSearch(data, query) {
+    const options = {
+        distance: 0.5,
+        keys: [
+            "combined_address"
+        ]
+    };
+    const fuse = new Fuse(data, options);
+    const populateDropdown = fuse.search(query);
+    let respone = [];
+    populateDropdown.forEach(e => respone.push(e.item));
+    console.table(["Fussy Array: ", respone])
+
+    return respone;
 }
