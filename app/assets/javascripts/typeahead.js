@@ -130,9 +130,14 @@ async function extractNumber (data) {
 
 async function fussJsSearch(data, query) {
     const options = {
-        distance: 0.5,
+        includeScore: true,
+        shouldSort: true,
+        threshold: 0.6,
         keys: [
-            "combined_address"
+            "ce_name",
+            "address",
+            "town",
+            "post_code"
         ]
     };
     const fuse = new Fuse(data, options);
