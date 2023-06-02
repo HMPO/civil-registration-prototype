@@ -26,7 +26,7 @@ accessibleAutocomplete({
     id: 'my-autocomplete2', // To match it to the existing <label>.
     source: async (query, populateResults) => {
         const results = await fussJsSearch(combinedUsualAddressArray, query);
-        populateResults();
+        populateResults(results);
     },
     onConfirm: async (val) => {
         await autoFillUsualWhenCESelected(addressesCEFullDistrictList, val)
