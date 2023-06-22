@@ -1,0 +1,123 @@
+{%- set assetPath = "/govuk/assets" -%}
+
+{% extends "hmpo-templatefull.njk" %}
+
+{% from "govuk/components/accordion/macro.njk"        import govukAccordion %}
+{% from "govuk/components/back-link/macro.njk"        import govukBackLink %}
+{% from "govuk/components/breadcrumbs/macro.njk"      import govukBreadcrumbs %}
+{% from "govuk/components/button/macro.njk"           import govukButton %}
+{% from "govuk/components/character-count/macro.njk"  import govukCharacterCount %}
+{% from "govuk/components/checkboxes/macro.njk"       import govukCheckboxes %}
+{% from "govuk/components/date-input/macro.njk"       import govukDateInput %}
+{% from "govuk/components/details/macro.njk"          import govukDetails %}
+{% from "govuk/components/error-message/macro.njk"    import govukErrorMessage %}
+{% from "govuk/components/error-summary/macro.njk"    import govukErrorSummary %}
+{% from "govuk/components/fieldset/macro.njk"         import govukFieldset %}
+{% from "govuk/components/file-upload/macro.njk"      import govukFileUpload %}
+{% from "govuk/components/input/macro.njk"            import govukInput %}
+{% from "govuk/components/inset-text/macro.njk"       import govukInsetText %}
+{% from "govuk/components/panel/macro.njk"            import govukPanel %}
+{% from "govuk/components/phase-banner/macro.njk"     import govukPhaseBanner %}
+{% from "govuk/components/radios/macro.njk"           import govukRadios %}
+{% from "govuk/components/select/macro.njk"           import govukSelect %}
+{% from "govuk/components/skip-link/macro.njk"        import govukSkipLink %}
+{% from "govuk/components/summary-list/macro.njk"     import govukSummaryList %}
+{% from "govuk/components/table/macro.njk"            import govukTable %}
+{% from "govuk/components/tabs/macro.njk"             import govukTabs %}
+{% from "govuk/components/tag/macro.njk"              import govukTag %}
+{% from "govuk/components/textarea/macro.njk"         import govukTextarea %}
+{% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
+
+{% from "hmpo-auto-submit/macro.njk"                  import hmpoAutoSubmit %}
+{% from "hmpo-chars-left/macro.njk"                   import hmpoCharsLeft %}
+{% from "hmpo-checkboxes/macro.njk"                   import hmpoCheckboxes %}
+{% from "hmpo-circle-step-list/macro.njk"             import hmpoCircleStepList %}
+{% from "hmpo-circle-step/macro.njk"                  import hmpoCircleStep %}
+{% from "hmpo-close/macro.njk"                        import hmpoClose %}
+{% from "hmpo-cookie-banner/macro.njk"                import hmpoCookieBanner %}
+{% from "hmpo-date/macro.njk"                         import hmpoDate %}
+{% from "hmpo-details/macro.njk"                      import hmpoDetails %}
+{% from "hmpo-error-group/macro.njk"                  import hmpoErrorGroup %}
+{% from "hmpo-flash-card/macro.njk"                   import hmpoFlashCard %}
+{% from "hmpo-footer/macro.njk"                       import hmpoFooter %}
+{% from "hmpo-form/macro.njk"                         import hmpoForm %}
+{% from "hmpo-html/macro.njk"                         import hmpoHtml %}
+{% from "hmpo-inset-text/macro.njk"                   import hmpoInsetText %}
+{% from "hmpo-number/macro.njk"                       import hmpoNumber %}
+{% from "hmpo-phone/macro.njk"                        import hmpoPhone %}
+{% from "hmpo-print-page/macro.njk"                   import hmpoPrintPage %}
+{% from "hmpo-radios/macro.njk"                       import hmpoRadios %}
+{% from "hmpo-select/macro.njk"                       import hmpoSelect %}
+{% from "hmpo-submit/macro.njk"                       import hmpoSubmit %}
+{% from "hmpo-text/macro.njk"                         import hmpoText %}
+{% from "hmpo-textarea/macro.njk"                     import hmpoTextarea %}
+{% from "hmpo-warning-text/macro.njk"                 import hmpoWarningText %}
+{% from "hmpo-sidebar/macro.njk"                      import hmpoSidebar %}
+
+{% block head %}
+  {% include "includes/head.html" %}
+{% endblock %}
+
+{# TODO: remove the line and enable the cookie banner once the functionality needed #}
+{% set disableCookieBanner = true %}
+
+{% block cookieBanner %}
+{% endblock %}
+
+{% block beforeContent %}
+    {% block phaseBanner %}
+        {{ govukPhaseBanner({
+            tag: {
+                text: "alpha"
+            },
+            html: "This is a new service – your <a href=\"/help/feedback-or-help\" target=\"_blank\">feedback</a> will help us to improve it."
+        }) }}
+    {% endblock %}
+
+    {# TODO: update to chosen GOVUK prototype recommendation once cookie policy decided #}
+    {% if not values.cookies.cookiesAccepted and not disableCookieBanner %}
+        <div class="dcs-cookie-banner govuk-clearfix">
+            <div class="govuk-width-container">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds dcs-cookie-banner-center">
+                        <div class="dcs-cookie-banner__content">
+
+                            <div class="dcs-cookie-banner__message">
+                                <h2 class="dcs-cookie-banner__title">Tell us whether you accept cookies</h2>
+                                <p class="dcs-cookie-banner__text">We use cookies to collect information about how you use this service. This helps us to improve our website and make it work as well as possible.</p>
+                            </div>
+
+                            <div class="dcs-cookie-banner__buttons">
+                                <div class="dcs-cookie-banner__button-wrapper govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
+                                    <a name="cookies-accept-button" id="cookies-accept-button" class="dcs-cookie-banner__button gem-c-button govuk-button gem-c-button--inline" href="?cookies=true">Accept all cookies</a>
+                                </div>
+                                <div class="dcs-cookie-banner__button-wrapper govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
+                                    <a name="cookies-setting-button" id="cookies-setting-button" class="dcs-cookie-banner__button gem-c-button govuk-button gem-c-button--inline" href="/help/cookies-setting?cookies=true&backURL={{values.currentURL}}">Set cookie preferences</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {{ super() }}
+{% endblock %}
+
+{% block footer %}
+    {{ hmpoFooter({
+        meta: {
+            html: "Built by HM Passport Office" + (footerHtml if footerHtml else "")
+        }
+    }) }}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+  <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
+{% endblock %}

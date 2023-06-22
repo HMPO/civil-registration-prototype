@@ -514,7 +514,6 @@
     height: 100%;
     border-left: dotted 2px $govuk-border-colour;
     background: #fff;
-    left: 0;
     margin-left: 12px;
     z-index: 3;
     top: 0;
@@ -578,3 +577,66 @@
   .app-step-nav__substep--optional:after {
     border-left-style: dotted;
   }
+
+  .govuk-ok {
+    background-color: rgb(191, 227, 224);
+    color: rgb(16, 64, 60);
+    text-align: center;
+    white-space: nowrap;
+    padding: 2px 0;
+    width: 80px;
+    display: block;
+  }
+
+  .govuk-notok {
+    background-color: rgb(246, 215, 210);
+    color: rgb(148, 37, 20);
+    text-align: center;
+    white-space: nowrap;
+    padding: 2px 0;
+    width: 80px;
+    display: block;
+  }
+
+  .hmpo-sidebar {
+    width: 100%;
+    float: none;
+    position: relative;
+    padding: 0 15px 0 0;
+}
+.hmpo-sidebar__inner {
+    border-right: 1px solid rgb(177, 180, 182);
+    border-top: none !important;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-color: rgb(177, 180, 182);
+    border-bottom-color: rgb(177, 180, 182);
+    border-left-color: rgb(177, 180, 182);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    padding-top: 0 !important;
+}
+.side-navigation {
+    display: flex;
+    flex-direction: column;
+}
+.side-navigation a {
+    font-size: 16px;
+    text-decoration: none;
+    padding: 5px 5px 5px 10px;
+    color: rgb(29, 112, 184) !important;
+}
+.heading-flex {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #b1b4b6;
+    padding-bottom: 5px
+}
+.side-navigation  .govuk-link__active {
+    background-color: rgb(29, 112, 184);
+    color: white !important;
+}
+.govuk-summary-list__key {
+    width: 50%;
+}

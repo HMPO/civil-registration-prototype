@@ -3,45 +3,32 @@
 {% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
 {% block sideContent %}
-    <style>
-        .hmpo-sidebar {
-            width: 100%;
-            float: none;
-            position: relative;
-            padding: 0;
-        }
-    </style>
-
     {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
         <!-- TODO: Import side navigation component from DAP frontend -->
-        <h3 class="govuk-heading-m">One-third column placeholder</h3>
-        <p>Import side navigation</p>
-        <ul>
+        <nav class="side-navigation">
             <!-- TODO: Persist session data for a href links -->
-            <li><a href="#">Cover sheet</a></li>
-            <br>
-            <li>Pre-registration</li>
-            <li><a href="record-cause-of-death">Cause of death</a></li>
-            <li><a href="record-uploads">Uploads</a></li>
-            <br>
-            <li>Registration</li>
-            <li><a href="record-deceaseds-details">Deceased’s details</a></li>
-            <li><a href="record-informants-details">Informant’s details</a></li>
-            <li><a href="record-check-all-information">Check all information</a></li>
-            <li><a href="record-register-page">Register page</a></li>
-        </ul>
+            <a class="govuk-link govuk-link__active" href="#">Cover sheet</a>
+            <h2 class="govuk-heading-s govuk-!-margin-top-2">Pre-registration</h2>
+            <a class="govuk-link" href="record-cause-of-death">Cause of death</a>
+            <a class="govuk-link" href="record-uploads">Uploads</a>     
+            <h2 class="govuk-heading-s govuk-!-margin-top-2">Registration</h2>
+            <a class="govuk-link" href="record-deceaseds-details">Deceased’s details</a>
+            <a class="govuk-link" href="record-informants-details">Informant’s details</a>
+            <a class="govuk-link" class="govuk-link" href="record-check-all-information">Check all information</a>
+            <a class="govuk-link"       href="record-register-page">Register page</a>
+        </nav>
     {% endcall %}
 {% endblock %}
 
 {% block mainContent %}
     {% call hmpoForm(ctx) %}
 
-    <h2 class="govuk-heading-l">Cover sheet</h2>
-    {{ hmpoSubmit(ctx, {
-            text: translate("buttons.editDetails"),
-            classes: "govuk-button--secondary"
+    <h2 class="govuk-heading-l heading-flex govuk-!-padding-bottom-2">Cover sheet {{ hmpoSubmit(ctx, {
+        text: translate("buttons.editDetails"),
+        classes: "govuk-button--secondary govuk-!-margin-bottom-0"
         })
-    }}
+    }}</h2>
+   
 
     <h3 class="govuk-heading-m">File information</h3>
     {{ govukSummaryList({ rows: [

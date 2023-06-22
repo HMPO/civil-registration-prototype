@@ -1,0 +1,15 @@
+{% extends "layout-full.html" %}
+
+{% set govukServiceNameKey = "govuk.serviceNameRegister" %}
+{% set govukServiceUrl = "./pending-registrations" %}
+
+<!-- TODO: Add Sign in/out header element -->
+
+{% block phaseBanner %}
+    {{ govukPhaseBanner({
+        tag: {
+            text: "beta"
+        },
+        html: "This is a new service – your <a href=\"/help/feedback-or-help\" target=\"_blank\">feedback</a> will help us to improve it."
+    }) }}
+{% endblock %}

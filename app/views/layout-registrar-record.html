@@ -30,13 +30,13 @@
             </div>
         </div>
         <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-third">
+            <div class="govuk-grid-column-one-quarter">
                 {% block sideContent %}
                     {% from "hmpo-html/macro.njk" import hmpoHtml %}
                     {{ hmpoHtml(translate("pages." + hmpoPageKey + ".content", { default: [] })) }}
                 {% endblock %}
             </div>
-            <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-grid-column-three-quarters">
                 {% block mainContent %}
                     {% from "hmpo-html/macro.njk" import hmpoHtml %}
                     {{ hmpoHtml(translate("pages." + hmpoPageKey + ".content", { default: [] })) }}

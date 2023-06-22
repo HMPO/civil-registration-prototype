@@ -1,0 +1,80 @@
+{% extends "govuk/template.njk" %}
+
+{% set hmpoTitle = hmpoTitle or translate(hmpoTitleKey or "pages." + (hmpoPageKey | default("default")) + ".title") %}
+{% set govukServiceName = translate(govukServiceNameKey or "govuk.serviceName") %}
+{% set assetPath = assetPath | default(assetsPath) | default("/public") %}
+
+{% block head %}
+    <!--[if lte IE 8]><link href="{{assetPath}}/stylesheets/application-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if gt IE 8]><!--><link href="{{assetPath}}/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+{% endblock %}
+
+{% block pageTitle %}
+    {{ (translate("govuk.error", { default: "Error" }) + ": ") if errorlist.length }}{{ hmpoTitle | safe }} {{ "– " + govukServiceName | safe if govukServiceName }} – GOV.UK
+{% endblock %}
+
+{% from "govuk/components/skip-link/macro.njk" import govukSkipLink %}
+{% block skipLink %}
+    {{ govukSkipLink({
+        href: '#main-content',
+        text: translate("govuk.skipLink")
+    }) }}
+{% endblock %}
+
+{% block header %}
+    {% block cookieBanner %}
+        {% from "hmpo-cookie-banner/macro.njk" import hmpoCookieBanner %}
+        {{ hmpoCookieBanner({
+            html: translate("govuk.cookieBanner")
+        }) }}
+    {% endblock %}
+    {% block govukHeader %}
+        {{ govukHeader({
+            assetsPath: assetPath + '/images',
+            homepageUrl: govukHomePage or "https://gov.uk",
+            serviceName: govukServiceName,
+            navigation: govukNavigation,
+            serviceUrl: govukServiceUrl or "/",
+            containerClasses: "govuk-width-container"
+        }) }}
+    {% endblock %}
+{% endblock %}
+
+{% block beforeContent %}
+    {% block backLink %}
+        {% if backLink %}
+            {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+            <span id="back">{{ govukBackLink({
+                text: translate("govuk.backLink"),
+                href: backLink
+            }) }}</span>
+        {% endif %}
+    {% endblock %}
+{% endblock %}
+
+{% block content %}
+    {% if errorlist.length %}
+        {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+        {{ govukErrorSummary({
+            classes: "error-summary",
+            titleText: translate("govuk.errorSummaryTitle"),
+            errorList: hmpoGetErrorSummary(ctx)
+        }) }}
+    {% endif %}
+    {% block hmpoContent %}
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                {% block mainContent %}
+                    <h1 id="header" data-page="{{hmpoPageKey}}">{{ translate("pages." + hmpoPageKey + ".h1", { default: hmpoTitle }) | safe }}</h1>
+                    {% from "hmpo-html/macro.njk" import hmpoHtml %}
+                    {{ hmpoHtml(translate("pages." + hmpoPageKey + ".content", { default: [] })) }}
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
+
+{% block bodyEnd %}
+    <script src="{{assetPath}}/javascripts/application.js"></script>
+    {% block scripts %}{% endblock %}
+{% endblock %}

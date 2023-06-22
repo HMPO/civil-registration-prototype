@@ -1,0 +1,42 @@
+.hmpo-sidebar {
+  width: 100%;
+  float: none;
+  position: relative;
+  padding: 0 15px 0 0;
+}
+.hmpo-sidebar__inner {
+  border-right: 1px solid rgb(177, 180, 182);
+  border-top: none !important;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-top-color: rgb(177, 180, 182);
+  border-bottom-color: rgb(177, 180, 182);
+  border-left-color: rgb(177, 180, 182);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  padding-top: 0 !important;
+}
+.side-navigation {
+  display: flex;
+  flex-direction: column;
+}
+.side-navigation a {
+  font-size: 16px;
+  text-decoration: none;
+  padding: 5px 5px 5px 10px;
+  color: rgb(29, 112, 184) !important;
+}
+.heading-flex {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #b1b4b6;
+  padding-bottom: 5px
+}
+.side-navigation  .govuk-link__active {
+  background-color: rgb(29, 112, 184);
+  color: white !important;
+}
+.govuk-summary-list__key {
+  width: 50%;
+}
