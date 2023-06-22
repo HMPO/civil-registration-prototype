@@ -1,4 +1,4 @@
-{% extends "layout-registrar.html" %}
+{% extends "layout-registrar-full.html" %}
 
 {% set hmpoTitle %}Pending registrations{% endset %}
 
@@ -8,7 +8,7 @@
 
     {% call hmpoForm(ctx) %}
 
-        {{ hmpoSubmit(ctx, { text: translate("buttons.createNewRecord") }) }}
+        {{ hmpoSubmit(ctx, { class: 'test', text: translate("buttons.createNewRecord") }) }}
 
         <h1 id="header">{{ hmpoTitle }}</h1>
 
@@ -101,7 +101,7 @@
                         }
                     },
                     {
-                        text: "OK"
+                        html: '<span class="govuk-ok"><strong>OK</strong></span>'
                     },
                     {
                         text: ""
@@ -139,7 +139,7 @@
                     }
                 },
                 {
-                    text: "NOT OK"
+                    html: '<span class="govuk-notok"><strong>NOT OK</strong></span>'
                 },
                 {
                     text: ""
@@ -169,7 +169,6 @@
               }
             ]
         }) }} #}
-
 
     {% endcall %}
 
