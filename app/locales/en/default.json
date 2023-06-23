@@ -16,7 +16,8 @@
     "saveAndCheckForDuplicate": "Save and check for duplicate",
     "addAnotherKnownName": "Add another known name",
     "viewAndPrintRegisterPage": "View and print register page",
-    "sendToRON": "Send to RON"
+    "sendToRON": "Send to RON",
+    "upload": "Upload"
   },
   "fields": {
     "date-day": {
