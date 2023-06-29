@@ -4,7 +4,6 @@
 
 {% block sideContent %}
     {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
-        <!-- TODO: Import side navigation component from DAP frontend -->
         <nav class="side-navigation">
             <!-- TODO: Persist session data for a href links -->
             <a class="govuk-link" href="record">Cover sheet</a>
@@ -12,10 +11,10 @@
             <a class="govuk-link" href="record-cause-of-death">Cause of death</a>
             <a class="govuk-link govuk-link__active" href="record-uploads">Uploads</a>     
             <h2 class="govuk-heading-s govuk-!-margin-top-2">Registration</h2>
-            <a class="govuk-link" href="record-deceaseds-details">Deceased’s details</a>
-            <a class="govuk-link" href="record-informants-details">Informant’s details</a>
+            <a class="govuk-link" href="record-deceaseds-details">Deceased's details</a>
+            <a class="govuk-link" href="record-informants-details">Informant's details</a>
             <a class="govuk-link" class="govuk-link" href="record-check-all-information">Check all information</a>
-            <a class="govuk-link"       href="record-register-page">Register page</a>
+            <a class="govuk-link" href="record-register-page">Register page</a>
         </nav>
     {% endcall %}
 {% endblock %}
@@ -23,17 +22,25 @@
 {% block mainContent %}
     {% call hmpoForm(ctx) %}
 
-    <h1 class="govuk-heading-l heading-flex govuk-!-padding-bottom-2">Uploads {{ hmpoSubmit(ctx, {
+    <h1 class="govuk-heading-m">Uploads</h1>
+    {{ govukFileUpload({
+        id: "fileUpload",
+        name: "fileUpload",
+        hint: {
+            text: "pdf, png, jpg, jpeg and tiff files only"
+        },
+        label: {
+          text: "Upload a document"
+        }
+      }) }}
+      {{ hmpoSubmit(ctx, {
         text: translate("buttons.upload"),
-        classes: "govuk-button--secondary govuk-!-margin-bottom-0"
-        })
-    }}</h1>
-
-    <p>No documents have been uploaded.</p>
-
-    <p>This feature lets you keep MCCD scans with the rest of the registration information. They will not be sent to RON. Uploads will be permanently deleted once the record is complete.</p>
-        
-    <p>Do not upload scans of other personal documents, such as passports or birth certificates.</p>
-
+        classes: "govuk-button--secondary",
+        href: "./record"
+    }) }}
+      {{ govukButton({
+        text: "Cancel",
+        classes: "govuk-button--secondary govuk-!-margin-left-2"
+      }) }}
     {% endcall %}
 {% endblock %}

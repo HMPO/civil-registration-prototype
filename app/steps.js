@@ -1,3 +1,5 @@
+const { fileUpload } = require("./fields")
+
 const registrar = {
 
     // ========================
@@ -130,13 +132,15 @@ const registrar = {
             '/registrar/record-uploads-edit'
         ]
     },
-    // '/registrar/record-uploads-edit': {
-    //     fields: [
-    //     ],
-    //     next:[
-    //         '/registrar/record-uploads'
-    //     ]
-    // },
+    '/registrar/record-uploads-edit': {
+        checkJourney: false,
+        fields: [
+            'fileUpload'
+        ],
+        next:[
+            '/registrar/record-uploads'
+        ]
+    },
     '/registrar/record-deceaseds-details': {
         checkJourney: false,
         // fields: [
