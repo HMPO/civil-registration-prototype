@@ -14,7 +14,7 @@
             <a class="govuk-link" href="record-deceaseds-details">Deceased's details</a>
             <a class="govuk-link" href="record-informants-details">Informant's details</a>
             <a class="govuk-link" class="govuk-link" href="record-check-all-information">Check all information</a>
-            <a class="govuk-link"       href="record-register-page">Register page</a>
+            <a class="govuk-link" href="record-register-page">Register page</a>
         </nav>
     {% endcall %}
 {% endblock %}
@@ -24,8 +24,8 @@
 
     <h1 class="govuk-heading-m">Uploads</h1>
     {{ govukFileUpload({
-        id: "file-upload-1",
-        name: "file-upload-1",
+        id: "fileUpload",
+        name: "fileUpload",
         hint: {
             text: "pdf, png, jpg, jpeg and tiff files only"
         },
@@ -33,9 +33,11 @@
           text: "Upload a document"
         }
       }) }}
-      {{ govukButton({
-        text: "Upload"
-      }) }}
+      {{ hmpoSubmit(ctx, {
+        text: translate("buttons.upload"),
+        classes: "govuk-button--secondary",
+        href: "./record"
+    }) }}
       {{ govukButton({
         text: "Cancel",
         classes: "govuk-button--secondary govuk-!-margin-left-2"

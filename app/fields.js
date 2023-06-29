@@ -320,6 +320,13 @@ module.exports = {
     deceasedRelationshipStatus: {
         // validate: 'required'
     },
+    fileUpload: {
+
+    },
+    spouseOrCivilPartnerDateOfBirth: {
+        validate: ['date'],
+        autocomplete: 'bday'
+    },
     spouseOrCivilPartnerFullName: {
         // validate: 'required'
     },
@@ -329,12 +336,9 @@ module.exports = {
     spouseOrCivilPartnerOccupationStatus: {
         // validate: 'required'
     },
+    
     willInformantGiveDateOfBirthOfSpouseOrCivilPartner: {
         // validate: 'required'
-    },
-    spouseOrCivilPartnerDateOfBirth: {
-        validate: ['date'],
-        autocomplete: 'bday'
     },
     willInformantAllowAnswerGivenInRelationshipStatusUsedInStatistics: {
         formatter: 'boolean',
