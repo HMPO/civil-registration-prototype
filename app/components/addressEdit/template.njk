@@ -1,0 +1,73 @@
+
+  {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+  {% from "hmpo-text/macro.njk" import hmpoText %}
+
+  {% call govukFieldset({
+    legend: {
+        text: "Communal establishment address",
+        classes: "govuk-visually-hidden"
+    }
+    }) %} 
+
+    {% set lineOne = [params.id, "Line1"] | join %}
+    {% set lineTwo = [params.id, "Line2"] | join %}
+    {% set lineStreet = [params.id, "Street"] | join %}
+    {% set lineTown = [params.id, "Town"] | join %}
+    {% set lineCounty = [params.id, "County"] | join %}
+    {% set linePostcode = [params.id, "Postcode"] | join %}
+
+    {{ hmpoText(ctx, {
+          id: lineOne,
+          label: {
+              text: "House or flat number",
+              classes: "govuk-label--xs"
+              },
+          attributes: { autocapitalize: "words" },
+          classes: "govuk-!-width-one-half"
+      }) }}
+    {{ hmpoText(ctx, {
+        id: lineTwo,
+        label: {
+            text: "Building name",
+            classes: "govuk-label--xs"
+            },
+        attributes: { autocapitalize: "words" },
+        classes: "govuk-!-width-one-half"
+    }) }}
+    {{ hmpoText(ctx, {
+        id: lineStreet,
+        label: {
+            text: "Street",
+            classes: "govuk-label--xs"
+        },
+        attributes: { autocapitalize: "words" },
+        classes: "govuk-!-width-one-half"
+    }) }}
+    {{ hmpoText(ctx, {
+        id: lineTown,
+        label: {
+            text: "Town or city",
+            classes: "govuk-label--xs"
+        },
+        attributes: { autocapitalize: "words" },
+        classes: "govuk-!-width-one-half"
+    }) }}
+    {{ hmpoText(ctx, {
+        id: lineCounty,
+        label: {
+            text: "County",
+            classes: "govuk-label--xs"
+        },
+        attributes: { autocapitalize: "words" },
+        classes: "govuk-!-width-one-half"
+    }) }}
+    {{ hmpoText(ctx, {
+        id: linePostcode,
+        label: {
+            text: "Postcode",
+            classes: "govuk-label--xs"
+        },
+        attributes: { autocapitalize: "characters" },
+        classes: "govuk-!-width-one-quarter"
+    }) }}
+{% endcall %}

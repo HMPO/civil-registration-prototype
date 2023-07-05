@@ -171,6 +171,7 @@ const registrar = {
             'deceasedPlaceOfDeathAddressCETown',
             'deceasedPlaceOfDeathAddressCECounty',
             'deceasedPlaceOfDeathAddressCEPostcode',
+            'homeAddressPostcode',
             'deceasedPlaceOfDeathAddressLine1',
             'deceasedPlaceOfDeathAddressLine2',
             'deceasedPlaceOfDeathAddressStreet',

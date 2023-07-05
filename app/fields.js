@@ -185,6 +185,9 @@ module.exports = {
     deceasedOtherKnownNames: {
         // validate: 'required'
     },
+    homeAddressPostcode: {
+        // validate: 'required'
+    },
     deceasedPlaceOfDeathAddress: {
         // validate: 'required'
     },

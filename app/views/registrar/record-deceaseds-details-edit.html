@@ -1,5 +1,6 @@
 {% extends "layout-registrar-record.html" %}
-
+{% from '../../components/addressEdit/macro.njk' import addressEdit %}}
+{% from '../../components/postcodeLookup/macro.njk' import postcodeLookup %}}
 {% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
 {% set deceasedPlaceOfDeathAddressCE %}
@@ -22,218 +23,34 @@
         <!-- TODO: Add functionality for link to show hidden fields and hide link when fields are shown -->
         <p><a href="#">Enter address manually</a></p>
 
-        <div id="placeOfDeath">
-            {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressCELine1",
-                label: {
-                    text: "House or flat number",
-                    classes: "govuk-label--xs"
-                    },
-                attributes: { autocapitalize: "words" },
-                classes: "govuk-!-width-one-half"
-            }) }}
-
-            {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressCELine2",
-                label: {
-                    text: "Building name",
-                    classes: "govuk-label--xs"
-                    },
-                attributes: { autocapitalize: "words" },
-                classes: "govuk-!-width-one-half"
-            }) }}
-
-            {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressCEStreet",
-                label: {
-                    text: "Street",
-                    classes: "govuk-label--xs"
-                },
-                attributes: { autocapitalize: "words" },
-                classes: "govuk-!-width-one-half"
-            }) }}
-
-            {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressCETown",
-                label: {
-                    text: "Town or city",
-                    classes: "govuk-label--xs"
-                },
-                attributes: { autocapitalize: "words" },
-                classes: "govuk-!-width-one-half"
-            }) }}
-
-            {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressCECounty",
-                label: {
-                    text: "County",
-                    classes: "govuk-label--xs"
-                },
-                attributes: { autocapitalize: "words" },
-                classes: "govuk-!-width-one-half"
-            }) }}
-
-            {{ hmpoText(ctx, {
-                id: "deceasedPlaceOfDeathAddressCEPostcode",
-                label: {
-                    text: "Postcode",
-                    classes: "govuk-label--xs"
-                },
-                attributes: { autocapitalize: "characters" },
-                classes: "govuk-!-width-one-quarter"
+        <div id="placeOfDeath" class="govuk-visually-hidden">
+            {{ addressEdit(ctx, {
+                id: "deceasedPlaceOfDeathAddressCE"
             }) }}
         </div>
     {% endcall %}
 {% endset %}
 
-{% set deceasedPlaceOfDeathAddress %}
-    {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-    {% from "hmpo-text/macro.njk" import hmpoText %}
+{% set homeAddressEdit %}
 
-    {% call govukFieldset({
-        id: "deceasedPlaceOfDeathAddress",
-        legend: {
-            text: "Address",
-            classes: "govuk-fieldset__legend--s"
-        }
-    }) %}
+    {{ postcodeLookup(ctx, {
+        id: "homeAddress"
+    }) }}
 
-        {{ hmpoText(ctx, {
-            id: "deceasedPlaceOfDeathAddressLine1",
-            label: {
-                text: "House or flat number",
-                classes: "govuk-label--xs"
-                },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
+    <div id="homeAddress">
+        {{ addressEdit(ctx, {
+            id: "deceasedPlaceOfDeathAddress"
         }) }}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedPlaceOfDeathAddressLine2",
-            label: {
-                text: "Building name",
-                classes: "govuk-label--xs"
-                },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedPlaceOfDeathAddressStreet",
-            label: {
-                text: "Street",
-                classes: "govuk-label--xs"
-            },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedPlaceOfDeathAddressTown",
-            label: {
-                text: "Town or city",
-                classes: "govuk-label--xs"
-            },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedPlaceOfDeathAddressCounty",
-            label: {
-                text: "County",
-                classes: "govuk-label--xs"
-            },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedPlaceOfDeathAddressPostcode",
-            label: {
-                text: "Postcode",
-                classes: "govuk-label--xs"
-            },
-            attributes: { autocapitalize: "characters" },
-            classes: "govuk-!-width-one-quarter"
-        }) }}
-
-    {% endcall %}
+    </div>
 {% endset %}
 
 {% set deceasedUsualAddress %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
     {% from "hmpo-text/macro.njk" import hmpoText %}
 
-    {% call govukFieldset({
-        id: "deceasedUsualAddress",
-        legend: {
-            text: "Address",
-            classes: "govuk-fieldset__legend--s"
-        }
-    }) %}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressLine1",
-            label: {
-                text: "House or flat number",
-                classes: "govuk-label--xs"
-                },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressLine2",
-            label: {
-                text: "Building name",
-                classes: "govuk-label--xs"
-                },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressStreet",
-            label: {
-                text: "Street",
-                classes: "govuk-label--xs"
-            },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressTown",
-            label: {
-                text: "Town or city",
-                classes: "govuk-label--xs"
-            },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressCounty",
-            label: {
-                text: "County",
-                classes: "govuk-label--xs"
-            },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "deceasedUsualAddressPostcode",
-            label: {
-                text: "Postcode",
-                classes: "govuk-label--xs"
-            },
-            attributes: { autocapitalize: "characters" },
-            classes: "govuk-!-width-one-quarter"
-        }) }}
-
-    {% endcall %}
+    {{ addressEdit(ctx, {
+        id: "deceasedUsualAddress"
+    }) }}
 {% endset %}
 
 {% set deceasedUsualAddressCE %}
@@ -256,67 +73,10 @@
         <!-- TODO: Add functionality for link to show hidden fields and hide link when fields are shown -->
         <p><a href="#">Enter address manually</a></p>
 
-        <div id="usualAddress">
-            {{ hmpoText(ctx, {
-                id: "deceasedUsualAddressCELine1",
-                label: {
-                    text: "House or flat number",
-                    classes: "govuk-label--xs"
-                    },
-                attributes: { autocapitalize: "words" },
-                classes: "govuk-!-width-one-half"
-            }) }}
+        <div id="usualAddress">{{ addressEdit(ctx, {
+            id: "deceasedUsualAddressCE"
+        }) }}
 
-            {{ hmpoText(ctx, {
-                id: "deceasedUsualAddressCELine2",
-                label: {
-                    text: "Building name",
-                    classes: "govuk-label--xs"
-                    },
-                attributes: { autocapitalize: "words" },
-                classes: "govuk-!-width-one-half"
-            }) }}
-
-            {{ hmpoText(ctx, {
-                id: "deceasedUsualAddressCEStreet",
-                label: {
-                    text: "Street",
-                    classes: "govuk-label--xs"
-                },
-                attributes: { autocapitalize: "words" },
-                classes: "govuk-!-width-one-half"
-            }) }}
-
-            {{ hmpoText(ctx, {
-                id: "deceasedUsualAddressCETown",
-                label: {
-                    text: "Town or city",
-                    classes: "govuk-label--xs"
-                },
-                attributes: { autocapitalize: "words" },
-                classes: "govuk-!-width-one-half"
-            }) }}
-
-            {{ hmpoText(ctx, {
-                id: "deceasedUsualAddressCECounty",
-                label: {
-                    text: "County",
-                    classes: "govuk-label--xs"
-                },
-                attributes: { autocapitalize: "words" },
-                classes: "govuk-!-width-one-half"
-            }) }}
-
-            {{ hmpoText(ctx, {
-                id: "deceasedUsualAddressCEPostcode",
-                label: {
-                    text: "Postcode",
-                    classes: "govuk-label--xs"
-                },
-                attributes: { autocapitalize: "characters" },
-                classes: "govuk-!-width-one-quarter"
-            }) }}
-        </div>
     {% endcall %}
 {% endset %}
 
@@ -674,7 +434,7 @@
                         value: "Home",
                         text: "Home",
                         conditional: {
-                            html: deceasedPlaceOfDeathAddress
+                            html: homeAddressEdit
                         }
                     }
                 ]
@@ -1045,6 +805,9 @@
 
     <script>
         (function() {
+            if(document.getElementById("homeAddressPostcode").value.length <= 0) {
+                document.getElementById("homeAddress").classList.add("govuk-visually-hidden");
+            }
             if(document.getElementById("deceasedUsualAddressCEPostcode").value.length <= 0) {
                 document.getElementById("usualAddress").classList.add("govuk-visually-hidden");
             }

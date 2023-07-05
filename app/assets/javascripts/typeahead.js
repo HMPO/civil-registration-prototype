@@ -59,6 +59,9 @@ async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList
         if (result.town) {
             deceasedPlaceOfDeathAddressCETown.value = result.town
         }
+        if (result.county) {
+            deceasedPlaceOfDeathAddressCECounty.value = result.county
+        }
         if (result.post_code) {
             deceasedPlaceOfDeathAddressCEPostcode.value = result.post_code
         }
