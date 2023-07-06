@@ -1,6 +1,7 @@
 {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 {% from "hmpo-text/macro.njk" import hmpoText %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "../../assets/javascripts/postcode-lookup.js"  %}
 
 {% set linePostcode = [params.id, "Postcode"] | join %}
 
@@ -23,6 +24,7 @@
     {{ govukButton({
         text: "Find address",
         classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0 govuk-button--secondary"
+        onClick: { postcodeLookup() }
     }) }}
 
 {% endcall %}
