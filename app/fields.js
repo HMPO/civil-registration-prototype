@@ -188,6 +188,39 @@ module.exports = {
     homeAddressPostcode: {
         // validate: 'required'
     },
+    deceasedPlaceOfDeathAddressCE: {
+        // validate: 'required'
+    },
+    deceasedPlaceOfDeathAddressCELine1: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedPlaceOfDeathAddressCELine2: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedPlaceOfDeathAddressCEStreet: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedPlaceOfDeathAddressCETown: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedPlaceOfDeathAddressCECounty: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    deceasedPlaceOfDeathAddressCEPostcode: {
+        // validate: [
+        //     'required'
+        // ]
+    },
     deceasedPlaceOfDeathAddress: {
         // validate: 'required'
     },
@@ -339,7 +372,7 @@ module.exports = {
     spouseOrCivilPartnerOccupationStatus: {
         // validate: 'required'
     },
-    
+
     willInformantGiveDateOfBirthOfSpouseOrCivilPartner: {
         // validate: 'required'
     },

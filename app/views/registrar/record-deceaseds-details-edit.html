@@ -23,7 +23,7 @@
         <!-- TODO: Add functionality for link to show hidden fields and hide link when fields are shown -->
         <p><a href="#">Enter address manually</a></p>
 
-        <div id="placeOfDeath" class="govuk-visually-hidden">
+        <div id="placeOfDeath">
             {{ addressEdit(ctx, {
                 id: "deceasedPlaceOfDeathAddressCE"
             }) }}
@@ -32,7 +32,6 @@
 {% endset %}
 
 {% set homeAddressEdit %}
-
     {{ postcodeLookup(ctx, {
         id: "homeAddress"
     }) }}
@@ -73,9 +72,11 @@
         <!-- TODO: Add functionality for link to show hidden fields and hide link when fields are shown -->
         <p><a href="#">Enter address manually</a></p>
 
-        <div id="usualAddress">{{ addressEdit(ctx, {
-            id: "deceasedUsualAddressCE"
-        }) }}
+        <div id="usualAddress">
+            {{ addressEdit(ctx, {
+                id: "deceasedUsualAddressCE"
+            }) }}
+        </div>
 
     {% endcall %}
 {% endset %}

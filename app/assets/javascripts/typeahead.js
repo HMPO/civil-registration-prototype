@@ -41,12 +41,12 @@ async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList
     const result = await searchByCombinedAddress(addressesCESingleDistrictList, val)
     if (result) {
         // Reset variables to clear address fields
-        deceasedUsualAddressCELine1.value = null
-        deceasedUsualAddressCELine2.value = null
-        deceasedUsualAddressCEStreet.value = null
-        deceasedUsualAddressCETown.value = null
-        deceasedUsualAddressCECounty.value = null
-        deceasedUsualAddressCEPostcode.value = null
+        deceasedPlaceOfDeathAddressCELine1.value = null
+        deceasedPlaceOfDeathAddressCELine2.value = null
+        deceasedPlaceOfDeathAddressCEStreet.value = null
+        deceasedPlaceOfDeathAddressCETown.value = null
+        deceasedPlaceOfDeathAddressCECounty.value = null
+        deceasedPlaceOfDeathAddressCEPostcode.value = null
         if (result.address) {
             deceasedPlaceOfDeathAddressCELine1.value = await extractNumber(result.address)
         }
