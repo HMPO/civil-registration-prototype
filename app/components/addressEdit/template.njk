@@ -1,13 +1,12 @@
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "hmpo-text/macro.njk" import hmpoText %}
 
-  {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-  {% from "hmpo-text/macro.njk" import hmpoText %}
-
-  {% call govukFieldset({
+{% call govukFieldset({
     legend: {
         text: "Communal establishment address",
         classes: "govuk-visually-hidden"
     }
-    }) %} 
+}) %}
 
     {% set lineOne = [params.id, "Line1"] | join %}
     {% set lineTwo = [params.id, "Line2"] | join %}
@@ -17,14 +16,14 @@
     {% set linePostcode = [params.id, "Postcode"] | join %}
 
     {{ hmpoText(ctx, {
-          id: lineOne,
-          label: {
-              text: "House or flat number",
-              classes: "govuk-label--xs"
-              },
-          attributes: { autocapitalize: "words" },
-          classes: "govuk-!-width-one-half"
-      }) }}
+        id: lineOne,
+        label: {
+            text: "House or flat number",
+            classes: "govuk-label--xs"
+            },
+        attributes: { autocapitalize: "words" },
+        classes: "govuk-!-width-one-half"
+    }) }}
     {{ hmpoText(ctx, {
         id: lineTwo,
         label: {
@@ -70,4 +69,5 @@
         attributes: { autocapitalize: "characters" },
         classes: "govuk-!-width-one-quarter"
     }) }}
+
 {% endcall %}

@@ -3,27 +3,26 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set linePostcode = [params.id, "Postcode"] | join %}
-  
+
 {% call govukFieldset({
-  legend: {
-      text: "Place of death",
-      classes: "govuk-label--s"
-  }
-}) %} 
-  {{ hmpoText(ctx, {
-      id: linePostcode,
-      label: {
-          text: "Postcode",
-          classes: "govuk-label--xs"
-      },
-      attributes: { autocapitalize: "characters" },
-      classes: "govuk-!-width-one-quarter"
-  }) }}
-  {{ govukButton({
-    text: "Find address",
-    classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0 govuk-button--secondary"
+    legend: {
+        text: "Place of death",
+        classes: "govuk-label--s"
+    }
+}) %}
 
-  })
+    {{ hmpoText(ctx, {
+        id: linePostcode,
+        label: {
+            text: "Postcode",
+            classes: "govuk-label--xs"
+        },
+        attributes: { autocapitalize: "characters" },
+        classes: "govuk-!-width-one-quarter"
+    }) }}
+    {{ govukButton({
+        text: "Find address",
+        classes: "govuk-!-margin-top-3 govuk-!-margin-bottom-0 govuk-button--secondary"
+    }) }}
 
-  }}
 {% endcall %}
