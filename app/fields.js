@@ -185,10 +185,7 @@ module.exports = {
     deceasedOtherKnownNames: {
         // validate: 'required'
     },
-    homeAddressPostcode: {
-        // validate: 'required'
-    },
-    deceasedPlaceOfDeathAddressCE: {
+    deceasedPlaceOfDeath: {
         // validate: 'required'
     },
     deceasedPlaceOfDeathAddressCELine1: {
@@ -221,35 +218,32 @@ module.exports = {
         //     'required'
         // ]
     },
-    deceasedPlaceOfDeathAddress: {
-        // validate: 'required'
-    },
-    deceasedPlaceOfDeathAddressLine1: {
+    deceasedPlaceOfDeathAddressHomeLine1: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedPlaceOfDeathAddressLine2: {
+    deceasedPlaceOfDeathAddressHomeLine2: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedPlaceOfDeathAddressStreet: {
+    deceasedPlaceOfDeathAddressHomeStreet: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedPlaceOfDeathAddressTown: {
+    deceasedPlaceOfDeathAddressHomeTown: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedPlaceOfDeathAddressCounty: {
+    deceasedPlaceOfDeathAddressHomeCounty: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedPlaceOfDeathAddressPostcode: {
+    deceasedPlaceOfDeathAddressHomePostcode: {
         // validate: [
         //     'required'
         // ]
@@ -257,32 +251,32 @@ module.exports = {
     deceasedUsualAddress: {
         // validate: 'required'
     },
-    deceasedUsualAddressLine1: {
+    deceasedUsualAddressNonCENonCELine1: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedUsualAddressLine2: {
+    deceasedUsualAddressNonCELine2: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedUsualAddressStreet: {
+    deceasedUsualAddressNonCEStreet: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedUsualAddressTown: {
+    deceasedUsualAddressNonCETown: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedUsualAddressCounty: {
+    deceasedUsualAddressNonCECounty: {
         // validate: [
         //     'required'
         // ]
     },
-    deceasedUsualAddressPostcode: {
+    deceasedUsualAddressNonCEPostcode: {
         // validate: [
         //     'required'
         // ]

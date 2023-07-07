@@ -2,7 +2,7 @@
 {% from "hmpo-text/macro.njk" import hmpoText %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-{% set linePostcode = [params.id, "Postcode"] | join %}
+{% set linePostcode = [params.id, "PostcodeLookup"] | join %}
 
 {% call govukFieldset({
     legend: {

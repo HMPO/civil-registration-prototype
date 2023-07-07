@@ -127,21 +127,21 @@
             }}
 
             {% set deceasedPlaceOfDeathAddressCombined = [
-                values.deceasedPlaceOfDeathAddressLine1 if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCELine1,
-                values.deceasedPlaceOfDeathAddressLine2 if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCELine2,
-                values.deceasedPlaceOfDeathAddressStreet if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCEStreet,
-                values.deceasedPlaceOfDeathAddressTown if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCETown,
-                values.deceasedPlaceOfDeathAddressCounty if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCECounty,
-                values.deceasedPlaceOfDeathAddressPostcode if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCEPostcode
+                values.deceasedPlaceOfDeathAddressCELine1 if values.deceasedPlaceOfDeath == "Communal establishment" else values.deceasedPlaceOfDeathAddressHomeLine1,
+                values.deceasedPlaceOfDeathAddressCELine2 if values.deceasedPlaceOfDeath == "Communal establishment" else values.deceasedPlaceOfDeathAddressHomeLine2,
+                values.deceasedPlaceOfDeathAddressCEStreet if values.deceasedPlaceOfDeath == "Communal establishment" else values.deceasedPlaceOfDeathAddressHomeStreet,
+                values.deceasedPlaceOfDeathAddressCETown if values.deceasedPlaceOfDeath == "Communal establishment" else values.deceasedPlaceOfDeathAddressHomeTown,
+                values.deceasedPlaceOfDeathAddressCECounty if values.deceasedPlaceOfDeath == "Communal establishment" else values.deceasedPlaceOfDeathAddressHomeCounty,
+                values.deceasedPlaceOfDeathAddressCEPostcode if values.deceasedPlaceOfDeath == "Communal establishment" else values.deceasedPlaceOfDeathAddressHomePostcode
             ] | filter | join("<br>") %}
 
             {% set deceasedUsualAddressCombined = [
-                values.deceasedUsualAddressLine1 if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCELine1,
-                values.deceasedUsualAddressLine2 if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCELine2,
-                values.deceasedUsualAddressStreet if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCEStreet,
-                values.deceasedUsualAddressTown if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCETown,
-                values.deceasedUsualAddressCounty if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCECounty,
-                values.deceasedUsualAddressPostcode if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCEPostcode
+                values.deceasedUsualAddressNonCELine1 if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCELine1,
+                values.deceasedUsualAddressNonCELine2 if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCELine2,
+                values.deceasedUsualAddressNonCEStreet if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCEStreet,
+                values.deceasedUsualAddressNonCETown if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCETown,
+                values.deceasedUsualAddressNonCECounty if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCECounty,
+                values.deceasedUsualAddressNonCEPostcode if values.deceasedUsualAddress == "Different to place of death (non-communal establishment)" else values.deceasedUsualAddressCEPostcode
             ] | filter | join("<br>") %}
 
             {{ govukSummaryList({ rows: [

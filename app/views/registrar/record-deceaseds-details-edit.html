@@ -5,8 +5,8 @@
 
 {% set deceasedPlaceOfDeathAddressCE %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-    {% from "hmpo-text/macro.njk" import hmpoText %}
 
+    <!-- TODO: Refactor CE typeahead into component -->
     {% call govukFieldset({
         id: "deceasedPlaceOfDeathAddressCE",
         legend: {
@@ -23,7 +23,7 @@
         <!-- TODO: Add functionality for link to show hidden fields and hide link when fields are shown -->
         <p><a href="#">Enter address manually</a></p>
 
-        <div id="placeOfDeath">
+        <div id="deceasedPlaceOfDeathAddressCEConditionalReveal">
             {{ addressEdit(ctx, {
                 id: "deceasedPlaceOfDeathAddressCE"
             }) }}
@@ -31,31 +31,34 @@
     {% endcall %}
 {% endset %}
 
-{% set homeAddressEdit %}
+{% set deceasedPlaceOfDeathAddressHome %}
     {{ postcodeLookup(ctx, {
-        id: "homeAddress"
+        id: "deceasedPlaceOfDeathAddressHome"
     }) }}
 
-    <div id="homeAddress">
+    <div id="deceasedPlaceOfDeathAddressHomeConditionalReveal">
         {{ addressEdit(ctx, {
-            id: "deceasedPlaceOfDeathAddress"
+            id: "deceasedPlaceOfDeathAddressHome"
         }) }}
     </div>
 {% endset %}
 
-{% set deceasedUsualAddress %}
-    {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-    {% from "hmpo-text/macro.njk" import hmpoText %}
-
-    {{ addressEdit(ctx, {
-        id: "deceasedUsualAddress"
+{% set deceasedUsualAddressNonCE %}
+    {{ postcodeLookup(ctx, {
+        id: "deceasedUsualAddressNonCE"
     }) }}
+
+    <div id="deceasedUsualAddressNonCEConditionalReveal">
+        {{ addressEdit(ctx, {
+            id: "deceasedUsualAddressNonCE"
+        }) }}
+    </div>
 {% endset %}
 
 {% set deceasedUsualAddressCE %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-    {% from "hmpo-text/macro.njk" import hmpoText %}
 
+    <!-- TODO: Refactor CE typeahead into component -->
     {% call govukFieldset({
         id: "deceasedUsualAddressCE",
         legend: {
@@ -72,7 +75,7 @@
         <!-- TODO: Add functionality for link to show hidden fields and hide link when fields are shown -->
         <p><a href="#">Enter address manually</a></p>
 
-        <div id="usualAddress">
+        <div id="deceasedUsualAddressCEConditionalReveal">
             {{ addressEdit(ctx, {
                 id: "deceasedUsualAddressCE"
             }) }}
@@ -435,7 +438,7 @@
                         value: "Home",
                         text: "Home",
                         conditional: {
-                            html: homeAddressEdit
+                            html: deceasedPlaceOfDeathAddressHome
                         }
                     }
                 ]
@@ -454,7 +457,7 @@
                         value: "Different to place of death (non-communal establishment)",
                         text: "Different to place of death (non-communal establishment)",
                         conditional: {
-                            html: deceasedUsualAddress
+                            html: deceasedUsualAddressNonCE
                         }
                     },
                     {
@@ -806,14 +809,17 @@
 
     <script>
         (function() {
-            if(document.getElementById("homeAddressPostcode").value.length <= 0) {
-                document.getElementById("homeAddress").classList.add("govuk-visually-hidden");
-            }
             if(document.getElementById("deceasedUsualAddressCEPostcode").value.length <= 0) {
-                document.getElementById("usualAddress").classList.add("govuk-visually-hidden");
+                document.getElementById("deceasedUsualAddressCEConditionalReveal").classList.add("govuk-visually-hidden");
+            }
+            if(document.getElementById("deceasedPlaceOfDeathAddressHomePostcode").value.length <= 0) {
+                document.getElementById("deceasedPlaceOfDeathAddressHomeConditionalReveal").classList.add("govuk-visually-hidden");
+            }
+            if(document.getElementById("deceasedUsualAddressNonCEPostcode").value.length <= 0) {
+                document.getElementById("deceasedUsualAddressNonCEConditionalReveal").classList.add("govuk-visually-hidden");
             }
             if(document.getElementById("deceasedPlaceOfDeathAddressCEPostcode").value.length <= 0) {
-                document.getElementById("placeOfDeath").classList.add("govuk-visually-hidden");
+                document.getElementById("deceasedPlaceOfDeathAddressCEConditionalReveal").classList.add("govuk-visually-hidden");
             }
         })();
     </script>

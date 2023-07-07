@@ -35,7 +35,7 @@ async function autoFillPlaceOfDeathWhenCESelected (addressesCESingleDistrictList
     const deceasedPlaceOfDeathAddressCETown = document.querySelector('#deceasedPlaceOfDeathAddressCETown')
     const deceasedPlaceOfDeathAddressCECounty = document.querySelector('#deceasedPlaceOfDeathAddressCECounty')
     const deceasedPlaceOfDeathAddressCEPostcode = document.querySelector('#deceasedPlaceOfDeathAddressCEPostcode')
-    const divPlaceOfDeath = document.querySelector('#placeOfDeath')
+    const divPlaceOfDeath = document.querySelector('#deceasedPlaceOfDeathAddressCEConditionalReveal')
 
     // Get the exact match from the CE data
     const result = await searchByCombinedAddress(addressesCESingleDistrictList, val)
@@ -77,7 +77,7 @@ async function autoFillUsualWhenCESelected (addressesCEFullDistrictList, val) {
     const deceasedUsualAddressCETown = document.querySelector('#deceasedUsualAddressCETown')
     const deceasedUsualAddressCECounty = document.querySelector('#deceasedUsualAddressCECounty')
     const deceasedUsualAddressCEPostcode = document.querySelector('#deceasedUsualAddressCEPostcode')
-    const divUsualAddress = document.querySelector('#usualAddress')
+    const divUsualAddress = document.querySelector('#deceasedUsualAddressCEConditionalReveal')
 
     // Get the exact match from the CE data
     const result = await searchByCombinedAddress(addressesCEFullDistrictList, val)
