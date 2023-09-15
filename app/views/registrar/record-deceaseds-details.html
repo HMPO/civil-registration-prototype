@@ -179,6 +179,13 @@
                     }
                 },
                 {
+                    key: { text: "Ethnicity" },
+                    value: {
+                        text: values.deceasedEthnicity if values.deceasedEthnicity == 'Not known'
+                        else (values.deceasedEthnicity + ": " + values.deceasedEthnicityAdditional if values.deceasedEthnicity)
+                    }
+                },
+                {
                     key: { text: "Occupation" },
                     value: { text: values.deceasedOccupation }
                 },

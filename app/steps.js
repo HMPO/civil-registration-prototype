@@ -213,6 +213,8 @@ const registrar = {
             'deceasedPlaceOfBirth',
             'deceasedCountryOfBirth',
             'deceasedSpanishNational',
+            'deceasedEthnicity',
+            'deceasedEthnicityAdditional',
             'deceasedOccupation',
             'deceasedOccupationStatus',
             'deceasedRelationshipStatus',

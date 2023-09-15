@@ -353,6 +353,12 @@ module.exports = {
         formatter: 'boolean',
         // validate: 'required'
     },
+    deceasedEthnicity: {
+        // validate: 'required'
+    },
+    deceasedEthnicityAdditional: {
+        // validate: 'required'
+    },
     deceasedOccupation: {
         // validate: 'required'
     },
