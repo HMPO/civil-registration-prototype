@@ -2,6 +2,33 @@
 
 {% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
+{% set MCCDHazardousImplantsReveal %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+    {% from "hmpo-radios/macro.njk" import hmpoRadios %}
+
+    {{ hmpoText(ctx, {
+        id: "MCCDWhatTypeOfDevice",
+        label: {
+            text: "What type of device was it?",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+    {{ hmpoRadios(ctx, {
+        id: "MCCDWasDeviceRemoved",
+        legend: {
+            text: "Was the device removed?",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small",
+        items: [
+            { value: true },
+            { value: false },
+            { value: "unknown", text: "Unknown" }
+        ]
+    }) }}
+{% endset %}
+
 {% block sideContent %}
     {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
         <!-- TODO: Import side navigation component from DAP frontend -->
@@ -23,214 +50,532 @@
 {% block mainContent %}
     {% call hmpoForm(ctx) %}
 
-    <h2 class="govuk-heading-l">Cause of death</h2>
+    {% if values.newMCCD %}
+        <h2 class="govuk-heading-l">Cause of death</h2>
 
-    <h3 class="govuk-heading-m">Side 1</h3>
-    {% call govukFieldset({
-        id: "MCCDPlaceOfDeath",
-        legend: {
-            text: "Place of death",
-            classes: "govuk-fieldset__legend--s"
-        }
-    }) %}
-
-        {{ hmpoText(ctx, {
-            id: "MCCDAddressLine1",
-            label: {
-                text: "House or flat number",
-                classes: "govuk-label--xs"
-                },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "MCCDAddressLine2",
-            label: {
-                text: "Building name",
-                classes: "govuk-label--xs"
-                },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "MCCDAddressStreet",
-            label: {
-                text: "Street",
-                classes: "govuk-label--xs"
+        <h3 class="govuk-heading-m">Medical information</h3>
+        <!-- {{ hmpoDate(ctx, {
+            id: "MCCDDateMedicalCertificateIssued",
+            legend: {
+                text: "Date medical certificate was issued",
+                classes: "govuk-label--s"
             },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
+            hint: "For example, 12 11 2007"
+        }) }} -->
 
-        {{ hmpoText(ctx, {
-            id: "MCCDAddressTown",
-            label: {
-                text: "Town or city",
-                classes: "govuk-label--xs"
+        <h4 class="govuk-heading-s">Date medical certificate was issued</h4>
+        <p class="govuk-body">{{ values.MCCDDateMedicalCertificateIssued | date("DD/MM/YYYY") }}</p>
+
+        {{ hmpoRadios(ctx, {
+            id: "MCCDWhereMedicalInformationFrom",
+            legend: {
+                text: "Where is the medical information from?",
+                classes: "govuk-label--s"
             },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
+            classes: "govuk-radios--small",
+            items: [
+                { value: "Medical certificate", text: "Medical certificate" },
+                { value: "Medical examiner certificate", text: "Medical examiner certificate" }
+            ]
         }) }}
 
-        {{ hmpoText(ctx, {
-            id: "MCCDAddressCounty",
-            label: {
-                text: "County",
-                classes: "govuk-label--xs"
-            },
-            attributes: { autocapitalize: "words" },
-            classes: "govuk-!-width-one-half"
-        }) }}
-
-        {{ hmpoText(ctx, {
-            id: "MCCDAddressPostcode",
-            label: {
-                text: "Postcode",
-                classes: "govuk-label--xs"
-            },
-            attributes: { autocapitalize: "characters" },
-            classes: "govuk-!-width-one-quarter"
-        }) }}
-
-    {% endcall %}
-
-    {{ hmpoDate(ctx, {
-        id: "MCCDDateCertifyingPractitionerLastSawDeceasedAlive",
-        legend: {
-            text: "Date certifying practitioner last saw them alive",
-            classes: "govuk-label--s"
-        },
-        hint: "For example, 12 11 2007"
-    }) }}
-
-    {{ hmpoRadios(ctx, {
-        id: "MCCDLetterCircledOnMCCD",
-        legend: {
-            text: "Which letter is circled on the MCCD?",
-            classes: "govuk-label--s"
-        },
-        classes: "govuk-radios--small",
-        items: [
-            { value: "a", text: "a – Seen after death by me" },
-            { value: "b", text: "b – Seen after death by another medical practitioner but not by me" },
-            { value: "c", text: "c – Not seen after death by a medical practitioner" }
-        ]
-    }) }}
-
-    <!-- TODO: Refactor into fieldset -->
-    <h4 class="govuk-heading-s">Cause of death</h4>
-    {{ hmpoTextarea(ctx, {
-        id: "MCCDCauseOfDeathReason1",
-        label: {
-            text: "1(a) Disease or condition directly leading to death",
-            classes: "govuk-label--xs"
-        }
-    }) }}
-
-    <!-- Refactor into inline fieldset like date input -->
-    {{ hmpoText(ctx, {
-        id: "MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath",
-        label: {
-            text: "Time between onset and death",
-            classes: "govuk-label--xs"
-        },
-        classes: "govuk-input--width-2"
-    }) }}
-    {{ hmpoSelect(ctx, {
-        id: "MCCDCauseOfDeathReason1TimeUnit",
-        label: {
-            text: "Choose time unit",
-            classes: "govuk-visually-hidden"
-        },
-        items: [
-            { value: null, text: "Choose time unit", selected: true },
-            { value: "Minutes", text: "Minutes" },
-            { value: "Hours", text: "Hours" },
-            { value: "Days", text: "Days" },
-            { value: "Weeks", text: "Weeks" },
-            { value: "Months", text: "Months" },
-            { value: "Years", text: "Years" },
-            { value: "Not stated", text: "Not stated" }
-        ]
-    }) }}
-
-    <p><a href="#">1(b). Add other disease or condition leading to 1(a)</a></p>
-
-    <p><a href="#">2. Add other significant contributory conditions</a></p>
-
-    {{ hmpoText(ctx, {
-        id: "MCCDCertifyingPractitionerFullName",
-        label: {
-            text: "Certifying practitioner’s full name",
-            classes: "govuk-label--s"
-        }
-    }) }}
-
-    {{ hmpoText(ctx, {
-        id: "MCCDCertifyingPractitionerQualifications",
-        label: {
-            text: "Qualifications",
-            classes: "govuk-label--s"
-        }
-    }) }}
-
-    <!-- Create new class for govuk-input--width-7 -->
-    {{ hmpoText(ctx, {
-        id: "MCCDCertifyingPractitionerGMCNumber",
-        label: {
-            text: "GMC number",
-            classes: "govuk-label--s"
-        },
-        classes: "govuk-input--width-10"
-    }) }}
-
-    {{ hmpoDate(ctx, {
-        id: "MCCDDateSigned",
-        legend: {
-            text: "Date signed",
-            classes: "govuk-label--s"
-        },
-        hint: "For example, 12 11 2007"
-    }) }}
-
-    {{ hmpoRadios(ctx, {
-        id: "MCCDDiedInHospital",
-        legend: {
-            text: "Died in a hospital?",
-            classes: "govuk-label--s"
-        },
-        classes: "govuk-radios--small",
-        items: [
-        {
-            value: true,
-            conditional: {
-                html:
-                    hmpoText(ctx, {
-                        id: "MCCDConsultantFullName",
-                        label: {
-                            text: "Consultant’s full name",
-                            classes: "govuk-label--s"
-                        }
-                    })
+        <h3 class="govuk-heading-m">About the death</h3>
+        {% call govukFieldset({
+            id: "MCCDPlaceOfDeath",
+            legend: {
+                text: "Place of death",
+                classes: "govuk-fieldset__legend--s"
             }
-        },
-        {
-            value: false
-        }
-    ]
-    }) }}
+        }) %}
 
-    <h3 class="govuk-heading-m">Side 2</h3>
-    {{ hmpoRadios(ctx, {
-        id: "MCCDWillAttendingPractitionerProvideFurtherInformation",
-        legend: {
-            text: "Might the attending practitioner apply to give further information later (box B)?",
-            classes: "govuk-label--s"
-        },
-        classes: "govuk-radios--small"
-    }) }}
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressLine1",
+                label: {
+                    text: "House or flat number",
+                    classes: "govuk-label--xs"
+                    },
+                attributes: { autocapitalize: "words" },
+                classes: "govuk-!-width-one-half"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressLine2",
+                label: {
+                    text: "Building name",
+                    classes: "govuk-label--xs"
+                    },
+                attributes: { autocapitalize: "words" },
+                classes: "govuk-!-width-one-half"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressStreet",
+                label: {
+                    text: "Street",
+                    classes: "govuk-label--xs"
+                },
+                attributes: { autocapitalize: "words" },
+                classes: "govuk-!-width-one-half"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressTown",
+                label: {
+                    text: "Town or city",
+                    classes: "govuk-label--xs"
+                },
+                attributes: { autocapitalize: "words" },
+                classes: "govuk-!-width-one-half"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressCounty",
+                label: {
+                    text: "County",
+                    classes: "govuk-label--xs"
+                },
+                attributes: { autocapitalize: "words" },
+                classes: "govuk-!-width-one-half"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressPostcode",
+                label: {
+                    text: "Postcode",
+                    classes: "govuk-label--xs"
+                },
+                attributes: { autocapitalize: "characters" },
+                classes: "govuk-!-width-one-quarter"
+            }) }}
+
+        {% endcall %}
+
+        <!-- TODO: Refactor into fieldset -->
+        <h4 class="govuk-heading-s">Cause of death</h4>
+        {{ hmpoTextarea(ctx, {
+            id: "MCCDCauseOfDeathReason1",
+            label: {
+                text: "1(a) Disease or condition directly leading to death",
+                classes: "govuk-label--xs"
+            }
+        }) }}
+
+        <!-- Refactor into inline fieldset like date input -->
+        {{ hmpoText(ctx, {
+            id: "MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath",
+            label: {
+                text: "Time between onset and death",
+                classes: "govuk-label--xs"
+            },
+            classes: "govuk-input--width-2"
+        }) }}
+        {{ hmpoSelect(ctx, {
+            id: "MCCDCauseOfDeathReason1TimeUnit",
+            label: {
+                text: "Choose time unit",
+                classes: "govuk-visually-hidden"
+            },
+            items: [
+                { value: null, text: "Choose time unit", selected: true },
+                { value: "Minutes", text: "Minutes" },
+                { value: "Hours", text: "Hours" },
+                { value: "Days", text: "Days" },
+                { value: "Weeks", text: "Weeks" },
+                { value: "Months", text: "Months" },
+                { value: "Years", text: "Years" },
+                { value: "Not stated", text: "Not stated" }
+            ]
+        }) }}
+
+        <p><a href="#">1(b). Add other disease or condition leading to 1(a)</a></p>
+
+        <p><a href="#">2. Add other significant contributory conditions</a></p>
+
+        {{ hmpoRadios(ctx, {
+            id: "MCCDDidDeceasedHaveAnyHazardousImplants",
+            legend: {
+                text: "Did the deceased have any hazardous implants?",
+                classes: "govuk-label--s"
+            },
+            hint: "For example, a pacemaker or radioactive device",
+            classes: "govuk-radios--small",
+            items: [
+                {
+                    value: true,
+                    conditional: {
+                        html: MCCDHazardousImplantsReveal
+                    }
+                },
+                {
+                    value: false
+                }
+            ]
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "MCCDDiedInHospital",
+            legend: {
+                text: "Died in a hospital?",
+                classes: "govuk-label--s"
+            },
+            classes: "govuk-radios--small",
+            items: [
+            {
+                value: true,
+                conditional: {
+                    html:
+                        hmpoText(ctx, {
+                            id: "MCCDConsultantFullName",
+                            label: {
+                                text: "Consultant’s full name",
+                                classes: "govuk-label--s"
+                            }
+                        })
+                }
+            },
+            {
+                value: false
+            }
+        ]
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "MCCDWillAttendingPractitionerProvideFurtherInformation",
+            legend: {
+                text: "Might the attending practitioner apply to give further information later (box B)?",
+                classes: "govuk-label--s"
+            },
+            classes: "govuk-radios--small"
+        }) }}
+
+        <div id="conditionalRevealAttendingPractitionerFieldset">
+            {% call govukFieldset({
+                id: "MCCDAttendingPractitionerDetails",
+                legend: {
+                    text: "Attending practitioner details",
+                    classes: "govuk-fieldset__legend--s"
+                }
+            }) %}
+
+                {{ hmpoText(ctx, {
+                    id: "MCCDAttendingPractitionerFullName",
+                    label: {
+                        text: "Full name",
+                        classes: "govuk-label--xs"
+                    }
+                }) }}
+
+                {{ hmpoText(ctx, {
+                    id: "MCCDAttendingPractitionerQualifications",
+                    label: {
+                        text: "Qualifications",
+                        classes: "govuk-label--xs"
+                    }
+                }) }}
+
+                <!-- Create new class for govuk-input--width-7 -->
+                {{ hmpoText(ctx, {
+                    id: "MCCDAttendingPractitionerGMCNumber",
+                    label: {
+                        text: "GMC number",
+                        classes: "govuk-label--xs"
+                    },
+                    classes: "govuk-input--width-10"
+                }) }}
+            {% endcall %}
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const medicalCertificateRadio = document.querySelector('input[value="Medical certificate"]');
+                const medicalExaminerCertificateRadio = document.querySelector('input[value="Medical examiner certificate"]');
+                const conditionalRevealAttendingPractitionerFieldset = document.getElementById("conditionalRevealAttendingPractitionerFieldset");
+
+                if (medicalExaminerCertificateRadio.checked) {
+                    conditionalRevealAttendingPractitionerFieldset.style.display = "none";
+                } else {
+                    conditionalRevealAttendingPractitionerFieldset.style.display = "block";
+                }
+
+                medicalCertificateRadio.addEventListener("change", function () {
+                    if (medicalCertificateRadio.checked) {
+                        conditionalRevealAttendingPractitionerFieldset.style.display = "block";
+                    }
+                });
+                medicalExaminerCertificateRadio.addEventListener("change", function () {
+                    if (medicalExaminerCertificateRadio.checked) {
+                        conditionalRevealAttendingPractitionerFieldset.style.display = "none";
+                    }
+                });
+            });
+        </script>
+
+        {% call govukFieldset({
+            id: "MCCDMedicalExaminerDetails",
+            legend: {
+                text: "Medical examiner details",
+                classes: "govuk-fieldset__legend--s"
+            }
+        }) %}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDMedicalExaminerFullName",
+                label: {
+                    text: "Full name",
+                    classes: "govuk-label--xs"
+                }
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDMedicalExaminerQualifications",
+                label: {
+                    text: "Qualifications",
+                    classes: "govuk-label--xs"
+                }
+            }) }}
+
+            <!-- Create new class for govuk-input--width-7 -->
+            {{ hmpoText(ctx, {
+                id: "MCCDMedicalExaminerGMCNumber",
+                label: {
+                    text: "GMC number",
+                    classes: "govuk-label--xs"
+                },
+                classes: "govuk-input--width-10"
+            }) }}
+
+            {{ hmpoDate(ctx, {
+                id: "MCCDMedicalExaminerAuthorisationDate",
+                legend: {
+                    text: "Authorisation date",
+                    classes: "govuk-label--xs"
+                },
+                hint: "For example, 12 11 2007"
+            }) }}
+        {% endcall %}
+
+    {% else %}
+        <h2 class="govuk-heading-l">Cause of death</h2>
+
+        <h3 class="govuk-heading-m">Side 1</h3>
+        <!-- {{ hmpoDate(ctx, {
+            id: "MCCDDateMedicalCertificateIssued",
+            legend: {
+                text: "Date medical certificate was issued",
+                classes: "govuk-label--s"
+            },
+            hint: "For example, 12 11 2007"
+        }) }} -->
+
+        <h4 class="govuk-heading-s">Date medical certificate was issued</h4>
+        <p class="govuk-body">{{ values.MCCDDateMedicalCertificateIssued | date("DD/MM/YYYY") }}</p>
+
+        {% call govukFieldset({
+            id: "MCCDPlaceOfDeath",
+            legend: {
+                text: "Place of death",
+                classes: "govuk-fieldset__legend--s"
+            }
+        }) %}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressLine1",
+                label: {
+                    text: "House or flat number",
+                    classes: "govuk-label--xs"
+                    },
+                attributes: { autocapitalize: "words" },
+                classes: "govuk-!-width-one-half"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressLine2",
+                label: {
+                    text: "Building name",
+                    classes: "govuk-label--xs"
+                    },
+                attributes: { autocapitalize: "words" },
+                classes: "govuk-!-width-one-half"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressStreet",
+                label: {
+                    text: "Street",
+                    classes: "govuk-label--xs"
+                },
+                attributes: { autocapitalize: "words" },
+                classes: "govuk-!-width-one-half"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressTown",
+                label: {
+                    text: "Town or city",
+                    classes: "govuk-label--xs"
+                },
+                attributes: { autocapitalize: "words" },
+                classes: "govuk-!-width-one-half"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressCounty",
+                label: {
+                    text: "County",
+                    classes: "govuk-label--xs"
+                },
+                attributes: { autocapitalize: "words" },
+                classes: "govuk-!-width-one-half"
+            }) }}
+
+            {{ hmpoText(ctx, {
+                id: "MCCDAddressPostcode",
+                label: {
+                    text: "Postcode",
+                    classes: "govuk-label--xs"
+                },
+                attributes: { autocapitalize: "characters" },
+                classes: "govuk-!-width-one-quarter"
+            }) }}
+
+        {% endcall %}
+
+        {{ hmpoDate(ctx, {
+            id: "MCCDDateCertifyingPractitionerLastSawDeceasedAlive",
+            legend: {
+                text: "Date certifying practitioner last saw them alive",
+                classes: "govuk-label--s"
+            },
+            hint: "For example, 12 11 2007"
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "MCCDLetterCircledOnMCCD",
+            legend: {
+                text: "Which letter is circled on the MCCD?",
+                classes: "govuk-label--s"
+            },
+            classes: "govuk-radios--small",
+            items: [
+                { value: "a", text: "a – Seen after death by me" },
+                { value: "b", text: "b – Seen after death by another medical practitioner but not by me" },
+                { value: "c", text: "c – Not seen after death by a medical practitioner" }
+            ]
+        }) }}
+
+        <!-- TODO: Refactor into fieldset -->
+        <h4 class="govuk-heading-s">Cause of death</h4>
+        {{ hmpoTextarea(ctx, {
+            id: "MCCDCauseOfDeathReason1",
+            label: {
+                text: "1(a) Disease or condition directly leading to death",
+                classes: "govuk-label--xs"
+            }
+        }) }}
+
+        <!-- Refactor into inline fieldset like date input -->
+        {{ hmpoText(ctx, {
+            id: "MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath",
+            label: {
+                text: "Time between onset and death",
+                classes: "govuk-label--xs"
+            },
+            classes: "govuk-input--width-2"
+        }) }}
+        {{ hmpoSelect(ctx, {
+            id: "MCCDCauseOfDeathReason1TimeUnit",
+            label: {
+                text: "Choose time unit",
+                classes: "govuk-visually-hidden"
+            },
+            items: [
+                { value: null, text: "Choose time unit", selected: true },
+                { value: "Minutes", text: "Minutes" },
+                { value: "Hours", text: "Hours" },
+                { value: "Days", text: "Days" },
+                { value: "Weeks", text: "Weeks" },
+                { value: "Months", text: "Months" },
+                { value: "Years", text: "Years" },
+                { value: "Not stated", text: "Not stated" }
+            ]
+        }) }}
+
+        <p><a href="#">1(b). Add other disease or condition leading to 1(a)</a></p>
+
+        <p><a href="#">2. Add other significant contributory conditions</a></p>
+
+        {{ hmpoText(ctx, {
+            id: "MCCDCertifyingPractitionerFullName",
+            label: {
+                text: "Certifying practitioner’s full name",
+                classes: "govuk-label--s"
+            }
+        }) }}
+
+        {{ hmpoText(ctx, {
+            id: "MCCDCertifyingPractitionerQualifications",
+            label: {
+                text: "Qualifications",
+                classes: "govuk-label--s"
+            }
+        }) }}
+
+        <!-- Create new class for govuk-input--width-7 -->
+        {{ hmpoText(ctx, {
+            id: "MCCDCertifyingPractitionerGMCNumber",
+            label: {
+                text: "GMC number",
+                classes: "govuk-label--s"
+            },
+            classes: "govuk-input--width-10"
+        }) }}
+
+        {{ hmpoDate(ctx, {
+            id: "MCCDDateSigned",
+            legend: {
+                text: "Date signed",
+                classes: "govuk-label--s"
+            },
+            hint: "For example, 12 11 2007"
+        }) }}
+
+        {{ hmpoRadios(ctx, {
+            id: "MCCDDiedInHospital",
+            legend: {
+                text: "Died in a hospital?",
+                classes: "govuk-label--s"
+            },
+            classes: "govuk-radios--small",
+            items: [
+            {
+                value: true,
+                conditional: {
+                    html:
+                        hmpoText(ctx, {
+                            id: "MCCDConsultantFullName",
+                            label: {
+                                text: "Consultant’s full name",
+                                classes: "govuk-label--s"
+                            }
+                        })
+                }
+            },
+            {
+                value: false
+            }
+        ]
+        }) }}
+
+        <h3 class="govuk-heading-m">Side 2</h3>
+        {{ hmpoRadios(ctx, {
+            id: "MCCDWillAttendingPractitionerProvideFurtherInformation",
+            legend: {
+                text: "Might the attending practitioner apply to give further information later (box B)?",
+                classes: "govuk-label--s"
+            },
+            classes: "govuk-radios--small"
+        }) }}
+    {% endif %}
 
     <div class="govuk-button-group">
         {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}

@@ -26,6 +26,18 @@
     <h2 class="govuk-heading-l">Cover sheet</h2>
 
     <h3 class="govuk-heading-m">File information</h3>
+    {{ hmpoDate(ctx, {
+        id: "MCCDDateMedicalCertificateIssued",
+        legend: {
+            text: "Date medical certificate was issued",
+            classes: "govuk-label--s"
+        },
+        hint: "For example, 12 11 2007"
+    }) }}
+
+    <!-- <h4 class="govuk-heading-s">Date medical certificate was issued</h4>
+    <p class="govuk-body">{{ values.MCCDDateMedicalCertificateIssued | date("DD/MM/YYYY") }}</p> -->
+
     {{ hmpoText(ctx, {
         id: "coverSheetDeceasedFirstName",
         label: {

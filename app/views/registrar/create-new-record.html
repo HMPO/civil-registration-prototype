@@ -7,6 +7,15 @@
 
     {% call hmpoForm(ctx) %}
 
+        {{ hmpoDate(ctx, {
+            id: "MCCDDateMedicalCertificateIssued",
+            legend: {
+                text: "Date medical certificate was issued",
+                classes: "govuk-label--s"
+            },
+            hint: "For example, 12 11 2007"
+        }) }}
+
         {{ hmpoText(ctx, {
             id: "coverSheetDeceasedFirstName",
             label: {

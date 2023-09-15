@@ -54,6 +54,7 @@ const registrar = {
     },
     '/registrar/create-new-record': {
         fields: [
+            'MCCDDateMedicalCertificateIssued',
             'coverSheetDeceasedFirstName',
             'coverSheetDeceasedMiddleNames',
             'coverSheetDeceasedLastName',
@@ -74,6 +75,7 @@ const registrar = {
     '/registrar/record-edit': {
         checkJourney: false,
         fields: [
+            'MCCDDateMedicalCertificateIssued',
             'coverSheetDeceasedFirstName',
             'coverSheetDeceasedMiddleNames',
             'coverSheetDeceasedLastName',
@@ -101,24 +103,36 @@ const registrar = {
     '/registrar/record-cause-of-death-edit': {
         checkJourney: false,
         fields: [
+            // 'MCCDDateMedicalCertificateIssued',
+            'MCCDWhereMedicalInformationFrom',
             'MCCDAddressLine1',
             'MCCDAddressLine2',
             'MCCDAddressStreet',
             'MCCDAddressTown',
             'MCCDAddressCounty',
             'MCCDAddressPostcode',
-            'MCCDDateCertifyingPractitionerLastSawDeceasedAlive',
-            'MCCDLetterCircledOnMCCD',
             'MCCDCauseOfDeathReason1',
             'MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath',
             'MCCDCauseOfDeathReason1TimeUnit',
+            'MCCDDidDeceasedHaveAnyHazardousImplants',
+            'MCCDWhatTypeOfDevice',
+            'MCCDWasDeviceRemoved',
+            'MCCDDiedInHospital',
+            'MCCDConsultantFullName',
+            'MCCDWillAttendingPractitionerProvideFurtherInformation',
+            'MCCDAttendingPractitionerFullName',
+            'MCCDAttendingPractitionerQualifications',
+            'MCCDAttendingPractitionerGMCNumber',
+            'MCCDMedicalExaminerFullName',
+            'MCCDMedicalExaminerQualifications',
+            'MCCDMedicalExaminerGMCNumber',
+            'MCCDMedicalExaminerAuthorisationDate',
+            'MCCDDateCertifyingPractitionerLastSawDeceasedAlive',
+            'MCCDLetterCircledOnMCCD',
             'MCCDCertifyingPractitionerFullName',
             'MCCDCertifyingPractitionerQualifications',
             'MCCDCertifyingPractitionerGMCNumber',
-            'MCCDDateSigned',
-            'MCCDDiedInHospital',
-            'MCCDConsultantFullName',
-            'MCCDWillAttendingPractitionerProvideFurtherInformation'
+            'MCCDDateSigned'
         ],
         next:[
             '/registrar/record-cause-of-death'
