@@ -127,6 +127,7 @@
             }}
 
             {% set deceasedPlaceOfDeathAddressCombined = [
+                values.deceasedPlaceOfDeath + ":" if values.deceasedPlaceOfDeath,
                 values.deceasedPlaceOfDeathAddressLine1 if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCELine1,
                 values.deceasedPlaceOfDeathAddressLine2 if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCELine2,
                 values.deceasedPlaceOfDeathAddressStreet if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCEStreet,
