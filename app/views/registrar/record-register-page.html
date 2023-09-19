@@ -3,33 +3,20 @@
 {% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
 {% block sideContent %}
-    <style>
-        .hmpo-sidebar {
-            width: 100%;
-            float: none;
-            position: relative;
-            padding: 0;
-        }
-    </style>
-
     {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
         <!-- TODO: Import side navigation component from DAP frontend -->
-        <h3 class="govuk-heading-m">One-third column placeholder</h3>
-        <p>Import side navigation</p>
-        <ul>
+        <nav class="side-navigation">
             <!-- TODO: Persist session data for a href links -->
-            <li><a href="record">Cover sheet</a></li>
-            <br>
-            <li>Pre-registration</li>
-            <li><a href="record-cause-of-death">Cause of death</a></li>
-            <li><a href="record-uploads">Uploads</a></li>
-            <br>
-            <li>Registration</li>
-            <li><a href="record-deceaseds-details">Deceased’s details</a></li>
-            <li><a href="record-informants-details">Informant’s details</a></li>
-            <li><a href="record-check-all-information">Check all information</a></li>
-            <li><a href="#">Register page</a></li>
-        </ul>
+            <a class="govuk-link" href="record">Cover sheet</a>
+            <h2 class="govuk-heading-s">Pre-registration</h2>
+            <a class="govuk-link" href="record-cause-of-death">Cause of death</a>
+            <a class="govuk-link" href="record-uploads">Uploads</a>
+            <h2 class="govuk-heading-s">Registration</h2>
+            <a class="govuk-link" href="record-deceaseds-details">Deceased’s details</a>
+            <a class="govuk-link" href="record-informants-details">Informant’s details</a>
+            <a class="govuk-link" href="record-check-all-information">Check all information</a>
+            <a class="govuk-link govuk-link__active" href="#">Register page</a>
+        </nav>
     {% endcall %}
 {% endblock %}
 
