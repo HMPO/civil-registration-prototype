@@ -140,6 +140,12 @@ module.exports = {
         formatter: 'boolean',
         // validate: 'required'
     },
+    MCCDEthnicity: {
+        // validate: 'required'
+    },
+    MCCDEthnicityAdditional: {
+        // validate: 'required'
+    },
     MCCDConsultantFullName: {
         // validate: 'required'
     },
@@ -351,12 +357,6 @@ module.exports = {
     },
     deceasedSpanishNational: {
         formatter: 'boolean',
-        // validate: 'required'
-    },
-    deceasedEthnicity: {
-        // validate: 'required'
-    },
-    deceasedEthnicityAdditional: {
         // validate: 'required'
     },
     deceasedOccupation: {
