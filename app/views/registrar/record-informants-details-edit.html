@@ -2,6 +2,37 @@
 
 {% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
+{% set informantQualificationRelativeOrPartnerReveal %}
+    {% from "hmpo-radios/macro.njk" import hmpoRadios %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {{ hmpoRadios(ctx, {
+        id: "informantQualificationAdditional",
+        legend: {
+            text: "Relative or partner qualification",
+            classes: "govuk-label--s govuk-visually-hidden"
+        },
+        classes: "govuk-radios--small",
+        items: [
+            { value: "Relative present at death", text: "Relative – present at death" },
+            { value: "Relative in attendance", text: "Relative – in attendance" },
+            { value: "Relative not present at death", text: "Relative – not present at death" },
+            { value: "Partner present at death", text: "Partner – present at death" },
+            { value: "Partner in attendance", text: "Partner – in attendance" },
+            { value: "Partner not present at death", text: "Partner – not present at death" },
+            { value: "Relative or partner personal representative of the deceased", text: "Personal representative of the deceased" }
+        ]
+    }) }}
+
+    {{ hmpoText(ctx, {
+        id: "informantRelationshipToDeceased",
+        label: {
+            text: "Relationship to deceased",
+            classes: "govuk-label--s"
+        }
+    }) }}
+{% endset %}
+
 {% set informantAddress %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
     {% from "hmpo-text/macro.njk" import hmpoText %}
@@ -145,54 +176,37 @@
         classes: "govuk-radios--small",
         items: [
             {
-                value: "relative present at death",
-                text: "Relative – present at death",
+                value: "Relative or partner",
+                text: "Relative or partner",
                 conditional: {
-                    html:
-                        hmpoText(ctx, {
-                            id: "informantRelationshipToDeceased",
-                            label: {
-                                text: "Relationship to deceased",
-                                classes: "govuk-label--s"
-                            }
-                        })
+                    html: informantQualificationRelativeOrPartnerReveal
                 }
             },
             {
-                value: "relative not present at death",
-                text: "Relative – not present at death",
+                value: "Non-relative",
+                text: "Non-relative",
                 conditional: {
                     html:
-                        hmpoText(ctx, {
-                            id: "informantRelationshipToDeceased",
-                            label: {
-                                text: "Relationship to deceased",
-                                classes: "govuk-label--s"
-                            }
+                        hmpoRadios(ctx, {
+                            id: "informantQualificationAdditional",
+                            legend: {
+                                text: "Non-relative qualification",
+                                classes: "govuk-label--s govuk-visually-hidden"
+                            },
+                            classes: "govuk-radios--small",
+                            items: [
+                                { value: "Non-relative present at death", text: "Non-relative – present at death" },
+                                { value: "Non-relative occupier", text: "Non-relative – occupier" },
+                                { value: "Non-relative inmate", text: "Non-relative – inmate" },
+                                { value: "Non-relative causing the body to be buried", text: "Non-relative – causing the body to be buried" },
+                                { value: "Non-relative causing the body to be cremated", text: "Non-relative – causing the body to be cremated" },
+                                { value: "Non-relative in charge of the body", text: "Non-relative – in charge of the body" },
+                                { value: "Non-relative causing the disposal of the body", text: "Non-relative – causing the disposal of the body" },
+                                { value: "Non-relative personal representative of the deceased", text: "Personal representative of the deceased" }
+                            ]
                         })
                 }
-            },
-            {
-                value: "relative in attendance",
-                text: "Relative – in attendance",
-                conditional: {
-                    html:
-                        hmpoText(ctx, {
-                            id: "informantRelationshipToDeceased",
-                            label: {
-                                text: "Relationship to deceased",
-                                classes: "govuk-label--s"
-                            }
-                        })
-                }
-            },
-            { value: "non-relative present at death", text: "Non-relative – present at death" },
-            { value: "non-relative occupier", text: "Non-relative – occupier" },
-            { value: "non-relative causing the body to be buried", text: "Non-relative – causing the body to be buried" },
-            { value: "non-relative causing the body to be cremated", text: "Non-relative – causing the body to be cremated" },
-            { value: "non-relative in charge of the body", text: "Non-relative – in charge of the body" },
-            { value: "non-relative causing the disposal of the body", text: "Non-relative – causing the disposal of the body" },
-            { value: "non-relative inmate", text: "Non-relative – inmate" }
+            }
         ]
     }) }}
 

@@ -253,6 +253,7 @@ const registrar = {
             'informantLastName',
             'informantCapitaliseLastNames',
             'informantQualification',
+            'informantQualificationAdditional',
             'informantRelationshipToDeceased',
             'informantLiveWithDeceased',
             'informantAddressLine1',

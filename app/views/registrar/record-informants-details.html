@@ -80,16 +80,24 @@
         {
             key: { text: "Qualification" },
             value: {
-                text: "Relative – present at death" if values.informantQualification == "relative present at death"
-                    else ("Relative – not present at death" if values.informantQualification == "relative not present at death"
-                        else ("Relative – in attendance" if values.informantQualification == "relative in attendance"
-                            else ("Non-relative – present at death" if values.informantQualification == "non-relative present at death"
-                                else ("Non-relative – occupier" if values.informantQualification == "non-relative occupier"
-                                    else ("Non-relative – causing the body to be buried" if values.informantQualification == "non-relative causing the body to be buried"
-                                        else ("Non-relative – causing the body to be cremated" if values.informantQualification == "non-relative causing the body to be cremated"
-                                            else ("Non-relative – in charge of the body" if values.informantQualification == "non-relative in charge of the body"
-                                                else ("Non-relative – causing the disposal of the body" if values.informantQualification == "non-relative causing the disposal of the body"
-                                                    else ("Non-relative – inmate" if values.informantQualification == "non-relative inmate")
+                text: "Relative – present at death" if values.informantQualificationAdditional == "Relative present at death"
+                    else ("Relative – in attendance" if values.informantQualificationAdditional == "Relative in attendance"
+                        else ("Relative – not present at death" if values.informantQualificationAdditional == "Relative not present at death"
+                            else ("Partner – present at death" if values.informantQualificationAdditional == "Partner present at death"
+                                else ("Partner – in attendance" if values.informantQualificationAdditional == "Partner in attendance"
+                                    else ("Partner – not present at death" if values.informantQualificationAdditional == "Partner not present at death"
+                                        else ("Non-relative – present at death" if values.informantQualificationAdditional == "Non-relative present at death"
+                                            else ("Non-relative – occupier" if values.informantQualificationAdditional == "Non-relative occupier"
+                                                else ("Non-relative – inmate" if values.informantQualificationAdditional == "Non-relative inmate"
+                                                    else ("Non-relative – causing the body to be buried" if values.informantQualificationAdditional == "Non-relative causing the body to be buried"
+                                                        else ("Non-relative – causing the body to be cremated" if values.informantQualificationAdditional == "Non-relative causing the body to be cremated"
+                                                            else ("Non-relative – in charge of the body" if values.informantQualificationAdditional == "Non-relative in charge of the body"
+                                                                else ("Non-relative – causing the disposal of the body" if values.informantQualificationAdditional == "Non-relative causing the disposal of the body"
+                                                                    else("Personal representative of the deceased" if values.informantQualificationAdditional == "Relative or partner personal representative of the deceased" or values.informantQualificationAdditional == "Non-relative personal representative of the deceased")
+                                                                )
+                                                            )
+                                                        )
+                                                    )
                                                 )
                                             )
                                         )
@@ -103,7 +111,7 @@
         {
             key: { text: "Relationship to deceased" },
             value: { text: values.informantRelationshipToDeceased }
-        } if values.informantQualification == "relative present at death" or values.informantQualification == "relative not present at death" or values.informantQualification == "relative in attendance",
+        } if values.informantQualificationAdditional == "Relative present at death" or values.informantQualificationAdditional == "Relative in attendance" or values.informantQualificationAdditional == "Relative not present at death" or values.informantQualificationAdditional == "Partner present at death" or values.informantQualificationAdditional == "Partner in attendance" or values.informantQualificationAdditional == "Partner not present at death",
         {
             key: { text: "Did the informant live with the deceased?" },
             value: { html:

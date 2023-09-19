@@ -432,6 +432,9 @@ module.exports = {
     informantQualification: {
         // validate: 'required'
     },
+    informantQualificationAdditional: {
+        // validate: 'required'
+    },
     informantRelationshipToDeceased: {
         // validate: 'required'
     },
