@@ -22,13 +22,10 @@
 
 {% block mainContent %}
     {% call hmpoForm(ctx) %}
-
-    <h2 class="govuk-heading-l">Informant’s details</h2>
-    {{ hmpoSubmit(ctx, {
-            text: translate("buttons.editDetails"),
-            classes: "govuk-button--secondary"
-        })
-    }}
+    <h2 class="heading-flex govuk-heading-l">Informant’s details {{ hmpoSubmit(ctx, {
+        text: translate("buttons.editDetails"),
+        classes: "govuk-button--secondary" })
+    }}</h2>
 
     {% set deceasedPlaceOfDeathAddressCombined = [
         values.deceasedPlaceOfDeathAddressLine1 if values.deceasedPlaceOfDeath == "Home" else values.deceasedPlaceOfDeathAddressCELine1,

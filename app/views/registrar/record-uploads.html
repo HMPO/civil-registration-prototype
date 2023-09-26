@@ -24,10 +24,9 @@
 {% block mainContent %}
     {% call hmpoForm(ctx) %}
 
-    <h1 class="govuk-heading-l heading-flex govuk-!-padding-bottom-2">Uploads {{ hmpoSubmit(ctx, {
-        text: translate("buttons.upload"),
-        classes: "govuk-button--secondary govuk-!-margin-bottom-0"
-        })
+    <h1 class="heading-flex govuk-heading-l">Uploads {{ hmpoSubmit(ctx, {
+        text: translate("buttons.editDetails"),
+        classes: "govuk-button--secondary" })
     }}</h1>
 
     <p>No documents have been uploaded.</p>

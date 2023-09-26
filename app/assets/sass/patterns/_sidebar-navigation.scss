@@ -49,11 +49,17 @@
 }
 
 .heading-flex {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #b1b4b6;
-  padding-bottom: 5px
+    display: flex;
+    justify-content: space-between;
+    padding-top: govuk-spacing(3);
+    padding-bottom: govuk-spacing(3);
+    border-bottom: 1px solid #b1b4b6;
+
+    .govuk-button {
+        margin-bottom: govuk-spacing(0);
+    }
 }
+
 
 .govuk-summary-list__key {
   width: 50%;
