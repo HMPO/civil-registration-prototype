@@ -7,10 +7,7 @@
 {% block mainContent %}
 
     {% call hmpoForm(ctx) %}
-
-        {{ hmpoSubmit(ctx, { text: translate("buttons.createNewRecord") }) }}
-
-        <h1 id="header">{{ hmpoTitle }}</h1>
+        <h1 id="header" class="heading-flex govuk-heading-l" style="border-bottom:none;">{{ hmpoTitle }}{{ hmpoSubmit(ctx, { text: translate("buttons.createNewRecord") }) }}</h1>
 
         <!-- TODO: Add sortable table in from MOJ Frontend -->
 
