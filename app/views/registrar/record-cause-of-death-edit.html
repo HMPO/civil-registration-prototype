@@ -240,6 +240,89 @@
         }) }}
 
         {{ hmpoRadios(ctx, {
+            id: "MCCDPregnancy",
+            legend: {
+                text: "Was the deceased pregnant in the year before their death?",
+                classes: "govuk-label--s"
+            },
+            classes: "govuk-radios--small",
+            items: [
+                {
+                    value: "Not applicable",
+                    text: "Not applicable"
+                },
+                {
+                    value: "Not pregnant",
+                    text: "Not pregnant"
+                },
+                {
+                    value: "Pregnant at time of death",
+                    text: "Pregnant at time of death",
+                    conditional: {
+                        html:
+                            hmpoRadios(ctx, {
+                                id: "MCCDPregnancyAdditional1",
+                                legend: {
+                                    text: "Did the pregnancy contribute to their death?",
+                                    classes: "govuk-label--s"
+                                },
+                                classes: "govuk-radios--small",
+                                items: [
+                                    { value: "Yes", text: "Yes" },
+                                    { value: "No", text: "No" },
+                                    { value: "Not known", text: "Not known" }
+                                ]
+                            })
+                    }
+                },
+                {
+                    value: "Pregnant 1–42 days before death",
+                    text: "Pregnant 1–42 days before death",
+                    conditional: {
+                        html:
+                            hmpoRadios(ctx, {
+                                id: "MCCDPregnancyAdditional2",
+                                legend: {
+                                    text: "Did the pregnancy contribute to their death?",
+                                    classes: "govuk-label--s"
+                                },
+                                classes: "govuk-radios--small",
+                                items: [
+                                    { value: "Yes", text: "Yes" },
+                                    { value: "No", text: "No" },
+                                    { value: "Not known", text: "Not known" }
+                                ]
+                            })
+                    }
+                },
+                {
+                    value: "Pregnant 43 days to a year before death",
+                    text: "Pregnant 43 days to a year before death",
+                    conditional: {
+                        html:
+                            hmpoRadios(ctx, {
+                                id: "MCCDPregnancyAdditional3",
+                                legend: {
+                                    text: "Did the pregnancy contribute to their death?",
+                                    classes: "govuk-label--s"
+                                },
+                                classes: "govuk-radios--small",
+                                items: [
+                                    { value: "Yes", text: "Yes" },
+                                    { value: "No", text: "No" },
+                                    { value: "Not known", text: "Not known" }
+                                ]
+                            })
+                    }
+                },
+                {
+                    value: "Not known",
+                    text: "Not known"
+                }
+            ]
+        }) }}
+
+        {{ hmpoRadios(ctx, {
             id: "MCCDEthnicity",
             legend: {
                 text: "Ethnicity",

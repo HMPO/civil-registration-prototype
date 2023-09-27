@@ -95,8 +95,19 @@
                 {
                     key: { text: "Died in a hospital?" },
                     value: {
-                        html: "Yes: <br><br>Consultant’s full name: " + values.MCCDConsultantFullName if values.MCCDDiedInHospital
+                        html: "Yes:<br><br>Consultant’s full name: " + values.MCCDConsultantFullName if values.MCCDDiedInHospital
                         else ("No" if values.MCCDDiedInHospital === false)
+                    }
+                },
+                {
+                    key: { text: "Was the deceased pregnant in the year before their death?" },
+                    value: {
+                        html: values.MCCDPregnancy if values.MCCDPregnancy == 'Not applicable' or values.MCCDPregnancy == 'Not pregnant' or values.MCCDPregnancy == 'Not known'
+                        else (values.MCCDPregnancy + ":<br><br>Did the pregnancy contribute to their death?:<br>" + values.MCCDPregnancyAdditional1 if values.MCCDPregnancy == 'Pregnant at time of death'
+                            else (values.MCCDPregnancy + ":<br><br>Did the pregnancy contribute to their death?:<br>" + values.MCCDPregnancyAdditional2 if values.MCCDPregnancy == 'Pregnant 1–42 days before death'
+                                else (values.MCCDPregnancy + ":<br><br>Did the pregnancy contribute to their death?:<br>" + values.MCCDPregnancyAdditional3 if values.MCCDPregnancy == 'Pregnant 43 days to a year before death')
+                            )
+                        )
                     }
                 },
                 {

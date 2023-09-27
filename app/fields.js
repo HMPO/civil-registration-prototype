@@ -140,6 +140,18 @@ module.exports = {
         formatter: 'boolean',
         // validate: 'required'
     },
+    MCCDPregnancy: {
+        // validate: 'required'
+    },
+    MCCDPregnancyAdditional1: {
+        // validate: 'required'
+    },
+    MCCDPregnancyAdditional2: {
+        // validate: 'required'
+    },
+    MCCDPregnancyAdditional3: {
+        // validate: 'required'
+    },
     MCCDEthnicity: {
         // validate: 'required'
     },
