@@ -14,7 +14,7 @@ module.exports = function (env) {
     countries.map(country => { countryNames[country.value] = country.text })
     filters.countryName = code => countryNames[code]
 
-    const yesNoUnknown = { true: 'Yes', false: 'No', unknown: 'Unknown' }
+    const yesNoUnknown = { true: 'Yes', false: 'No', unknown: 'Not known' }
     filters.yesNoUnknown = bool => yesNoUnknown[bool]
 
     /* ------------------------------------------------------------------
