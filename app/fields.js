@@ -77,6 +77,15 @@ module.exports = {
         //     'required'
         // ]
     },
+    MCCDDateMedicalCertificateIssued: {
+        validate: ['date'],
+        autocomplete: 'bday'
+    },
+    MCCDWhereMedicalInformationFrom: {
+        // validate: [
+        //     'required'
+        // ]
+    },
     MCCDAddressLine1: {
         // validate: [
         //     'required'
@@ -107,13 +116,6 @@ module.exports = {
         //     'required'
         // ]
     },
-    MCCDDateCertifyingPractitionerLastSawDeceasedAlive: {
-        validate: ['date'],
-        autocomplete: 'bday'
-    },
-    MCCDLetterCircledOnMCCD: {
-        // validate: 'required'
-    },
     MCCDCauseOfDeathReason1: {
         // validate: 'required'
     },
@@ -121,6 +123,75 @@ module.exports = {
         // validate: 'required'
     },
     MCCDCauseOfDeathReason1TimeUnit: {
+        // validate: 'required'
+    },
+    MCCDDidDeceasedHaveAnyHazardousImplants: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    MCCDWhatTypeOfDevice: {
+        // validate: 'required'
+    },
+    MCCDWasDeviceRemoved: {
+        formatter: 'boolean-unknown',
+        // validate: 'required'
+    },
+    MCCDDiedInHospital: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    MCCDPregnancy: {
+        // validate: 'required'
+    },
+    MCCDPregnancyAdditional1: {
+        // validate: 'required'
+    },
+    MCCDPregnancyAdditional2: {
+        // validate: 'required'
+    },
+    MCCDPregnancyAdditional3: {
+        // validate: 'required'
+    },
+    MCCDEthnicity: {
+        // validate: 'required'
+    },
+    MCCDEthnicityAdditional: {
+        // validate: 'required'
+    },
+    MCCDConsultantFullName: {
+        // validate: 'required'
+    },
+    MCCDWillAttendingPractitionerProvideFurtherInformation: {
+        formatter: 'boolean',
+        // validate: 'required'
+    },
+    MCCDAttendingPractitionerFullName: {
+        // validate: 'required'
+    },
+    MCCDAttendingPractitionerQualifications: {
+        // validate: 'required'
+    },
+    MCCDAttendingPractitionerGMCNumber: {
+        // validate: 'required'
+    },
+    MCCDMedicalExaminerFullName: {
+        // validate: 'required'
+    },
+    MCCDMedicalExaminerQualifications: {
+        // validate: 'required'
+    },
+    MCCDMedicalExaminerGMCNumber: {
+        // validate: 'required'
+    },
+    MCCDMedicalExaminerAuthorisationDate: {
+        validate: ['date'],
+        autocomplete: 'bday'
+    },
+    MCCDDateCertifyingPractitionerLastSawDeceasedAlive: {
+        validate: ['date'],
+        autocomplete: 'bday'
+    },
+    MCCDLetterCircledOnMCCD: {
         // validate: 'required'
     },
     MCCDCertifyingPractitionerFullName: {
@@ -135,17 +206,6 @@ module.exports = {
     MCCDDateSigned: {
         validate: ['date'],
         autocomplete: 'bday'
-    },
-    MCCDDiedInHospital: {
-        formatter: 'boolean',
-        // validate: 'required'
-    },
-    MCCDConsultantFullName: {
-        // validate: 'required'
-    },
-    MCCDWillAttendingPractitionerProvideFurtherInformation: {
-        formatter: 'boolean',
-        // validate: 'required'
     },
     deceasedFirstName: {
         // validate: 'required'
@@ -336,7 +396,7 @@ module.exports = {
     spouseOrCivilPartnerOccupationStatus: {
         // validate: 'required'
     },
-    
+
     willInformantGiveDateOfBirthOfSpouseOrCivilPartner: {
         // validate: 'required'
     },
@@ -382,6 +442,9 @@ module.exports = {
         // validate: 'required'
     },
     informantQualification: {
+        // validate: 'required'
+    },
+    informantQualificationAdditional: {
         // validate: 'required'
     },
     informantRelationshipToDeceased: {
