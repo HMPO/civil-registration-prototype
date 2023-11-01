@@ -86,6 +86,16 @@ module.exports = {
         //     'required'
         // ]
     },
+    MCCDUniqueIdentifier1: {
+        // validate: [
+        //     'required'
+        // ]
+    },
+    MCCDUniqueIdentifier2: {
+        // validate: [
+        //     'required'
+        // ]
+    },
     MCCDAddressLine1: {
         // validate: [
         //     'required'
