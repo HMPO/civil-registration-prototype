@@ -38,6 +38,13 @@
                 {
                     key: { text: "Where is the medical information from?" },
                     value: { text: values.MCCDWhereMedicalInformationFrom }
+                },
+                {
+                    key: { text: "Unique identifier" },
+                    value: {
+                        text: values.MCCDUniqueIdentifier1 if values.MCCDWhereMedicalInformationFrom === 'Medical certificate'
+                            else (values.MCCDUniqueIdentifier2 if values.MCCDWhereMedicalInformationFrom === 'Medical examiner certificate')
+                    }
                 }
             ] | filter }) }}
 

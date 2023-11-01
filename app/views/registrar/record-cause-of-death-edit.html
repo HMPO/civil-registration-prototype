@@ -74,8 +74,34 @@
             },
             classes: "govuk-radios--small",
             items: [
-                { value: "Medical certificate", text: "Medical certificate" },
-                { value: "Medical examiner certificate", text: "Medical examiner certificate" }
+                {
+                    value: "Medical certificate",
+                    text: "Medical certificate",
+                    conditional: {
+                        html:
+                            hmpoText(ctx, {
+                                id: "MCCDUniqueIdentifier1",
+                                label: {
+                                    text: "Unique identifier",
+                                    classes: "govuk-label--s"
+                                }
+                            })
+                    }
+                },
+                {
+                    value: "Medical examiner certificate",
+                    text: "Medical examiner certificate",
+                    conditional: {
+                        html:
+                            hmpoText(ctx, {
+                                id: "MCCDUniqueIdentifier2",
+                                label: {
+                                    text: "Unique identifier",
+                                    classes: "govuk-label--s"
+                                }
+                            })
+                    }
+                }
             ]
         }) }}
 

@@ -105,6 +105,8 @@ const registrar = {
         fields: [
             // 'MCCDDateMedicalCertificateIssued',
             'MCCDWhereMedicalInformationFrom',
+            'MCCDUniqueIdentifier1',
+            'MCCDUniqueIdentifier2',
             'MCCDAddressLine1',
             'MCCDAddressLine2',
             'MCCDAddressStreet',
