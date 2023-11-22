@@ -95,8 +95,10 @@
                     key: { text: "Did the deceased have any hazardous implants?" },
                     value: {
                         html:
-                            "Yes:<br><br>" + MCCDHazardousImplants if values.MCCDDidDeceasedHaveAnyHazardousImplants
-                            else ("No" if values.MCCDDidDeceasedHaveAnyHazardousImplants === false)
+                            "Yes:<br><br>" + MCCDHazardousImplants if values.MCCDDidDeceasedHaveAnyHazardousImplants === true
+                            else ("No" if values.MCCDDidDeceasedHaveAnyHazardousImplants === false
+                                else ("Not known" if values.MCCDDidDeceasedHaveAnyHazardousImplants == 'unknown')
+                            )
                     }
                 },
                 {

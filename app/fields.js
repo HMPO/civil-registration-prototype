@@ -136,7 +136,7 @@ module.exports = {
         // validate: 'required'
     },
     MCCDDidDeceasedHaveAnyHazardousImplants: {
-        formatter: 'boolean',
+        formatter: 'boolean-unknown',
         // validate: 'required'
     },
     MCCDWhatTypeOfDevice: {
