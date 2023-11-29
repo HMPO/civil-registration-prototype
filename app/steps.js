@@ -139,8 +139,7 @@ const registrar = {
             'MCCDLetterCircledOnMCCD',
             'MCCDCertifyingPractitionerFullName',
             'MCCDCertifyingPractitionerQualifications',
-            'MCCDCertifyingPractitionerGMCNumber',
-            'MCCDDateSigned'
+            'MCCDCertifyingPractitionerGMCNumber'
         ],
         next:[
             '/registrar/record-cause-of-death'

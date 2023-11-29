@@ -213,10 +213,6 @@ module.exports = {
     MCCDCertifyingPractitionerGMCNumber: {
         // validate: 'required'
     },
-    MCCDDateSigned: {
-        validate: ['date'],
-        autocomplete: 'bday'
-    },
     deceasedFirstName: {
         // validate: 'required'
     },
