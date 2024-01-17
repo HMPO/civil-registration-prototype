@@ -89,5 +89,11 @@
         }
     ] }) }}
 
+    {{ govukButton({
+        text: "Delete record",
+        href: "/registrar/delete",
+        classes: "govuk-!-margin-bottom-2 govuk-button--warning"
+    }) }}
+ 
     {% endcall %}
 {% endblock %}
