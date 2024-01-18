@@ -21,11 +21,12 @@
 {% endblock %}
 
 {% block mainContent %}
-    {% call hmpoForm(ctx) %}
+
 
     <h2 class="govuk-heading-l">Cover sheet</h2>
 
     <h3 class="govuk-heading-m">File information</h3>
+    {% call hmpoForm(ctx) %}
     {{ hmpoDate(ctx, {
         id: "MCCDDateMedicalCertificateIssued",
         legend: {
