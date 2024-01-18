@@ -5,8 +5,30 @@
 
 <h1 class="govuk-heading-l">Delete record</h1>
 
+{{ hmpoRadios(ctx, {
+    id: "MCCDWasDeviceRemoved",
+    legend: {
+        text: "Why are you deleting this record?",
+        classes: "govuk-label--s"
+    },
+    classes: "govuk-radios--small",
+    items: [
+        { value: true, text: "Duplicate record" },
+        { value: false, text: "Does not meet criteria for DRS" },
+        { value: "unknown", text: "Other" }
+    ]
+}) }}
+
     <div class="button-container">
-        <div>item 1</div>
-        <div>item 2</div>
+        <div>{{ govukButton({
+            text: "Delete record",
+            href: "/registrar/delete-record",
+            classes: "govuk-!-margin-bottom-2 govuk-button--warning govuk-!-margin-right-2"
+        }) }}</div>
+        <div>{{ govukButton({
+            text: "Cancel",
+            href: "/registrar/delete-record",
+            classes: "govuk-!-margin-bottom-2 govuk-button--secondary"
+        }) }}</div>
     </div>
 {% endblock %}
