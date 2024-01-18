@@ -1,0 +1,184 @@
+{% extends "layout-registrar-full.html" %}
+
+{% set hmpoTitle %}Pending registrations{% endset %}
+
+{% block backLink %}{% endblock %}
+
+{% block mainContent %}
+
+{% call hmpoForm(ctx) %}
+
+{% set html %}
+<h3 class="govuk-notification-banner__heading">
+    Training outcome recorded and trainee withdrawn
+</h3>
+<p class="govuk-body">Contact <a class="govuk-notification-banner__link" href="#">example@department.gov.uk</a> if you
+    think there’s a problem.</p>
+{% endset %}
+
+{{ govukNotificationBanner({
+html: html,
+type: "success"
+}) }}
+<h1 id="header" class="heading-flex govuk-heading-l" style="border-bottom:none;">{{ hmpoTitle }}{{ hmpoSubmit(ctx, {
+    text: translate("buttons.createNewRecord") }) }}</h1>
+
+<!-- TODO: Add sortable table in from MOJ Frontend -->
+
+{{ govukTable({
+attributes: {
+'data-module': 'moj-sortable-table'
+},
+head: [
+{
+text: "Name",
+attributes: {
+"aria-sort": "none"
+}
+},
+{
+text: "Date of death",
+attributes: {
+"aria-sort": "none"
+}
+},
+{
+text: "MCCD received",
+attributes: {
+"aria-sort": "ascending"
+}
+},
+{
+text: "Certifying practitioner",
+attributes: {
+"aria-sort": "none"
+}
+},
+{
+text: "Place of death",
+attributes: {
+"aria-sort": "none"
+}
+},
+{
+text: "Priority",
+attributes: {
+"aria-sort": "none"
+}
+},
+{
+text: "MCCD status",
+attributes: {
+"aria-sort": "none"
+}
+},
+{
+text: "Notes",
+attributes: {
+"aria-sort": "none"
+}
+}
+],
+rows: [
+[
+{
+html: '<a href="/registrar/record">SHORT, Charles</a>',
+attributes: {
+"data-sort-value": "Short, Charles"
+}
+},
+{
+text: "08/10/21",
+attributes: {
+"data-sort-value": "08/10/21"
+}
+},
+{
+text: "10/10/21",
+attributes: {
+"data-sort-value": "10/10/21"
+}
+},
+{
+text: "Dr Julie Bowden"
+},
+{
+text: "Queen Mary’s Hospital, Fulham"
+},
+{
+text: "Yes",
+attributes: {
+"data-sort-value": "Yes"
+}
+},
+{
+html: '<span class="govuk-ok"><strong>OK</strong></span>'
+},
+{
+text: ""
+}
+],
+[
+{
+html: '<a href="/registrar/record">HYDE, Nick</a>',
+attributes: {
+"data-sort-value": "Hyde, Nick"
+}
+},
+{
+text: "08/10/21",
+attributes: {
+"data-sort-value": "08/10/21"
+}
+},
+{
+text: "11/10/21",
+attributes: {
+"data-sort-value": "11/10/21"
+}
+},
+{
+text: "Dr Daniel Rehman"
+},
+{
+text: "Meadow View Care Home, Chelsea"
+},
+{
+text: "",
+attributes: {
+"data-sort-value": ""
+}
+},
+{
+html: '<span class="govuk-notok"><strong>NOT OK</strong></span>'
+}
+]
+]
+}) }}
+
+<!-- Bump govuk-frontend for this component -->
+{# {{ govukPagination({
+next: {
+href: "#"
+},
+items: [
+{
+number: 1,
+current: true,
+href: "#"
+},
+{
+number: 2,
+href: "#"
+},
+{
+number: 3,
+href: "#"
+}
+]
+}) }} #}
+
+{% endcall %}
+
+
+{% endblock %}
