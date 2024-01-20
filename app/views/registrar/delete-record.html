@@ -3,22 +3,20 @@
 {% set hmpoTitle %}Delete record{% endset %}
 {% block mainContent %}
 
-<h1 class="govuk-heading-l">Delete record</h1>
-
 {{ hmpoRadios(ctx, {
     id: "reasonForDeletion",
     legend: {
         text: "Why are you deleting this record?",
-        classes: "govuk-label--s"
+        classes: "govuk-label--l"
     },
     classes: "govuk-radios--small",
     items: [
-        { value: "Duplicate record", text: "Duplicate record" },
-        { value: "Does not meet criteria for DRS", text: "Does not meet criteria for DRS" },
+        { value: "Duplicate record", text: "Record has already been registered" },
+        { value: "Does not meet criteria for DRS", text: "Does not meet criteria to register on DRS" },
         { value: "Other", text: "Other",  conditional: {
-            html:  hmpoTextarea(ctx, {
+            html:  
+            hmpoText(ctx, {
                 id: "othertextInput",
-                classes: "govuk-!-width-one-half",
                 label: {
                     text: "Reason for deletion",
                     classes: "govuk-label--s"
@@ -28,15 +26,16 @@
     ]
 }) }}
 
+
     <div class="button-container">
         <div>{{ govukButton({
             text: "Delete record",
-            href: "/registrar/pending-registrations-with-confir",
+            href: "/registrar/pending-registrations-with-confirm-delete",
             classes: "govuk-!-margin-bottom-2 govuk-button--warning govuk-!-margin-right-2"
         }) }}</div>
         <div>{{ govukButton({
             text: "Cancel",
-            href: "/registrar/delete-record",
+            href: "/registrar/record",
             classes: "govuk-!-margin-bottom-2 govuk-button--secondary"
         }) }}</div>
     </div>
