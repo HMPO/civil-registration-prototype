@@ -28,15 +28,15 @@
 
 
     <div class="button-container">
-        <div>{{ govukButton({
+        {{ govukButton({
             text: "Delete record",
             href: "/registrar/pending-registrations-with-confirm-delete",
             classes: "govuk-!-margin-bottom-2 govuk-button--warning govuk-!-margin-right-2"
-        }) }}</div>
-        <div>{{ govukButton({
+        }) }}
+        {{ govukButton({
             text: "Cancel",
             href: "/registrar/record",
             classes: "govuk-!-margin-bottom-2 govuk-button--secondary"
-        }) }}</div>
+        }) }}
     </div>
 {% endblock %}
