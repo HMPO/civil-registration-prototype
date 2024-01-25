@@ -28,7 +28,6 @@
         classes: "govuk-button--secondary" })
     }}</h2>
 
-
     <h3 class="govuk-heading-m">File information</h3>
     {{ govukSummaryList({ rows: [
         {
@@ -89,5 +88,11 @@
         }
     ] }) }}
 
+    {{ govukButton({
+        text: "Delete record",
+        href: "/registrar/delete-record",
+        classes: "govuk-!-margin-bottom-2 govuk-button--warning"
+    }) }}
+ 
     {% endcall %}
 {% endblock %}

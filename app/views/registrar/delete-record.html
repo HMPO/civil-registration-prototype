@@ -1,0 +1,42 @@
+{% extends "layout-registrar-full.html" %}
+
+{% set hmpoTitle %}Delete record{% endset %}
+{% block mainContent %}
+
+{{ hmpoRadios(ctx, {
+    id: "reasonForDeletion",
+    legend: {
+        text: "Why are you deleting this record?",
+        classes: "govuk-label--l"
+    },
+    classes: "govuk-radios--small",
+    items: [
+        { value: "Duplicate record", text: "Record has already been registered" },
+        { value: "Does not meet criteria for DRS", text: "Does not meet criteria to register on DRS" },
+        { value: "Other", text: "Other",  conditional: {
+            html:  
+            hmpoText(ctx, {
+                id: "othertextInput",
+                label: {
+                    text: "Reason for deletion",
+                    classes: "govuk-label--s"
+                }
+            })
+          } }
+    ]
+}) }}
+
+
+    <div class="button-container">
+        {{ govukButton({
+            text: "Delete record",
+            href: "/registrar/pending-registrations-with-confirm-delete",
+            classes: "govuk-!-margin-bottom-2 govuk-button--warning govuk-!-margin-right-2"
+        }) }}
+        {{ govukButton({
+            text: "Cancel",
+            href: "/registrar/record",
+            classes: "govuk-!-margin-bottom-2 govuk-button--secondary"
+        }) }}
+    </div>
+{% endblock %}
