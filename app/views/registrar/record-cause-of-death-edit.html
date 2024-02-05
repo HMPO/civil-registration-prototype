@@ -75,7 +75,7 @@
             classes: "govuk-radios--small",
             items: [
                 {
-                    value: "Medical certificate",
+                    value: "Attending practitioner certificate (standard)",
                     text: "Attending practitioner certificate (standard)",
                     conditional: {
                         html:
@@ -89,7 +89,7 @@
                     }
                 },
                 {
-                    value: "Medical examiner certificate",
+                    value: "Medical examiner certificate (standard)",
                     text: "Medical examiner certificate (standard)",
                     conditional: {
                         html:
@@ -515,7 +515,7 @@
 
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                const medicalCertificateRadio = document.querySelector('input[value="AP certificate"]');
+                const medicalCertificateRadio = document.querySelector('input[value="Medical certificate"]');
                 const medicalExaminerCertificateRadio = document.querySelector('input[value="Medical examiner certificate"]');
                 const conditionalRevealAttendingPractitionerFieldset = document.getElementById("conditionalRevealAttendingPractitionerFieldset");
 
