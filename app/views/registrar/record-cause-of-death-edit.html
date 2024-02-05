@@ -75,8 +75,8 @@
             classes: "govuk-radios--small",
             items: [
                 {
-                    value: "Medical certificate",
-                    text: "Medical certificate",
+                    value: "Attending practitioner certificate (standard)",
+                    text: "Attending practitioner certificate (standard)",
                     conditional: {
                         html:
                             hmpoText(ctx, {
@@ -89,8 +89,8 @@
                     }
                 },
                 {
-                    value: "Medical examiner certificate",
-                    text: "Medical examiner certificate",
+                    value: "Medical examiner certificate (standard)",
+                    text: "Medical examiner certificate (standard)",
                     conditional: {
                         html:
                             hmpoText(ctx, {
@@ -217,32 +217,7 @@
 
         <p><a href="#">2. Add other significant contributory conditions</a></p>
 
-        {{ hmpoRadios(ctx, {
-            id: "MCCDDidDeceasedHaveAnyHazardousImplants",
-            legend: {
-                text: "Did the deceased have any hazardous implants?",
-                classes: "govuk-label--s"
-            },
-            hint: "For example, a pacemaker or radioactive device",
-            classes: "govuk-radios--small",
-            items: [
-                {
-                    value: true,
-                    conditional: {
-                        html: MCCDHazardousImplantsReveal
-                    }
-                },
-                {
-                    value: false
-                },
-                {
-                    value: "unknown",
-                    text: "Not known"
-                }
-            ]
-        }) }}
-
-        {{ hmpoRadios(ctx, {
+       {{ hmpoRadios(ctx, {
             id: "MCCDDiedInHospital",
             legend: {
                 text: "Died in a hospital?",
@@ -268,6 +243,35 @@
             }
         ]
         }) }}
+       
+       
+       
+        {{ hmpoRadios(ctx, {
+            id: "MCCDDidDeceasedHaveAnyHazardousImplants",
+            legend: {
+                text: "Did the deceased have any hazardous implants?",
+                classes: "govuk-label--s"
+            },
+            hint: "For example, a pacemaker or radioactive device",
+            classes: "govuk-radios--small",
+            items: [
+                {
+                    value: true,
+                    conditional: {
+                        html: MCCDHazardousImplantsReveal
+                    }
+                },
+                {
+                    value: false
+                },
+                {
+                    value: "unknown",
+                    text: "Not known"
+                }
+            ]
+        }) }}
+
+        
 
         {{ hmpoRadios(ctx, {
             id: "MCCDPregnancy",
