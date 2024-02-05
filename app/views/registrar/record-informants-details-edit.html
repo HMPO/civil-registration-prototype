@@ -2,24 +2,21 @@
 
 {% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
-{% set informantQualificationRelativeOrPartnerReveal %}
+{% set informantQualificationRelative %}
     {% from "hmpo-radios/macro.njk" import hmpoRadios %}
     {% from "hmpo-text/macro.njk" import hmpoText %}
 
     {{ hmpoRadios(ctx, {
         id: "informantQualificationAdditional",
         legend: {
-            text: "Relative or partner qualification",
+            text: "Relative qualification",
             classes: "govuk-label--s govuk-visually-hidden"
         },
         classes: "govuk-radios--small",
         items: [
-            { value: "Relative present at death", text: "Relative – present at death" },
-            { value: "Relative in attendance", text: "Relative – in attendance" },
-            { value: "Relative not present at death", text: "Relative – not present at death" },
-            { value: "Partner present at death", text: "Partner – present at death" },
-            { value: "Partner in attendance", text: "Partner – in attendance" },
-            { value: "Partner not present at death", text: "Partner – not present at death" }
+            { value: "Relative present at death", text: "Present at death" },
+            { value: "Relative in attendance", text: "In attendance" },
+            { value: "Relative not present at death", text: "Not present at death" }
         ]
     }) }}
 
@@ -31,6 +28,28 @@
         }
     }) }}
 {% endset %}
+
+{% set informantQualificationPartner %}
+    {% from "hmpo-radios/macro.njk" import hmpoRadios %}
+    {% from "hmpo-text/macro.njk" import hmpoText %}
+
+    {{ hmpoRadios(ctx, {
+        id: "informantQualificationAdditional",
+        legend: {
+            text: "Partner qualification",
+            classes: "govuk-label--s govuk-visually-hidden"
+        },
+        classes: "govuk-radios--small",
+        items: [
+            { value: "Partner present at death", text: "Present at death" },
+            { value: "Partner in attendance", text: "In attendance" },
+            { value: "Partner not present at death", text: "Not present at death" }
+        ]
+    }) }}
+
+    
+{% endset %}
+
 
 {% set informantAddress %}
     {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
@@ -175,10 +194,17 @@
         classes: "govuk-radios--small",
         items: [
             {
-                value: "Relative or partner",
-                text: "Relative or partner",
+                value: "Relative",
+                text: "Relative",
                 conditional: {
-                    html: informantQualificationRelativeOrPartnerReveal
+                    html: informantQualificationRelative
+                }
+            },
+             {
+                value: "Partner",
+                text: "Partner",
+                conditional: {
+                    html: informantQualificationPartner
                 }
             },
             {
@@ -194,13 +220,13 @@
                             },
                             classes: "govuk-radios--small",
                             items: [
-                                { value: "Non-relative present at death", text: "Non-relative – present at death" },
-                                { value: "Non-relative occupier", text: "Non-relative – occupier" },
-                                { value: "Non-relative inmate", text: "Non-relative – inmate" },
-                                { value: "Non-relative causing the body to be buried", text: "Non-relative – causing the body to be buried" },
-                                { value: "Non-relative causing the body to be cremated", text: "Non-relative – causing the body to be cremated" },
-                                { value: "Non-relative in charge of the body", text: "Non-relative – in charge of the body" },
-                                { value: "Non-relative causing the disposal of the body", text: "Non-relative – causing the disposal of the body" },
+                                { value: "Non-relative present at death", text: "Present at death" },
+                                { value: "Non-relative occupier", text: "Occupier" },
+                                { value: "Non-relative inmate", text: "Inmate" },
+                                { value: "Non-relative causing the body to be buried", text: "Causing the body to be buried" },
+                                { value: "Non-relative causing the body to be cremated", text: "Causing the body to be cremated" },
+                                { value: "Non-relative in charge of the body", text: "In charge of the body" },
+                                { value: "Non-relative causing the disposal of the body", text: "Causing the disposal of the body" },
                                 { value: "Non-relative personal representative of the deceased", text: "Personal representative of the deceased" }
                             ]
                         })
