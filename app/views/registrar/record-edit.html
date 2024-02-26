@@ -30,13 +30,13 @@
     {{ hmpoDate(ctx, {
         id: "MCCDDateMedicalCertificateIssued",
         legend: {
-            text: "Date medical certificate was issued",
+            text: "What date did you get the medical certificate?",
             classes: "govuk-label--s"
         },
         hint: "For example, 12 11 2007"
     }) }}
 
-    <!-- <h4 class="govuk-heading-s">Date medical certificate was issued</h4>
+    <!-- <h4 class="govuk-heading-s">What date did you get the medical certificate?</h4>
     <p class="govuk-body">{{ values.MCCDDateMedicalCertificateIssued | date("DD/MM/YYYY") }}</p> -->
 
     {{ hmpoText(ctx, {
@@ -50,7 +50,7 @@
     {{ hmpoText(ctx, {
         id: "coverSheetDeceasedMiddleNames",
         label: {
-            text: "Middle names",
+            text: "Deceased's middle names",
             classes: "govuk-label--s"
         }
     }) }}
@@ -58,7 +58,7 @@
     {{ hmpoText(ctx, {
         id: "coverSheetDeceasedLastName",
         label: {
-            text: "Last name",
+            text: "Deceased's last name",
             classes: "govuk-label--s"
         }
     }) }}
@@ -76,7 +76,7 @@
     {{ hmpoDate(ctx, {
         id: "coverSheetDateMCCDReceived",
         legend: {
-            text: "Date medical certificate received",
+            text: "What date did you get the medical certificate?",
             classes: "govuk-label--s"
         },
         hint: "For example, 12 11 2007"
@@ -85,7 +85,7 @@
     {{ hmpoRadios(ctx, {
         id: "coverSheetMCCDStatus",
         legend: {
-            text: "Medical certificate status",
+            text: "Is the medical certificate ready to use for the registration?  ",
             classes: "govuk-label--s"
         },
         classes: "govuk-radios--small",
@@ -98,7 +98,7 @@
     {{ hmpoRadios(ctx, {
         id: "coverSheetPriority",
         legend: {
-            text: "Priority",
+            text: "Is this registration urgent?",
             classes: "govuk-label--s"
         },
         classes: "govuk-radios--small",
