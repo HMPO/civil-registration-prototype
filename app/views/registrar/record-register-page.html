@@ -23,7 +23,7 @@
 {% block mainContent %}
     {% call hmpoForm(ctx) %}
 
-    <h2 class="govuk-heading-l govuk-!-padding-top-3">Register page</h2>
+    <h2 class="govuk-heading-l govuk-!-padding-top-3">View register page</h2>
 
     {{ hmpoRadios(ctx, {
         id: "registrarDesignation",
@@ -40,6 +40,11 @@
         ]
     }) }}
 
+    {{ govukWarningText({
+        text: "Show the register page to the informant to confirm information is correct.",
+        iconFallbackText: "Warning"
+    }) }}
+
     <!-- TODO: Fix conditional logic so it is on radio selection rather than value in session -->
     {# {% if values.registrarDesignation == undefined %}
         {{ hmpoSubmit(ctx, {
@@ -49,47 +54,32 @@
             })
         }}
     {% else %} #}
+        
+    <div class="button-container-2">
+        {{ govukButton({
+            text: "View register page",
+            href: "/public/images/register/record-register-page-preview.pdf", 
+            classes: "govuk-!-margin-bottom-2 govuk-!-margin-right-2"
+        }) }}
+        {{ govukButton({
+            text: "Save and contniue",
+            href: "/registrar/record",
+            classes: "govuk-!-margin-bottom-2"
+        }) }}
+    </div>
+    
+    
+    
+    
+    
+    <a target="_blank" href="/public/images/register/record-register-page-preview.pdf" role="button" draggable="false" class="govuk-button button" data-module="govuk-button">
+            View register page
+        </a>
+
         <a target="_blank" href="/public/images/register/record-register-page-preview.pdf" role="button" draggable="false" class="govuk-button button" data-module="govuk-button">
-            View and print register page
+            Save and continue
         </a>
     {# {% endif %} #}
-
-    {{ govukWarningText({
-        text: "Show the register page to the informant to confirm information is correct.",
-        iconFallbackText: "Warning"
-    }) }}
-
-    <h3 class="govuk-heading-m">Signature details</h3>
-
-    {{ hmpoText(ctx, {
-        id: "informantSignature",
-        label: {
-            text: "Informant’s signature, as written",
-            classes: "govuk-label--s"
-        }
-    }) }}
-
-    {{ hmpoRadios(ctx, {
-        id: "informantSignatureAnnotation",
-        legend: {
-            text: "Signature annotation",
-            classes: "govuk-label--s"
-        },
-        classes: "govuk-radios--small",
-        items: [
-            { value: "None", text: "None" },
-            { value: "‘Signature of’ added", text: "‘Signature of’ added" },
-            { value: "‘Mark of’ added", text: "‘Mark of’ added" }
-        ]
-    }) }}
-
-    {{ hmpoText(ctx, {
-        id: "registrarSignature",
-        label: {
-            text: "Registrar’s signature, as written",
-            classes: "govuk-label--s"
-        }
-    }) }}
 
     <!-- TODO: Fix conditional logic so it is on radio selection rather than value in session -->
     {# {% if values.informantSignature == null or informantSignatureAnnotation == undefined or registrarSignature == null %}
