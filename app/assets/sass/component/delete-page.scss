@@ -1,4 +1,21 @@
 
 .button-container {
     display: flex;
+    flex-direction: column;
+
+    .govuk-button {
+        margin-bottom: 24px !important;
+        margin-right: 0 !important;
+    }
+}
+
+@media screen and (min-width: 40em) {
+    .button-container {
+        flex-direction: row;
+
+        .govuk-button {
+            margin-bottom: 10px !important;
+            margin-right: 24px !important;
+        }
+    }
 }
