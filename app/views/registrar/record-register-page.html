@@ -67,32 +67,7 @@
             classes: "govuk-!-margin-bottom-2"
         }) }}
     </div>
-    
-    
-    
-    
-    
-    <a target="_blank" href="/public/images/register/record-register-page-preview.pdf" role="button" draggable="false" class="govuk-button button" data-module="govuk-button">
-            View register page
-        </a>
 
-        <a target="_blank" href="/public/images/register/record-register-page-preview.pdf" role="button" draggable="false" class="govuk-button button" data-module="govuk-button">
-            Save and continue
-        </a>
-    {# {% endif %} #}
-
-    <!-- TODO: Fix conditional logic so it is on radio selection rather than value in session -->
-    {# {% if values.informantSignature == null or informantSignatureAnnotation == undefined or registrarSignature == null %}
-        {{ hmpoSubmit(ctx, {
-            text: translate("buttons.sendToRON"),
-            disabled: true
-            })
-        }}
-    {% else %} #}
-        {{ hmpoSubmit(ctx, {
-            text: translate("buttons.sendToRON")
-            })
-        }}
     {# {% endif %} #}
 
     {% endcall %}
