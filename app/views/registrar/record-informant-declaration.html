@@ -15,8 +15,8 @@
             <a class="govuk-link" href="record-deceaseds-details">Deceased’s details</a>
             <a class="govuk-link" href="record-informants-details">Informant’s details</a>
             <a class="govuk-link" href="record-check-all-information">Check all information</a>
-            <a class="govuk-link govuk-link__active" href="#">Register page</a>
-            <a class="govuk-link" href="record-informant-declaration">Informant's declaration</a>
+            <a class="govuk-link" href="record-register-page">Register page</a>
+            <a class="govuk-link govuk-link__active" href="record-informant-declaration">Informant's declaration</a>
             <a class="govuk-link" href="record-registrar-declaration">Registrar's declaration</a>
         </nav>
     {% endcall %}
@@ -25,27 +25,23 @@
 {% block mainContent %}
     {% call hmpoForm(ctx) %}
 
-    <h2 class="govuk-heading-l govuk-!-padding-top-3">View register page</h2>
+    <h2 class="govuk-heading-l govuk-!-padding-top-3">Informant's declaration</h2>
 
-    {{ hmpoRadios(ctx, {
-        id: "registrarDesignation",
-        legend: {
-            text: "Registrar’s designation",
+    {{ hmpoText(ctx, {
+        id: "deceasedFirstName",
+        label: {
+            text: "Informant’s name",
             classes: "govuk-label--s"
-        },
-        classes: "govuk-radios--small",
-        items: [
-            { value: "Registrar", text: "Registrar" },
-            { value: "Interim Registrar", text: "Interim Registrar" },
-            { value: "Deputy Registrar", text: "Deputy Registrar" },
-            { value: "Deputy Interim Registrar", text: "Deputy Interim Registrar" }
-        ]
+        }
     }) }}
 
-    {{ govukWarningText({
-        text: "Show the register page to the informant to confirm information is correct.",
-        iconFallbackText: "Warning"
-    }) }}
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+          <label class="govuk-label govuk-checkboxes__label" for="waste">
+            I confirm that the information given by me in this appointment is true and to the best of my knowledge.
+          </label>
+        </div>
 
     <!-- TODO: Fix conditional logic so it is on radio selection rather than value in session -->
     {# {% if values.registrarDesignation == undefined %}
@@ -56,18 +52,13 @@
             })
         }}
     {% else %} #}
+
+    <br>
         
     <div class="button-container-2">
         {{ govukButton({
-            text: "View register page",
-            href: "/public/images/register/record-register-page-preview.pdf", 
-            classes: "govuk-!-margin-bottom-2 govuk-!-margin-right-2"
-        }) }} 
-        <br>
-        <br>
-        {{ govukButton({
-            text: "Save and continue",
-            href: "/registrar/record-informant-declaration.html",
+            text: "Save and contniue",
+            href: "/registrar/record-registrar-declaration.html",
             classes: "govuk-!-margin-bottom-2"
         }) }}
     </div>
