@@ -16,6 +16,8 @@
             <a class="govuk-link" href="record-informants-details">Informant’s details</a>
             <a class="govuk-link" href="record-check-all-information">Check all information</a>
             <a class="govuk-link" href="record-register-page">Register page</a>
+            <a class="govuk-link" href="record-informant-declaration">Informant's declaration</a>
+            <a class="govuk-link" href="record-registrar-declaration">Registrar's declaration</a>
         </nav>
     {% endcall %}
 {% endblock %}
@@ -31,7 +33,7 @@
     <h3 class="govuk-heading-m">File information</h3>
     {{ govukSummaryList({ rows: [
         {
-            key: { text: "Date medical certificate issued" },
+            key: { text: "Date medical certificate was issued" },
             value: { text: values.MCCDDateMedicalCertificateIssued | date("DD/MM/YYYY") }
         },
         {
@@ -62,11 +64,11 @@
 
     {{ govukSummaryList({ rows: [
         {
-            key: { text: "Date MCCD received" },
+            key: { text: "Date medical certificate was received" },
             value: { text: values.coverSheetDateMCCDReceived | date("DD/MM/YYYY") }
         },
         {
-            key: { text: "MCCD status" },
+            key: { text: "Medical certificate status" },
             value: { text: values.coverSheetMCCDStatus }
         },
         {

@@ -16,6 +16,8 @@
             <a class="govuk-link" href="record-informants-details">Informant’s details</a>
             <a class="govuk-link" href="record-check-all-information">Check all information</a>
             <a class="govuk-link" href="record-register-page">Register page</a>
+            <a class="govuk-link" href="record-informant-declaration">Informant's declaration</a>
+            <a class="govuk-link" href="record-registrar-declaration">Registrar's declaration</a>
         </nav>
     {% endcall %}
 {% endblock %}
@@ -91,6 +93,13 @@
                     key: { text: "Time between onset and death" },
                     value: { text: (values.MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath + " " if values.MCCDCauseOfDeathReason1TimeBetweenOnsetAndDeath) + (values.MCCDCauseOfDeathReason1TimeUnit if values.MCCDCauseOfDeathReason1TimeUnit)}
                 },
+                   {
+                    key: { text: "Died in a hospital?" },
+                    value: {
+                        html: "Yes:<br><br>Consultant’s full name: " + values.MCCDConsultantFullName if values.MCCDDiedInHospital
+                        else ("No" if values.MCCDDiedInHospital === false)
+                    }
+                },
                 {
                     key: { text: "Did the deceased have any hazardous implants?" },
                     value: {
@@ -99,13 +108,6 @@
                             else ("No" if values.MCCDDidDeceasedHaveAnyHazardousImplants === false
                                 else ("Not known" if values.MCCDDidDeceasedHaveAnyHazardousImplants == 'unknown')
                             )
-                    }
-                },
-                {
-                    key: { text: "Died in a hospital?" },
-                    value: {
-                        html: "Yes:<br><br>Consultant’s full name: " + values.MCCDConsultantFullName if values.MCCDDiedInHospital
-                        else ("No" if values.MCCDDiedInHospital === false)
                     }
                 },
                 {
@@ -173,7 +175,7 @@
                     value: { text: values.MCCDDateCertifyingPractitionerLastSawDeceasedAlive | date("DD/MM/YYYY") }
                 },
                 {
-                    key: { text: "Which letter is circled on the MCCD?" },
+                    key: { text: "Which letter is circled on the medical certifcate?" },
                     value: {
                         text: "a – Seen after death by me" if values.MCCDLetterCircledOnMCCD == "a"
                             else ("b – Seen after death by another medical practitioner but not by me" if values.MCCDLetterCircledOnMCCD == "b"
