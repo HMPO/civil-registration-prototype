@@ -300,6 +300,18 @@ const registrar = {
     }
 }
 
+const createNewRecord = {
+    '/registrar/record-register-confirmation': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        // next:[
+        // ]
+    }    
+}
+
+
+
 const informant = {
 
     // ========================

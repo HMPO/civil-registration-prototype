@@ -1,0 +1,134 @@
+{% extends "layout-registrar-record.html" %}
+
+{% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
+
+{% block mainContent %}
+    {% call hmpoForm(ctx) %}
+
+    <h2 class="heading-flex govuk-heading-l">Registration summary</h2>
+
+    {{ govukSummaryList({ rows: [
+        {
+            key: { text: "Date medical certificate was issued" },
+            value: { text: values.MCCDDateMedicalCertificateIssued | date("DD/MM/YYYY") }
+        },
+        {
+            key: { text: "Deceased’s first name" },
+            value: { text: values.coverSheetDeceasedFirstName }
+        },
+        {
+            key: { text: "Middle names" },
+            value: { text: values.coverSheetDeceasedMiddleNames }
+        },
+        {
+            key: { text: "Last name" },
+            value: { text: values.coverSheetDeceasedLastName }
+        },
+        {
+            key: { text: "Date of death" },
+            value: { text: values.coverSheetDeceasedDateOfDeath | date("DD/MM/YYYY") }
+        }
+    ] | filter }) }}
+
+    <h3 class="govuk-heading-m">Enter the registration</h3>
+
+    <ul class="govuk-task-list">
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-1-status">
+              Name, birth and death details
+            </a>
+            <div id="company-details-3-hint" class="govuk-task-list__hint">
+                Including place and dates of birth and death, and other known names.
+              </div>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            <strong class="govuk-tag govuk-tag--blue">INCOMPLETE</strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-2-status">
+              Personal details
+            </a>
+            <div id="company-details-3-hint" class="govuk-task-list__hint">
+                Including sex, address, nationality and occupation.
+              </div>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-2-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-3-hint company-details-3-status">
+             Cause of death
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-3-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-4-status">
+              Parents' details
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-4-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-5-status">
+              Statistical information
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-5-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          </div>
+        </li>
+      </ul>
+
+      <h3 class="govuk-heading-m">Qualify the informant</h3>
+
+      <ul class="govuk-task-list">
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-5-status">
+                Informant details
+              </a>
+            </div>
+            <div class="govuk-task-list__status" id="company-details-1-status">
+              <strong class="govuk-tag govuk-tag--blue">INCOMPLETE</strong>
+            </div>
+          </li>
+
+      <h3 class="govuk-heading-m">Submit the registration</h3>
+
+      <ul class="govuk-task-list">
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+                View final regisration
+            </div>
+            <div class="govuk-task-list__status" id="company-details-1-status">
+              <strong class="govuk-tag govuk-tag--grey">CANNOT START YET</strong>
+            </div>
+          </li>
+
+    {{ govukButton({
+        text: "Delete record",
+        href: "/registrar/delete-record",
+        classes: "govuk-!-margin-bottom-2 govuk-button--warning"
+    }) }}
+ 
+    {% endcall %}
+{% endblock %}

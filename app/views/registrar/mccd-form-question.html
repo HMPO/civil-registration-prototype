@@ -1,0 +1,39 @@
+{% extends "layout-registrar.html" %}
+
+{% set hmpoTitle %}MCCD form type{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoRadios(ctx, {
+            id: "ageOfDeceasedWhenDied",
+            classes: "govuk-radios--small",
+            legend: {
+                text: "What MCCD form do you have?",
+                classes: "govuk-fieldset__legend--s"
+            },
+            items: [{
+                value: "option1",
+                text: "Form 65"
+            }, 
+            {
+                value: "option2",
+                text: "Form 66"
+            }]
+        }) }}
+
+        <div class="govuk-button-group">
+            {{ govukButton({
+                text: "Continue",
+                href: "age-capture-24",
+                classes: "govuk-!-margin-bottom-2"
+            }) }}
+        </div>
+
+        <p><a href="age-cannot-continue.html">I do not have their age</a></p>
+
+    {% endcall %}
+
+{% endblock %}

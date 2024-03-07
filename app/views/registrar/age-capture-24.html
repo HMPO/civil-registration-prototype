@@ -1,0 +1,48 @@
+{% extends "layout-registrar.html" %}
+
+{% set hmpoTitle %}Age of deceased{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+<p>As the deceased was less than 24 hours old when they died, enter their age in hours or minutes</p>
+    {% call hmpoForm(ctx) %}
+<div class="prototype-flexrow">
+    {{ hmpoText(ctx, {
+        id: "coverSheetDeceasedFirstName",
+        classes: "govuk-input--width-2",
+        formGroup: {
+            classes: "govuk-!-margin-right-5"
+        },
+        label: {
+            text: "Time",
+            classes: "govuk-label--xs"
+            
+        }
+    }) }}
+
+    {{ hmpoSelect(ctx, {
+        id: "MCCDCauseOfDeathReason1TimeUnit",
+        label: {
+            text: "Choose time unit"
+  
+        },
+        items: [
+            { value: null, text: "Choose time unit", selected: true },
+            { value: "Minutes", text: "Minutes" },
+            { value: "Hours", text: "Hours" }
+            ]
+    }) }}
+</div>
+        <div class="govuk-button-group">
+            {{ govukButton({
+                text: "Create record",
+                href: "record-tasklist",
+                classes: "govuk-!-margin-bottom-2"
+            }) }}
+        </div>
+
+        <p><a href="record-tasklist">Continue without entering the age</a></p>
+
+    {% endcall %}
+
+{% endblock %}

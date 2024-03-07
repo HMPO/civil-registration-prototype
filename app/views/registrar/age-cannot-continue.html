@@ -1,0 +1,16 @@
+{% extends "layout-registrar.html" %}
+
+{% set hmpoTitle %}Cannot start registration{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    <h2>You need the age or date or birth to start registering a death.</h2>
+
+    {{ govukButton({
+        text: "View pending registrations",
+        href: "pending-registrations",
+        classes: "govuk-!-margin-bottom-2"
+    }) }}
+
+{% endblock %}

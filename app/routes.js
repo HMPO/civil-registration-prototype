@@ -32,6 +32,18 @@ router.use(Wizard(
     }
 ))
 
+router.use(Wizard(
+    steps.createNewRecord,
+    fields,
+    {
+        name: 'registrar',
+        journeyName: 'registrar',
+        editable: true,
+        editBackStep: '/registrar/confirm',
+        controller: require('./controllers/registrar')
+    }
+))
+
 router.use((err, req, res, next) => {
     if (err.code === 'SESSION_EXPIRED') err.redirect = '/'
     if (err.code === 'MISSING_PREREQ' && !err.redirect) err.redirect = '/'

@@ -1,0 +1,47 @@
+{% extends "layout-registrar.html" %}
+
+{% set hmpoTitle %}Age of deceased{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    {% call hmpoForm(ctx) %}
+
+        {{ hmpoRadios(ctx, {
+            id: "ageOfDeceasedWhenDied",
+            classes: "govuk-radios--small",
+            legend: {
+                text: "How old was the deceased when they died?",
+                classes: "govuk-fieldset__legend--s"
+            },
+            items: [{
+                value: "option1",
+                text: "Less than 24 hours"
+            }, 
+            {
+                value: "option2",
+                text: "1 to 27 days"
+            },
+            {
+                value: "option3",
+                text: "28 days to 15 years"
+            },
+            {
+                value: "option4",
+                text: "16 years or older"
+            }]
+        }) }}
+
+        <div class="govuk-button-group">
+            {{ govukButton({
+                text: "Continue",
+                href: "age-capture-24",
+                classes: "govuk-!-margin-bottom-2"
+            }) }}
+        </div>
+
+        <p><a href="age-cannot-continue.html">I do not have their age</a></p>
+
+    {% endcall %}
+
+{% endblock %}

@@ -40,6 +40,63 @@
             }
         }) }}
 
+        {{ hmpoRadios(ctx, {
+            id: "coverSheetDeceasedDateOfBirth",
+            classes: "govuk-radios--small",
+            legend: {
+                text: "Do you have the deceased's date of birth?",
+                classes: "govuk-fieldset__legend--s"
+            },
+            items: [{
+                value: "option1",
+                text: "I have the full date of birth",
+                conditional: {
+                    html:
+                     hmpoDate(ctx, {
+                        id: "coverSheetDeceasedDateOfBirth",
+                        legend: {
+                            text: "Enter the full date of birth",
+                            classes: "govuk-label--s"
+                        },
+                        hint: "For example, 27 03 2001"
+                    }) 
+                }
+            }, {
+                value: "option2",
+                text: "I have the month and year of birth",
+                conditional: {
+                    html:
+                    hmpoDate(ctx, {
+                       id: "coverSheetDeceasedDateOfBirth",
+                       legend: {
+                           text: "Enter the month and year of birth",
+                           classes: "govuk-label--s"
+                       },
+                       hint: "For example, 27 03 2001"
+                   })
+                }
+            },
+            {
+                value: "option3",
+                text: "I have the year of birth",
+                conditional: {
+                    html:
+                    hmpoText(ctx, {
+                       id: "coverSheetDeceasedDateOfBirth",
+                       label: {
+                           text: "Enter the year of birth",
+                           classes: "govuk-label--xs"
+                       },
+                       hint: "For example, 1960"
+                   })
+                }
+            },
+            {
+                value: "option4",
+                text: "I do not have a partial or full date of birth"
+            }]
+        }) }}
+
         {{ hmpoDate(ctx, {
             id: "coverSheetDeceasedDateOfDeath",
             legend: {
@@ -57,6 +114,9 @@
                 href: "/registrar/pending-registrations"
             }) }}
         </div>
+
+        <p><a href="age-capture-brackets.html">Continue without date of birth (20 days)</a></p>
+        <p><a href="age-capture-brackets.html">Continue without date of birth (10 hours)</a></p>
 
     {% endcall %}
 
