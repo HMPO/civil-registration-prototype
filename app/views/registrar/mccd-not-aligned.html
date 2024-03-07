@@ -1,0 +1,17 @@
+{% extends "layout-registrar.html" %}
+
+{% set hmpoTitle %}Check you’ve entered the correct medical certificate or age{% endset %}
+
+{% block mainContent %}
+    <h1 id="header">{{ hmpoTitle }}</h1>
+
+    <p>This medical certificate is not usually used for a person of this age.</p>
+    <p>Go back and check you’ve entered the correct information</p>
+
+    {{ govukButton({
+        text: "Continue with registration",
+        href: "record-tasklist",
+        classes: "govuk-!-margin-bottom-2"
+    }) }}
+
+{% endblock %}

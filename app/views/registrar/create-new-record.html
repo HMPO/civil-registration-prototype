@@ -83,6 +83,7 @@
                     html:
                     hmpoText(ctx, {
                        id: "coverSheetDeceasedDateOfBirth",
+                       classes: "govuk-input--width-3",
                        label: {
                            text: "Enter the year of birth",
                            classes: "govuk-label--xs"
@@ -107,7 +108,11 @@
         }) }}
 
         <div class="govuk-button-group">
-            {{ hmpoSubmit(ctx, { text: translate("buttons.createNewRecord") }) }}
+            {{ govukButton({
+                text: "Continue",
+                href: "/registrar/mccd-form-question",
+                classes: "govuk-!-margin-bottom-2"
+            }) }}
             {{ hmpoSubmit(ctx, {
                 text: translate("buttons.cancel"),
                 classes: "govuk-button--secondary",
@@ -115,8 +120,8 @@
             }) }}
         </div>
 
-        <p><a href="age-capture-brackets.html">Continue without date of birth (20 days)</a></p>
-        <p><a href="age-capture-brackets.html">Continue without date of birth (10 hours)</a></p>
+        <p><a href="age-capture-brackets.html">Continue forward (20 days)</a></p>
+        <p><a href="age-capture-brackets.html">Continue forward (10 hours)</a></p>
 
     {% endcall %}
 

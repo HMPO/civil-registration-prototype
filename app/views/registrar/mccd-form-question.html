@@ -1,6 +1,6 @@
 {% extends "layout-registrar.html" %}
 
-{% set hmpoTitle %}MCCD form type{% endset %}
+{% set hmpoTitle %}Medical certificate{% endset %}
 
 {% block mainContent %}
     <h1 id="header">{{ hmpoTitle }}</h1>
@@ -11,28 +11,26 @@
             id: "ageOfDeceasedWhenDied",
             classes: "govuk-radios--small",
             legend: {
-                text: "What MCCD form do you have?",
+                text: "Which medical certificate do you have?",
                 classes: "govuk-fieldset__legend--s"
             },
             items: [{
                 value: "option1",
-                text: "Form 65"
+                text: "Form 65 (death of someone 28 days or younger)"
             }, 
             {
                 value: "option2",
-                text: "Form 66"
+                text: "Form 66 (death of someone older than 28 days)"
             }]
         }) }}
 
         <div class="govuk-button-group">
             {{ govukButton({
                 text: "Continue",
-                href: "age-capture-24",
+                href: "record-tasklist",
                 classes: "govuk-!-margin-bottom-2"
             }) }}
         </div>
-
-        <p><a href="age-cannot-continue.html">I do not have their age</a></p>
 
     {% endcall %}
 
