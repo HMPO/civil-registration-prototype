@@ -16,8 +16,8 @@
             <a class="govuk-link" href="record-informants-details">Informant’s details</a>
             <a class="govuk-link" href="record-check-all-information">Check all information</a>
             <a class="govuk-link" href="record-register-page">Register page</a>
-            <a class="govuk-link govuk-link__active" href="record-informant-declaration">Informant's declaration</a>
-            <a class="govuk-link" href="record-registrar-declaration">Registrar's declaration</a>
+            <a class="govuk-link govuk-link__active" href="record-informant-declaration">Declaration</a>
+           
         </nav>
     {% endcall %}
 {% endblock %}
@@ -25,12 +25,20 @@
 {% block mainContent %}
     {% call hmpoForm(ctx) %}
 
-    <h2 class="govuk-heading-l govuk-!-padding-top-3">Informant's declaration</h2>
+    <h2 class="govuk-heading-l govuk-!-padding-top-3">Declaration</h2>
 
     {{ hmpoText(ctx, {
-        id: "deceasedFirstName",
+        id: "InformantsName",
         label: {
             text: "Informant’s name",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
+      {{ hmpoText(ctx, {
+        id: "RegistrarsName",
+        label: {
+            text: "Registrar’s name",
             classes: "govuk-label--s"
         }
     }) }}
@@ -39,7 +47,7 @@
         <div class="govuk-checkboxes__item">
           <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
           <label class="govuk-label govuk-checkboxes__label" for="waste">
-            I confirm that the information given by me in this appointment is true and to the best of my knowledge.
+            Declaration has been agreed to by the informant
           </label>
         </div>
 
@@ -55,10 +63,10 @@
 
     <br>
         
-    <div class="button-container-2">
+       <div class="button-container-2">
         {{ govukButton({
-            text: "Save and contniue",
-            href: "/registrar/record-registrar-declaration.html",
+            text: "Lock and enter into the register",
+            href: "/registrar/record-register-confirmation",
             classes: "govuk-!-margin-bottom-2"
         }) }}
     </div>
