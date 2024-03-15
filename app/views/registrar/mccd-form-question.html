@@ -8,8 +8,8 @@
     {% call hmpoForm(ctx) %}
 
         {{ hmpoRadios(ctx, {
-            id: "ageOfDeceasedWhenDied",
-            classes: "govuk-radios--small",
+            id: "mccdFormType",
+            classes: "govuk-radios",
             legend: {
                 text: "Which medical certificate do you have?",
                 classes: "govuk-fieldset__legend--s"
@@ -25,10 +25,8 @@
         }) }}
 
         <div class="govuk-button-group">
-            {{ govukButton({
-                text: "Continue",
-                href: "record-tasklist",
-                classes: "govuk-!-margin-bottom-2"
+            {{ hmpoSubmit(ctx, { 
+                text: "Create record"
             }) }}
         </div>
 

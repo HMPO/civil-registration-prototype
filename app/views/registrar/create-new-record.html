@@ -42,7 +42,7 @@
 
         {{ hmpoRadios(ctx, {
             id: "coverSheetDeceasedDateOfBirth",
-            classes: "govuk-radios--small",
+            classes: "govuk-radios",
             legend: {
                 text: "Do you have the deceased's date of birth?",
                 classes: "govuk-fieldset__legend--s"
@@ -53,7 +53,7 @@
                 conditional: {
                     html:
                      hmpoDate(ctx, {
-                        id: "coverSheetDeceasedDateOfBirth",
+                        id: "coverSheetDeceasedDateOfBirth1",
                         legend: {
                             text: "Enter the full date of birth",
                             classes: "govuk-label--s"
@@ -108,11 +108,10 @@
         }) }}
 
         <div class="govuk-button-group">
-            {{ govukButton({
-                text: "Continue",
-                href: "/registrar/mccd-form-question",
-                classes: "govuk-!-margin-bottom-2"
+            {{ hmpoSubmit(ctx, { 
+                text: "Continue"
             }) }}
+            
             {{ hmpoSubmit(ctx, {
                 text: translate("buttons.cancel"),
                 classes: "govuk-button--secondary",

@@ -1,0 +1,16 @@
+{% extends "layout-registrar-record.html" %}
+
+{% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
+
+{% block mainContent %}
+
+
+    <h2 class="govuk-heading-l">Parents details</h2>
+
+    <h3 class="govuk-heading-m"></h3>
+
+    <p>
+        {{ data['coverSheetDeceasedDateOfBirth'] }}
+    </p>
+  
+{% endblock %}

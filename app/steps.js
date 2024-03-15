@@ -58,10 +58,36 @@ const registrar = {
             'coverSheetDeceasedFirstName',
             'coverSheetDeceasedMiddleNames',
             'coverSheetDeceasedLastName',
+            'coverSheetDeceasedDateOfBirth1',
             'coverSheetDeceasedDateOfDeath'
         ],
         next:[
+            '/registrar/age-capture-values'
+        ]
+    },
+    '/registrar/age-capture-values': {
+        fields: [
+            'ageOfDeceased',
+            'ageOfDeceasedTimeUnit'
+        ],
+        next:[
+            '/registrar/mccd-form-question'
+        ]
+    },
+    '/registrar/mccd-form-question': {
+        fields: [
+            'mccdFormType'
+        ],
+        next:[
             '/registrar/record'
+        ]
+    },
+    '/registrar/record': {
+        checkJourney: false,
+        // fields: [
+        // ],
+        next:[
+            '/registrar/record-edit'
         ]
     },
     '/registrar/record': {
@@ -79,14 +105,8 @@ const registrar = {
             'coverSheetDeceasedFirstName',
             'coverSheetDeceasedMiddleNames',
             'coverSheetDeceasedLastName',
-            'coverSheetDeceasedDateOfDeath',
-            'coverSheetDateMCCDReceived',
-            'coverSheetMCCDStatus',
-            'coverSheetPriority',
-            'coverSheetInformantFullName',
-            'coverSheetInformantPhoneNumber',
-            'coverSheetInformantEmailAddress',
-            'coverSheetNotes'
+            'coverSheetDeceasedDateOfBirth1',
+            'coverSheetDeceasedDateOfDeath'
         ],
         next:[
             '/registrar/record'
@@ -142,7 +162,7 @@ const registrar = {
             'MCCDCertifyingPractitionerGMCNumber'
         ],
         next:[
-            '/registrar/record-cause-of-death'
+            '/registrar/record'
         ]
     },
     '/registrar/record-uploads': {
@@ -239,7 +259,7 @@ const registrar = {
             'spouseOrCivilEmploymentStatus'
         ],
         next:[
-            '/registrar/record-deceaseds-details'
+            '/registrar/record'
         ]
     },
     '/registrar/record-informants-details': {
@@ -269,7 +289,7 @@ const registrar = {
             'informantAddressPostcode'
         ],
         next:[
-            '/registrar/record-informants-details'
+            '/registrar/record'
         ]
     },
     '/registrar/record-check-all-information': {
@@ -543,5 +563,6 @@ const informant = {
 
 module.exports = {
     registrar,
-    informant
+    informant,
+    createNewRecord
 }

@@ -112,6 +112,71 @@
         hint: "For example, 27 03 2001"
     }) }}
 
+    <h3 class="govuk-heading-m">Registrar information</h3>
+    {{ hmpoDate(ctx, {
+        id: "coverSheetDateMCCDReceived",
+        legend: {
+            text: "Date medical certificate was received",
+            classes: "govuk-label--s"
+        },
+        hint: "For example, 12 11 2007"
+    }) }}
+
+    {{ hmpoRadios(ctx, {
+        id: "coverSheetMCCDStatus",
+        legend: {
+            text: "Medical certificate status",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small",
+        items: [
+            { value: "OK", text: "OK" },
+            { value: "Not OK", text: "Not OK" }
+        ]
+    }) }}
+
+    {{ hmpoRadios(ctx, {
+        id: "coverSheetPriority",
+        legend: {
+            text: "Priority",
+            classes: "govuk-label--s"
+        },
+        classes: "govuk-radios--small",
+        hint: "For example, for faith deaths"
+    }) }}
+
+    <!-- TODO: Refactor into fieldset -->
+    <h4 class="govuk-heading-s">Informant contact details</h4>
+    {{ hmpoText(ctx, {
+        id: "coverSheetInformantFullName",
+        label: {
+            text: "Full name",
+            classes: "govuk-label--xs"
+        }
+    }) }}
+    {{ hmpoText(ctx, {
+        id: "coverSheetInformantPhoneNumber",
+        label: {
+            text: "Phone number",
+            classes: "govuk-label--xs"
+        }
+    }) }}
+    {{ hmpoText(ctx, {
+        id: "coverSheetInformantEmailAddress",
+        label: {
+            text: "Email address",
+            classes: "govuk-label--xs"
+        }
+    }) }}
+
+    {{ hmpoTextarea(ctx, {
+        id: "coverSheetNotes",
+        label: {
+            text: "Notes",
+            classes: "govuk-label--s"
+        }
+    }) }}
+
     <div class="govuk-button-group">
         {{ hmpoSubmit(ctx, { text: translate("buttons.save") }) }}
         {{ hmpoSubmit(ctx, {

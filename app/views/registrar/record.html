@@ -2,33 +2,11 @@
 
 {% set hmpoTitle %}{{values.coverSheetDeceasedLastName | upper}}, {{values.coverSheetDeceasedFirstName}}{% endset %}
 
-{% block sideContent %}
-    {% call hmpoSidebar({ classes: "hmpo-sidebar__thick-border" }) %}
-        <!-- TODO: Import side navigation component from DAP frontend -->
-        <nav class="side-navigation">
-            <!-- TODO: Persist session data for a href links -->
-            <a class="govuk-link govuk-link__active" href="#">Cover sheet</a>
-            <h2 class="govuk-heading-s">Pre-registration</h2>
-            <a class="govuk-link" href="record-cause-of-death">Cause of death</a>
-            <a class="govuk-link" href="record-uploads">Uploads</a>
-            <h2 class="govuk-heading-s">Registration</h2>
-            <a class="govuk-link" href="record-deceaseds-details">Deceased’s details</a>
-            <a class="govuk-link" href="record-informants-details">Informant’s details</a>
-            <a class="govuk-link" href="record-check-all-information">Check all information</a>
-            <a class="govuk-link" href="record-register-page">Register page</a>
-        </nav>
-    {% endcall %}
-{% endblock %}
-
 {% block mainContent %}
     {% call hmpoForm(ctx) %}
 
-    <h2 class="heading-flex govuk-heading-l">Cover sheet {{ hmpoSubmit(ctx, {
-        text: translate("buttons.editDetails"),
-        classes: "govuk-button--secondary" })
-    }}</h2>
+    <h2 class="heading-flex govuk-heading-l">Registration summary</h2>
 
-    <h3 class="govuk-heading-m">File information</h3>
     {{ govukSummaryList({ rows: [
         {
             key: { text: "Date medical certificate was issued" },
@@ -49,50 +27,113 @@
         {
             key: { text: "Date of death" },
             value: { text: values.coverSheetDeceasedDateOfDeath | date("DD/MM/YYYY") }
-        }
+        },
+        {
+          key: { text: "Age" },
+          value: { text: values.ageOfDeceased }
+      }
     ] | filter }) }}
+<div>
+    <h3 class="govuk-heading-l">Enter the registration</h3>
 
+    <ul class="govuk-task-list">
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="record-edit.html" aria-describedby="company-details-1-status">
+              Name, birth and death details
+            </a>
+            <div id="company-details-3-hint" class="govuk-task-list__hint">
+                Including place and dates of birth and death, and other known names.
+              </div>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-1-status">
+            <strong class="govuk-tag govuk-tag--purple">IN PROGRESS</strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="record-deceaseds-details-edit.html" aria-describedby="company-details-2-status">
+              Personal details
+            </a>
+            <div id="company-details-3-hint" class="govuk-task-list__hint">
+                Including sex, address, nationality and occupation.
+              </div>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-2-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="record-cause-of-death-edit.html" aria-describedby="company-details-3-hint company-details-3-status">
+             Cause of death
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-3-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="parents-details.html" aria-describedby="company-details-4-status">
+              Parents' details
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-4-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          </div>
+        </li>
+        <li class="govuk-task-list__item govuk-task-list__item--with-link">
+          <div class="govuk-task-list__name-and-hint">
+            <a class="govuk-link govuk-task-list__link" href="#" aria-describedby="company-details-5-status">
+              Statistical information
+            </a>
+          </div>
+          <div class="govuk-task-list__status" id="company-details-5-status">
+            <strong class="govuk-tag govuk-tag--blue">
+              Incomplete
+            </strong>
+          </div>
+        </li>
+      </ul>
 
-    <h3 class="govuk-heading-m">Registrar information</h3>
-    {% set coverSheetInformantContactDetails = [
-        values.coverSheetInformantFullName,
-        values.coverSheetInformantPhoneNumber,
-        values.coverSheetInformantEmailAddress
-    ] | filter | join("<br>") %}
+      <h3 class="govuk-heading-l">Qualify the informant</h3>
 
-    {{ govukSummaryList({ rows: [
-        {
-            key: { text: "Date medical certificate was received" },
-            value: { text: values.coverSheetDateMCCDReceived | date("DD/MM/YYYY") }
-        },
-        {
-            key: { text: "Medical certificate status" },
-            value: { text: values.coverSheetMCCDStatus }
-        },
-        {
-            key: { text: "Priority" },
-            value: {
-                text: "Yes" if values.coverSheetPriority
-                    else ("No" if values.coverSheetPriority === false)
-            }
-        },
-        {
-            key: { text: "Informant contact details" },
-            value: { html:
-                coverSheetInformantContactDetails if coverSheetInformantContactDetails else "<br><br><br>"
-            }
-        },
-        {
-            key: { text: "Notes" },
-            value: { html: values.coverSheetNotes }
-        }
-    ] }) }}
+      <ul class="govuk-task-list">
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <a class="govuk-link govuk-task-list__link" href="record-informants-details-edit.html" aria-describedby="company-details-5-status">
+                Informant details
+              </a>
+            <div class="govuk-task-list__status" id="company-details-1-status">
+              <strong class="govuk-tag govuk-tag--blue">INCOMPLETE</strong>
+            </div>
+          </li>
+        </ul>
 
-    {{ govukButton({
-        text: "Delete record",
-        href: "/registrar/delete-record",
-        classes: "govuk-!-margin-bottom-2 govuk-button--warning"
-    }) }}
+      <h3 class="govuk-heading-l">Submit the registration</h3>
+
+      <ul class="govuk-task-list">
+          <li class="govuk-task-list__item govuk-task-list__item--with-link">
+            <div class="govuk-task-list__name-and-hint">
+                View final regisration
+            </div>
+            <div class="govuk-task-list__status" id="company-details-1-status">
+              <strong class="govuk-tag govuk-tag--grey">CANNOT START YET</strong>
+            </div>
+          </li>
+          </ul>
+          {{ govukButton({
+            text: "Delete record",
+            href: "/registrar/delete-record",
+            classes: "govuk-!-margin-bottom-2 govuk-button--warning"
+        }) }}
+        </div>
  
     {% endcall %}
 {% endblock %}
